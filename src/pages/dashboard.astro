@@ -1,0 +1,156 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="My Dashboard — GoAustralia.co.nz" description="Your GoAustralia dashboard — access your guides, tools and subscription settings.">
+<style is:global>
+  .dash-layout { display: grid; grid-template-columns: 220px 1fr; gap: 0; min-height: calc(100vh - 200px); }
+  .dash-sidebar { background: var(--surf2); border-right: 1px solid var(--border-lt); padding: 28px 0; }
+  .dash-nav { list-style: none; }
+  .dash-nav li a { display: flex; align-items: center; gap: 10px; padding: 10px 20px; font-size: 13px; font-weight: 500; color: var(--txt2); transition: background 0.12s; }
+  .dash-nav li a:hover { background: var(--white); color: var(--navy); }
+  .dash-nav li a.active { background: var(--white); color: var(--navy); font-weight: 700; border-right: 2px solid var(--blue); }
+  .dash-nav-head { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--txt3); padding: 18px 20px 6px; }
+  .dash-main { padding: 36px 40px; }
+  .dash-greeting { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
+  .dash-sub { font-size: 14px; color: var(--txt2); margin-bottom: 32px; }
+  .dash-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 36px; }
+  .dash-card { background: var(--white); border: 1px solid var(--border-lt); border-radius: 6px; padding: 20px; }
+  .dash-card-label { font-size: 11px; font-weight: 700; color: var(--txt3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .dash-card-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--navy); }
+  .dash-card-sub { font-size: 12px; color: var(--txt2); margin-top: 4px; }
+  .dash-section-head { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border-lt); }
+  .guide-dl-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+  .guide-dl-item { display: flex; align-items: center; justify-content: space-between; background: var(--white); border: 1px solid var(--border-lt); border-radius: 6px; padding: 14px 18px; }
+  .guide-dl-info { display: flex; align-items: center; gap: 12px; }
+  .guide-dl-icon { width: 36px; height: 36px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+  .guide-dl-title { font-size: 13px; font-weight: 700; color: var(--navy); }
+  .guide-dl-meta { font-size: 11px; color: var(--txt3); margin-top: 2px; }
+  .dl-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--blue); color: #fff; font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: 4px; transition: background 0.12s; }
+  .dl-btn:hover { background: #004a85; }
+  .tool-shortcuts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 32px; }
+  .tool-shortcut { background: var(--white); border: 1px solid var(--border-lt); border-radius: 6px; padding: 16px; display: flex; align-items: center; gap: 12px; transition: border-color 0.12s, box-shadow 0.12s; }
+  .tool-shortcut:hover { border-color: var(--blue); box-shadow: 0 2px 10px rgba(0,94,165,0.1); }
+  .tool-shortcut .ts-icon { font-size: 1.4rem; }
+  .tool-shortcut h4 { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+  .tool-shortcut p { font-size: 11px; color: var(--txt3); }
+  .sub-status-card { background: var(--blue-tint); border: 1px solid #b8d4f0; border-radius: 6px; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .sub-active-badge { display: inline-flex; align-items: center; gap: 6px; background: #d1fae5; color: var(--green-ok); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 3px; }
+  .sub-manage-btn { font-size: 13px; font-weight: 600; color: var(--blue); text-decoration: underline; }
+  @media (max-width: 860px) {
+    .dash-layout { grid-template-columns: 1fr; }
+    .dash-sidebar { border-right: none; border-bottom: 1px solid var(--border-lt); padding: 16px 0; }
+    .dash-main { padding: 24px 20px; }
+    .dash-cards { grid-template-columns: 1fr 1fr; }
+    .tool-shortcuts { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="dash-layout">
+
+  <!-- Sidebar -->
+  <div class="dash-sidebar">
+    <div class="dash-nav-head">Account</div>
+    <ul class="dash-nav">
+      <li><a href="/dashboard" class="active">🏠 Dashboard</a></li>
+      <li><a href="/dashboard">📄 My Guides</a></li>
+      <li><a href="/tools/checklist">📋 My Checklist</a></li>
+      <li><a href="/dashboard">📧 Newsletter</a></li>
+    </ul>
+    <div class="dash-nav-head" style="margin-top:12px;">Tools</div>
+    <ul class="dash-nav">
+      <li><a href="/tools/visa-checker">🛂 Visa Checker</a></li>
+      <li><a href="/tools/cost-calculator">💰 Cost Calculator</a></li>
+      <li><a href="/tools/suburb-finder">🏘️ Suburb Finder</a></li>
+      <li><a href="/tools/checklist">📋 Moving Checklist</a></li>
+    </ul>
+    <div class="dash-nav-head" style="margin-top:12px;">Account</div>
+    <ul class="dash-nav">
+      <li><a href="/dashboard">⚙️ Settings</a></li>
+      <li><a href="/dashboard">💳 Subscription</a></li>
+      <li><a href="/login">🚪 Log out</a></li>
+    </ul>
+  </div>
+
+  <!-- Main -->
+  <div class="dash-main">
+
+    <div class="dash-greeting">Welcome back, Sarah 👋</div>
+    <p class="dash-sub">You're on the Full Access plan · Renews 9 June 2025 · Active subscriber since 9 May 2025</p>
+
+    <!-- Stats -->
+    <div class="dash-cards">
+      <div class="dash-card">
+        <div class="dash-card-label">Checklist Progress</div>
+        <div class="dash-card-val">24 / 70</div>
+        <div class="dash-card-sub">34% complete — keep going!</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-label">Guides Downloaded</div>
+        <div class="dash-card-val">1 / 3</div>
+        <div class="dash-card-sub">2 more available to download</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-label">Newsletter</div>
+        <div class="dash-card-val">Active</div>
+        <div class="dash-card-sub">Next issue: Friday 16 May</div>
+      </div>
+    </div>
+
+    <!-- Guides -->
+    <div class="dash-section-head">Your PDF Guides</div>
+    <div class="guide-dl-list">
+      {[
+        { icon:'📘', title:'The Kiwi Moving to Australia Masterguide', meta:'90 pages · Updated May 2025', color:'#00205C', downloaded:true },
+        { icon:'📗', title:'Australian Tax & Finance for New Zealanders', meta:'68 pages · Updated May 2025', color:'#1B7A3E', downloaded:false },
+        { icon:'📙', title:'Finding a Job in Australia: The Kiwi Edition', meta:'74 pages · Updated April 2025', color:'#3730a3', downloaded:false },
+      ].map(g => (
+        <div class="guide-dl-item">
+          <div class="guide-dl-info">
+            <div class="guide-dl-icon" style={`background:${g.color};`}>{g.icon}</div>
+            <div>
+              <div class="guide-dl-title">{g.title}</div>
+              <div class="guide-dl-meta">{g.meta}</div>
+            </div>
+          </div>
+          <a href="/guides" class="dl-btn">{g.downloaded ? '⬇ Re-download' : '⬇ Download'}</a>
+        </div>
+      ))}
+    </div>
+
+    <!-- Tools -->
+    <div class="dash-section-head">Quick Access — Tools</div>
+    <div class="tool-shortcuts">
+      {[
+        { icon:'🛂', title:'Visa Checker', desc:'Check your pathway', href:'/tools/visa-checker' },
+        { icon:'💰', title:'Cost Calculator', desc:'Estimate your move costs', href:'/tools/cost-calculator' },
+        { icon:'🏘️', title:'Suburb Finder', desc:'Compare 200+ suburbs', href:'/tools/suburb-finder' },
+        { icon:'📋', title:'Moving Checklist', desc:'24 of 70 steps done', href:'/tools/checklist' },
+      ].map(t => (
+        <a href={t.href} class="tool-shortcut">
+          <div class="ts-icon">{t.icon}</div>
+          <div>
+            <h4>{t.title}</h4>
+            <p>{t.desc}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- Subscription -->
+    <div class="dash-section-head">Subscription</div>
+    <div class="sub-status-card">
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px;">Full Access Plan</div>
+        <div class="sub-active-badge">✓ Active</div>
+        <div style="font-size:12px;color:var(--txt2);margin-top:8px;">$1.99 NZD/month · Renews automatically on 9 June 2025 · Paid via Stripe</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;flex-shrink:0;">
+        <a href="#" class="sub-manage-btn">Manage subscription</a>
+        <a href="#" style="font-size:13px;color:var(--txt3);text-decoration:underline;">Cancel subscription</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</Layout>

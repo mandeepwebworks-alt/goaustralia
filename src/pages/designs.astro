@@ -1,0 +1,296 @@
+---
+import '../styles/global.css';
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GoAustralia — Choose a Design Direction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #09090b; font-family: 'Inter', sans-serif; color: #fff; min-height: 100vh; padding: 40px 24px 60px; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+
+    header { text-align: center; margin-bottom: 48px; }
+    .back { display: inline-block; color: #52525b; font-size: 13px; border: 1px solid #27272a; padding: 6px 14px; border-radius: 5px; margin-bottom: 28px; }
+    .back:hover { color: #a1a1aa; }
+    header h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.5rem; font-weight: 800; color: #e4e4e7; margin-bottom: 8px; }
+    header p { color: #52525b; font-size: 14px; }
+
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 920px; margin: 0 auto; }
+
+    .card { display: block; border: 1px solid #27272a; border-radius: 14px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+    .card:hover { transform: translateY(-3px); }
+
+    /* Previews */
+    .preview { height: 240px; overflow: hidden; position: relative; }
+
+    /* D1 preview — white, centered tool */
+    .prev-d1 { background: #f9fafb; display: flex; flex-direction: column; }
+    .prev-d1 .p-nav { background: #fff; border-bottom: 1px solid #f4f4f5; padding: 0 16px; height: 36px; display: flex; align-items: center; justify-content: space-between; }
+    .prev-d1 .p-logo { font-size: 9px; font-weight: 700; color: #18181b; }
+    .prev-d1 .p-links { display: flex; gap: 10px; }
+    .prev-d1 .p-links span { font-size: 7px; color: #a1a1aa; }
+    .prev-d1 .p-signin { font-size: 7px; border: 1px solid #e4e4e7; padding: 2px 7px; border-radius: 3px; color: #18181b; }
+    .prev-d1 .p-hero { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px; gap: 8px; }
+    .prev-d1 .p-pill { background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 10px; padding: 2px 8px; font-size: 7px; font-weight: 600; color: #065f46; }
+    .prev-d1 .p-h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 800; color: #18181b; text-align: center; letter-spacing: -0.02em; }
+    .prev-d1 .p-card { background: #fff; border: 1px solid #e4e4e7; border-radius: 7px; padding: 10px; width: 100%; max-width: 200px; }
+    .prev-d1 .p-field { background: #f9fafb; border: 1px solid #e4e4e7; border-radius: 4px; height: 18px; margin-bottom: 5px; }
+    .prev-d1 .p-btn { background: #10b981; border-radius: 4px; height: 20px; margin-top: 2px; }
+
+    /* D2 preview — newspaper */
+    .prev-d2 { background: #fffef9; display: flex; flex-direction: column; }
+    .prev-d2 .p-masthead { background: #111; padding: 6px 14px; display: flex; align-items: center; justify-content: space-between; }
+    .prev-d2 .p-masthead-logo { font-family: 'Playfair Display', serif; font-size: 11px; font-weight: 800; color: #fff; }
+    .prev-d2 .p-masthead-meta { font-size: 6px; color: rgba(255,255,255,0.35); }
+    .prev-d2 .p-subnav { background: #fff; border-bottom: 2px solid #111; padding: 0 14px; display: flex; gap: 10px; height: 24px; align-items: center; }
+    .prev-d2 .p-subnav span { font-size: 7px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #9ca3af; }
+    .prev-d2 .p-subnav span.on { color: #111; border-bottom: 2px solid #16a34a; padding-bottom: 0; }
+    .prev-d2 .p-ticker { background: #16a34a; padding: 3px 14px; font-size: 7px; color: rgba(255,255,255,0.85); }
+    .prev-d2 .p-front { flex: 1; display: grid; grid-template-columns: 1.5fr 1fr; gap: 0; padding: 10px 14px; overflow: hidden; }
+    .prev-d2 .p-lead { border-right: 1px solid #e5e5e0; padding-right: 10px; }
+    .prev-d2 .p-kicker { font-size: 6px; font-weight: 700; text-transform: uppercase; color: #16a34a; margin-bottom: 4px; }
+    .prev-d2 .p-lead-img { height: 60px; background: linear-gradient(135deg, #14532d, #16a34a); border-radius: 2px; margin-bottom: 6px; }
+    .prev-d2 .p-lead-h { font-family: 'Playfair Display', serif; font-size: 10px; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 4px; }
+    .prev-d2 .p-line { height: 4px; background: #e5e5e0; border-radius: 2px; margin-bottom: 3px; }
+    .prev-d2 .p-sidebar { padding-left: 10px; display: flex; flex-direction: column; gap: 6px; }
+    .prev-d2 .p-sb-tool { border: 1px solid #e5e5e0; padding: 6px; border-radius: 2px; }
+    .prev-d2 .p-sb-tool-h { font-size: 7px; font-weight: 700; color: #111; margin-bottom: 2px; }
+    .prev-d2 .p-sb-line { height: 3px; background: #e5e5e0; border-radius: 1px; margin-bottom: 2px; }
+    .prev-d2 .p-sb-link { font-size: 6px; font-weight: 700; color: #16a34a; text-transform: uppercase; }
+
+    /* D3 preview — dark product */
+    .prev-d3 { background: #0c0c0e; display: flex; flex-direction: column; }
+    .prev-d3 .p-nav { border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0 14px; height: 32px; display: flex; align-items: center; justify-content: space-between; }
+    .prev-d3 .p-logo { display: flex; align-items: center; gap: 5px; }
+    .prev-d3 .p-logo-mark { width: 12px; height: 12px; border-radius: 3px; background: linear-gradient(135deg, #22d3ee, #818cf8); }
+    .prev-d3 .p-logo-text { font-size: 9px; font-weight: 600; color: #fff; }
+    .prev-d3 .p-nav-links { display: flex; gap: 10px; }
+    .prev-d3 .p-nav-links span { font-size: 7px; color: rgba(255,255,255,0.35); }
+    .prev-d3 .p-cta { background: #fff; color: #0c0c0e; font-size: 7px; font-weight: 600; padding: 3px 8px; border-radius: 4px; }
+    .prev-d3 .p-hero { text-align: center; padding: 14px 14px 10px; }
+    .prev-d3 .p-h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 800; color: #fff; letter-spacing: -0.03em; margin-bottom: 5px; }
+    .prev-d3 .p-h1 em { color: #22d3ee; font-style: normal; }
+    .prev-d3 .p-sub { font-size: 7px; color: rgba(255,255,255,0.35); margin-bottom: 8px; }
+    .prev-d3 .p-btns { display: flex; justify-content: center; gap: 5px; margin-bottom: 12px; }
+    .prev-d3 .p-btn1 { background: #22d3ee; color: #0c0c0e; font-size: 7px; font-weight: 600; padding: 4px 10px; border-radius: 4px; }
+    .prev-d3 .p-btn2 { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5); font-size: 7px; padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); }
+    .prev-d3 .p-mockup { background: #111113; border: 1px solid rgba(255,255,255,0.08); border-radius: 5px 5px 0 0; overflow: hidden; margin: 0 14px; }
+    .prev-d3 .p-mock-bar { background: #161618; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 4px 8px; display: flex; gap: 4px; align-items: center; }
+    .prev-d3 .p-mock-dot { width: 5px; height: 5px; border-radius: 50%; }
+    .prev-d3 .p-mock-body { display: grid; grid-template-columns: 60px 1fr; min-height: 60px; }
+    .prev-d3 .p-mock-sb { background: #0e0e10; border-right: 1px solid rgba(255,255,255,0.05); padding: 6px; }
+    .prev-d3 .p-mock-item { font-size: 6px; color: rgba(255,255,255,0.25); padding: 3px 4px; border-radius: 2px; margin-bottom: 1px; }
+    .prev-d3 .p-mock-item.on { background: rgba(34,211,238,0.08); color: #22d3ee; }
+    .prev-d3 .p-mock-main { padding: 8px; }
+    .prev-d3 .p-mock-title { font-size: 7px; font-weight: 600; color: rgba(255,255,255,0.7); margin-bottom: 5px; }
+    .prev-d3 .p-check { display: flex; align-items: center; gap: 4px; margin-bottom: 3px; }
+    .prev-d3 .p-check-box { width: 7px; height: 7px; border-radius: 2px; border: 1px solid rgba(255,255,255,0.15); flex-shrink: 0; }
+    .prev-d3 .p-check-box.done { background: #22d3ee; border-color: #22d3ee; }
+    .prev-d3 .p-check-text { font-size: 6px; color: rgba(255,255,255,0.35); }
+    .prev-d3 .p-check-text.done { text-decoration: line-through; color: rgba(255,255,255,0.15); }
+
+    /* D4 preview — lifestyle */
+    .prev-d4 { background: #fff; display: flex; flex-direction: column; }
+    .prev-d4 .p-hero-img { height: 160px; background: linear-gradient(160deg, #1a3d2b, #2d6a4f, #40916c); position: relative; overflow: hidden; display: flex; align-items: flex-end; }
+    .prev-d4 .p-hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 100%); }
+    .prev-d4 .p-hero-nav { position: absolute; top: 0; left: 0; right: 0; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between; z-index: 2; }
+    .prev-d4 .p-hero-nav-logo { font-size: 8px; font-weight: 700; color: #fff; }
+    .prev-d4 .p-hero-nav-cta { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 10px; padding: 2px 7px; font-size: 6px; color: #fff; }
+    .prev-d4 .p-hero-content { position: relative; z-index: 2; padding: 10px 12px; }
+    .prev-d4 .p-hero-h { font-family: 'Playfair Display', serif; font-size: 11px; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 5px; }
+    .prev-d4 .p-hero-sub { font-size: 6px; color: rgba(255,255,255,0.65); margin-bottom: 6px; }
+    .prev-d4 .p-hero-btn { background: #fff; color: #1a3d2b; font-size: 7px; font-weight: 600; padding: 3px 9px; border-radius: 3px; display: inline-block; }
+    .prev-d4 .p-story-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; padding: 8px 12px; }
+    .prev-d4 .p-story { border: 1px solid #f0f0ef; border-radius: 4px; overflow: hidden; }
+    .prev-d4 .p-story-img { height: 28px; }
+    .prev-d4 .p-story-body { padding: 4px; }
+    .prev-d4 .p-story-kicker { font-size: 5px; font-weight: 700; text-transform: uppercase; color: #40916c; }
+    .prev-d4 .p-story-h { font-size: 6px; font-weight: 600; color: #18181b; line-height: 1.2; margin-top: 2px; }
+
+    /* Card info */
+    .card-info { padding: 20px; background: #111113; border-top: 1px solid #27272a; }
+    .card-num { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 6px; }
+    .card-title { font-size: 1rem; font-weight: 700; color: #e4e4e7; margin-bottom: 5px; }
+    .card-desc { font-size: 12px; color: #52525b; line-height: 1.5; margin-bottom: 12px; }
+    .card-ref { font-size: 11px; color: #3f3f46; margin-bottom: 14px; }
+    .card-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; padding: 9px 18px; border-radius: 6px; }
+
+    .note { text-align: center; color: #3f3f46; font-size: 13px; margin-top: 40px; }
+
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="back">← Back</a>
+  <h1>Choose a design direction</h1>
+  <p>4 genuinely different approaches — different layouts, not just different colours. Click to see the full page.</p>
+</header>
+
+<div class="grid">
+
+  <!-- D1 -->
+  <a href="/d1" class="card" style="border-color:#27272a;">
+    <div class="preview prev-d1">
+      <div class="p-nav">
+        <div class="p-logo">🦘 GoAustralia</div>
+        <div class="p-links"><span>Guides</span><span>Blog</span><span>Tools</span></div>
+        <div class="p-signin">Sign in</div>
+      </div>
+      <div class="p-hero">
+        <div class="p-pill">Updated May 2025</div>
+        <div class="p-h1">Find your path<br/>to Australia.</div>
+        <div class="p-card">
+          <div class="p-field"></div>
+          <div class="p-field"></div>
+          <div class="p-field"></div>
+          <div class="p-btn"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="card-num" style="color:#10b981;">Direction 01</div>
+      <div class="card-title">Tool-First — Clean & Purposeful</div>
+      <div class="card-desc">White, minimal. The visa checker IS the hero. No fluff — visitors immediately do something useful. Maximum trust and clarity.</div>
+      <div class="card-ref">Inspired by: Wise.com, Xero</div>
+      <span class="card-link" style="background:#10b98122;color:#10b981;">View full design →</span>
+    </div>
+  </a>
+
+  <!-- D2 -->
+  <a href="/d2" class="card" style="border-color:#27272a;">
+    <div class="preview prev-d2">
+      <div class="p-masthead">
+        <span class="p-masthead-meta">Independent · Not govt</span>
+        <div class="p-masthead-logo">GoAustralia</div>
+        <span class="p-masthead-meta">9 May 2025</span>
+      </div>
+      <div class="p-subnav">
+        <span class="on">Visas</span><span>Tax</span><span>Renting</span><span>Jobs</span><span>Medicare</span>
+      </div>
+      <div class="p-ticker">Latest: Australia expands SCV Medicare access from July 2025</div>
+      <div class="p-front">
+        <div class="p-lead">
+          <div class="p-kicker">Visa & Immigration</div>
+          <div class="p-lead-img"></div>
+          <div class="p-lead-h">The Complete Guide to Moving from NZ to Australia</div>
+          <div class="p-line" style="width:95%;"></div>
+          <div class="p-line" style="width:80%;"></div>
+          <div class="p-line" style="width:90%;"></div>
+        </div>
+        <div class="p-sidebar">
+          <div class="p-sb-tool"><div class="p-sb-tool-h">🛂 Visa Checker</div><div class="p-sb-line"></div><div class="p-sb-link">Use free →</div></div>
+          <div class="p-sb-tool"><div class="p-sb-tool-h">💰 Cost Calculator</div><div class="p-sb-line"></div><div class="p-sb-link">Calculate →</div></div>
+          <div class="p-sb-tool"><div class="p-sb-tool-h">📋 Checklist</div><div class="p-sb-line"></div><div class="p-sb-link">Open →</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="card-num" style="color:#16a34a;">Direction 02</div>
+      <div class="card-title">Editorial Broadsheet — Authoritative</div>
+      <div class="card-desc">Looks like a trusted publication. Newspaper masthead, multi-column grid, serif headlines. Tools live in sidebar. Credibility-first.</div>
+      <div class="card-ref">Inspired by: The Guardian, Financial Times</div>
+      <span class="card-link" style="background:#16a34a22;color:#16a34a;">View full design →</span>
+    </div>
+  </a>
+
+  <!-- D3 -->
+  <a href="/d3" class="card" style="border-color:#27272a;">
+    <div class="preview prev-d3">
+      <div class="p-nav">
+        <div class="p-logo"><div class="p-logo-mark"></div><span class="p-logo-text">GoAustralia</span></div>
+        <div class="p-nav-links"><span>Visa</span><span>Guides</span><span>Blog</span></div>
+        <div class="p-cta">Get access</div>
+      </div>
+      <div class="p-hero">
+        <div class="p-h1">Move to Aus. <em>Sorted.</em></div>
+        <div class="p-sub">Every tool a Kiwi needs — in one place. $1.99/mo.</div>
+        <div class="p-btns">
+          <div class="p-btn1">Get access →</div>
+          <div class="p-btn2">See tools</div>
+        </div>
+        <div class="p-mockup">
+          <div class="p-mock-bar">
+            <div class="p-mock-dot" style="background:#ff5f57;"></div>
+            <div class="p-mock-dot" style="background:#febc2e;"></div>
+            <div class="p-mock-dot" style="background:#28c840;"></div>
+          </div>
+          <div class="p-mock-body">
+            <div class="p-mock-sb">
+              <div class="p-mock-item on">Checklist</div>
+              <div class="p-mock-item">Visa</div>
+              <div class="p-mock-item">Costs</div>
+              <div class="p-mock-item">Suburbs</div>
+            </div>
+            <div class="p-mock-main">
+              <div class="p-mock-title">Moving Checklist — 45% complete</div>
+              <div class="p-check"><div class="p-check-box done"></div><span class="p-check-text done">NZ police clearance</span></div>
+              <div class="p-check"><div class="p-check-box done"></div><span class="p-check-text done">Book removal company</span></div>
+              <div class="p-check"><div class="p-check-box"></div><span class="p-check-text">Apply for TFN</span></div>
+              <div class="p-check"><div class="p-check-box"></div><span class="p-check-text">Open AU bank account</span></div>
+              <div class="p-check"><div class="p-check-box"></div><span class="p-check-text">Enrol in Medicare</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="card-num" style="color:#22d3ee;">Direction 03</div>
+      <div class="card-title">Dark Product — Show What You've Built</div>
+      <div class="card-desc">Dark, premium, confident. The hero shows the actual moving checklist tool. Visitors see what they're getting before signing up.</div>
+      <div class="card-ref">Inspired by: Linear.app, Vercel, Raycast</div>
+      <span class="card-link" style="background:#22d3ee22;color:#22d3ee;">View full design →</span>
+    </div>
+  </a>
+
+  <!-- D4 -->
+  <a href="/d4" class="card" style="border-color:#27272a;">
+    <div class="preview prev-d4">
+      <div class="p-hero-img">
+        <div class="p-hero-nav">
+          <div class="p-hero-nav-logo">🦘 GoAustralia</div>
+          <div class="p-hero-nav-cta">Get Access</div>
+        </div>
+        <div class="p-hero-content">
+          <div class="p-hero-h">The move you've<br/>been thinking about.</div>
+          <div class="p-hero-sub">Visa, tax, renting, jobs — all in one place.</div>
+          <div class="p-hero-btn">Get the guide →</div>
+        </div>
+      </div>
+      <div class="p-story-row">
+        <div class="p-story">
+          <div class="p-story-img" style="background:linear-gradient(135deg,#0f2745,#18528f);"></div>
+          <div class="p-story-body"><div class="p-story-kicker">Visa Guide</div><div class="p-story-h">SCV explained for Kiwis</div></div>
+        </div>
+        <div class="p-story">
+          <div class="p-story-img" style="background:linear-gradient(135deg,#431407,#9a3412);"></div>
+          <div class="p-story-body"><div class="p-story-kicker">Real Story</div><div class="p-story-h">Moved to Brisbane with $8k</div></div>
+        </div>
+        <div class="p-story">
+          <div class="p-story-img" style="background:linear-gradient(135deg,#14532d,#065f46);"></div>
+          <div class="p-story-body"><div class="p-story-kicker">Tax</div><div class="p-story-h">TFN & super in plain English</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="card-num" style="color:#40916c;">Direction 04</div>
+      <div class="card-title">Warm Lifestyle — Story-First</div>
+      <div class="card-desc">Photography-led hero, editorial story cards below. Feels like a trusted travel guide or magazine. Draws people in with stories before selling tools.</div>
+      <div class="card-ref">Inspired by: Airbnb, Lonely Planet, The Spinoff</div>
+      <span class="card-link" style="background:#40916c22;color:#40916c;">View full design →</span>
+    </div>
+  </a>
+
+</div>
+
+<p class="note">Click a card to see the full page · Tell me which direction you like and I'll build the full site</p>
+
+</body>
+</html>

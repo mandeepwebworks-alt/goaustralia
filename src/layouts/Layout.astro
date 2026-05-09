@@ -1,0 +1,123 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'GoAustralia.co.nz — The Complete Moving Guide for Kiwis',
+  description = 'Step-by-step guides, visa tools and cost calculators for New Zealanders moving to Australia. Trusted by thousands of Kiwis.',
+} = Astro.props;
+
+const path = Astro.url.pathname;
+const active = (prefix: string) =>
+  prefix === '/' ? path === '/' : path.startsWith(prefix);
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <slot name="head" />
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="shell top-bar-inner">
+    <span>Independent guide for Kiwis &mdash; not affiliated with the Australian or New Zealand government</span>
+    <a href="/about">About this site</a>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="shell site-header-inner">
+    <a href="/" class="site-logo">
+      <span class="site-logo-name">GoAustralia</span>
+      <span class="site-logo-tld">.co.nz</span>
+    </a>
+    <nav class="site-nav">
+      <a href="/tools/visa-checker" class={active('/tools') ? 'active' : ''}>Tools</a>
+      <a href="/guides" class={active('/guides') ? 'active' : ''}>Guides</a>
+      <a href="/blog" class={active('/blog') ? 'active' : ''}>Blog</a>
+      <a href="/about" class={active('/about') ? 'active' : ''}>About</a>
+    </nav>
+    <div class="site-header-cta">
+      <a href="/login" class="hdr-login">Log in</a>
+      <a href="/pricing" class="hdr-cta">Get the Guides</a>
+    </div>
+  </div>
+</header>
+
+<slot />
+
+<footer class="site-footer">
+  <div class="shell footer-disclaimer-bar">
+    <p>GoAustralia.co.nz is independently operated and is not affiliated with the Australian or New Zealand government. Information is provided as general guidance only — always verify with official government sources before making immigration or financial decisions.</p>
+  </div>
+  <div class="shell footer-main">
+    <div class="footer-brand">
+      <div class="footer-logo">GoAustralia<span>.co.nz</span></div>
+      <p>The most complete resource for New Zealanders planning their move to Australia.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Free Tools</h4>
+      <ul>
+        <li><a href="/tools/visa-checker">Visa Pathway Checker</a></li>
+        <li><a href="/tools/cost-calculator">Move Cost Calculator</a></li>
+        <li><a href="/tools/checklist">Moving Checklist</a></li>
+        <li><a href="/tools/suburb-finder">Suburb Finder</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>PDF Guides</h4>
+      <ul>
+        <li><a href="/guides">All Guides</a></li>
+        <li><a href="/guides/masterguide">Kiwi Masterguide</a></li>
+        <li><a href="/guides/tax-finance">Tax &amp; Finance</a></li>
+        <li><a href="/guides/jobs">Jobs in Australia</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Learn</h4>
+      <ul>
+        <li><a href="/blog">Moving Blog</a></li>
+        <li><a href="/blog/special-category-visa-guide">SCV Guide</a></li>
+        <li><a href="/blog/kiwi-tax-australia">Tax for Kiwis</a></li>
+        <li><a href="/blog/sydney-vs-melbourne">Sydney vs Melbourne</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Site</h4>
+      <ul>
+        <li><a href="/about">About</a></li>
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/login">Log In</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="shell footer-bottom">
+    <p>&copy; 2025 GoAustralia.co.nz</p>
+    <p>Independent — not part of any government</p>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>

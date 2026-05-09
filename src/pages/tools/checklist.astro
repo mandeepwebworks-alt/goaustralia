@@ -1,0 +1,869 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="Moving to Australia Checklist — 70 Steps | GoAustralia.co.nz"
+  description="The complete 70-step moving checklist for New Zealanders relocating to Australia. Track your progress and save it automatically in your browser."
+>
+
+<div class="page-hero">
+  <div class="shell">
+    <div class="breadcrumb"><a href="/">Home</a> › <a href="/tools/visa-checker">Tools</a> › Moving Checklist</div>
+    <h1>Moving to Australia Checklist</h1>
+    <p class="page-hero-sub">70 steps from deciding to move to your first week in Aus. Track your progress — saved automatically in your browser.</p>
+  </div>
+</div>
+
+<!-- Progress Bar -->
+<div class="progress-band">
+  <div class="shell">
+    <div class="progress-header">
+      <span class="progress-label">Your progress: <strong><span id="done-count">0</span> of 70 steps complete</strong></span>
+      <button class="btn btn-ghost reset-btn" id="reset-btn">Reset all</button>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="progress-pct" id="progress-pct">0% complete</div>
+  </div>
+</div>
+
+<!-- Main layout -->
+<div class="section">
+  <div class="shell checklist-shell">
+
+    <!-- Sidebar -->
+    <aside class="cl-sidebar" id="cl-sidebar">
+      <div class="sidebar-sticky">
+        <p class="sidebar-heading">Jump to section</p>
+        <nav class="sidebar-nav">
+          <a href="#before-you-decide"   class="sidebar-link" data-section="before-you-decide">Before You Decide <span class="cat-count" id="cnt-before-you-decide">0/5</span></a>
+          <a href="#three-months-before" class="sidebar-link" data-section="three-months-before">3+ Months Before <span class="cat-count" id="cnt-three-months-before">0/12</span></a>
+          <a href="#one-three-months"    class="sidebar-link" data-section="one-three-months">1–3 Months Before <span class="cat-count" id="cnt-one-three-months">0/15</span></a>
+          <a href="#two-four-weeks"      class="sidebar-link" data-section="two-four-weeks">2–4 Weeks Before <span class="cat-count" id="cnt-two-four-weeks">0/12</span></a>
+          <a href="#moving-week"         class="sidebar-link" data-section="moving-week">Moving Week <span class="cat-count" id="cnt-moving-week">0/8</span></a>
+          <a href="#first-week"          class="sidebar-link" data-section="first-week">First Week in Aus <span class="cat-count" id="cnt-first-week">0/10</span></a>
+          <a href="#first-month"         class="sidebar-link" data-section="first-month">First Month in Aus <span class="cat-count" id="cnt-first-month">0/8</span></a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Checklist Content -->
+    <div class="cl-content">
+
+      <!-- BEFORE YOU DECIDE -->
+      <section class="cl-section" id="before-you-decide">
+        <div class="cl-section-header">
+          <div class="cl-section-eye">Step 1–5</div>
+          <h2 class="cl-section-title">Before You Decide</h2>
+          <p class="cl-section-sub">Do your research before committing to the move.</p>
+        </div>
+        <div class="cl-items">
+          <label class="cl-item" data-index="0">
+            <input type="checkbox" class="cl-check" data-index="0" data-section="before-you-decide" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Research which visa applies to you (most Kiwis use the SCV — Subclass 444)</span>
+          </label>
+          <label class="cl-item" data-index="1">
+            <input type="checkbox" class="cl-check" data-index="1" data-section="before-you-decide" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Understand the Special Category Visa (SCV) — what it allows and any restrictions</span>
+          </label>
+          <label class="cl-item" data-index="2">
+            <input type="checkbox" class="cl-check" data-index="2" data-section="before-you-decide" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Research cost of living in your target city (rent, groceries, transport)</span>
+          </label>
+          <label class="cl-item" data-index="3">
+            <input type="checkbox" class="cl-check" data-index="3" data-section="before-you-decide" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Compare cities — Sydney vs Melbourne vs Brisbane vs Perth and find your best fit</span>
+          </label>
+          <label class="cl-item" data-index="4">
+            <input type="checkbox" class="cl-check" data-index="4" data-section="before-you-decide" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Talk to Kiwis already living in Australia — join Facebook groups, Reddit communities</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- 3+ MONTHS BEFORE -->
+      <section class="cl-section" id="three-months-before">
+        <div class="cl-section-header">
+          <div class="cl-section-eye">Step 6–17</div>
+          <h2 class="cl-section-title">3+ Months Before</h2>
+          <p class="cl-section-sub">Get the big admin sorted well in advance.</p>
+        </div>
+        <div class="cl-items">
+          <label class="cl-item" data-index="5">
+            <input type="checkbox" class="cl-check" data-index="5" data-section="three-months-before" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Apply for an Australian Tax File Number (TFN) — you can do this online before you arrive</span>
+          </label>
+          <label class="cl-item" data-index="6">
+            <input type="checkbox" class="cl-check" data-index="6" data-section="three-months-before" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Open an Australian bank account online from NZ (CommBank, ANZ or NAB all allow this)</span>
+          </label>
+          <label class="cl-item" data-index="7">
+            <input type="checkbox" class="cl-check" data-index="7" data-section="three-months-before" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Decide what to do with your KiwiSaver — transfer to an Australian super fund or keep it in NZ</span>
+          </label>
+          <label class="cl-item" data-index="8">
+            <input type="checkbox" class="cl-check" data-index="8" data-section="three-months-before" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Get quotes from at least 3 international removalists and book early</span>
+          </label>
+          <label class="cl-item" data-index="9">
+            <input type="checkbox" class="cl-check" data-index="9" data-section="three-months-before" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Check pet import requirements if taking animals — biosecurity rules are strict</span>
+          </label>
+          <label class="cl-item" data-index="10">
+            <input type="checkbox" class="cl-check" data-index="10" data-section="three-months-before" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Research schools if moving with kids — check enrolment zones and school ratings</span>
+          </label>
+          <label class="cl-item" data-index="11">
+            <input type="checkbox" class="cl-check" data-index="11" data-section="three-months-before" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Sort your NZ passport — ensure it's valid for at least 6 months past your move date</span>
+          </label>
+          <label class="cl-item" data-index="12">
+            <input type="checkbox" class="cl-check" data-index="12" data-section="three-months-before" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Research Medicare — NZ citizens are eligible, understand what's covered</span>
+          </label>
+          <label class="cl-item" data-index="13">
+            <input type="checkbox" class="cl-check" data-index="13" data-section="three-months-before" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Begin decluttering — sell, donate or store items you won't take</span>
+          </label>
+          <label class="cl-item" data-index="14">
+            <input type="checkbox" class="cl-check" data-index="14" data-section="three-months-before" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Research rental market in your target suburb — know what to expect for rent</span>
+          </label>
+          <label class="cl-item" data-index="15">
+            <input type="checkbox" class="cl-check" data-index="15" data-section="three-months-before" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Start saving a rental bond buffer — typically 4 weeks rent plus 2 weeks upfront</span>
+          </label>
+          <label class="cl-item" data-index="16">
+            <input type="checkbox" class="cl-check" data-index="16" data-section="three-months-before" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Book your flights and arrange short-term accommodation for your first 2–4 weeks</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- 1–3 MONTHS BEFORE -->
+      <section class="cl-section" id="one-three-months">
+        <div class="cl-section-header">
+          <div class="cl-section-eye">Step 18–32</div>
+          <h2 class="cl-section-title">1–3 Months Before</h2>
+          <p class="cl-section-sub">Wrap up life in NZ and prepare your Australian setup.</p>
+        </div>
+        <div class="cl-items">
+          <label class="cl-item" data-index="17">
+            <input type="checkbox" class="cl-check" data-index="17" data-section="one-three-months" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Give your landlord the required notice (usually 21 days in NZ)</span>
+          </label>
+          <label class="cl-item" data-index="18">
+            <input type="checkbox" class="cl-check" data-index="18" data-section="one-three-months" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Notify your NZ employer and arrange a last working day</span>
+          </label>
+          <label class="cl-item" data-index="19">
+            <input type="checkbox" class="cl-check" data-index="19" data-section="one-three-months" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Get reference letters from your NZ employer for Australian job applications</span>
+          </label>
+          <label class="cl-item" data-index="20">
+            <input type="checkbox" class="cl-check" data-index="20" data-section="one-three-months" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Update your CV to Australian format (no photo, no date of birth)</span>
+          </label>
+          <label class="cl-item" data-index="21">
+            <input type="checkbox" class="cl-check" data-index="21" data-section="one-three-months" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Start applying for Australian jobs on Seek, LinkedIn and Indeed</span>
+          </label>
+          <label class="cl-item" data-index="22">
+            <input type="checkbox" class="cl-check" data-index="22" data-section="one-three-months" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Arrange storage or sale of large furniture you can't ship</span>
+          </label>
+          <label class="cl-item" data-index="23">
+            <input type="checkbox" class="cl-check" data-index="23" data-section="one-three-months" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Get certified copies of important documents: birth certificate, academic qualifications, trade certificates</span>
+          </label>
+          <label class="cl-item" data-index="24">
+            <input type="checkbox" class="cl-check" data-index="24" data-section="one-three-months" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Transfer or close NZ bank accounts (keep one open during the transition period)</span>
+          </label>
+          <label class="cl-item" data-index="25">
+            <input type="checkbox" class="cl-check" data-index="25" data-section="one-three-months" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Set up a Wise or similar account for fee-free currency transfers</span>
+          </label>
+          <label class="cl-item" data-index="26">
+            <input type="checkbox" class="cl-check" data-index="26" data-section="one-three-months" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Cancel or redirect NZ subscriptions (Netflix region, Spotify, gym membership)</span>
+          </label>
+          <label class="cl-item" data-index="27">
+            <input type="checkbox" class="cl-check" data-index="27" data-section="one-three-months" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Notify IRD (Inland Revenue NZ) that you're leaving — sort any final tax obligations</span>
+          </label>
+          <label class="cl-item" data-index="28">
+            <input type="checkbox" class="cl-check" data-index="28" data-section="one-three-months" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Sell your NZ car or arrange to ship it (check Australian import rules and RHD requirements)</span>
+          </label>
+          <label class="cl-item" data-index="29">
+            <input type="checkbox" class="cl-check" data-index="29" data-section="one-three-months" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Set up mail redirection through NZ Post</span>
+          </label>
+          <label class="cl-item" data-index="30">
+            <input type="checkbox" class="cl-check" data-index="30" data-section="one-three-months" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Research and compare private health insurance options in Australia</span>
+          </label>
+          <label class="cl-item" data-index="31">
+            <input type="checkbox" class="cl-check" data-index="31" data-section="one-three-months" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Pack a "first night" box with essentials — sheets, towels, coffee, phone charger, toilet paper</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- 2–4 WEEKS BEFORE -->
+      <section class="cl-section" id="two-four-weeks">
+        <div class="cl-section-header">
+          <div class="cl-section-eye">Step 33–44</div>
+          <h2 class="cl-section-title">2–4 Weeks Before</h2>
+          <p class="cl-section-sub">Final preparations and logistics.</p>
+        </div>
+        <div class="cl-items">
+          <label class="cl-item" data-index="32">
+            <input type="checkbox" class="cl-check" data-index="32" data-section="two-four-weeks" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Confirm your removalist booking and packing date</span>
+          </label>
+          <label class="cl-item" data-index="33">
+            <input type="checkbox" class="cl-check" data-index="33" data-section="two-four-weeks" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Notify banks, insurers and Inland Revenue of your new address</span>
+          </label>
+          <label class="cl-item" data-index="34">
+            <input type="checkbox" class="cl-check" data-index="34" data-section="two-four-weeks" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Return borrowed items and collect anything you've lent out</span>
+          </label>
+          <label class="cl-item" data-index="35">
+            <input type="checkbox" class="cl-check" data-index="35" data-section="two-four-weeks" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Get medical records from your GP — vaccination history, prescriptions, specialist notes</span>
+          </label>
+          <label class="cl-item" data-index="36">
+            <input type="checkbox" class="cl-check" data-index="36" data-section="two-four-weeks" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Get dental records and have a final check-up before leaving</span>
+          </label>
+          <label class="cl-item" data-index="37">
+            <input type="checkbox" class="cl-check" data-index="37" data-section="two-four-weeks" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Stock up on any NZ-only medications or get enough prescriptions to last a few months</span>
+          </label>
+          <label class="cl-item" data-index="38">
+            <input type="checkbox" class="cl-check" data-index="38" data-section="two-four-weeks" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Prepare an inventory list of everything being shipped (required for Aus customs)</span>
+          </label>
+          <label class="cl-item" data-index="39">
+            <input type="checkbox" class="cl-check" data-index="39" data-section="two-four-weeks" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Declare any items that might trigger biosecurity checks (wood, food, outdoor equipment)</span>
+          </label>
+          <label class="cl-item" data-index="40">
+            <input type="checkbox" class="cl-check" data-index="40" data-section="two-four-weeks" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Say your goodbyes — plan farewell events early so you don't over-commit the final week</span>
+          </label>
+          <label class="cl-item" data-index="41">
+            <input type="checkbox" class="cl-check" data-index="41" data-section="two-four-weeks" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Download essential Australian apps: MyGov, Opal/Myki, Seek, Domain, Gumtree</span>
+          </label>
+          <label class="cl-item" data-index="42">
+            <input type="checkbox" class="cl-check" data-index="42" data-section="two-four-weeks" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Confirm your first week accommodation and check-in details</span>
+          </label>
+          <label class="cl-item" data-index="43">
+            <input type="checkbox" class="cl-check" data-index="43" data-section="two-four-weeks" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Research neighbourhood transport options in your first area — routes, apps, costs</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- MOVING WEEK -->
+      <section class="cl-section" id="moving-week">
+        <div class="cl-section-header">
+          <div class="cl-section-eye">Step 45–52</div>
+          <h2 class="cl-section-title">Moving Week</h2>
+          <p class="cl-section-sub">The big week — stay organised and don't panic.</p>
+        </div>
+        <div class="cl-items">
+          <label class="cl-item" data-index="44">
+            <input type="checkbox" class="cl-check" data-index="44" data-section="moving-week" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Final pack — label every box clearly with contents and destination room</span>
+          </label>
+          <label class="cl-item" data-index="45">
+            <input type="checkbox" class="cl-check" data-index="45" data-section="moving-week" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Hand over keys and do a final walkthrough of your NZ home</span>
+          </label>
+          <label class="cl-item" data-index="46">
+            <input type="checkbox" class="cl-check" data-index="46" data-section="moving-week" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Disconnect utilities — power, internet, water at your NZ address</span>
+          </label>
+          <label class="cl-item" data-index="47">
+            <input type="checkbox" class="cl-check" data-index="47" data-section="moving-week" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Check your passport and travel documents are in your carry-on — not in shipping</span>
+          </label>
+          <label class="cl-item" data-index="48">
+            <input type="checkbox" class="cl-check" data-index="48" data-section="moving-week" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Carry enough AUD cash for your first few days (airport, meals, transport)</span>
+          </label>
+          <label class="cl-item" data-index="49">
+            <input type="checkbox" class="cl-check" data-index="49" data-section="moving-week" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Complete Australian Incoming Passenger Card honestly — declare everything you need to</span>
+          </label>
+          <label class="cl-item" data-index="50">
+            <input type="checkbox" class="cl-check" data-index="50" data-section="moving-week" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Get an Australian SIM card — Optus, Telstra or Vodafone from the airport or a shop</span>
+          </label>
+          <label class="cl-item" data-index="51">
+            <input type="checkbox" class="cl-check" data-index="51" data-section="moving-week" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Take photos of your temporary accommodation on arrival — document existing damage</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- FIRST WEEK IN AUS -->
+      <section class="cl-section" id="first-week">
+        <div class="cl-section-header">
+          <div class="cl-section-eye">Step 53–62</div>
+          <h2 class="cl-section-title">First Week in Aus</h2>
+          <p class="cl-section-sub">Get your foundation admin done quickly.</p>
+        </div>
+        <div class="cl-items">
+          <label class="cl-item" data-index="52">
+            <input type="checkbox" class="cl-check" data-index="52" data-section="first-week" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Register for Medicare — visit a Medicare Service Centre with your NZ passport</span>
+          </label>
+          <label class="cl-item" data-index="53">
+            <input type="checkbox" class="cl-check" data-index="53" data-section="first-week" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Activate your Australian bank account and deposit funds</span>
+          </label>
+          <label class="cl-item" data-index="54">
+            <input type="checkbox" class="cl-check" data-index="54" data-section="first-week" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Set up MyGov account and link to Medicare, ATO and other services</span>
+          </label>
+          <label class="cl-item" data-index="55">
+            <input type="checkbox" class="cl-check" data-index="55" data-section="first-week" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Get an Australian driver's licence — you can use your NZ licence for 3 months but convert early</span>
+          </label>
+          <label class="cl-item" data-index="56">
+            <input type="checkbox" class="cl-check" data-index="56" data-section="first-week" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Get an Opal card (Sydney), Myki (Melbourne), Go card (Brisbane) or equivalent for public transport</span>
+          </label>
+          <label class="cl-item" data-index="57">
+            <input type="checkbox" class="cl-check" data-index="57" data-section="first-week" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Start your rental search — attend inspections, have your reference documents ready</span>
+          </label>
+          <label class="cl-item" data-index="58">
+            <input type="checkbox" class="cl-check" data-index="58" data-section="first-week" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Find a GP in your area and enrol as a new patient</span>
+          </label>
+          <label class="cl-item" data-index="59">
+            <input type="checkbox" class="cl-check" data-index="59" data-section="first-week" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Explore your neighbourhood — find the supermarket, chemist, transport stops, parks</span>
+          </label>
+          <label class="cl-item" data-index="60">
+            <input type="checkbox" class="cl-check" data-index="60" data-section="first-week" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Join a local Kiwi expat group or community online or in person</span>
+          </label>
+          <label class="cl-item" data-index="61">
+            <input type="checkbox" class="cl-check" data-index="61" data-section="first-week" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Call home and let family/friends know you've arrived safely</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- FIRST MONTH IN AUS -->
+      <section class="cl-section" id="first-month">
+        <div class="cl-section-header">
+          <div class="cl-section-eye">Step 63–70</div>
+          <h2 class="cl-section-title">First Month in Aus</h2>
+          <p class="cl-section-sub">Settle in, find your permanent home and build your routine.</p>
+        </div>
+        <div class="cl-items">
+          <label class="cl-item" data-index="62">
+            <input type="checkbox" class="cl-check" data-index="62" data-section="first-month" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Sign a lease on your permanent rental property</span>
+          </label>
+          <label class="cl-item" data-index="63">
+            <input type="checkbox" class="cl-check" data-index="63" data-section="first-month" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Set up electricity, gas, internet and water at your new address</span>
+          </label>
+          <label class="cl-item" data-index="64">
+            <input type="checkbox" class="cl-check" data-index="64" data-section="first-month" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Update your address with your bank, MyGov, employer and any subscriptions</span>
+          </label>
+          <label class="cl-item" data-index="65">
+            <input type="checkbox" class="cl-check" data-index="65" data-section="first-month" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Arrange collection or delivery of your shipped belongings</span>
+          </label>
+          <label class="cl-item" data-index="66">
+            <input type="checkbox" class="cl-check" data-index="66" data-section="first-month" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Enrol kids in their new school — contact the school early for enrolment requirements</span>
+          </label>
+          <label class="cl-item" data-index="67">
+            <input type="checkbox" class="cl-check" data-index="67" data-section="first-month" />
+            <span class="cl-box"></span>
+            <span class="cl-text">File your NZ final tax return if applicable and sort IRD obligations</span>
+          </label>
+          <label class="cl-item" data-index="68">
+            <input type="checkbox" class="cl-check" data-index="68" data-section="first-month" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Set up Australian superannuation with your new employer — confirm your fund choice</span>
+          </label>
+          <label class="cl-item" data-index="69">
+            <input type="checkbox" class="cl-check" data-index="69" data-section="first-month" />
+            <span class="cl-box"></span>
+            <span class="cl-text">Celebrate — you've made it! Start exploring your new city and enjoy the adventure</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Subscribe prompt -->
+      <div class="subscribe-card">
+        <div class="subscribe-card-icon">📋</div>
+        <div class="subscribe-card-body">
+          <strong>Want the full printable PDF checklist?</strong>
+          <p>Download a clean, print-ready version of this checklist — plus bonus packing lists, NZ departure admin guide and suburb comparison sheets. Included in the $1.99/month subscription.</p>
+        </div>
+        <a href="/pricing" class="btn btn-primary">Get Full Access — $1.99/mo</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CTA Band -->
+<div class="cta-band">
+  <div class="shell">
+    <h2>Feeling overwhelmed? We've got you.</h2>
+    <p>GoAustralia Full Access includes the printable checklist, suburb guides, tax calculators and the complete Masterguide — everything you need to move with confidence.</p>
+    <a href="/pricing" class="cta-band-btn">View Plans — from $1.99/month</a>
+  </div>
+</div>
+
+</Layout>
+
+<style is:global>
+
+/* ── PROGRESS BAND ── */
+.progress-band {
+  background: var(--white);
+  border-bottom: 1px solid var(--border-lt);
+  padding: 18px 0 20px;
+  position: sticky;
+  top: 62px;
+  z-index: 90;
+  box-shadow: 0 2px 8px rgba(0,32,92,0.04);
+}
+.progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.progress-label {
+  font-size: 14px;
+  color: var(--txt2);
+}
+.progress-label strong {
+  color: var(--txt);
+}
+.reset-btn {
+  font-size: 12px;
+  padding: 6px 14px;
+  color: var(--txt3);
+  border-color: var(--border-lt);
+}
+.progress-track {
+  height: 8px;
+  background: var(--surface);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--green-ok);
+  border-radius: 99px;
+  width: 0%;
+  transition: width 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+.progress-pct {
+  font-size: 11px;
+  color: var(--txt3);
+  margin-top: 6px;
+  text-align: right;
+}
+
+/* ── CHECKLIST SHELL ── */
+.checklist-shell {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ── SIDEBAR ── */
+.cl-sidebar { }
+.sidebar-sticky {
+  position: sticky;
+  top: 140px;
+}
+.sidebar-heading {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--txt3);
+  margin-bottom: 10px;
+}
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--txt2);
+  padding: 8px 12px;
+  border-radius: 4px;
+  border-left: 3px solid transparent;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+}
+.sidebar-link:hover {
+  background: var(--blue-tint);
+  color: var(--blue);
+}
+.sidebar-link.is-active {
+  background: var(--blue-tint);
+  border-left-color: var(--blue);
+  color: var(--blue);
+  font-weight: 600;
+}
+.cat-count {
+  font-size: 11px;
+  color: var(--txt3);
+  font-weight: 400;
+}
+.sidebar-link.is-active .cat-count {
+  color: var(--blue);
+}
+
+/* ── CHECKLIST SECTIONS ── */
+.cl-section {
+  margin-bottom: 48px;
+  scroll-margin-top: 150px;
+}
+.cl-section-header {
+  margin-bottom: 20px;
+}
+.cl-section-eye {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--blue);
+  margin-bottom: 4px;
+}
+.cl-section-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.cl-section-sub {
+  font-size: 13px;
+  color: var(--txt3);
+}
+.cl-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border-lt);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* ── CHECKLIST ITEM ── */
+.cl-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-lt);
+  cursor: pointer;
+  transition: background 0.1s;
+  position: relative;
+}
+.cl-item:last-child {
+  border-bottom: none;
+}
+.cl-item:hover {
+  background: var(--surf2);
+}
+.cl-item input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.cl-box {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s;
+  background: var(--white);
+}
+.cl-box::after {
+  content: '';
+  width: 5px;
+  height: 9px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translateY(-1px);
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+.cl-item:has(input:checked) .cl-box {
+  background: var(--green-ok);
+  border-color: var(--green-ok);
+}
+.cl-item:has(input:checked) .cl-box::after {
+  opacity: 1;
+}
+.cl-text {
+  font-size: 14px;
+  color: var(--txt);
+  line-height: 1.55;
+  transition: color 0.15s, text-decoration 0.15s;
+  flex: 1;
+}
+.cl-item:has(input:checked) .cl-text {
+  color: var(--txt3);
+  text-decoration: line-through;
+  text-decoration-color: var(--border);
+}
+.cl-item:has(input:checked) {
+  background: #f7faf8;
+}
+
+/* ── SUBSCRIBE CARD ── */
+.subscribe-card {
+  margin-top: 12px;
+  background: var(--gold-lt);
+  border: 1.5px solid #f0c050;
+  border-radius: 6px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.subscribe-card-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+.subscribe-card-body {
+  flex: 1;
+  min-width: 200px;
+}
+.subscribe-card-body strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 5px;
+}
+.subscribe-card-body p {
+  font-size: 13px;
+  color: #5a3c00;
+  line-height: 1.55;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .checklist-shell {
+    grid-template-columns: 1fr;
+  }
+  .cl-sidebar {
+    display: none;
+  }
+  .progress-band {
+    top: 62px;
+  }
+}
+@media (max-width: 600px) {
+  .subscribe-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .subscribe-card .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+</style>
+
+<script>
+(function() {
+  const TOTAL = 70;
+  const checks = document.querySelectorAll('.cl-check');
+  const fill = document.getElementById('progress-fill');
+  const doneCount = document.getElementById('done-count');
+  const pct = document.getElementById('progress-pct');
+  const resetBtn = document.getElementById('reset-btn');
+
+  // Category metadata: [sectionId, total]
+  const categories = [
+    { id: 'before-you-decide',   total: 5  },
+    { id: 'three-months-before', total: 12 },
+    { id: 'one-three-months',    total: 15 },
+    { id: 'two-four-weeks',      total: 12 },
+    { id: 'moving-week',         total: 8  },
+    { id: 'first-week',         total: 10 },
+    { id: 'first-month',         total: 8  },
+  ];
+
+  function loadState() {
+    checks.forEach(function(cb) {
+      const idx = cb.dataset.index;
+      const saved = localStorage.getItem('checklist_item_' + idx);
+      if (saved === 'true') {
+        cb.checked = true;
+      }
+    });
+  }
+
+  function updateProgress() {
+    let done = 0;
+    checks.forEach(function(cb) {
+      if (cb.checked) done++;
+    });
+    const p = Math.round((done / TOTAL) * 100);
+    fill.style.width = p + '%';
+    doneCount.textContent = done;
+    pct.textContent = p + '% complete';
+
+    // Update category counts
+    categories.forEach(function(cat) {
+      const catChecks = document.querySelectorAll('.cl-check[data-section="' + cat.id + '"]');
+      let catDone = 0;
+      catChecks.forEach(function(c) { if (c.checked) catDone++; });
+      const el = document.getElementById('cnt-' + cat.id);
+      if (el) el.textContent = catDone + '/' + cat.total;
+    });
+  }
+
+  function saveItem(index, checked) {
+    localStorage.setItem('checklist_item_' + index, checked ? 'true' : 'false');
+  }
+
+  checks.forEach(function(cb) {
+    cb.addEventListener('change', function() {
+      saveItem(cb.dataset.index, cb.checked);
+      updateProgress();
+    });
+  });
+
+  resetBtn && resetBtn.addEventListener('click', function() {
+    if (!confirm('Reset all checklist progress?')) return;
+    checks.forEach(function(cb) {
+      cb.checked = false;
+      localStorage.removeItem('checklist_item_' + cb.dataset.index);
+    });
+    updateProgress();
+  });
+
+  // Sidebar active on scroll
+  const sections = document.querySelectorAll('.cl-section');
+  const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+  const io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        sidebarLinks.forEach(function(link) {
+          link.classList.toggle('is-active', link.dataset.section === id);
+        });
+      }
+    });
+  }, { rootMargin: '-60px 0px -60% 0px', threshold: 0 });
+
+  sections.forEach(function(s) { io.observe(s); });
+
+  loadState();
+  updateProgress();
+})();
+</script>

@@ -1,0 +1,275 @@
+---
+import '../styles/global.css';
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design A — Official Government | GoAustralia</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: #F2F6FA; color: #0A1F3A; }
+
+    /* Nav */
+    .gov-bar { background: #0A1F3A; color: #fff; font-size: 12px; padding: 6px 24px; display:flex; align-items:center; gap:8px; }
+    .gov-bar img { height:16px; }
+    nav { background: #1C3F6E; padding: 0 24px; display:flex; align-items:center; justify-content:space-between; }
+    .logo { color:#fff; font-size:1.3rem; font-weight:800; padding:16px 0; display:flex; align-items:center; gap:10px; text-decoration:none; }
+    .logo span { color:#FFD100; }
+    .nav-links { display:flex; gap:0; }
+    .nav-links a { color:#cce0f5; text-decoration:none; font-size:0.9rem; padding:20px 16px; display:block; transition:background 0.15s; }
+    .nav-links a:hover { background:#0A1F3A; color:#FFD100; }
+    .nav-cta { background:#FFD100; color:#0A1F3A !important; font-weight:700; border-radius:4px; margin:10px 0 10px 12px; padding:8px 18px !important; }
+    .nav-cta:hover { background:#e6bc00 !important; }
+
+    /* Breadcrumb */
+    .breadcrumb { background:#fff; border-bottom:1px solid #dce8f4; padding:10px 40px; font-size:13px; color:#4A7BBF; }
+    .breadcrumb a { color:#4A7BBF; text-decoration:none; }
+    .breadcrumb a:hover { text-decoration:underline; }
+
+    /* Hero */
+    .hero { background: linear-gradient(135deg, #0A1F3A 0%, #1C3F6E 60%, #2a5298 100%); color:#fff; padding:64px 40px; position:relative; overflow:hidden; }
+    .hero::before { content:''; position:absolute; right:-100px; top:-100px; width:500px; height:500px; border-radius:50%; background:rgba(255,209,0,0.05); }
+    .hero-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+    .hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(255,209,0,0.15); border:1px solid rgba(255,209,0,0.3); color:#FFD100; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:600; margin-bottom:20px; }
+    .hero h1 { font-size:2.6rem; font-weight:800; line-height:1.2; margin-bottom:16px; }
+    .hero h1 em { color:#FFD100; font-style:normal; }
+    .hero p { font-size:1.1rem; line-height:1.7; color:#b0c8e8; margin-bottom:28px; }
+    .hero-btns { display:flex; gap:12px; flex-wrap:wrap; }
+    .btn-primary { background:#FFD100; color:#0A1F3A; font-weight:700; padding:14px 28px; border-radius:6px; text-decoration:none; font-size:1rem; transition:background 0.15s; }
+    .btn-primary:hover { background:#e6bc00; }
+    .btn-outline { border:2px solid rgba(255,255,255,0.4); color:#fff; padding:12px 24px; border-radius:6px; text-decoration:none; font-size:1rem; transition:all 0.15s; }
+    .btn-outline:hover { border-color:#FFD100; color:#FFD100; }
+
+    /* Trust strip */
+    .trust { background:#FFD100; padding:14px 40px; }
+    .trust-inner { max-width:1100px; margin:0 auto; display:flex; gap:32px; align-items:center; justify-content:center; flex-wrap:wrap; }
+    .trust-item { display:flex; align-items:center; gap:8px; color:#0A1F3A; font-size:0.85rem; font-weight:600; }
+
+    /* Cards */
+    .section { padding:56px 40px; max-width:1100px; margin:0 auto; }
+    .section-label { color:#C8102E; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:8px; }
+    .section h2 { font-size:1.9rem; font-weight:800; color:#0A1F3A; margin-bottom:8px; }
+    .section-sub { color:#4A7BBF; font-size:1rem; margin-bottom:36px; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:20px; }
+    .card { background:#fff; border-radius:10px; padding:28px; border:1px solid #dce8f4; border-top:4px solid #1C3F6E; transition:box-shadow 0.2s; }
+    .card:hover { box-shadow:0 8px 32px rgba(28,63,110,0.12); }
+    .card-icon { width:44px; height:44px; background:#EBF3FC; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:16px; }
+    .card h3 { font-size:1.05rem; font-weight:700; color:#0A1F3A; margin-bottom:8px; }
+    .card p { font-size:0.88rem; color:#5a7a9a; line-height:1.6; margin-bottom:14px; }
+    .card-link { color:#1C3F6E; font-size:0.88rem; font-weight:600; text-decoration:none; display:flex; align-items:center; gap:4px; }
+    .card-link:hover { color:#FFD100; }
+
+    /* Guides/Paid */
+    .guides-section { background:#0A1F3A; padding:56px 40px; }
+    .guides-inner { max-width:1100px; margin:0 auto; }
+    .guides-inner .section-label { color:#FFD100; }
+    .guides-inner h2 { color:#fff; }
+    .guides-inner .section-sub { color:#6ba0cc; }
+    .guide-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:20px; }
+    .guide-card { background:#16325a; border-radius:10px; padding:28px; border:1px solid #2a4a7a; }
+    .guide-tag { display:inline-block; background:#FFD100; color:#0A1F3A; font-size:11px; font-weight:700; padding:3px 10px; border-radius:4px; margin-bottom:14px; }
+    .guide-card h3 { color:#fff; font-size:1.1rem; font-weight:700; margin-bottom:8px; }
+    .guide-card p { color:#6ba0cc; font-size:0.88rem; line-height:1.6; margin-bottom:20px; }
+    .guide-price { font-size:1.6rem; font-weight:800; color:#FFD100; margin-bottom:16px; }
+    .guide-price span { font-size:0.9rem; color:#6ba0cc; font-weight:400; }
+    .btn-gold { background:#FFD100; color:#0A1F3A; font-weight:700; padding:12px 24px; border-radius:6px; text-decoration:none; font-size:0.95rem; display:inline-block; }
+
+    /* Stats */
+    .stats { background:#1C3F6E; padding:40px; }
+    .stats-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center; }
+    .stat-num { font-size:2.2rem; font-weight:800; color:#FFD100; }
+    .stat-label { color:#b0c8e8; font-size:0.85rem; margin-top:4px; }
+
+    /* Footer */
+    footer { background:#0A1F3A; color:#6ba0cc; padding:40px; font-size:0.85rem; border-top:3px solid #FFD100; }
+    .footer-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+    .footer-links { display:flex; gap:20px; }
+    .footer-links a { color:#4A7BBF; text-decoration:none; }
+    .footer-links a:hover { color:#FFD100; }
+
+    /* Back link */
+    .back-bar { background:#FFD100; padding:8px 40px; font-size:13px; font-weight:600; color:#0A1F3A; display:flex; align-items:center; gap:8px; }
+    .back-bar a { color:#0A1F3A; text-decoration:none; font-weight:700; }
+  </style>
+</head>
+<body>
+
+  <div class="back-bar">
+    ← <a href="/">Back to design chooser</a> &nbsp;|&nbsp; <strong>Design A — Official Government</strong>
+  </div>
+
+  <!-- Gov bar -->
+  <div class="gov-bar">
+    <span>🇦🇺</span>
+    <span>An independent guide to moving to Australia for New Zealanders</span>
+  </div>
+
+  <!-- Nav -->
+  <nav>
+    <a href="#" class="logo">🦘 Go<span>Australia</span></a>
+    <div class="nav-links">
+      <a href="#">Visa Checker</a>
+      <a href="#">Cost Calculator</a>
+      <a href="#">Guides</a>
+      <a href="#">Moving Checklist</a>
+      <a href="#" class="nav-cta">Get Access $1.99</a>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="#">Home</a> › <a href="#">Moving to Australia</a>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">🇦🇺 Updated May 2026</div>
+        <h1>Move to Australia<br/><em>The Right Way</em></h1>
+        <p>Plain-English guides, visa tools, and cost calculators for New Zealanders moving across the Tasman. No jargon. No lawyers needed.</p>
+        <div class="hero-btns">
+          <a href="#" class="btn-primary">Check My Visa Options →</a>
+          <a href="#" class="btn-outline">Browse Free Guides</a>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06); border-radius:12px; padding:28px; border:1px solid rgba(255,255,255,0.1);">
+        <div style="font-size:13px; color:#FFD100; font-weight:700; margin-bottom:16px; letter-spacing:1px;">QUICK VISA CHECK</div>
+        <div style="margin-bottom:14px;">
+          <label style="font-size:13px; color:#b0c8e8; display:block; margin-bottom:6px;">Your citizenship</label>
+          <select style="width:100%; padding:10px 12px; border-radius:6px; border:1px solid #2a4a7a; background:#0A1F3A; color:#fff; font-size:14px;">
+            <option>New Zealand Citizen</option>
+            <option>NZ Permanent Resident</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div style="margin-bottom:14px;">
+          <label style="font-size:13px; color:#b0c8e8; display:block; margin-bottom:6px;">Purpose of move</label>
+          <select style="width:100%; padding:10px 12px; border-radius:6px; border:1px solid #2a4a7a; background:#0A1F3A; color:#fff; font-size:14px;">
+            <option>Work & Live</option>
+            <option>Study</option>
+            <option>Joining family</option>
+            <option>Retiring</option>
+          </select>
+        </div>
+        <button style="width:100%; background:#FFD100; color:#0A1F3A; font-weight:700; padding:12px; border-radius:6px; border:none; font-size:1rem; cursor:pointer;">Check Eligibility →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust strip -->
+  <div class="trust">
+    <div class="trust-inner">
+      <div class="trust-item">✅ Based on official DIBP rules</div>
+      <div class="trust-item">📅 Updated weekly</div>
+      <div class="trust-item">👥 12,400+ NZers helped</div>
+      <div class="trust-item">⭐ 4.9/5 from 800 reviews</div>
+      <div class="trust-item">🔒 Secure & private</div>
+    </div>
+  </div>
+
+  <!-- Free Tools -->
+  <div class="section">
+    <div class="section-label">Free Tools</div>
+    <h2>Everything you need to plan your move</h2>
+    <p class="section-sub">Use our free tools — upgrade for the full guides and detailed breakdowns.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🛂</div>
+        <h3>Visa Eligibility Checker</h3>
+        <p>Find out exactly which visa pathway applies to you as an NZ citizen or resident.</p>
+        <a href="#" class="card-link">Check now →</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <h3>Cost of Living Calculator</h3>
+        <p>Compare Sydney, Melbourne, Brisbane and Perth. See how your NZ salary translates.</p>
+        <a href="#" class="card-link">Calculate →</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <h3>Moving Checklist</h3>
+        <p>90-day countdown checklist. Never miss a step from IRD to medicare registration.</p>
+        <a href="#" class="card-link">Get checklist →</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <h3>Document Finder</h3>
+        <p>See exactly which documents you need for each visa type and situation.</p>
+        <a href="#" class="card-link">Find documents →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Guides -->
+  <div class="guides-section">
+    <div class="guides-inner">
+      <div class="section-label">Premium Guides</div>
+      <h2>Step-by-step guides written by people who've done it</h2>
+      <p class="section-sub">PDF guides you download and keep. No subscription required.</p>
+      <div class="guide-cards">
+        <div class="guide-card">
+          <div class="guide-tag">BESTSELLER</div>
+          <h3>Complete Moving to Australia Guide</h3>
+          <p>Everything from handing notice to your NZ job through to opening your first Aussie bank account.</p>
+          <div class="guide-price">$27 <span>NZD one-time</span></div>
+          <a href="#" class="btn-gold">Download Guide →</a>
+        </div>
+        <div class="guide-card">
+          <div class="guide-tag">POPULAR</div>
+          <h3>Australian Visa Guide for NZers</h3>
+          <p>Special Category Visa explained. Pathways to PR. Partner visas, skilled migration, 189, 190, 491.</p>
+          <div class="guide-price">$27 <span>NZD one-time</span></div>
+          <a href="#" class="btn-gold">Download Guide →</a>
+        </div>
+        <div class="guide-card">
+          <div class="guide-tag">NEW</div>
+          <h3>Getting a Job in Australia</h3>
+          <p>Resume format differences, where to look, salary negotiation, working rights as an NZ citizen.</p>
+          <div class="guide-price">$19 <span>NZD one-time</span></div>
+          <a href="#" class="btn-gold">Download Guide →</a>
+        </div>
+      </div>
+      <div style="margin-top:28px; background:#1C3F6E; border-radius:10px; padding:24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+        <div>
+          <div style="color:#FFD100; font-weight:700; font-size:1.1rem;">Bundle: All 3 Guides</div>
+          <div style="color:#6ba0cc; font-size:0.9rem;">Save $16 — get everything in one go</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:20px;">
+          <div style="text-decoration:line-through; color:#4A7BBF; font-size:1.1rem;">$73 NZD</div>
+          <div style="font-size:1.8rem; font-weight:800; color:#FFD100;">$57 NZD</div>
+          <a href="#" class="btn-gold">Get Bundle →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stats-inner">
+      <div><div class="stat-num">12,400+</div><div class="stat-label">NZers helped</div></div>
+      <div><div class="stat-num">98%</div><div class="stat-label">Accuracy rate</div></div>
+      <div><div class="stat-num">3</div><div class="stat-label">In-depth guides</div></div>
+      <div><div class="stat-num">Weekly</div><div class="stat-label">Content updates</div></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div style="font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:4px;">🦘 GoAustralia.co.nz</div>
+        <div>Independent guide. Not affiliated with the Australian Government.</div>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Contact</a>
+        <a href="#">Refunds</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

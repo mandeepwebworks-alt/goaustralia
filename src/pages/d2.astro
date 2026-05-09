@@ -1,0 +1,229 @@
+---
+import '../styles/global.css';
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Direction 2 — Editorial | GoAustralia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #fffef9; color: #111; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    .shell { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    .back-bar { background: #f4f4f0; border-bottom: 1px solid #e5e5e0; padding: 9px 24px; font-size: 13px; color: #9ca3af; }
+    .back-bar a { color: #6b7280; display: inline-flex; align-items: center; gap: 5px; }
+    .back-bar a:hover { color: #111; }
+
+    /* MASTHEAD */
+    .masthead { background: #111; padding: 11px 0; }
+    .masthead-inner { display: flex; align-items: center; justify-content: space-between; }
+    .masthead-note { font-size: 11px; color: rgba(255,255,255,0.38); }
+    .masthead-logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
+    .masthead-date { font-size: 11px; color: rgba(255,255,255,0.38); }
+
+    /* NAV */
+    .section-nav { background: #fff; border-bottom: 2px solid #111; }
+    .section-nav-inner { display: flex; align-items: stretch; overflow-x: auto; scrollbar-width: none; }
+    .section-nav-inner::-webkit-scrollbar { display: none; }
+    .snav-a { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #6b7280; padding: 11px 14px; white-space: nowrap; border-right: 1px solid #f0f0ea; flex-shrink: 0; border-bottom: 3px solid transparent; margin-bottom: -2px; }
+    .snav-a.active { color: #111; border-bottom-color: #16a34a; }
+    .snav-a:hover { color: #111; }
+    .snav-sub { margin-left: auto; display: flex; align-items: center; }
+    .snav-sub a { background: #16a34a; color: #fff; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 11px 18px; white-space: nowrap; }
+
+    /* TICKER */
+    .ticker { background: #16a34a; }
+    .ticker-inner { display: flex; align-items: center; gap: 10px; padding: 7px 0; font-size: 12px; color: rgba(255,255,255,0.9); }
+    .ticker-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #fff; background: rgba(0,0,0,0.2); padding: 2px 8px; border-radius: 2px; flex-shrink: 0; }
+
+    /* FRONT PAGE */
+    .front { padding: 24px 0; border-bottom: 1px solid #e5e5e0; }
+    .front-grid { display: grid; grid-template-columns: 1fr 320px; gap: 0; }
+    .lead { border-right: 1px solid #e5e5e0; padding-right: 28px; }
+    .kicker { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #16a34a; margin-bottom: 10px; }
+    .lead h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 800; color: #111; line-height: 1.1; margin-bottom: 12px; }
+    .byline { font-size: 11px; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 14px; }
+    .lead-quote { font-size: 1rem; color: #374151; line-height: 1.7; border-left: 3px solid #e5e5e0; padding-left: 14px; font-style: italic; margin-bottom: 14px; }
+    .lead-img { height: 220px; border-radius: 3px; margin-bottom: 16px; display: flex; align-items: flex-end; padding: 14px; position: relative; overflow: hidden; }
+    .lead-img-cap { font-size: 10px; color: rgba(255,255,255,0.55); }
+    .lead-body { font-size: 14px; color: #4b5563; line-height: 1.75; column-count: 2; column-gap: 24px; }
+
+    /* SIDEBAR */
+    .sidebar { padding-left: 28px; }
+    .sb-section { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e5e0; }
+    .sb-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .sb-head { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #111; border-left: 3px solid #16a34a; padding-left: 8px; margin-bottom: 14px; }
+    .sb-tool { border: 1px solid #e5e5e0; border-radius: 3px; padding: 14px; margin-bottom: 10px; }
+    .sb-tool:last-child { margin-bottom: 0; }
+    .sb-tool h4 { font-size: 13px; font-weight: 700; color: #111; margin-bottom: 5px; }
+    .sb-tool p { font-size: 12px; color: #6b7280; line-height: 1.5; }
+    .sb-tool a { display: inline-block; margin-top: 8px; font-size: 11px; font-weight: 700; color: #16a34a; text-transform: uppercase; letter-spacing: 0.06em; }
+    .sb-story { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; }
+    .sb-story:last-child { margin-bottom: 0; }
+    .sb-img { width: 64px; height: 48px; border-radius: 2px; flex-shrink: 0; }
+    .sb-story h4 { font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 700; color: #111; line-height: 1.3; margin-bottom: 4px; }
+    .sb-story span { font-size: 10px; color: #9ca3af; }
+    .sub-block { background: #f9f9f5; border: 1px solid #e5e5e0; padding: 16px; }
+    .sub-block h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: #111; margin-bottom: 8px; }
+    .sub-block p { font-size: 12px; color: #6b7280; line-height: 1.5; margin-bottom: 12px; }
+    .sub-block a { display: block; background: #111; color: #fff; text-align: center; font-size: 12px; font-weight: 700; padding: 10px; }
+
+    /* SECOND ROW */
+    .second-row { padding: 24px 0; border-bottom: 1px solid #e5e5e0; }
+    .second-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+    .story-card { padding-right: 20px; border-right: 1px solid #e5e5e0; margin-right: 20px; }
+    .story-card:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+    .story-img { height: 120px; border-radius: 2px; margin-bottom: 12px; }
+    .story-kicker { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: #16a34a; margin-bottom: 7px; }
+    .story-card h2 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: #111; line-height: 1.3; margin-bottom: 8px; }
+    .story-card p { font-size: 12px; color: #6b7280; line-height: 1.5; }
+    .story-meta { font-size: 10px; color: #9ca3af; margin-top: 8px; }
+
+    /* BOTTOM STRIP */
+    .bottom { background: #111; padding: 12px 0; }
+    .bottom-inner { display: flex; align-items: center; justify-content: space-between; }
+    .bottom p { font-size: 11px; color: rgba(255,255,255,0.35); }
+    .bottom a { background: #16a34a; color: #fff; font-size: 11px; font-weight: 700; padding: 7px 16px; }
+
+    @media (max-width: 760px) {
+      .front-grid { grid-template-columns: 1fr; }
+      .lead { border-right: none; padding-right: 0; border-bottom: 1px solid #e5e5e0; padding-bottom: 24px; margin-bottom: 24px; }
+      .sidebar { padding-left: 0; }
+      .lead-body { column-count: 1; }
+      .second-grid { grid-template-columns: 1fr; }
+      .story-card { border-right: none; margin-right: 0; padding-right: 0; border-bottom: 1px solid #e5e5e0; padding-bottom: 20px; margin-bottom: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="back-bar"><a href="/designs">← Back to all designs</a></div>
+
+<div class="masthead">
+  <div class="shell masthead-inner">
+    <span class="masthead-note">Independent · Not govt affiliated</span>
+    <div class="masthead-logo">GoAustralia</div>
+    <span class="masthead-date">Friday, 9 May 2025</span>
+  </div>
+</div>
+
+<div class="section-nav">
+  <div class="shell section-nav-inner">
+    <a class="snav-a active" href="#">Visas</a>
+    <a class="snav-a" href="#">Tax & Finance</a>
+    <a class="snav-a" href="#">Renting</a>
+    <a class="snav-a" href="#">Jobs</a>
+    <a class="snav-a" href="#">Medicare</a>
+    <a class="snav-a" href="#">Suburbs</a>
+    <a class="snav-a" href="#">Real Stories</a>
+    <div class="snav-sub"><a href="#">Subscribe · $1.99/mo</a></div>
+  </div>
+</div>
+
+<div class="ticker">
+  <div class="shell ticker-inner">
+    <span class="ticker-label">Latest</span>
+    Australia expands SCV Medicare access from July 2025 — what it means for Kiwis &nbsp;·&nbsp; Sydney rental vacancies at 3-year high &nbsp;·&nbsp; New TFN online application process launches
+  </div>
+</div>
+
+<div class="front">
+  <div class="shell">
+    <div class="front-grid">
+      <div class="lead">
+        <div class="lead-img" style="background:linear-gradient(160deg,#14532d,#16a34a,#4ade80);">
+          <span class="lead-img-cap">Illustration: Sydney cityscape — GoAustralia</span>
+        </div>
+        <div class="kicker">Visa & Immigration · 2025 Guide</div>
+        <h1>The Complete Guide to Moving from New Zealand to Australia</h1>
+        <div class="byline">By the GoAustralia editorial team &nbsp;·&nbsp; Updated May 2025</div>
+        <p class="lead-quote">"Most Kiwis don't realise the Special Category Visa gives them less than they think — until they need Medicare or try to sponsor a family member."</p>
+        <div class="lead-body">
+          New Zealand citizens have an unusual relationship with Australian immigration law. The Special Category Visa — granted automatically on arrival — allows you to live and work in Australia indefinitely, but it has historically excluded you from welfare, Medicare, and citizenship pathways.
+          <br/><br/>
+          That picture has been changing. From July 2023, most Kiwis became eligible to enrol in Medicare. And from July 2025, time spent in Australia on the SCV now counts toward the citizenship residence requirement — a significant change that affects hundreds of thousands of New Zealanders already living across the Tasman.
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <div class="sb-section">
+          <div class="sb-head">Free Tools</div>
+          <div class="sb-tool">
+            <h4>🛂 Visa Pathway Checker</h4>
+            <p>Find your exact pathway based on your NZ status and destination state.</p>
+            <a href="#">Use the checker →</a>
+          </div>
+          <div class="sb-tool">
+            <h4>💰 Cost Calculator</h4>
+            <p>Estimate total moving costs — shipping, bond, setup expenses.</p>
+            <a href="#">Calculate now →</a>
+          </div>
+          <div class="sb-tool">
+            <h4>🏘️ Suburb Finder</h4>
+            <p>Compare 200+ suburbs by rent, commute time, and schools.</p>
+            <a href="#">Find suburbs →</a>
+          </div>
+        </div>
+
+        <div class="sb-section">
+          <div class="sb-head">Also This Week</div>
+          <div class="sb-story">
+            <div class="sb-img" style="background:linear-gradient(135deg,#0f2745,#18528f);"></div>
+            <div><h4>Sydney vs Melbourne: Where Kiwis are moving in 2025</h4><span>May 2025 · 4 min read</span></div>
+          </div>
+          <div class="sb-story">
+            <div class="sb-img" style="background:linear-gradient(135deg,#431407,#9a3412);"></div>
+            <div><h4>"We moved to Brisbane with $8k — here's what happened"</h4><span>Apr 2025 · 6 min read</span></div>
+          </div>
+          <div class="sb-story">
+            <div class="sb-img" style="background:linear-gradient(135deg,#1e1b4b,#4f46e5);"></div>
+            <div><h4>How to get your TFN before you land in Australia</h4><span>Apr 2025 · 3 min read</span></div>
+          </div>
+        </div>
+
+        <div class="sb-section">
+          <div class="sub-block">
+            <h4>Full access · $1.99/month</h4>
+            <p>3 step-by-step PDF guides, all online tools, and weekly updates. Cancel anytime.</p>
+            <a href="#">Subscribe now →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="second-row">
+  <div class="shell">
+    <div class="second-grid">
+      {[
+        {kicker:'Tax & Finance', title:'Your TFN, super & first tax return in plain English', img:'linear-gradient(135deg,#1e1b4b,#312e81)', desc:'Everything NZ arrivals need to know before their first pay slip.'},
+        {kicker:'Renting', title:'How to rent a property in Australia without a local rental history', img:'linear-gradient(135deg,#0f2745,#1e3a5f)', desc:'The rental market is competitive. Here\'s how Kiwis get ahead of it.'},
+        {kicker:'Real Story', title:'"12 months in — what we got right and what we didn\'t"', img:'linear-gradient(135deg,#14532d,#065f46)', desc:'Aroha and Mike share an honest account of their first year in Melbourne.'},
+      ].map(s=>(
+        <div class="story-card">
+          <div class="story-img" style={`background:${s.img};`}></div>
+          <div class="story-kicker">{s.kicker}</div>
+          <h2>{s.title}</h2>
+          <p>{s.desc}</p>
+          <div class="story-meta">May 2025 &nbsp;·&nbsp; 5 min read</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<div class="bottom">
+  <div class="shell bottom-inner">
+    <p>GoAustralia.co.nz is independent and not affiliated with any government.</p>
+    <a href="#">Full access · $1.99/month</a>
+  </div>
+</div>
+
+</body>
+</html>

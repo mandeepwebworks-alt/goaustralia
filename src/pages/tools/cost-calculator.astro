@@ -1,0 +1,234 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Moving Cost Calculator — NZ to Australia | GoAustralia.co.nz" description="Estimate your total cost of moving from New Zealand to Australia. From flights and shipping to bond and first month rent.">
+<style is:global>
+  .calc-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; padding: 40px 0; }
+  .calc-form-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 28px; }
+  .calc-section-head { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--blue); border-bottom: 1px solid var(--border-lt); padding-bottom: 8px; margin: 20px 0 14px; }
+  .calc-section-head:first-child { margin-top: 0; }
+  .calc-field { margin-bottom: 13px; }
+  .calc-field label { display: block; font-size: 12px; font-weight: 600; color: var(--txt2); margin-bottom: 4px; }
+  .calc-field select, .calc-field input { width: 100%; border: 1.5px solid var(--border); border-radius: 4px; padding: 10px 12px; font-size: 14px; color: var(--txt); background: var(--surf2); outline: none; }
+  .calc-field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
+  .calc-field select:focus, .calc-field input:focus { border-color: var(--blue); outline: 3px solid rgba(0,94,165,0.15); outline-offset: 0; }
+  .input-prefix { position: relative; }
+  .input-prefix span { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 14px; color: var(--txt2); pointer-events: none; }
+  .input-prefix input { padding-left: 26px; }
+  .checkboxes { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .check-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--txt); cursor: pointer; }
+  .check-item input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--blue); cursor: pointer; flex-shrink: 0; }
+
+  /* Breakdown panel */
+  .breakdown-panel { background: var(--surf2); border: 1px solid var(--border-lt); border-radius: 8px; padding: 28px; min-height: 300px; }
+  .breakdown-placeholder { text-align: center; padding: 40px 20px; }
+  .breakdown-placeholder .ph-icon { font-size: 2.5rem; margin-bottom: 14px; }
+  .breakdown-placeholder p { font-size: 14px; color: var(--txt3); line-height: 1.6; }
+  .breakdown-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: 18px; }
+  .line-items { display: flex; flex-direction: column; gap: 0; }
+  .line-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border-lt); font-size: 14px; }
+  .line-item:last-child { border-bottom: none; }
+  .line-label { color: var(--txt2); }
+  .line-amount { font-weight: 600; color: var(--navy); }
+  .total-row { background: var(--navy); border-radius: 6px; padding: 16px; margin-top: 16px; display: flex; justify-content: space-between; align-items: center; }
+  .total-label { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.8); }
+  .total-amount { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.6rem; font-weight: 900; color: #fff; }
+  .month2-card { margin-top: 18px; background: var(--blue-tint); border: 1px solid #b8d4f0; border-radius: 6px; padding: 16px; }
+  .month2-card h4 { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .month2-card p { font-size: 12px; color: var(--txt2); line-height: 1.6; }
+
+  /* Tips */
+  .tips-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+  .tip-card { background: var(--white); border: 1px solid var(--border-lt); border-radius: 6px; padding: 20px; }
+  .tip-card h3 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .tip-card p { font-size: 13px; color: var(--txt2); line-height: 1.55; }
+
+  @media (max-width: 860px) {
+    .calc-layout { grid-template-columns: 1fr; }
+    .tips-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="page-hero">
+  <div class="shell">
+    <div class="breadcrumb"><a href="/">Home</a> › <a href="/tools/visa-checker">Tools</a> › Cost Calculator</div>
+    <h1>Moving Cost Calculator</h1>
+    <p class="page-hero-sub">Estimate your total cost of moving from New Zealand to Australia — from flights and shipping to your first month of rent.</p>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="calc-layout">
+
+    <!-- Inputs -->
+    <div class="calc-form-card">
+
+      <div class="calc-section-head">Shipping & Removals</div>
+      <div class="calc-field">
+        <label>How much stuff are you bringing?</label>
+        <select id="stuff">
+          <option value="bags">Just bags / backpacks — no shipping</option>
+          <option value="studio">Studio / minimal (1 bedroom worth)</option>
+          <option value="one">1-bedroom apartment</option>
+          <option value="two">2-bedroom apartment / house</option>
+          <option value="three">3+ bedroom house</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label>Shipping method</label>
+        <select id="method">
+          <option value="sea">Sea freight — slower, cheapest</option>
+          <option value="air">Air freight — fast, expensive</option>
+          <option value="none">Not shipping anything</option>
+        </select>
+      </div>
+
+      <div class="calc-section-head">Destination</div>
+      <div class="calc-field">
+        <label>Destination city</label>
+        <select id="city">
+          <option value="syd">Sydney (NSW)</option>
+          <option value="mel">Melbourne (VIC)</option>
+          <option value="bne">Brisbane (QLD)</option>
+          <option value="per">Perth (WA)</option>
+          <option value="adl">Adelaide (SA)</option>
+        </select>
+      </div>
+
+      <div class="calc-section-head">Accommodation</div>
+      <div class="calc-field">
+        <label>Bond you'll need to pay (weeks)</label>
+        <input type="number" id="bond-weeks" value="4" min="1" max="8" />
+      </div>
+      <div class="calc-field">
+        <label>Estimated weekly rent (AUD $)</label>
+        <div class="input-prefix">
+          <span>$</span>
+          <input type="number" id="weekly-rent" value="550" min="200" max="2000" />
+        </div>
+      </div>
+
+      <div class="calc-section-head">Setup Costs</div>
+      <div class="checkboxes">
+        {[
+          { id:'car', label:'Buy a car (+$8,000 NZD)', val: 8000 },
+          { id:'furniture', label:'Buy furniture (+$3,000 NZD)', val: 3000 },
+          { id:'phone', label:'Phone plan setup (+$200 NZD)', val: 200 },
+          { id:'internet', label:'Internet setup (+$150 NZD)', val: 150 },
+        ].map(c => (
+          <label class="check-item">
+            <input type="checkbox" id={c.id} data-val={c.val} />
+            {c.label}
+          </label>
+        ))}
+      </div>
+
+      <button class="tool-btn" id="calc-btn" style="margin-top:24px;">Calculate My Cost →</button>
+      <div class="tool-note">All amounts in NZD. AUD converted at approx. 1 AUD = 1.08 NZD.</div>
+    </div>
+
+    <!-- Breakdown -->
+    <div class="breakdown-panel" id="breakdown">
+      <div id="bd-placeholder" class="breakdown-placeholder">
+        <div class="ph-icon">💰</div>
+        <p>Fill in your details and click<br/><strong>Calculate My Cost</strong> to see<br/>your personalised estimate.</p>
+      </div>
+      <div id="bd-result" style="display:none;"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Tips -->
+<section class="section section-alt">
+  <div class="shell">
+    <div class="sec-eye">Save Money</div>
+    <div class="sec-h2">Tips to Reduce Your Moving Costs</div>
+    <div class="tips-grid" style="margin-top:28px;">
+      {[
+        { title:'Reduce what you ship', desc:'Sea freight is charged by cubic metre. Sell bulky furniture in NZ and buy second-hand in Australia — you\'ll often come out ahead financially and avoid the 6–10 week wait.' },
+        { title:'Book flights 8–12 weeks out', desc:'Trans-Tasman flights are cheapest booked 8–12 weeks ahead. Avoid school holidays and long weekends. Flying into Melbourne or Brisbane is often cheaper than Sydney.' },
+        { title:'Negotiate your bond', desc:'In most Australian states the maximum bond is 4 weeks rent. Some landlords ask for less. Bond is refundable — so it\'s not spent, just tied up until you move out.' },
+      ].map(t => (
+        <div class="tip-card reveal">
+          <h3>{t.title}</h3>
+          <p>{t.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="shell">
+    <h2>Get the Full Cost of Living Guide</h2>
+    <p>Our Masterguide includes a detailed cost breakdown by city plus suburb-level rent data — $1.99/month.</p>
+    <a href="/pricing" class="cta-band-btn">Get Full Access →</a>
+  </div>
+</div>
+
+<script>
+const flights: Record<string, number> = { syd: 490, mel: 520, bne: 460, per: 740, adl: 560 };
+const shipping: Record<string, Record<string, number>> = {
+  bags:   { sea: 0,     air: 0,     none: 0 },
+  studio: { sea: 1950,  air: 3450,  none: 0 },
+  one:    { sea: 3460,  air: 6480,  none: 0 },
+  two:    { sea: 5940,  air: 10260, none: 0 },
+  three:  { sea: 9180,  air: 15120, none: 0 },
+};
+const AUD_TO_NZD = 1.08;
+
+document.getElementById('calc-btn')?.addEventListener('click', () => {
+  const stuff  = (document.getElementById('stuff') as HTMLSelectElement).value;
+  const method = (document.getElementById('method') as HTMLSelectElement).value;
+  const city   = (document.getElementById('city') as HTMLSelectElement).value;
+  const bondWk = parseFloat((document.getElementById('bond-weeks') as HTMLInputElement).value) || 4;
+  const rent   = parseFloat((document.getElementById('weekly-rent') as HTMLInputElement).value) || 550;
+
+  let setupExtra = 0;
+  document.querySelectorAll('.checkboxes input[type=checkbox]:checked').forEach(el => {
+    setupExtra += parseFloat((el as HTMLInputElement).dataset.val || '0');
+  });
+
+  const flightCost  = flights[city] || 490;
+  const shipCost    = (shipping[stuff] || {})[method] || 0;
+  const bondCost    = Math.round(bondWk * rent * AUD_TO_NZD);
+  const firstRent   = Math.round(rent * 4.33 * AUD_TO_NZD);
+  const subtotal    = flightCost + shipCost + bondCost + firstRent + setupExtra;
+  const buffer      = Math.round(subtotal * 0.10);
+  const total       = subtotal + buffer;
+
+  const fmt = (n: number) => `$${n.toLocaleString()} NZD`;
+
+  const lines = [
+    { label: '✈️ Flights (NZ → AU)',         amount: fmt(flightCost)  },
+    { label: '📦 Shipping / removals',         amount: fmt(shipCost)   },
+    { label: '🏠 Bond',                        amount: fmt(bondCost)   },
+    { label: '🛏 First month rent',             amount: fmt(firstRent)  },
+    ...(setupExtra > 0 ? [{ label: '🛠 Setup costs', amount: fmt(setupExtra) }] : []),
+    { label: '⚠️ Emergency buffer (10%)',       amount: fmt(buffer)     },
+  ];
+
+  const html = `
+    <div class="breakdown-title">Your Estimated Moving Cost</div>
+    <div class="line-items">
+      ${lines.map(l => `<div class="line-item"><span class="line-label">${l.label}</span><span class="line-amount">${l.amount}</span></div>`).join('')}
+    </div>
+    <div class="total-row">
+      <span class="total-label">Total estimate</span>
+      <span class="total-amount">${fmt(total)}</span>
+    </div>
+    <div class="month2-card">
+      <h4>Budget for Month 2+</h4>
+      <p>After setup, your ongoing costs will mainly be rent (~${fmt(firstRent)}/month), groceries (~$600–$900/month NZD for a couple), transport (~$200–$350/month), and utilities (~$150–$250/month). Most Kiwis find their finances stabilise once the first payslip arrives.</p>
+    </div>
+  `;
+
+  document.getElementById('bd-placeholder')!.style.display = 'none';
+  const result = document.getElementById('bd-result')!;
+  result.innerHTML = html;
+  result.style.display = 'block';
+});
+</script>
+
+</Layout>
