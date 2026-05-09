@@ -24,7 +24,7 @@ import Layout from '../layouts/Layout.astro';
   font-family: 'Playfair Display', serif; font-size: 3.2rem; font-weight: 800;
   color: var(--white); line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 22px;
 }
-.hp-hero-h1 em { font-style: italic; color: #475569; }
+.hp-hero-h1 em { font-style: italic; color: #64748B; }
 .hp-hero-lead {
   font-family: 'Inter', sans-serif; font-size: 0.975rem;
   color: #64748B; line-height: 1.8; margin-bottom: 36px; max-width: 400px;
@@ -37,44 +37,44 @@ import Layout from '../layouts/Layout.astro';
 }
 .hp-hero-btn-p:hover { background: #F1F5F9; }
 .hp-hero-btn-s {
-  font-family: 'Inter', sans-serif; font-size: 13px; color: #475569;
-  border-bottom: 1px solid #334155; padding-bottom: 2px;
+  font-family: 'Inter', sans-serif; font-size: 13px; color: #64748B;
+  border-bottom: 1px solid var(--dark-bd); padding-bottom: 2px;
 }
-.hp-hero-btn-s:hover { color: #94A3B8; border-color: #475569; }
-.hp-hero-foot { border-top: 1px solid #1E293B; padding-top: 28px; display: flex; gap: 32px; }
+.hp-hero-btn-s:hover { color: #94A3B8; border-color: #64748B; }
+.hp-hero-foot { border-top: 1px solid var(--dark-bd); padding-top: 28px; display: flex; gap: 32px; }
 .hp-hero-stat strong {
   font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white);
   display: block; margin-bottom: 2px;
 }
-.hp-hero-stat span { font-family: 'Inter', sans-serif; font-size: 11px; color: #475569; }
+.hp-hero-stat span { font-family: 'Inter', sans-serif; font-size: 11px; color: #64748B; }
 
 /* Hero right panel */
-.hp-hero-panel { background: #080E1C; border-left: 1px solid #1A2540; padding: 0; display: flex; flex-direction: column; }
+.hp-hero-panel { background: var(--dark2); border-left: 1px solid var(--dark-bd); padding: 0; display: flex; flex-direction: column; }
 .hp-panel-head {
-  padding: 20px 24px; border-bottom: 1px solid #1A2540;
+  padding: 18px 24px; border-bottom: 1px solid var(--dark-bd);
   font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.16em; color: #2D3A56;
+  text-transform: uppercase; letter-spacing: 0.16em; color: var(--dark-bd);
 }
-.hp-guide-row { padding: 18px 24px; border-bottom: 1px solid #1A2540; }
+.hp-guide-row { padding: 16px 24px; border-bottom: 1px solid var(--dark-bd); }
 .hp-guide-row-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
 .hp-guide-spine { width: 3px; height: 14px; border-radius: 1px; flex-shrink: 0; }
 .hp-guide-name {
-  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; color: #C8D0E0; flex: 1;
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; color: #94A3B8; flex: 1;
 }
-.hp-guide-pages { font-family: 'Inter', sans-serif; font-size: 10px; color: #2D3A56; white-space: nowrap; }
+.hp-guide-pages { font-family: 'Inter', sans-serif; font-size: 10px; color: var(--dark-bd); white-space: nowrap; }
 .hp-guide-topics { padding-left: 13px; display: flex; flex-direction: column; gap: 3px; }
 .hp-guide-topics li {
-  font-family: 'Inter', sans-serif; font-size: 11px; color: #3B4D70;
+  font-family: 'Inter', sans-serif; font-size: 11px; color: #475569;
   list-style: none; line-height: 1.45;
 }
-.hp-guide-topics li::before { content: '—  '; color: #253047; }
-.hp-panel-cta { padding: 20px 24px; margin-top: auto; border-top: 1px solid #1A2540; }
+.hp-guide-topics li::before { content: '–  '; color: var(--dark-bd); }
+.hp-panel-cta { padding: 18px 24px; margin-top: auto; border-top: 1px solid var(--dark-bd); }
 .hp-panel-price {
-  font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700;
+  font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700;
   color: var(--white); margin-bottom: 3px; line-height: 1;
 }
-.hp-panel-price span { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 400; color: #3B4D70; }
-.hp-panel-note { font-family: 'Inter', sans-serif; font-size: 10px; color: #3B4D70; margin-bottom: 12px; }
+.hp-panel-price span { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 400; color: #475569; }
+.hp-panel-note { font-family: 'Inter', sans-serif; font-size: 10px; color: #475569; margin-bottom: 12px; }
 .hp-panel-btn {
   display: block; background: var(--amber); color: var(--white); text-align: center;
   font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700;
@@ -82,17 +82,7 @@ import Layout from '../layouts/Layout.astro';
 }
 .hp-panel-btn:hover { background: var(--amber-dk); }
 
-/* ──────────────────────────────────────────────────────
-   STATS STRIP
-────────────────────────────────────────────────────── */
-.hp-stats { background: #111827; border-top: 1px solid #1E293B; border-bottom: 1px solid #1E293B; }
-.hp-stats-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
-.hp-stat-item { padding: 18px 24px; border-right: 1px solid #1E293B; display: flex; flex-direction: column; gap: 3px; }
-.hp-stat-item:last-child { border-right: none; }
-.hp-stat-item strong {
-  font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white);
-}
-.hp-stat-item span { font-family: 'Inter', sans-serif; font-size: 11px; color: #475569; }
+/* stats strip removed — redundant with hero footer stats */
 
 /* ──────────────────────────────────────────────────────
    GUIDES (white bg — the product)
@@ -160,7 +150,7 @@ import Layout from '../layouts/Layout.astro';
 .hp-mistake:last-child { border-bottom: none; padding-bottom: 0; }
 .hp-mistake-n {
   font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700;
-  color: var(--amber); line-height: 1; flex-shrink: 0; width: 40px; opacity: 0.25;
+  color: #D1D5DB; line-height: 1; flex-shrink: 0; width: 40px;
 }
 .hp-mistake h3 { font-family: 'Playfair Display', serif; font-size: 0.975rem; font-weight: 700; color: var(--ink); margin-bottom: 5px; line-height: 1.3; }
 .hp-mistake p { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--ink3); line-height: 1.68; }
@@ -193,7 +183,7 @@ import Layout from '../layouts/Layout.astro';
   border-top: 3px solid var(--border);
 }
 .hp-tool:hover { border-color: var(--amber); border-top-color: var(--amber); box-shadow: 0 4px 18px rgba(194,87,10,0.08); }
-.hp-tool-num { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--amber); opacity: 0.35; line-height: 1; margin-bottom: 14px; }
+.hp-tool-num { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: #D1D5DB; line-height: 1; margin-bottom: 14px; }
 .hp-tool-cat { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.13em; color: var(--amber); margin-bottom: 7px; }
 .hp-tool h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 7px; }
 .hp-tool p { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--ink3); line-height: 1.6; margin-bottom: 14px; }
@@ -211,7 +201,7 @@ import Layout from '../layouts/Layout.astro';
   transition: box-shadow 0.15s;
 }
 .hp-blog-feat:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); }
-.hp-blog-feat-band { height: 5px; background: linear-gradient(90deg,#00205C,#005EA5); }
+.hp-blog-feat-band { height: 4px; background: var(--amber); }
 .hp-blog-feat-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
 .hp-bfeat-tag { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--amber); margin-bottom: 12px; }
 .hp-bfeat-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--ink); line-height: 1.25; margin-bottom: 12px; }
@@ -246,7 +236,7 @@ import Layout from '../layouts/Layout.astro';
 .hp-tcard { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 26px 24px; position: relative; }
 .hp-tcard-mark {
   font-family: 'Playfair Display', serif; font-size: 4rem; line-height: 1;
-  color: var(--amber); opacity: 0.15; position: absolute; top: 14px; left: 20px;
+  color: #D1D5DB; position: absolute; top: 14px; left: 20px;
   font-style: normal; pointer-events: none;
 }
 .hp-tcard-stars { color: #D97706; font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 12px; }
@@ -292,9 +282,6 @@ import Layout from '../layouts/Layout.astro';
   .hp-hero-wrap { grid-template-columns: 1fr; }
   .hp-hero-panel { display: none; }
   .hp-hero-copy { padding: 60px 0; }
-  .hp-stats-inner { grid-template-columns: 1fr 1fr; }
-  .hp-stat-item:nth-child(2) { border-right: none; }
-  .hp-stat-item:nth-child(1), .hp-stat-item:nth-child(2) { border-bottom: 1px solid #1E293B; }
   .hp-problems-layout { grid-template-columns: 1fr; gap: 40px; }
   .hp-cta-panel { position: static; }
   .hp-guides-grid { grid-template-columns: 1fr 1fr; }
@@ -403,30 +390,6 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </div>
 </section>
-
-<!-- STATS STRIP -->
-<div class="hp-stats">
-  <div class="shell">
-    <div class="hp-stats-inner">
-      <div class="hp-stat-item">
-        <strong>12,400+</strong>
-        <span>Kiwis helped since 2023</span>
-      </div>
-      <div class="hp-stat-item">
-        <strong>232 pages</strong>
-        <span>Across 3 PDF guides</span>
-      </div>
-      <div class="hp-stat-item">
-        <strong>Independent</strong>
-        <span>Not affiliated with any government</span>
-      </div>
-      <div class="hp-stat-item">
-        <strong>$1.99/month</strong>
-        <span>Cancel anytime — instant access</span>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- GUIDES -->
 <section class="hp-guides">
@@ -656,13 +619,13 @@ import Layout from '../layouts/Layout.astro';
       </a>
       <div class="hp-blog-sidebar">
         {[
-          { cat: 'Cost of Living', color: '#1a3d5c', title: 'Sydney vs Melbourne: Where Should a Kiwi Move in 2025?', meta: 'May 2025 · 7 min', slug: 'sydney-vs-melbourne' },
-          { cat: 'Tax & Finance', color: '#0f4d28', title: 'Do Kiwis Pay Tax in Australia? Your First-Year Guide', meta: 'Apr 2025 · 8 min', slug: 'kiwi-tax-australia' },
-          { cat: 'Medicare', color: '#0f2040', title: 'How to Enrol in Medicare as a New Zealand Citizen', meta: 'Mar 2025 · 5 min', slug: 'medicare-enrolment-guide' },
-          { cat: 'Finance', color: '#1a2a0a', title: "What Happens to Your KiwiSaver When You Move?", meta: 'Feb 2025 · 6 min', slug: 'kiwisaver-australia' },
+          { cat: 'Cost of Living', title: 'Sydney vs Melbourne: Where Should a Kiwi Move in 2025?', meta: 'May 2025 · 7 min', slug: 'sydney-vs-melbourne' },
+          { cat: 'Tax & Finance', title: 'Do Kiwis Pay Tax in Australia? Your First-Year Guide', meta: 'Apr 2025 · 8 min', slug: 'kiwi-tax-australia' },
+          { cat: 'Medicare', title: 'How to Enrol in Medicare as a New Zealand Citizen', meta: 'Mar 2025 · 5 min', slug: 'medicare-enrolment-guide' },
+          { cat: 'Finance', title: "What Happens to Your KiwiSaver When You Move?", meta: 'Feb 2025 · 6 min', slug: 'kiwisaver-australia' },
         ].map(p => (
           <a href={`/blog/${p.slug}`} class="hp-blog-item reveal">
-            <div class="hp-blog-bar" style={`background:${p.color};`}></div>
+            <div class="hp-blog-bar" style="background:var(--amber);"></div>
             <div>
               <div class="hp-blog-item-cat">{p.cat}</div>
               <div class="hp-blog-item-title">{p.title}</div>
