@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="Pricing — Full Access $1.99/month | GoAustralia.co.nz" description="Get full access to all moving guides, suburb finder, full checklist and weekly newsletter for $1.99/month. Cancel anytime.">
+<Layout title="Pricing — Full Access $24.99 NZD | GoAustralia.co.nz" description="One-time payment. Get the full 70-step moving checklist, all 3 PDF guides, and every tool Kiwis need to move to Australia. No subscription, no lock-in.">
 <style is:global>
   /* ── PRICING CARDS ── */
   .pricing-grid {
@@ -19,13 +19,13 @@ import Layout from '../layouts/Layout.astro';
     flex-direction: column;
   }
   .price-card.featured {
-    border-color: var(--navy);
-    border-width: 2.5px;
-    box-shadow: 0 4px 20px rgba(0,32,92,0.1);
+    border-color: var(--amber);
+    border-width: 2px;
+    box-shadow: 0 4px 24px rgba(0,105,143,0.10);
   }
   .price-badge {
     display: inline-block;
-    background: var(--navy);
+    background: var(--amber);
     color: #fff;
     font-size: 10px;
     font-weight: 700;
@@ -40,31 +40,31 @@ import Layout from '../layouts/Layout.astro';
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--txt3);
+    color: var(--ink4);
     margin-bottom: 8px;
   }
   .price-amount {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 2rem;
-    font-weight: 900;
-    color: var(--navy);
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--ink);
     line-height: 1;
     margin-bottom: 4px;
   }
   .price-amount sup {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 700;
     vertical-align: top;
     line-height: 1.4;
   }
   .price-cadence {
     font-size: 12px;
-    color: var(--txt3);
+    color: var(--ink4);
     margin-bottom: 16px;
   }
   .price-desc {
     font-size: 13px;
-    color: var(--txt2);
+    color: var(--ink3);
     line-height: 1.6;
     margin-bottom: 20px;
     flex: 1;
@@ -81,28 +81,38 @@ import Layout from '../layouts/Layout.astro';
     align-items: flex-start;
     gap: 8px;
     font-size: 13px;
-    color: var(--txt);
+    color: var(--ink);
     line-height: 1.4;
   }
   .price-includes li::before {
     content: '✓';
-    color: var(--green-ok);
+    color: #16A34A;
     font-weight: 700;
     font-size: 14px;
     flex-shrink: 0;
     margin-top: 1px;
   }
   .price-includes li.dim {
-    color: var(--txt3);
+    color: var(--ink4);
   }
   .price-includes li.dim::before {
     color: var(--border);
+    content: '–';
+    font-weight: 400;
   }
   .price-note {
     font-size: 11px;
-    color: var(--txt3);
+    color: var(--ink4);
     text-align: center;
     margin-top: 10px;
+  }
+  .price-strike {
+    text-decoration: line-through;
+    color: var(--ink4);
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 6px;
+    font-family: 'Inter', sans-serif;
   }
 
   /* ── COMPARISON TABLE ── */
@@ -113,7 +123,7 @@ import Layout from '../layouts/Layout.astro';
     margin-top: 32px;
   }
   .compare-table thead tr {
-    background: var(--navy);
+    background: var(--dark);
     color: #fff;
   }
   .compare-table thead th {
@@ -127,27 +137,27 @@ import Layout from '../layouts/Layout.astro';
     text-align: center;
   }
   .compare-table tbody tr {
-    border-bottom: 1px solid var(--border-lt);
+    border-bottom: 1px solid var(--border);
   }
   .compare-table tbody tr:last-child {
     border-bottom: none;
   }
   .compare-table tbody tr:nth-child(even) {
-    background: var(--surf2);
+    background: var(--surface);
   }
   .compare-table td {
     padding: 12px 18px;
-    color: var(--txt2);
+    color: var(--ink3);
   }
   .compare-table td:first-child {
-    color: var(--txt);
+    color: var(--ink);
     font-weight: 500;
   }
   .compare-table td:not(:first-child) {
     text-align: center;
   }
   .check-yes {
-    color: var(--green-ok);
+    color: #16A34A;
     font-weight: 700;
     font-size: 15px;
   }
@@ -156,9 +166,38 @@ import Layout from '../layouts/Layout.astro';
     font-size: 15px;
   }
   .compare-wrap {
-    border: 1px solid var(--border-lt);
+    border: 1px solid var(--border);
     border-radius: 6px;
     overflow: hidden;
+  }
+
+  /* ── GUARANTEE BLOCK ── */
+  .guarantee-block {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-top: 32px;
+  }
+  .guarantee-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+  .guarantee-block h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .guarantee-block p {
+    font-size: 13px;
+    color: var(--ink3);
+    line-height: 1.6;
+    margin: 0;
   }
 
   /* ── RESPONSIVE ── */
@@ -168,6 +207,7 @@ import Layout from '../layouts/Layout.astro';
   @media (max-width: 600px) {
     .compare-table { font-size: 12px; }
     .compare-table td, .compare-table th { padding: 10px 12px; }
+    .guarantee-block { flex-direction: column; text-align: center; }
   }
 </style>
 
@@ -177,8 +217,8 @@ import Layout from '../layouts/Layout.astro';
     <div class="breadcrumb">
       <a href="/">← Home</a> / Pricing
     </div>
-    <h1>Full Access — $1.99/month</h1>
-    <p class="page-hero-sub">Everything a Kiwi needs for their Australian move. Cancel anytime, no lock-in, instant access.</p>
+    <h1>Full Access — $24.99 NZD</h1>
+    <p class="page-hero-sub">One payment. Everything you need to plan and complete your move to Australia. No subscription, no recurring charges.</p>
   </div>
 </section>
 
@@ -188,7 +228,7 @@ import Layout from '../layouts/Layout.astro';
     <div style="text-align:center; margin-bottom: 8px;">
       <p class="sec-eye">Choose a plan</p>
       <h2 class="sec-h2" style="margin:0 auto;">Simple, honest pricing</h2>
-      <p class="sec-sub" style="margin: 12px auto 0;">Start free, upgrade when you're ready. No hidden fees.</p>
+      <p class="sec-sub" style="margin: 12px auto 0;">Start free. Upgrade once when you're ready to move. No hidden fees, no subscriptions.</p>
     </div>
 
     <div class="pricing-grid">
@@ -197,63 +237,73 @@ import Layout from '../layouts/Layout.astro';
       <div class="price-card reveal d1">
         <p class="price-tier">Free</p>
         <p class="price-amount">$0</p>
-        <p class="price-cadence">forever</p>
-        <p class="price-desc">Get a feel for the tools before you commit. Good for early research.</p>
+        <p class="price-cadence">forever, no credit card</p>
+        <p class="price-desc">Access the first 10 steps of the checklist and our free tools. Good for early research.</p>
         <ul class="price-includes">
-          <li>Visa Checker (basic results)</li>
-          <li>Moving Checklist (basic — 20 steps)</li>
-          <li>3 blog articles per month</li>
-          <li class="dim">All 3 PDF guides</li>
+          <li>Visa Pathway Checker</li>
+          <li>Move Cost Calculator</li>
+          <li>Moving Checklist — first 10 steps</li>
+          <li>All blog articles</li>
           <li class="dim">Full 70-step checklist</li>
+          <li class="dim">All 3 PDF guides</li>
           <li class="dim">Suburb Finder</li>
-          <li class="dim">Unlimited blog access</li>
-          <li class="dim">Weekly newsletter</li>
-          <li class="dim">Priority email Q&amp;A</li>
+          <li class="dim">State-specific advice</li>
         </ul>
-        <a href="/tools/visa-checker" class="btn btn-ghost btn-block">Start free →</a>
+        <a href="/tools/checklist" class="btn btn-ghost btn-block">Start free →</a>
       </div>
 
       <!-- FULL ACCESS (featured) -->
       <div class="price-card featured reveal d2">
-        <div class="price-badge">Most popular</div>
+        <div class="price-badge">Best value</div>
         <p class="price-tier">Full Access</p>
-        <p class="price-amount"><sup>$</sup>1.99</p>
-        <p class="price-cadence">per month NZD · cancel anytime</p>
-        <p class="price-desc">Everything you need from the day you decide to move until the day you settle in.</p>
+        <p class="price-amount"><sup>$</sup>24.99 <span class="price-strike">$49</span></p>
+        <p class="price-cadence">one-time payment · NZD · yours forever</p>
+        <p class="price-desc">The complete Kiwi moving toolkit — every step, every guide, every tool. Pay once, use it throughout your entire move.</p>
         <ul class="price-includes">
-          <li>Everything in Free</li>
-          <li>All 3 PDF guides (Masterguide, Tax &amp; Finance, Jobs)</li>
-          <li>Full 70-step moving checklist</li>
-          <li>Suburb Finder — compare any suburb</li>
-          <li>Unlimited blog &amp; article access</li>
-          <li>Weekly newsletter — policy updates</li>
-          <li>Priority email Q&amp;A</li>
+          <li>Full 70-step interactive checklist</li>
+          <li>State-specific checklists (NSW, VIC, QLD, WA, SA)</li>
+          <li>Kiwi Masterguide PDF</li>
+          <li>Tax &amp; Finance Guide PDF</li>
+          <li>Australian Jobs Guide PDF</li>
+          <li>Suburb Finder — all suburbs</li>
+          <li>Checklist saved to your account</li>
+          <li>Free updates — content updated regularly</li>
         </ul>
-        <a href="/signup" class="btn btn-primary btn-block btn-lg">Start for $1.99/month →</a>
-        <p class="price-note">Secured by Stripe · Cancel anytime</p>
+        <a href="/signup" class="btn btn-primary btn-block btn-lg">Get Full Access — $24.99 →</a>
+        <p class="price-note">Secured by Stripe · One-time charge · No subscription</p>
       </div>
 
       <!-- GUIDES ONLY -->
       <div class="price-card reveal d3">
         <p class="price-tier">Guides Only</p>
         <p class="price-amount" style="font-size:1.35rem; padding-top: 4px;">$19 – $27</p>
-        <p class="price-cadence">one-time purchase per guide</p>
-        <p class="price-desc">Don't want a subscription? Buy exactly the guide you need, keep it forever.</p>
+        <p class="price-cadence">one-time purchase per guide · NZD</p>
+        <p class="price-desc">Just need one specific guide? Buy it individually. Keep the PDF forever.</p>
         <ul class="price-includes">
-          <li>Kiwi Masterguide — $27</li>
-          <li>Tax &amp; Finance Guide — $22</li>
-          <li>Australian Jobs Guide — $19</li>
+          <li>Kiwi Masterguide — $27 NZD</li>
+          <li>Tax &amp; Finance Guide — $22 NZD</li>
+          <li>Australian Jobs Guide — $19 NZD</li>
           <li>Instant PDF download</li>
           <li>Yours to keep, no expiry</li>
+          <li class="dim">Full interactive checklist</li>
+          <li class="dim">State-specific content</li>
           <li class="dim">Suburb Finder</li>
-          <li class="dim">Newsletter &amp; updates</li>
-          <li class="dim">Priority Q&amp;A</li>
         </ul>
-        <a href="/guides" class="btn btn-ghost btn-block">Buy individual guides →</a>
-        <p class="price-note">One-off payment, no recurring charge</p>
+        <a href="/guides" class="btn btn-ghost btn-block">Browse guides →</a>
+        <p class="price-note">One-off payment · No recurring charges</p>
       </div>
 
     </div>
+
+    <!-- GUARANTEE -->
+    <div class="guarantee-block reveal">
+      <div class="guarantee-icon">🛡</div>
+      <div>
+        <h4>30-day money-back guarantee</h4>
+        <p>If the checklist and guides don't help you plan your move, email us within 30 days for a full refund. No questions asked. We're confident you'll find it invaluable.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -270,24 +320,34 @@ import Layout from '../layouts/Layout.astro';
           <tr>
             <th>Feature</th>
             <th>Free</th>
-            <th>Full Access — $1.99/mo</th>
+            <th>Full Access — $24.99 NZD</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Visa Checker</td>
-            <td><span class="check-yes">✓</span> Basic</td>
-            <td><span class="check-yes">✓</span> Full results</td>
+            <td>Visa Pathway Checker</td>
+            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
           </tr>
           <tr>
-            <td>Moving Checklist</td>
-            <td><span class="check-yes">✓</span> 20 steps</td>
-            <td><span class="check-yes">✓</span> 70 steps</td>
+            <td>Move Cost Calculator</td>
+            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
           </tr>
           <tr>
             <td>Blog articles</td>
-            <td>3 per month</td>
-            <td><span class="check-yes">✓</span> Unlimited</td>
+            <td><span class="check-yes">✓</span> All</td>
+            <td><span class="check-yes">✓</span> All</td>
+          </tr>
+          <tr>
+            <td>Moving Checklist</td>
+            <td>First 10 steps</td>
+            <td><span class="check-yes">✓</span> All 70 steps</td>
+          </tr>
+          <tr>
+            <td>State-specific checklists</td>
+            <td><span class="check-no">–</span></td>
+            <td><span class="check-yes">✓</span> NSW, VIC, QLD, WA, SA</td>
           </tr>
           <tr>
             <td>Kiwi Masterguide PDF</td>
@@ -307,28 +367,23 @@ import Layout from '../layouts/Layout.astro';
           <tr>
             <td>Suburb Finder</td>
             <td><span class="check-no">–</span></td>
-            <td><span class="check-yes">✓</span> Included</td>
+            <td><span class="check-yes">✓</span> All suburbs</td>
           </tr>
           <tr>
-            <td>Weekly newsletter</td>
+            <td>Account &amp; saved progress</td>
             <td><span class="check-no">–</span></td>
-            <td><span class="check-yes">✓</span> Included</td>
+            <td><span class="check-yes">✓</span> Synced to your account</td>
           </tr>
           <tr>
-            <td>Priority email Q&amp;A</td>
+            <td>Future content updates</td>
             <td><span class="check-no">–</span></td>
-            <td><span class="check-yes">✓</span> Included</td>
-          </tr>
-          <tr>
-            <td>Cost Calculator</td>
-            <td><span class="check-yes">✓</span></td>
-            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span> Free forever</td>
           </tr>
         </tbody>
       </table>
     </div>
     <p style="text-align:center; margin-top: 24px;">
-      <a href="/signup" class="btn btn-primary btn-lg">Get Full Access for $1.99/month →</a>
+      <a href="/signup" class="btn btn-primary btn-lg">Get Full Access — $24.99 NZD →</a>
     </p>
   </div>
 </section>
@@ -343,7 +398,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="reviews-grid">
       <div class="review reveal d1">
         <div class="stars">★★★★★</div>
-        <p>"The $1.99 subscription is an absolute no-brainer. The Tax &amp; Finance guide alone saved me from a massive IRD headache — I had no idea double taxation worked the way it does."</p>
+        <p>"The checklist is unreal — every step has the exact documents you need and links to the right government pages. Saved me hours of Googling. $24.99 is nothing compared to what it would cost to get this wrong."</p>
         <p class="reviewer">Jess T. <span>— Moved to Melbourne, 2024</span></p>
       </div>
       <div class="review reveal d2">
@@ -353,7 +408,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
       <div class="review reveal d3">
         <div class="stars">★★★★★</div>
-        <p>"The suburb finder helped us choose between Manly and Cronulla before we even landed. We knew exactly what the commute, cost and vibe would be like. Saved so much stress."</p>
+        <p>"The Tax &amp; Finance guide alone saved me from a massive IRD headache — I had no idea double taxation worked the way it does for Kiwis. One-time payment, keep it forever. No brainer."</p>
         <p class="reviewer">Sophie &amp; Dan W. <span>— Moved to Sydney, 2024</span></p>
       </div>
     </div>
@@ -367,16 +422,24 @@ import Layout from '../layouts/Layout.astro';
       <div>
         <p class="sec-eye">Common questions</p>
         <h2 class="sec-h2">FAQ</h2>
-        <p class="sec-sub">Can't find the answer you need? Email us at <a href="mailto:hello@goaustralia.co.nz" style="color:var(--blue);">hello@goaustralia.co.nz</a></p>
+        <p class="sec-sub">Can't find the answer you need? Email us at <a href="mailto:hello@goaustralia.co.nz" style="color:var(--amber);">hello@goaustralia.co.nz</a></p>
       </div>
       <div class="faq-list">
         <details>
-          <summary>What's included in Full Access?</summary>
-          <div class="faq-ans">Full Access gives you all three PDF guides (Kiwi Masterguide, Tax &amp; Finance, Australian Jobs), the complete 70-step moving checklist, the Suburb Finder tool, unlimited blog access, a weekly newsletter with policy updates, and priority email Q&amp;A support. Everything is updated weekly.</div>
+          <summary>Is this a subscription?</summary>
+          <div class="faq-ans">No. Full Access is a one-time payment of $24.99 NZD. You pay once and have access to everything — the full checklist, all three PDF guides, and the Suburb Finder — forever. No recurring charges.</div>
         </details>
         <details>
-          <summary>Can I cancel anytime?</summary>
-          <div class="faq-ans">Yes, absolutely. There's no lock-in contract. You can cancel your subscription at any time from your account dashboard and you won't be charged again. You'll keep access until the end of the billing period you've already paid for.</div>
+          <summary>What's included in Full Access?</summary>
+          <div class="faq-ans">Full Access includes the complete 70-step interactive checklist (with state-specific versions for NSW, VIC, QLD, WA, SA), the Kiwi Masterguide PDF, the Tax &amp; Finance Guide PDF, the Australian Jobs Guide PDF, and access to the Suburb Finder tool. All content is updated regularly and you get free updates.</div>
+        </details>
+        <details>
+          <summary>What do I get for free?</summary>
+          <div class="faq-ans">The free version gives you the Visa Pathway Checker, the Move Cost Calculator, all blog articles, and the first 10 steps of the interactive checklist — enough to start your research and figure out your timeline. When you're ready to get serious about planning, upgrade for the full toolkit.</div>
+        </details>
+        <details>
+          <summary>Is there a money-back guarantee?</summary>
+          <div class="faq-ans">Yes. If you're not happy within 30 days, email hello@goaustralia.co.nz and we'll refund you in full. No questions asked.</div>
         </details>
         <details>
           <summary>Is this the official Australian Government site?</summary>
@@ -384,7 +447,7 @@ import Layout from '../layouts/Layout.astro';
         </details>
         <details>
           <summary>What's the difference between Full Access and buying a guide?</summary>
-          <div class="faq-ans">The individual guides are a one-time purchase — great if you just need one specific document. Full Access ($1.99/month) includes all three guides plus the live tools (Suburb Finder, full checklist), the newsletter, and email support. If you're actively planning a move, Full Access is far better value.</div>
+          <div class="faq-ans">The individual guides ($19–$27 each) give you just the PDF. Full Access at $24.99 includes all three PDFs plus the interactive 70-step checklist, the Suburb Finder, and account-based progress tracking. If you're actively planning a move, Full Access is significantly better value.</div>
         </details>
       </div>
     </div>
@@ -395,8 +458,8 @@ import Layout from '../layouts/Layout.astro';
 <div class="cta-band">
   <div class="shell">
     <h2>Ready to make the move?</h2>
-    <p>Join 12,400+ Kiwis who planned their move with GoAustralia. $1.99/month, cancel anytime.</p>
-    <a href="/signup" class="cta-band-btn">Start for $1.99/month →</a>
+    <p>Join 12,400+ Kiwis who planned their move with GoAustralia. One payment of $24.99 NZD. No subscription.</p>
+    <a href="/signup" class="cta-band-btn">Get Full Access — $24.99 NZD →</a>
   </div>
 </div>
 

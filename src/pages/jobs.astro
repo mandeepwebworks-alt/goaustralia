@@ -1,0 +1,864 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const jobs = [
+  // Healthcare
+  {
+    id: 1, title: "Registered Nurse — Emergency Department", company: "St Vincent's Hospital", logo: "SV",
+    location: "Sydney, NSW", state: "NSW", salary: "$85,000 – $105,000 AUD", type: "Full-time",
+    industry: "Healthcare", posted: "1 day ago", featured: true,
+    tags: ["AHPRA registration", "NZ experience welcome", "Relocation assistance"],
+    desc: "Join our fast-paced ED team. We actively recruit NZ-registered nurses — your AHPRA registration can be fast-tracked. Relocation package available for the right candidate.",
+    url: "https://www.seek.com.au"
+  },
+  {
+    id: 2, title: "Physiotherapist — Community Health", company: "Monash Health", logo: "MH",
+    location: "Melbourne, VIC", state: "VIC", salary: "$75,000 – $95,000 AUD", type: "Full-time",
+    industry: "Healthcare", posted: "2 days ago", featured: false,
+    tags: ["AHPRA required", "Graduate welcome", "Flexible hours"],
+    desc: "Monash Health is one of Victoria's largest public health services. We welcome applications from NZ-qualified physios — AHPRA mutual recognition applies.",
+    url: "https://www.seek.com.au"
+  },
+  {
+    id: 3, title: "Aged Care Registered Nurse", company: "Bolton Clarke", logo: "BC",
+    location: "Brisbane, QLD", state: "QLD", salary: "$78,000 – $98,000 AUD", type: "Full-time",
+    industry: "Healthcare", posted: "3 days ago", featured: false,
+    tags: ["Kiwis encouraged", "AHPRA assist", "Visa sponsorship"],
+    desc: "Australia's largest not-for-profit aged care provider. Multiple roles across QLD. We help NZ nurses navigate AHPRA registration from day one.",
+    url: "https://www.seek.com.au"
+  },
+  // Construction & Trades
+  {
+    id: 4, title: "Project Manager — Commercial Construction", company: "Lendlease", logo: "LL",
+    location: "Sydney, NSW", state: "NSW", salary: "$130,000 – $160,000 AUD", type: "Full-time",
+    industry: "Construction", posted: "1 day ago", featured: true,
+    tags: ["NZ experience valued", "Major projects", "Senior role"],
+    desc: "Working on landmark infrastructure projects in NSW. NZ construction experience is highly regarded — your qualifications and site management background transfer directly.",
+    url: "https://www.seek.com.au"
+  },
+  {
+    id: 5, title: "Electrician — Residential & Commercial", company: "Stowe Australia", logo: "SA",
+    location: "Perth, WA", state: "WA", salary: "$90,000 – $120,000 AUD", type: "Full-time",
+    industry: "Trades", posted: "2 days ago", featured: false,
+    tags: ["NZ licence mutual recognition", "Overtime available", "Tool allowance"],
+    desc: "WA has a significant skills shortage for licensed electricians. Your NZ Electrical Practising Licence transfers via mutual recognition — we'll help you with WA registration.",
+    url: "https://www.seek.com.au"
+  },
+  {
+    id: 6, title: "Site Supervisor — Residential Housing", company: "Metricon Homes", logo: "MC",
+    location: "Gold Coast, QLD", state: "QLD", salary: "$95,000 – $115,000 AUD", type: "Full-time",
+    industry: "Construction", posted: "4 days ago", featured: false,
+    tags: ["Builder licence required", "QLD registration help", "Company vehicle"],
+    desc: "Australia's largest home builder. QLD is booming — we need experienced site supervisors. Your NZ site management experience is exactly what we're looking for.",
+    url: "https://www.seek.com.au"
+  },
+  // Technology
+  {
+    id: 7, title: "Senior Software Engineer — Full Stack", company: "Atlassian", logo: "AT",
+    location: "Sydney, NSW", state: "NSW", salary: "$150,000 – $200,000 AUD", type: "Full-time",
+    industry: "Technology", posted: "2 days ago", featured: true,
+    tags: ["Remote-first", "NZ team members", "Equity included"],
+    desc: "Atlassian is known for hiring the best Kiwi engineers. Work from Sydney or remotely — we have team members based in NZ already. No visa required for NZ citizens.",
+    url: "https://www.seek.com.au"
+  },
+  {
+    id: 8, title: "Product Manager — FinTech", company: "Afterpay", logo: "AP",
+    location: "Melbourne, VIC", state: "VIC", salary: "$130,000 – $170,000 AUD", type: "Full-time",
+    industry: "Technology", posted: "5 days ago", featured: false,
+    tags: ["FinTech experience", "Fast growth", "NZ applications welcome"],
+    desc: "Join one of Australia's most exciting FinTech companies. Your NZ FinTech experience is a genuine advantage — we operate in both markets.",
+    url: "https://www.seek.com.au"
+  },
+  {
+    id: 9, title: "UX Designer — Digital Products", company: "REA Group", logo: "RE",
+    location: "Melbourne, VIC", state: "VIC", salary: "$100,000 – $130,000 AUD", type: "Full-time",
+    industry: "Technology", posted: "1 week ago", featured: false,
+    tags: ["Portfolio required", "Hybrid work", "Design system"],
+    desc: "REA Group runs realestate.com.au — Australia's #1 property platform. Design experience from NZ agencies or tech companies is highly valued here.",
+    url: "https://www.seek.com.au"
+  },
+  // Education
+  {
+    id: 10, title: "Primary School Teacher — Year 3/4", company: "Department of Education NSW", logo: "DE",
+    location: "Sydney, NSW", state: "NSW", salary: "$75,000 – $95,000 AUD", type: "Full-time",
+    industry: "Education", posted: "3 days ago", featured: false,
+    tags: ["NZ teaching registration accepted", "NESA recognition", "Permanent role"],
+    desc: "NSW DEC actively recruits NZ-trained teachers. Your NZ Teaching Council registration fast-tracks your NSW NESA accreditation — we guide you through the process.",
+    url: "https://www.seek.com.au"
+  },
+  {
+    id: 11, title: "Secondary Teacher — Maths & Science", company: "Catholic Education Office", logo: "CE",
+    location: "Brisbane, QLD", state: "QLD", salary: "$72,000 – $92,000 AUD", type: "Full-time",
+    industry: "Education", posted: "4 days ago", featured: false,
+    tags: ["QCT registration", "Relocation support", "Faith-based school"],
+    desc: "We're seeking experienced Maths/Science teachers from NZ. QLD Teacher Registration (QCT) is required but your NZ qualifications are fully recognised.",
+    url: "https://www.seek.com.au"
+  },
+  // Finance & Accounting
+  {
+    id: 12, title: "Senior Accountant — Tax", company: "KPMG Australia", logo: "KP",
+    location: "Melbourne, VIC", state: "VIC", salary: "$90,000 – $120,000 AUD", type: "Full-time",
+    industry: "Finance", posted: "2 days ago", featured: false,
+    tags: ["CA/CPA required", "NZ experience valued", "Big 4"],
+    desc: "NZ-qualified accountants are in strong demand across the Big 4 in Australia. Your CA NZ qualification is fully recognised by CA ANZ — no additional exams required.",
+    url: "https://www.seek.com.au"
+  },
+  {
+    id: 13, title: "Financial Adviser — Wealth Management", company: "Westpac Private Bank", logo: "WP",
+    location: "Perth, WA", state: "WA", salary: "$100,000 – $140,000 AUD", type: "Full-time",
+    industry: "Finance", posted: "6 days ago", featured: false,
+    tags: ["AFSL required", "WA market", "Client book provided"],
+    desc: "Westpac operates in both NZ and AU. NZ financial advisers with relevant AU licensing (AFSL) are sought — we provide regulatory upskilling support.",
+    url: "https://www.seek.com.au"
+  },
+  // Hospitality
+  {
+    id: 14, title: "Executive Chef", company: "Crown Resorts", logo: "CR",
+    location: "Melbourne, VIC", state: "VIC", salary: "$95,000 – $125,000 AUD", type: "Full-time",
+    industry: "Hospitality", posted: "1 day ago", featured: false,
+    tags: ["Luxury property", "No visa required", "Staff benefits"],
+    desc: "Crown Melbourne is one of Australia's most iconic hospitality venues. Kiwi chefs with fine dining experience are highly regarded — no visa or work permit required.",
+    url: "https://www.seek.com.au"
+  },
+  {
+    id: 15, title: "Hotel Operations Manager", company: "AccorHotels", logo: "AC",
+    location: "Adelaide, SA", state: "SA", salary: "$80,000 – $100,000 AUD", type: "Full-time",
+    industry: "Hospitality", posted: "5 days ago", featured: false,
+    tags: ["Multi-property experience", "Relocation package", "Leadership role"],
+    desc: "Accor is expanding across South Australia. Hotel management experience from NZ (especially Scenic, Heritage, or SkyCity properties) is directly transferable.",
+    url: "https://www.seek.com.au"
+  },
+  // Engineering
+  {
+    id: 16, title: "Civil Engineer — Infrastructure", company: "Aurecon", logo: "AU",
+    location: "Brisbane, QLD", state: "QLD", salary: "$95,000 – $130,000 AUD", type: "Full-time",
+    industry: "Engineering", posted: "3 days ago", featured: true,
+    tags: ["Engineers Australia", "CPEng pathway", "QLD projects"],
+    desc: "Aurecon has offices across NZ and AU. Transfer opportunities are available — your NZ engineering experience counts toward Engineers Australia membership, which we sponsor.",
+    url: "https://www.seek.com.au"
+  },
+  {
+    id: 17, title: "Mechanical Engineer — Mining", company: "Rio Tinto", logo: "RT",
+    location: "Perth, WA", state: "WA", salary: "$120,000 – $160,000 AUD", type: "FIFO",
+    industry: "Engineering", posted: "1 week ago", featured: false,
+    tags: ["FIFO Karratha", "High earnings", "NZ applicants welcome"],
+    desc: "Rio Tinto operates major iron ore mines in the Pilbara. FIFO from Perth. NZ-qualified engineers are a great fit — no visa, no immigration hurdles.",
+    url: "https://www.seek.com.au"
+  },
+  // Marketing
+  {
+    id: 18, title: "Digital Marketing Manager", company: "Redbubble", logo: "RB",
+    location: "Melbourne, VIC", state: "VIC", salary: "$100,000 – $125,000 AUD", type: "Hybrid",
+    industry: "Marketing", posted: "2 days ago", featured: false,
+    tags: ["eCommerce", "Global brand", "Flexible work"],
+    desc: "Redbubble is a global marketplace headquartered in Melbourne. NZ marketers with eCommerce experience are a strong fit — the market dynamics between NZ and AU are well understood.",
+    url: "https://www.seek.com.au"
+  },
+];
+
+const industries = ["All", "Healthcare", "Construction", "Trades", "Technology", "Education", "Finance", "Hospitality", "Engineering", "Marketing"];
+const states = ["All", "NSW", "VIC", "QLD", "WA", "SA"];
+const types = ["All", "Full-time", "Part-time", "Hybrid", "FIFO"];
+
+const featuredJobs = jobs.filter(j => j.featured);
+---
+
+<Layout
+  title="Jobs in Australia for New Zealanders | GoAustralia.co.nz"
+  description="Find jobs in Australia for New Zealanders. Roles across healthcare, construction, tech, education and more — with NZ-specific advice on qualifications, licensing and salary."
+>
+
+<style is:global>
+  /* ── JOBS PAGE ── */
+  .jobs-hero {
+    background: #0D2137;
+    background-image: radial-gradient(ellipse 55% 80% at 95% 50%, rgba(0,105,143,0.22) 0%, transparent 65%);
+    border-bottom: none;
+    padding: 60px 0 0;
+    overflow: hidden;
+  }
+  .jobs-hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 64px;
+    align-items: end;
+  }
+  .jobs-hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,105,143,0.15); color: #7ED3EF;
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+    padding: 5px 14px; border-radius: 4px; margin-bottom: 24px;
+    border: 1px solid rgba(0,105,143,0.25);
+  }
+  .jobs-hero-tag-dot { width: 5px; height: 5px; background: #7ED3EF; border-radius: 50%; flex-shrink: 0; }
+  .jobs-hero h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(2.1rem, 3.8vw, 3rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    margin-bottom: 20px;
+  }
+  .jobs-hero h1 em { color: #7ED3EF; font-style: italic; }
+  .jobs-hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.75;
+    max-width: 460px;
+    margin-bottom: 36px;
+  }
+  .jobs-hero-stats {
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .jobs-hero-stat {
+    padding: 0 24px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .jobs-hero-stat:first-child { padding-left: 0; }
+  .jobs-hero-stat:last-child { border-right: none; }
+  .jobs-hero-stat strong {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .jobs-hero-stat span {
+    font-size: 11px;
+    color: rgba(255,255,255,0.42);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+  }
+
+  /* ── FEATURE CARD (right side of hero) ── */
+  .jobs-feature-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.35), 0 4px 16px rgba(0,0,0,0.2);
+    transform: translateY(32px);
+  }
+  .jfc-header {
+    background: #00698F;
+    padding: 16px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .jfc-header-title { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; color: #fff; }
+  .jfc-header-sub { font-family: 'Inter', sans-serif; font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+  .jfc-live {
+    display: flex; align-items: center; gap: 5px;
+    font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+    color: rgba(255,255,255,0.7);
+  }
+  .jfc-live-dot { width: 6px; height: 6px; background: #7ED3EF; border-radius: 50%; }
+  .jfc-list { padding: 6px 12px 4px; }
+  .jfc-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 8px; border-radius: 7px;
+    border-bottom: 1px solid #F3F4F6;
+  }
+  .jfc-row:last-child { border-bottom: none; }
+  .jfc-logo {
+    width: 36px; height: 36px; border-radius: 7px;
+    background: #0D2137; color: #fff;
+    font-size: 11px; font-weight: 800; letter-spacing: -0.02em;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-family: 'Inter', sans-serif;
+  }
+  .jfc-info { flex: 1; min-width: 0; }
+  .jfc-name {
+    font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; color: #111827;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    margin-bottom: 1px;
+  }
+  .jfc-meta { font-family: 'Inter', sans-serif; font-size: 11px; color: #9CA3AF; }
+  .jfc-salary {
+    font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+    color: #00698F; flex-shrink: 0; white-space: nowrap;
+  }
+  .jfc-footer {
+    padding: 11px 20px; border-top: 1px solid #F3F4F6;
+    font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+    color: #00698F; text-align: center;
+  }
+
+  /* ── SEARCH BAR ── */
+  .jobs-search-bar {
+    background: #F4F6F8;
+    border-bottom: 1px solid #DDE2E8;
+    padding: 52px 0 20px;
+    position: sticky;
+    top: 64px;
+    z-index: 80;
+  }
+  .jobs-search-inner {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .jobs-search-wrap {
+    flex: 1;
+    min-width: 200px;
+    position: relative;
+  }
+  .jobs-search-icon {
+    position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
+    color: #9CA3AF; font-size: 15px; pointer-events: none;
+  }
+  .jobs-search-input {
+    width: 100%;
+    background: #fff;
+    border: 1.5px solid #DDE2E8;
+    border-radius: 6px;
+    padding: 11px 14px 11px 38px;
+    font-size: 14px;
+    color: #111827;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.15s;
+  }
+  .jobs-search-input::placeholder { color: #9CA3AF; }
+  .jobs-search-input:focus { border-color: var(--amber); }
+  .jobs-filter-select {
+    background: #fff;
+    border: 1.5px solid #DDE2E8;
+    border-radius: 6px;
+    padding: 11px 36px 11px 14px;
+    font-size: 13px;
+    color: #374151;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    transition: border-color 0.15s;
+    min-width: 140px;
+  }
+  .jobs-filter-select:focus { border-color: var(--amber); }
+  .jobs-count {
+    font-size: 13px; color: #6B7280;
+    font-family: 'Inter', sans-serif; white-space: nowrap;
+    margin-left: 4px;
+  }
+  #jobs-count-num { color: #111827; font-weight: 600; }
+
+  /* ── JOBS LAYOUT ── */
+  .jobs-body { padding: 36px 0 80px; background: #F9FAFB; }
+  .jobs-layout { display: grid; grid-template-columns: 280px 1fr; gap: 28px; align-items: start; }
+
+  /* ── SIDEBAR ── */
+  .jobs-sidebar { position: sticky; top: 136px; }
+  .jobs-sidebar-card {
+    background: #fff;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .jobs-sidebar-title {
+    font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em; color: #9CA3AF;
+    margin-bottom: 12px;
+  }
+  .jobs-filter-group { display: flex; flex-direction: column; gap: 2px; }
+  .jobs-filter-btn {
+    text-align: left; padding: 8px 10px; border-radius: 5px;
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
+    color: #4B5563; cursor: pointer; border: none; background: none;
+    transition: all 0.12s; display: flex; justify-content: space-between; align-items: center;
+  }
+  .jobs-filter-btn:hover { background: #F3F4F6; color: #111827; }
+  .jobs-filter-btn.active { background: #E6F2F7; color: #00698F; font-weight: 600; }
+  .jobs-filter-count {
+    font-size: 11px; color: #9CA3AF; font-weight: 400;
+  }
+  .jobs-filter-btn.active .jobs-filter-count { color: #00698F; }
+
+  .jobs-post-cta {
+    background: #0D2137;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+  .jobs-post-cta h4 {
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+    color: #fff; margin-bottom: 6px;
+  }
+  .jobs-post-cta p {
+    font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.55;
+    margin-bottom: 14px; font-family: 'Inter', sans-serif;
+  }
+  .jobs-post-cta a {
+    display: block; background: var(--amber); color: #fff;
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+    padding: 10px; border-radius: 5px; transition: background 0.12s;
+  }
+  .jobs-post-cta a:hover { background: #004F6D; }
+
+  /* ── JOB CARDS ── */
+  .jobs-list { display: flex; flex-direction: column; gap: 12px; }
+
+  .job-card {
+    background: #fff;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 22px 24px;
+    transition: box-shadow 0.15s, border-color 0.15s;
+    cursor: pointer;
+    display: block;
+    color: inherit;
+  }
+  .job-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-color: #D1D5DB;
+  }
+  .job-card.featured {
+    border-color: #00698F;
+    border-width: 1.5px;
+  }
+  .job-card-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+  .job-logo {
+    width: 46px; height: 46px; border-radius: 8px;
+    background: #0D2137; color: #fff;
+    font-size: 12px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-family: 'Inter', sans-serif; letter-spacing: -0.02em;
+  }
+  .job-logo.amber { background: var(--amber); }
+  .job-logo.blue  { background: #1D4ED8; }
+  .job-logo.green { background: #059669; }
+  .job-logo.purple { background: #7C3AED; }
+  .job-logo.red   { background: #DC2626; }
+  .job-logo.teal  { background: #0891B2; }
+  .job-logo.slate { background: #475569; }
+
+  .job-info { flex: 1; min-width: 0; }
+  .job-title {
+    font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700;
+    color: #111827; margin-bottom: 3px; line-height: 1.3;
+  }
+  .job-company {
+    font-family: 'Inter', sans-serif; font-size: 13px; color: #6B7280; margin-bottom: 0;
+  }
+  .job-badge-featured {
+    flex-shrink: 0;
+    background: #E6F2F7; color: #00698F;
+    font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 3px 8px; border-radius: 3px; border: 1px solid #CCE7F0;
+    margin-top: 2px;
+  }
+  .job-desc {
+    font-family: 'Inter', sans-serif; font-size: 13px; color: #6B7280;
+    line-height: 1.6; margin-bottom: 14px;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .job-meta {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .job-meta-item {
+    display: flex; align-items: center; gap: 5px;
+    font-family: 'Inter', sans-serif; font-size: 12px; color: #6B7280;
+  }
+  .job-meta-icon { font-size: 13px; }
+  .job-salary {
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; color: #111827;
+  }
+  .job-tags {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px;
+  }
+  .job-tag {
+    background: #F3F4F6; color: #4B5563;
+    font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500;
+    padding: 3px 9px; border-radius: 3px;
+  }
+  .job-tag.green { background: #DCFCE7; color: #166534; }
+  .job-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid #F3F4F6; padding-top: 12px;
+  }
+  .job-posted {
+    font-family: 'Inter', sans-serif; font-size: 11px; color: #9CA3AF;
+  }
+  .job-apply {
+    background: #0D2137; color: #fff;
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+    padding: 9px 20px; border-radius: 5px;
+    transition: background 0.12s; display: inline-block;
+  }
+  .job-apply:hover { background: #1E293B; }
+  .job-card.featured .job-apply { background: var(--amber); }
+  .job-card.featured .job-apply:hover { background: #004F6D; }
+
+  /* No results */
+  .jobs-empty {
+    text-align: center; padding: 60px 20px;
+    background: #fff; border: 1px solid #E5E7EB; border-radius: 8px;
+  }
+  .jobs-empty h3 {
+    font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 700;
+    color: #111827; margin-bottom: 8px;
+  }
+  .jobs-empty p {
+    font-family: 'Inter', sans-serif; font-size: 13px; color: #6B7280; line-height: 1.6;
+  }
+
+  /* ── KIWI CALLOUT ── */
+  .kiwi-callout {
+    background: #E6F2F7; border: 1.5px solid #CCE7F0; border-radius: 8px;
+    padding: 16px 18px; margin-bottom: 12px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .kiwi-callout-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+  .kiwi-callout-text { font-family: 'Inter', sans-serif; font-size: 13px; color: #004F6D; line-height: 1.6; }
+  .kiwi-callout-text strong { font-weight: 700; }
+
+  /* ── POST A JOB BANNER ── */
+  .post-job-banner {
+    background: #0D2137; border-radius: 8px; padding: 28px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; margin-top: 40px; flex-wrap: wrap;
+  }
+  .post-job-banner h3 {
+    font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 700;
+    color: #fff; margin-bottom: 4px;
+  }
+  .post-job-banner p {
+    font-family: 'Inter', sans-serif; font-size: 13px;
+    color: rgba(255,255,255,0.45); margin: 0;
+  }
+  .post-job-banner a {
+    background: var(--amber); color: #fff;
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+    padding: 12px 28px; border-radius: 5px; white-space: nowrap;
+    transition: background 0.12s; flex-shrink: 0; display: inline-block;
+  }
+  .post-job-banner a:hover { background: #004F6D; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .jobs-hero-inner { grid-template-columns: 1fr; gap: 32px; }
+    .jobs-feature-card { display: none; }
+    .jobs-search-bar { padding-top: 20px; }
+    .jobs-layout { grid-template-columns: 1fr; }
+    .jobs-sidebar { position: static; }
+    .jobs-sidebar-card { display: none; }
+    .jobs-post-cta { display: none; }
+  }
+  @media (max-width: 600px) {
+    .jobs-hero h1 { font-size: 1.8rem; }
+    .job-card-top { flex-wrap: wrap; }
+    .job-badge-featured { order: -1; }
+    .job-meta { gap: 10px; }
+    .job-footer { flex-direction: column; align-items: stretch; gap: 10px; }
+    .job-apply { text-align: center; }
+  }
+</style>
+
+<!-- HERO -->
+<section class="jobs-hero">
+  <div class="shell">
+    <div class="jobs-hero-inner">
+      <div>
+        <div class="jobs-hero-tag">
+          <span class="jobs-hero-tag-dot"></span>
+          Kiwi-first &middot; No visa required
+        </div>
+        <h1>Find your <em>Australian</em> career without the visa headache</h1>
+        <p class="jobs-hero-sub">Every role here is open to NZ citizens. No visa, no sponsorship needed — you have the right to work anywhere in Australia from day one.</p>
+        <div class="jobs-hero-stats">
+          <div class="jobs-hero-stat">
+            <strong>{jobs.length}</strong>
+            <span>Active roles</span>
+          </div>
+          <div class="jobs-hero-stat">
+            <strong>6</strong>
+            <span>Industries</span>
+          </div>
+          <div class="jobs-hero-stat">
+            <strong>5</strong>
+            <span>States</span>
+          </div>
+          <div class="jobs-hero-stat">
+            <strong>$0</strong>
+            <span>Visa cost</span>
+          </div>
+        </div>
+      </div>
+      <!-- Feature card -->
+      <div class="jobs-feature-card">
+        <div class="jfc-header">
+          <div>
+            <div class="jfc-header-title">Roles open to Kiwis now</div>
+            <div class="jfc-header-sub">No visa · No sponsorship needed</div>
+          </div>
+          <div class="jfc-live"><span class="jfc-live-dot"></span>Live</div>
+        </div>
+        <div class="jfc-list">
+          {featuredJobs.slice(0, 3).map(job => (
+            <div class="jfc-row">
+              <div class="jfc-logo">{job.logo}</div>
+              <div class="jfc-info">
+                <div class="jfc-name">{job.title}</div>
+                <div class="jfc-meta">{job.company} · {job.location}</div>
+              </div>
+              <div class="jfc-salary">{job.salary.split('–')[0].trim()}+</div>
+            </div>
+          ))}
+        </div>
+        <div class="jfc-footer">View all {jobs.length} roles ↓</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEARCH & FILTER BAR -->
+<div class="jobs-search-bar">
+  <div class="shell jobs-search-inner">
+    <div class="jobs-search-wrap">
+      <span class="jobs-search-icon">⌕</span>
+      <input
+        type="text"
+        id="jobs-search"
+        class="jobs-search-input"
+        placeholder="Search job title, company, keyword..."
+      />
+    </div>
+    <select id="filter-state" class="jobs-filter-select">
+      {states.map(s => <option value={s}>{s === 'All' ? 'All States' : s}</option>)}
+    </select>
+    <select id="filter-industry" class="jobs-filter-select">
+      {industries.map(i => <option value={i}>{i === 'All' ? 'All Industries' : i}</option>)}
+    </select>
+    <select id="filter-type" class="jobs-filter-select">
+      {types.map(t => <option value={t}>{t === 'All' ? 'All Types' : t}</option>)}
+    </select>
+    <span class="jobs-count"><span id="jobs-count-num">{jobs.length}</span> roles</span>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="jobs-body">
+  <div class="shell jobs-layout">
+
+    <!-- Sidebar -->
+    <aside class="jobs-sidebar">
+      <div class="jobs-sidebar-card">
+        <div class="jobs-sidebar-title">Filter by State</div>
+        <div class="jobs-filter-group" id="state-sidebar">
+          {states.map(s => {
+            const count = s === 'All' ? jobs.length : jobs.filter(j => j.state === s).length;
+            return (
+              <button class={`jobs-filter-btn${s === 'All' ? ' active' : ''}`} data-state={s}>
+                {s === 'All' ? 'All States' : s}
+                <span class="jobs-filter-count">{count}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <div class="jobs-sidebar-card">
+        <div class="jobs-sidebar-title">Filter by Industry</div>
+        <div class="jobs-filter-group" id="industry-sidebar">
+          {industries.map(i => {
+            const count = i === 'All' ? jobs.length : jobs.filter(j => j.industry === i).length;
+            return count > 0 ? (
+              <button class={`jobs-filter-btn${i === 'All' ? ' active' : ''}`} data-industry={i}>
+                {i}
+                <span class="jobs-filter-count">{count}</span>
+              </button>
+            ) : null;
+          })}
+        </div>
+      </div>
+
+      <div class="jobs-post-cta">
+        <h4>Hiring Kiwis?</h4>
+        <p>Reach 30,000+ NZ professionals planning their Australian move.</p>
+        <a href="mailto:hello@goaustralia.co.nz?subject=Post a Job">Post a Job — from $149</a>
+      </div>
+    </aside>
+
+    <!-- Job list -->
+    <div>
+      <div class="kiwi-callout">
+        <div class="kiwi-callout-icon">🥝</div>
+        <div class="kiwi-callout-text">
+          <strong>No visa required.</strong> As a New Zealand citizen you can work anywhere in Australia immediately under the Special Category Visa (subclass 444). Every role here is open to you from day one — no employer sponsorship needed.
+        </div>
+      </div>
+
+      <div class="jobs-list" id="jobs-list">
+        {jobs.map((job, i) => {
+          const logoColors = ['', 'amber', 'blue', 'green', 'purple', 'red', 'teal', 'slate'];
+          const color = logoColors[(i % (logoColors.length - 1)) + 1];
+          return (
+            <a href={job.url} target="_blank" rel="noopener" class={`job-card${job.featured ? ' featured' : ''}`}
+               data-title={job.title.toLowerCase()}
+               data-company={job.company.toLowerCase()}
+               data-state={job.state}
+               data-industry={job.industry}
+               data-type={job.type}
+            >
+              <div class="job-card-top">
+                <div class={`job-logo ${color}`}>{job.logo}</div>
+                <div class="job-info">
+                  <div class="job-title">{job.title}</div>
+                  <div class="job-company">{job.company}</div>
+                </div>
+                {job.featured && <div class="job-badge-featured">Featured</div>}
+              </div>
+
+              <p class="job-desc">{job.desc}</p>
+
+              <div class="job-meta">
+                <span class="job-meta-item">
+                  <span class="job-meta-icon">📍</span>
+                  {job.location}
+                </span>
+                <span class="job-meta-item">
+                  <span class="job-meta-icon">💼</span>
+                  {job.type}
+                </span>
+                <span class="job-meta-item job-salary">
+                  {job.salary}
+                </span>
+              </div>
+
+              <div class="job-tags">
+                {job.tags.map(tag => (
+                  <span class={`job-tag${tag.toLowerCase().includes('nz') || tag.toLowerCase().includes('kiwi') || tag.toLowerCase().includes('relocation') ? ' green' : ''}`}>{tag}</span>
+                ))}
+              </div>
+
+              <div class="job-footer">
+                <span class="job-posted">Posted {job.posted}</span>
+                <span class="job-apply">Apply now →</span>
+              </div>
+            </a>
+          );
+        })}
+
+        <div class="jobs-empty" id="jobs-empty" style="display:none;">
+          <h3>No roles match your search</h3>
+          <p>Try adjusting your filters or search term. New roles are added weekly.<br />
+          Can't find what you're looking for? <a href="mailto:hello@goaustralia.co.nz" style="color:var(--amber);">Contact us</a> and we'll help.</p>
+        </div>
+      </div>
+
+      <!-- Post a job banner -->
+      <div class="post-job-banner">
+        <div>
+          <h3>Hiring New Zealanders?</h3>
+          <p>Feature your role in front of 30,000+ Kiwis actively planning their Australian move.</p>
+        </div>
+        <a href="mailto:hello@goaustralia.co.nz?subject=Post a Job on GoAustralia">Post a Job — from $149 NZD →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="shell">
+    <h2>Ready to start your Australian career?</h2>
+    <p>Get the full 70-step checklist — including how to convert your NZ qualifications, set up your AU bank and TFN before you start work.</p>
+    <a href="/tools/checklist" class="cta-band-btn">View the Moving Checklist →</a>
+  </div>
+</div>
+
+<script>
+(function() {
+  const list = document.getElementById('jobs-list');
+  const cards = Array.from(list.querySelectorAll('.job-card[data-title]'));
+  const empty = document.getElementById('jobs-empty');
+  const countEl = document.getElementById('jobs-count-num');
+
+  const searchInput = document.getElementById('jobs-search');
+  const stateSelect = document.getElementById('filter-state');
+  const industrySelect = document.getElementById('filter-industry');
+  const typeSelect = document.getElementById('filter-type');
+
+  let activeState = 'All';
+  let activeIndustry = 'All';
+
+  function filter() {
+    const q = searchInput.value.toLowerCase().trim();
+    const state = stateSelect.value;
+    const industry = industrySelect.value;
+    const type = typeSelect.value;
+
+    let visible = 0;
+    cards.forEach(card => {
+      const matchQ = !q || card.dataset.title.includes(q) || card.dataset.company.includes(q);
+      const matchState = state === 'All' || card.dataset.state === state;
+      const matchIndustry = industry === 'All' || card.dataset.industry === industry;
+      const matchType = type === 'All' || card.dataset.type === type;
+      const show = matchQ && matchState && matchIndustry && matchType;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    countEl.textContent = visible;
+    empty.style.display = visible === 0 ? '' : 'none';
+  }
+
+  // Sidebar filter buttons
+  document.getElementById('state-sidebar').addEventListener('click', function(e) {
+    const btn = e.target.closest('.jobs-filter-btn');
+    if (!btn) return;
+    document.querySelectorAll('#state-sidebar .jobs-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    stateSelect.value = btn.dataset.state;
+    filter();
+  });
+
+  document.getElementById('industry-sidebar').addEventListener('click', function(e) {
+    const btn = e.target.closest('.jobs-filter-btn');
+    if (!btn) return;
+    document.querySelectorAll('#industry-sidebar .jobs-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    industrySelect.value = btn.dataset.industry;
+    filter();
+  });
+
+  // Sync dropdowns → sidebar
+  stateSelect.addEventListener('change', function() {
+    document.querySelectorAll('#state-sidebar .jobs-filter-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.state === this.value);
+    });
+    filter();
+  });
+
+  industrySelect.addEventListener('change', function() {
+    document.querySelectorAll('#industry-sidebar .jobs-filter-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.industry === this.value);
+    });
+    filter();
+  });
+
+  searchInput.addEventListener('input', filter);
+  typeSelect.addEventListener('change', filter);
+})();
+</script>
+
+</Layout>

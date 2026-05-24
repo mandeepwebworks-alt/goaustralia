@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Money & Finance for Kiwis Moving to Australia | GoAustralia.co.nz" description="KiwiSaver transfer, best AU bank accounts, NZD to AUD money transfer, and tax advice for New Zealanders moving to Australia.">
+
+<style is:global>
+  .money-hero {
+    background: #0D1117;
+    padding: 80px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .money-hero h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.2rem; font-weight: 800;
+    color: #fff; letter-spacing: -0.03em;
+    margin-bottom: 14px;
+  }
+  .money-hero p {
+    font-size: 1rem; color: rgba(255,255,255,0.45);
+    max-width: 520px; margin: 0 auto 32px; line-height: 1.65;
+    font-family: 'Inter', sans-serif;
+  }
+  .money-badge {
+    display: inline-block;
+    background: rgba(0,105,143,0.15); color: var(--amber);
+    border: 1px solid rgba(0,105,143,0.3);
+    font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    padding: 5px 14px; border-radius: 20px; margin-bottom: 20px;
+  }
+  .money-features {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px; margin: 60px auto 0; max-width: 960px; padding: 0 28px;
+    text-align: left;
+  }
+  .money-feature {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px; padding: 22px;
+  }
+  .money-feature-icon { font-size: 1.5rem; margin-bottom: 12px; }
+  .money-feature h3 {
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+    color: #fff; margin-bottom: 6px;
+  }
+  .money-feature p {
+    font-family: 'Inter', sans-serif; font-size: 13px;
+    color: rgba(255,255,255,0.4); line-height: 1.6; margin: 0;
+  }
+  @media (max-width: 700px) {
+    .money-features { grid-template-columns: 1fr; }
+    .money-hero h1 { font-size: 1.75rem; }
+  }
+</style>
+
+<section class="money-hero">
+  <div class="shell">
+    <div class="money-badge">Coming Soon</div>
+    <h1>Money & Finance for Kiwis in Australia</h1>
+    <p>KiwiSaver transfer, best AU bank accounts, cheapest NZD → AUD transfer, AU health insurance comparison and Kiwi-specific tax guidance.</p>
+    <a href="/tools/cost-calculator" class="hdr-cta" style="font-size:15px; padding:13px 32px; display:inline-block;">Try the Cost Calculator →</a>
+  </div>
+  <div class="money-features">
+    <div class="money-feature">
+      <div class="money-feature-icon">💰</div>
+      <h3>KiwiSaver Transfer Guide</h3>
+      <p>Transfer your KiwiSaver to Australian super without losing money. We explain the process and connect you with specialists.</p>
+    </div>
+    <div class="money-feature">
+      <div class="money-feature-icon">🏦</div>
+      <h3>Best AU Bank Accounts</h3>
+      <p>Compare CommBank, ANZ, Westpac and NAB for Kiwi arrivals. Open before you leave NZ — no address required.</p>
+    </div>
+    <div class="money-feature">
+      <div class="money-feature-icon">💱</div>
+      <h3>NZD → AUD Transfer</h3>
+      <p>Stop losing money on bank exchange rates. Compare Wise, OFX and Remitly for the best NZD to AUD rates.</p>
+    </div>
+    <div class="money-feature">
+      <div class="money-feature-icon">🏥</div>
+      <h3>AU Health Insurance</h3>
+      <p>Medicare covers basics but not everything. Compare Bupa, Medibank and HCF for the right cover at the right price.</p>
+    </div>
+    <div class="money-feature">
+      <div class="money-feature-icon">📊</div>
+      <h3>Tax for Kiwis</h3>
+      <p>IRD departure, AU tax residency, dual-country obligations — we explain what you actually need to do.</p>
+    </div>
+    <div class="money-feature">
+      <div class="money-feature-icon">🏠</div>
+      <h3>AU Property for Kiwis</h3>
+      <p>NZ citizens are exempt from FIRB approval for AU residential property — a huge advantage most Kiwis don't know about.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="shell">
+    <h2>Don't leave money on the table</h2>
+    <p>The Tax & Finance guide is included in Full Access — covers IRD departure, KiwiSaver transfer and AU tax in plain English.</p>
+    <a href="/pricing" class="cta-band-btn">Get Full Access — $24.99 NZD →</a>
+  </div>
+</div>
+
+</Layout>

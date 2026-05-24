@@ -4,59 +4,168 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
 }
 
 const {
   title = 'GoAustralia.co.nz — The Complete Moving Guide for Kiwis',
   description = 'Step-by-step guides, visa tools and cost calculators for New Zealanders moving to Australia. Trusted by thousands of Kiwis.',
+  ogImage = '/og-default.png',
 } = Astro.props;
 
+const siteUrl = 'https://goaustralia.co.nz';
+const canonicalUrl = `${siteUrl}${Astro.url.pathname.replace(/\/$/, '') || '/'}`;
+
 const path = Astro.url.pathname;
-const active = (prefix: string) =>
+const isActive = (prefix: string) =>
   prefix === '/' ? path === '/' : path.startsWith(prefix);
+
+const websiteSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "GoAustralia.co.nz",
+  "url": siteUrl,
+  "description": "The complete resource for New Zealanders moving to Australia. 70-step checklist, jobs, money guides and more.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": `${siteUrl}/blog?q={search_term_string}`,
+    "query-input": "required name=search_term_string"
+  }
+});
+
+const orgSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "GoAustralia.co.nz",
+  "url": siteUrl,
+  "logo": `${siteUrl}/favicon.svg`,
+  "description": "Helping New Zealanders move to Australia with step-by-step guides, checklists and expert advice.",
+  "areaServed": ["NZ", "AU"],
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "New Zealanders planning to move to Australia"
+  }
+});
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-NZ">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary meta -->
   <title>{title}</title>
   <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:site_name" content="GoAustralia.co.nz" />
+  <meta property="og:locale" content="en_NZ" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json" set:html={websiteSchema} />
+  <script type="application/ld+json" set:html={orgSchema} />
+
+  <!-- Google Search Console verification — replace content value with your actual token -->
+  <!-- <meta name="google-site-verification" content="PASTE_YOUR_TOKEN_HERE" /> -->
+
   <slot name="head" />
 </head>
 <body>
 
-<div class="top-bar">
-  <div class="shell top-bar-inner">
-    <span>Independent guide for Kiwis &mdash; not affiliated with the Australian or New Zealand government</span>
-    <a href="/about">About this site</a>
-  </div>
-</div>
-
+<!-- HEADER -->
 <header class="site-header">
   <div class="shell site-header-inner">
+
+    <!-- Logo -->
     <a href="/" class="site-logo">
       <span class="site-logo-name">GoAustralia</span>
       <span class="site-logo-tld">.co.nz</span>
     </a>
-    <nav class="site-nav">
-      <a href="/tools/visa-checker" class={active('/tools') ? 'active' : ''}>Tools</a>
-      <a href="/guides" class={active('/guides') ? 'active' : ''}>Guides</a>
-      <a href="/blog" class={active('/blog') ? 'active' : ''}>Blog</a>
-      <a href="/about" class={active('/about') ? 'active' : ''}>About</a>
+
+    <!-- Desktop nav -->
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/tools/checklist"  class={isActive('/tools/checklist')  ? 'active' : ''}>Checklist</a>
+      <a href="/jobs"             class={isActive('/jobs')             ? 'active' : ''}>Jobs</a>
+      <a href="/moving"           class={isActive('/moving')           ? 'active' : ''}>Moving</a>
+      <a href="/money"            class={isActive('/money')            ? 'active' : ''}>Money</a>
+      <a href="/guides"           class={isActive('/guides')           ? 'active' : ''}>Guides</a>
     </nav>
+
+    <!-- Desktop CTAs -->
     <div class="site-header-cta">
-      <a href="/login" class="hdr-login">Log in</a>
-      <a href="/pricing" class="hdr-cta">Get the Guides</a>
+      <a href="/login"   class="hdr-login">Log in</a>
+      <a href="/pricing" class="hdr-cta">Get Access</a>
     </div>
+
+    <!-- Hamburger (mobile) -->
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
   </div>
 </header>
 
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <nav aria-label="Mobile navigation">
+    <a href="/tools/checklist"  class={isActive('/tools/checklist')  ? 'active' : ''}>Checklist</a>
+    <a href="/jobs"             class={isActive('/jobs')             ? 'active' : ''}>Jobs</a>
+    <a href="/moving"           class={isActive('/moving')           ? 'active' : ''}>Moving</a>
+    <a href="/money"            class={isActive('/money')            ? 'active' : ''}>Money</a>
+    <a href="/guides"           class={isActive('/guides')           ? 'active' : ''}>Guides</a>
+    <a href="/blog"             class={isActive('/blog')             ? 'active' : ''}>Blog</a>
+    <a href="/about"            class={isActive('/about')            ? 'active' : ''}>About</a>
+  </nav>
+  <div class="mobile-menu-footer">
+    <a href="/login"   class="mob-login">Log in</a>
+    <a href="/pricing" class="mob-cta">Get Access — $24.99 NZD</a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const btn = document.getElementById('hamburger');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', function() {
+      const isOpen = menu.classList.toggle('open');
+      btn.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(isOpen));
+      menu.setAttribute('aria-hidden', String(!isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        btn.classList.remove('open');
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      });
+    });
+  })();
+</script>
+
 <slot />
 
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="shell footer-disclaimer-bar">
     <p>GoAustralia.co.nz is independently operated and is not affiliated with the Australian or New Zealand government. Information is provided as general guidance only — always verify with official government sources before making immigration or financial decisions.</p>
@@ -67,21 +176,21 @@ const active = (prefix: string) =>
       <p>The most complete resource for New Zealanders planning their move to Australia.</p>
     </div>
     <div class="footer-col">
-      <h4>Free Tools</h4>
+      <h4>Tools</h4>
       <ul>
-        <li><a href="/tools/visa-checker">Visa Pathway Checker</a></li>
-        <li><a href="/tools/cost-calculator">Move Cost Calculator</a></li>
         <li><a href="/tools/checklist">Moving Checklist</a></li>
+        <li><a href="/tools/visa-checker">Visa Checker</a></li>
+        <li><a href="/tools/cost-calculator">Cost Calculator</a></li>
         <li><a href="/tools/suburb-finder">Suburb Finder</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>PDF Guides</h4>
+      <h4>Products</h4>
       <ul>
-        <li><a href="/guides">All Guides</a></li>
-        <li><a href="/guides/masterguide">Kiwi Masterguide</a></li>
-        <li><a href="/guides/tax-finance">Tax &amp; Finance</a></li>
-        <li><a href="/guides/jobs">Jobs in Australia</a></li>
+        <li><a href="/jobs">Jobs in Australia</a></li>
+        <li><a href="/moving">Moving Help</a></li>
+        <li><a href="/money">Money &amp; Finance</a></li>
+        <li><a href="/guides">PDF Guides</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -94,7 +203,7 @@ const active = (prefix: string) =>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Site</h4>
+      <h4>Company</h4>
       <ul>
         <li><a href="/about">About</a></li>
         <li><a href="/pricing">Pricing</a></li>
@@ -105,18 +214,18 @@ const active = (prefix: string) =>
     </div>
   </div>
   <div class="shell footer-bottom">
-    <p>&copy; 2025 GoAustralia.co.nz</p>
-    <p>Independent — not part of any government</p>
+    <p>&copy; 2026 GoAustralia.co.nz</p>
+    <p>Independent — not affiliated with any government</p>
   </div>
 </footer>
 
 <script>
-  const obs = new IntersectionObserver(entries => {
+  const dataRObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      if (e.isIntersecting) { e.target.classList.add('on'); dataRObs.unobserve(e.target); }
     });
   }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  document.querySelectorAll('[data-r]').forEach(el => dataRObs.observe(el));
 </script>
 
 </body>

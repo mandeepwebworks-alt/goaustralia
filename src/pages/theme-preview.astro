@@ -1,30 +1,27 @@
 ---
-// GoAustralia.co.nz — Homepage
+// Theme preview — staging only
 ---
 <!DOCTYPE html>
-<html lang="en-NZ">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GoAustralia.co.nz — The Complete Moving Guide for Kiwis</title>
-  <meta name="description" content="Step-by-step guidance for New Zealanders moving to Australia. TFN, Medicare, KiwiSaver transfer, jobs and more. 70 Kiwi-specific steps." />
-  <link rel="canonical" href="https://goaustralia.co.nz/" />
-  <meta name="robots" content="index, follow" />
-  <link rel="icon" href="/favicon.ico" />
+  <title>Theme Preview — GoAustralia.co.nz</title>
+  <meta name="robots" content="noindex" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; background: #F4F6F8; color: #0D1117; }
+    body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; background: #FBF9F6; color: #0D1117; }
 
     .shell { max-width: 1120px; margin: 0 auto; padding: 0 40px; }
 
     /* ── HEADER ── */
     .hdr {
       background: #fff;
-      border-bottom: 1px solid #DDE2E8;
+      border-bottom: 1px solid #EAE6DF;
       position: sticky; top: 0; z-index: 100;
     }
     .hdr-inner {
@@ -35,25 +32,25 @@
       font-size: 17px; font-weight: 800; letter-spacing: -0.04em;
       color: #0D1117; text-decoration: none;
     }
-    .hdr-logo span { color: #00698F; }
+    .hdr-logo span { color: #16A34A; }
     .hdr-nav { display: flex; gap: 2px; }
     .hdr-nav a {
       font-size: 14px; font-weight: 600; color: #4B5563;
       text-decoration: none; padding: 7px 13px; border-radius: 5px; transition: all 0.12s;
     }
-    .hdr-nav a:hover, .hdr-nav a.on { color: #00698F; background: #E6F2F7; }
+    .hdr-nav a:hover, .hdr-nav a.on { color: #16A34A; background: #F0FDF4; }
     .hdr-ctas { display: flex; align-items: center; gap: 8px; }
     .hdr-login { font-size: 14px; font-weight: 600; color: #374151; text-decoration: none; padding: 8px 14px; }
     .hdr-login:hover { color: #0D1117; }
     .hdr-btn {
-      background: #00698F; color: #fff; font-size: 14px; font-weight: 700;
+      background: #16A34A; color: #fff; font-size: 14px; font-weight: 700;
       padding: 9px 20px; border-radius: 6px; text-decoration: none; transition: background 0.12s;
     }
-    .hdr-btn:hover { background: #004F6D; }
+    .hdr-btn:hover { background: #15803D; }
 
     /* ── HERO ── */
     .hero {
-      background: #0D2137;
+      background: #0A1628;
       padding: 88px 0 0;
       overflow: hidden;
     }
@@ -62,27 +59,27 @@
     }
     .hero-tag {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0,105,143,0.15); color: #7ED3EF;
+      background: rgba(22, 163, 74, 0.15); color: #4ADE80;
       font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
       padding: 5px 14px; border-radius: 4px; margin-bottom: 28px;
-      border: 1px solid rgba(0,105,143,0.25);
+      border: 1px solid rgba(22, 163, 74, 0.25);
     }
-    .hero-tag-dot { width: 5px; height: 5px; background: #7ED3EF; border-radius: 50%; }
+    .hero-tag-dot { width: 5px; height: 5px; background: #4ADE80; border-radius: 50%; }
     .hero h1 {
       font-size: clamp(2.4rem, 4.5vw, 3.4rem); font-weight: 800; color: #fff;
       line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 22px;
     }
-    .hero h1 em { font-style: italic; color: #7ED3EF; }
+    .hero h1 em { font-style: italic; color: #4ADE80; }
     .hero-sub {
       font-size: 17px; color: rgba(255,255,255,0.6); line-height: 1.8;
       max-width: 460px; margin-bottom: 40px;
     }
     .hero-btns { display: flex; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
     .btn-primary {
-      background: #00698F; color: #fff; font-size: 15px; font-weight: 700;
+      background: #16A34A; color: #fff; font-size: 15px; font-weight: 700;
       padding: 13px 26px; border-radius: 6px; text-decoration: none; transition: background 0.12s;
     }
-    .btn-primary:hover { background: #004F6D; }
+    .btn-primary:hover { background: #15803D; }
     .btn-outline {
       background: transparent; color: rgba(255,255,255,0.75); font-size: 15px; font-weight: 600;
       padding: 12px 24px; border-radius: 6px; border: 1.5px solid rgba(255,255,255,0.2);
@@ -94,7 +91,7 @@
       display: flex; align-items: center; gap: 7px;
       font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.4);
     }
-    .trust-i svg { color: #00698F; flex-shrink: 0; }
+    .trust-i svg { color: #16A34A; flex-shrink: 0; }
 
     /* Hero card */
     .hero-card {
@@ -103,7 +100,7 @@
       transform: translateY(32px);
     }
     .hcard-hd {
-      background: #00698F; padding: 16px 20px;
+      background: #16A34A; padding: 16px 20px;
       display: flex; align-items: center; justify-content: space-between;
     }
     .hcard-hd-left {}
@@ -112,40 +109,40 @@
     .hcard-progress-wrap { padding: 12px 16px 0; }
     .hcard-progress-label { display: flex; justify-content: space-between; font-size: 10px; font-weight: 600; color: #6B7280; margin-bottom: 5px; }
     .hcard-bar { background: #F3F4F6; height: 4px; border-radius: 2px; }
-    .hcard-bar-fill { height: 100%; width: 23%; background: #00698F; border-radius: 2px; }
+    .hcard-bar-fill { height: 100%; width: 23%; background: #16A34A; border-radius: 2px; }
     .hcard-steps { padding: 10px 12px 16px; display: flex; flex-direction: column; gap: 5px; }
     .hcard-step {
       display: flex; align-items: center; gap: 10px;
       padding: 9px 11px; border-radius: 7px;
     }
-    .hcard-step.done { background: #E6F2F7; }
+    .hcard-step.done { background: #F0FDF4; }
     .hcard-step.prog { background: #EFF6FF; }
     .hcard-step.todo { background: #F9FAFB; }
     .hcard-dot {
       width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
     }
-    .hcard-step.done .hcard-dot { background: #00698F; }
+    .hcard-step.done .hcard-dot { background: #16A34A; }
     .hcard-step.prog .hcard-dot { border: 2px solid #2563EB; }
     .hcard-step.todo .hcard-dot { border: 2px solid #E5E7EB; background: #fff; }
     .hcard-text { flex: 1; min-width: 0; }
     .hcard-name { font-size: 12px; font-weight: 600; color: #0D1117; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .hcard-step.done .hcard-name { color: #00698F; }
+    .hcard-step.done .hcard-name { color: #16A34A; }
     .hcard-step.todo .hcard-name { color: #9CA3AF; }
     .hcard-meta { font-size: 10.5px; color: #9CA3AF; margin-top: 1px; }
-    .hcard-step.done .hcard-meta { color: #7ED3EF; }
+    .hcard-step.done .hcard-meta { color: #86EFAC; }
     .hcard-foot {
       padding: 11px 16px; border-top: 1px solid #F3F4F6;
       display: flex; align-items: center; justify-content: space-between;
     }
     .hcard-foot-txt { font-size: 11px; color: #9CA3AF; }
     .hcard-cta {
-      background: #0D2137; color: #fff; font-size: 11px; font-weight: 700;
+      background: #0A1628; color: #fff; font-size: 11px; font-weight: 700;
       padding: 6px 14px; border-radius: 4px; text-decoration: none;
     }
 
     /* ── STATS ── */
-    .stats { background: #00698F; padding: 32px 0; }
+    .stats { background: #16A34A; padding: 32px 0; }
     .stats-row { display: flex; justify-content: space-between; }
     .stat-i {
       flex: 1; text-align: center; padding: 8px 16px;
@@ -162,7 +159,7 @@
     .sec-header.center { text-align: center; }
     .sec-eye {
       font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em;
-      color: #00698F; display: block; margin-bottom: 12px;
+      color: #16A34A; display: block; margin-bottom: 12px;
     }
     .sec-h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: #0D1117; letter-spacing: -0.03em; margin-bottom: 14px; }
     .sec-sub { font-size: 16px; color: #4B5563; line-height: 1.75; max-width: 520px; }
@@ -171,47 +168,47 @@
     /* Cards */
     .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .card {
-      background: #F4F6F8; border: 1.5px solid #DDE2E8;
+      background: #FBF9F6; border: 1.5px solid #EAE6DF;
       border-radius: 10px; padding: 28px; transition: all 0.15s;
       display: flex; flex-direction: column;
     }
-    .card:hover { border-color: #CCE7F0; box-shadow: 0 4px 20px rgba(0,105,143,0.08); }
+    .card:hover { border-color: #D1FAE5; box-shadow: 0 4px 20px rgba(22,163,74,0.08); }
     .card.feat {
-      background: #0D2137; border-color: #0D2137;
+      background: #0A1628; border-color: #0A1628;
     }
     .card-ico {
-      width: 44px; height: 44px; border-radius: 9px; background: #E6F2F7;
-      color: #00698F; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+      width: 44px; height: 44px; border-radius: 9px; background: #F0FDF4;
+      color: #16A34A; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
     }
-    .card.feat .card-ico { background: rgba(0,105,143,0.2); color: #7ED3EF; }
+    .card.feat .card-ico { background: rgba(22,163,74,0.2); color: #4ADE80; }
     .card h3 { font-size: 15px; font-weight: 700; color: #0D1117; margin-bottom: 8px; }
     .card.feat h3 { color: #fff; }
     .card p { font-size: 13px; color: #6B7280; line-height: 1.65; margin-bottom: 20px; flex: 1; }
     .card.feat p { color: rgba(255,255,255,0.55); }
-    .card-lnk { font-size: 13px; font-weight: 700; color: #00698F; text-decoration: none; display: flex; align-items: center; gap: 4px; }
-    .card.feat .card-lnk { color: #7ED3EF; }
+    .card-lnk { font-size: 13px; font-weight: 700; color: #16A34A; text-decoration: none; display: flex; align-items: center; gap: 4px; }
+    .card.feat .card-lnk { color: #4ADE80; }
 
     /* Steps */
     .step-list { max-width: 700px; margin: 0 auto 0; display: flex; flex-direction: column; gap: 7px; }
     .step-row {
       display: flex; align-items: center; gap: 14px;
-      background: #fff; border: 1.5px solid #DDE2E8;
+      background: #fff; border: 1.5px solid #EAE6DF;
       border-radius: 8px; padding: 14px 18px; transition: all 0.12s;
     }
-    .step-row:hover { border-color: #99D4E8; }
-    .step-row.done { background: #E6F2F7; border-color: #99D4E8; }
+    .step-row:hover { border-color: #BBF7D0; }
+    .step-row.done { background: #F0FDF4; border-color: #BBF7D0; }
     .step-n { font-size: 11px; font-weight: 700; color: #9CA3AF; width: 22px; flex-shrink: 0; }
     .step-circle {
       width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
       border: 2px solid #E5E7EB; display: flex; align-items: center; justify-content: center;
     }
-    .step-row.done .step-circle { background: #00698F; border-color: #00698F; }
+    .step-row.done .step-circle { background: #16A34A; border-color: #16A34A; }
     .step-body { flex: 1; }
     .step-t { font-size: 14px; font-weight: 600; color: #0D1117; }
-    .step-row.done .step-t { color: #004F6D; }
+    .step-row.done .step-t { color: #15803D; }
     .step-tags { display: flex; gap: 6px; margin-top: 3px; flex-wrap: wrap; }
     .step-badge {
-      background: #E6F2F7; color: #00698F;
+      background: #F0FDF4; color: #16A34A;
       font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
       padding: 2px 8px; border-radius: 3px; white-space: nowrap;
     }
@@ -221,32 +218,32 @@
     /* Paywall */
     .paywall-blur { filter: blur(3.5px); pointer-events: none; opacity: 0.4; }
     .paywall-box {
-      background: #fff; border: 1.5px solid #DDE2E8; border-radius: 12px;
+      background: #fff; border: 1.5px solid #EAE6DF; border-radius: 12px;
       padding: 36px; text-align: center; margin-top: 16px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.06);
     }
     .paywall-box h3 { font-size: 1.3rem; font-weight: 800; color: #0D1117; margin-bottom: 8px; letter-spacing: -0.02em; }
     .paywall-box p { font-size: 14px; color: #6B7280; margin-bottom: 24px; line-height: 1.65; max-width: 340px; margin-left: auto; margin-right: auto; }
     .paywall-cta {
-      display: inline-block; background: #00698F; color: #fff;
+      display: inline-block; background: #16A34A; color: #fff;
       font-size: 15px; font-weight: 700; padding: 14px 30px; border-radius: 6px;
       text-decoration: none; margin-bottom: 12px; transition: background 0.12s;
     }
-    .paywall-cta:hover { background: #004F6D; }
+    .paywall-cta:hover { background: #15803D; }
     .paywall-note { font-size: 12px; color: #9CA3AF; }
 
     /* Pricing */
     .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .pc {
-      background: #fff; border: 1.5px solid #DDE2E8;
+      background: #fff; border: 1.5px solid #EAE6DF;
       border-radius: 12px; padding: 30px; display: flex; flex-direction: column; position: relative;
     }
     .pc.feat {
-      background: #0D2137; border-color: #0D2137;
+      background: #0A1628; border-color: #0A1628;
     }
     .pc-badge {
       position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-      background: #00698F; color: #fff;
+      background: #16A34A; color: #fff;
       font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
       padding: 4px 14px; border-radius: 20px; white-space: nowrap;
     }
@@ -265,53 +262,53 @@
     .pc-feats li.off { color: #D1D5DB; }
     .pc-check {
       width: 16px; height: 16px; border-radius: 50%;
-      background: #E6F2F7; flex-shrink: 0; margin-top: 1px;
+      background: #F0FDF4; flex-shrink: 0; margin-top: 1px;
       display: flex; align-items: center; justify-content: center;
     }
-    .pc.feat .pc-check { background: rgba(0,105,143,0.2); }
+    .pc.feat .pc-check { background: rgba(22,163,74,0.2); }
     .pc-check.off { background: #F9FAFB; }
     .pc-btn-p {
-      display: block; text-align: center; background: #00698F; color: #fff;
+      display: block; text-align: center; background: #16A34A; color: #fff;
       font-size: 14px; font-weight: 700; padding: 13px; border-radius: 6px; text-decoration: none;
       transition: background 0.12s;
     }
-    .pc-btn-p:hover { background: #004F6D; }
+    .pc-btn-p:hover { background: #15803D; }
     .pc-btn-s {
-      display: block; text-align: center; background: #F4F6F8; color: #0D1117;
+      display: block; text-align: center; background: #FBF9F6; color: #0D1117;
       font-size: 14px; font-weight: 600; padding: 13px; border-radius: 6px;
-      border: 1.5px solid #DDE2E8; text-decoration: none; transition: all 0.12s;
+      border: 1.5px solid #EAE6DF; text-decoration: none; transition: all 0.12s;
     }
     .pc-btn-s:hover { border-color: #D1D5DB; }
 
     /* Reviews */
     .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .review {
-      background: #fff; border: 1.5px solid #DDE2E8;
+      background: #fff; border: 1.5px solid #EAE6DF;
       border-radius: 10px; padding: 26px;
     }
     .review-stars { color: #F59E0B; font-size: 14px; letter-spacing: 1px; margin-bottom: 14px; }
     .review-txt { font-size: 14px; color: #374151; line-height: 1.75; margin-bottom: 20px; font-style: italic; }
     .review-author { display: flex; align-items: center; gap: 10px; }
     .review-av {
-      width: 36px; height: 36px; border-radius: 50%; background: #E6F2F7;
-      color: #00698F; font-size: 12px; font-weight: 800;
+      width: 36px; height: 36px; border-radius: 50%; background: #F0FDF4;
+      color: #16A34A; font-size: 12px; font-weight: 800;
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
     .review-name { font-size: 13px; font-weight: 700; color: #0D1117; }
     .review-loc { font-size: 11px; color: #9CA3AF; margin-top: 1px; }
 
     /* CTA band */
-    .cta-band { background: #0D2137; padding: 80px 0; text-align: center; }
+    .cta-band { background: #0A1628; padding: 80px 0; text-align: center; }
     .cta-band h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 800; color: #fff; letter-spacing: -0.04em; margin-bottom: 14px; }
-    .cta-band h2 em { font-style: italic; color: #7ED3EF; }
+    .cta-band h2 em { font-style: italic; color: #4ADE80; }
     .cta-band p { font-size: 17px; color: rgba(255,255,255,0.5); margin-bottom: 36px; line-height: 1.7; max-width: 480px; margin-left: auto; margin-right: auto; }
     .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
     .cta-btn-g {
-      background: #00698F; color: #fff;
+      background: #16A34A; color: #fff;
       font-size: 15px; font-weight: 700; padding: 14px 30px; border-radius: 6px;
       text-decoration: none; transition: background 0.12s;
     }
-    .cta-btn-g:hover { background: #004F6D; }
+    .cta-btn-g:hover { background: #15803D; }
     .cta-btn-w {
       background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.75);
       border: 1.5px solid rgba(255,255,255,0.15);
@@ -321,13 +318,13 @@
     .cta-btn-w:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
 
     /* Footer */
-    .ftr { background: #091929; padding: 56px 0 32px; }
+    .ftr { background: #060E1A; padding: 56px 0 32px; }
     .ftr-top {
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
       padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 28px;
     }
     .ftr-logo { font-size: 17px; font-weight: 800; letter-spacing: -0.04em; color: #fff; margin-bottom: 12px; }
-    .ftr-logo span { color: #7ED3EF; }
+    .ftr-logo span { color: #4ADE80; }
     .ftr-desc { font-size: 13px; color: rgba(255,255,255,0.3); line-height: 1.75; max-width: 220px; }
     .ftr-col h4 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.25); margin-bottom: 16px; }
     .ftr-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
@@ -352,17 +349,17 @@
   <!-- HEADER -->
   <header class="hdr">
     <div class="shell hdr-inner">
-      <a href="/">GoAustralia<span>.co.nz</span></a>
+      <a href="#" class="hdr-logo">GoAustralia<span>.co.nz</span></a>
       <nav class="hdr-nav">
-        <a href="/tools/checklist" class="on">Checklist</a>
+        <a href="#" class="on">Checklist</a>
         <a href="#">Jobs</a>
         <a href="#">Moving</a>
         <a href="#">Money</a>
         <a href="#">Guides</a>
       </nav>
       <div class="hdr-ctas">
-        <a href="/login" class="hdr-login">Log in</a>
-        <a href="/pricing" class="hdr-btn">Get Access</a>
+        <a href="#" class="hdr-login">Log in</a>
+        <a href="#" class="hdr-btn">Get Access</a>
       </div>
     </div>
   </header>
@@ -378,8 +375,8 @@
         <h1>The complete checklist<br>for Kiwis moving<br>to <em>Australia</em></h1>
         <p class="hero-sub">70 Kiwi-specific steps in the right order — TFN, Medicare, KiwiSaver transfer, AU super, driving licence and more. With official links and NZ-specific advice nobody else covers.</p>
         <div class="hero-btns">
-          <a href="/tools/checklist" class="btn-primary">Start Free Checklist</a>
-          <a href="/pricing" class="btn-outline">See pricing — $24.99</a>
+          <a href="#" class="btn-primary">Start Free Checklist</a>
+          <a href="#" class="btn-outline">See pricing — $24.99</a>
         </div>
         <div class="hero-trust">
           <span class="trust-i">
@@ -456,7 +453,7 @@
         </div>
         <div class="hcard-foot">
           <span class="hcard-foot-txt">23% complete</span>
-          <a href="/tools/checklist" class="hcard-cta">Unlock all 70 →</a>
+          <a href="#" class="hcard-cta">Unlock all 70 →</a>
         </div>
       </div>
     </div>
@@ -505,7 +502,7 @@
           </div>
           <h3>70-Step Moving Checklist</h3>
           <p>Every step in the right order — TFN, Medicare, KiwiSaver, driving licence, super and utilities. Kiwi-specific advice throughout.</p>
-          <a href="/tools/checklist" class="card-lnk">Start checklist →</a>
+          <a href="#" class="card-lnk">Start checklist →</a>
         </div>
         <div class="card feat">
           <div class="card-ico">
@@ -515,7 +512,7 @@
           </div>
           <h3>Jobs in Australia</h3>
           <p>Roles that welcome NZ experience. Filter by state, industry and salary. Post a job from $149.</p>
-          <a href="/jobs" class="card-lnk">Browse jobs →</a>
+          <a href="#" class="card-lnk">Browse jobs →</a>
         </div>
         <div class="card">
           <div class="card-ico">
@@ -525,7 +522,7 @@
           </div>
           <h3>Money & Finance</h3>
           <p>KiwiSaver transfer, AU bank accounts, NZD→AUD transfer and tax guide for Kiwis.</p>
-          <a href="/money" class="card-lnk">Learn more →</a>
+          <a href="#" class="card-lnk">Learn more →</a>
         </div>
       </div>
     </div>
@@ -622,7 +619,7 @@
       <div class="paywall-box">
         <h3>65 more steps unlocked with Full Access</h3>
         <p>TFN, Medicare, MyGov, KiwiSaver, AU super, driving licence, utilities — every step with official links.</p>
-        <a href="/pricing" class="paywall-cta">Get Full Access — $24.99 NZD</a>
+        <a href="#" class="paywall-cta">Get Full Access — $24.99 NZD</a>
         <div class="paywall-note">One-time payment · No subscription · Instant access</div>
       </div>
     </div>
@@ -642,14 +639,14 @@
           <div class="pc-price">$0</div>
           <div class="pc-period">forever, no card</div>
           <ul class="pc-feats">
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Visa Pathway Checker</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Cost Calculator</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>First 10 checklist steps</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>All blog articles</li>
+            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Visa Pathway Checker</li>
+            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Cost Calculator</li>
+            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>First 10 checklist steps</li>
+            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>All blog articles</li>
             <li class="off"><span class="pc-check off"></span>Full 70-step checklist</li>
             <li class="off"><span class="pc-check off"></span>State-specific steps</li>
           </ul>
-          <a href="/tools/checklist" class="pc-btn-s">Start free</a>
+          <a href="#" class="pc-btn-s">Start free</a>
         </div>
         <div class="pc feat">
           <div class="pc-badge">Most popular</div>
@@ -657,28 +654,28 @@
           <div class="pc-price"><sup>$</sup>24.99</div>
           <div class="pc-period">one-time · NZD · yours forever</div>
           <ul class="pc-feats">
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#7ED3EF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Full 70-step checklist</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#7ED3EF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>All 6 states covered</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#7ED3EF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Kiwi Masterguide PDF</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#7ED3EF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Tax & Finance Guide PDF</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#7ED3EF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Jobs Guide PDF</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#7ED3EF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Suburb Finder</li>
+            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#4ADE80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Full 70-step checklist</li>
+            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#4ADE80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>All 6 states covered</li>
+            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#4ADE80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Kiwi Masterguide PDF</li>
+            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#4ADE80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Tax & Finance Guide PDF</li>
+            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#4ADE80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Jobs Guide PDF</li>
+            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#4ADE80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Suburb Finder</li>
           </ul>
-          <a href="/pricing" class="pc-btn-p">Get Full Access</a>
+          <a href="#" class="pc-btn-p">Get Full Access</a>
         </div>
         <div class="pc">
           <div class="pc-tier">Family</div>
           <div class="pc-price"><sup>$</sup>34.99</div>
           <div class="pc-period">one-time · NZD · up to 4</div>
           <ul class="pc-feats">
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Everything in Full Access</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Partner gets own checklist</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Kids' school enrolment steps</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Family progress dashboard</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Up to 4 family members</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Separate progress per person</li>
+            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Everything in Full Access</li>
+            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Partner gets own checklist</li>
+            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Kids' school enrolment steps</li>
+            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Family progress dashboard</li>
+            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Up to 4 family members</li>
+            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Separate progress per person</li>
           </ul>
-          <a href="/pricing" class="pc-btn-s">Get Family Access</a>
+          <a href="#" class="pc-btn-s">Get Family Access</a>
         </div>
       </div>
     </div>
@@ -735,8 +732,8 @@
       <h2>Ready to make the <em>move?</em></h2>
       <p>Start with the free checklist. Upgrade when you're ready.</p>
       <div class="cta-btns">
-        <a href="/tools/checklist" class="cta-btn-g">Start Free Checklist</a>
-        <a href="/pricing" class="cta-btn-w">See pricing</a>
+        <a href="#" class="cta-btn-g">Start Free Checklist</a>
+        <a href="#" class="cta-btn-w">See pricing</a>
       </div>
     </div>
   </section>
@@ -752,28 +749,28 @@
         <div class="ftr-col">
           <h4>Tools</h4>
           <ul>
-            <li><a href="/tools/checklist">Moving Checklist</a></li>
-            <li><a href="/tools/visa-checker">Visa Checker</a></li>
-            <li><a href="/tools/cost-calculator">Cost Calculator</a></li>
-            <li><a href="/tools/suburb-finder">Suburb Finder</a></li>
+            <li><a href="#">Moving Checklist</a></li>
+            <li><a href="#">Visa Checker</a></li>
+            <li><a href="#">Cost Calculator</a></li>
+            <li><a href="#">Suburb Finder</a></li>
           </ul>
         </div>
         <div class="ftr-col">
           <h4>Learn</h4>
           <ul>
-            <li><a href="/guides">Moving Blog</a></li>
-            <li><a href="/moving">SCV Guide</a></li>
-            <li><a href="/money">Tax for Kiwis</a></li>
-            <li><a href="/guides">Sydney vs Melbourne</a></li>
+            <li><a href="#">Moving Blog</a></li>
+            <li><a href="#">SCV Guide</a></li>
+            <li><a href="#">Tax for Kiwis</a></li>
+            <li><a href="#">Sydney vs Melbourne</a></li>
           </ul>
         </div>
         <div class="ftr-col">
           <h4>Company</h4>
           <ul>
-            <li><a href="/about">About</a></li>
-            <li><a href="/pricing">Pricing</a></li>
-            <li><a href="/login">Log In</a></li>
-            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Log In</a></li>
+            <li><a href="#">Privacy Policy</a></li>
           </ul>
         </div>
       </div>
