@@ -15,12 +15,13 @@ async function sendLeadEmail(lead, apiKey) {
     ? `<div style="margin-top:20px;padding:16px;background:#F5F5F7;border-radius:8px;font-size:13px;color:#1D1D1F;line-height:1.6;">${lead.message}</div>`
     : '';
 
-  await fetch('https://api.resend.com/emails', {
+  const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: 'goaustralia.co.nz <hello@goaustralia.co.nz>',
-      to: ['mandeepwebworks@gmail.com'],
+      from: 'goaustralia.co.nz <onboarding@resend.dev>',
+      reply_to: 'hello@goaustralia.co.nz',
+      to: ['goaustralia.co.nz@gmail.com'],
       subject: `New enquiry from ${lead.name} — goaustralia.co.nz`,
       html: `
         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:520px;margin:0 auto;padding:32px 24px;background:#fff;">
@@ -43,6 +44,10 @@ async function sendLeadEmail(lead, apiKey) {
       `,
     }),
   });
+  if (!res.ok) {
+    const err = await res.text();
+    console.error('[Resend] send failed:', res.status, err);
+  }
 }
 
 export async function onRequest({ request, env }) {
@@ -75,7 +80,9 @@ export async function onRequest({ request, env }) {
       await env.LEADS?.put('leads', JSON.stringify(existing));
 
       if (env.RESEND_API_KEY) {
-        sendLeadEmail(lead, env.RESEND_API_KEY).catch(console.error);
+        sendLeadEmail(lead, env.RESEND_API_KEY).catch(e => console.error('[lead] email error:', e));
+      } else {
+        console.error('[lead] RESEND_API_KEY not set in env');
       }
 
       return Response.json({ ok: true, id: lead.id });

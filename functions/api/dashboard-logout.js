@@ -3,7 +3,7 @@ export async function onRequest() {
     status: 302,
     headers: {
       Location: '/dashboard',
-      'Set-Cookie': 'dash_token=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0',
+      'Set-Cookie': 'dash_token=; Path=/; SameSite=Strict; Max-Age=0',
     },
   });
 }

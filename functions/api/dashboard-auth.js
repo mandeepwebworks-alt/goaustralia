@@ -18,7 +18,7 @@ export async function onRequest({ request }) {
       status: 302,
       headers: {
         Location: '/dashboard',
-        'Set-Cookie': `dash_token=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${60 * 60 * 24 * 30}`,
+        'Set-Cookie': `dash_token=${token}; Path=/; SameSite=Strict; Max-Age=${60 * 60 * 24 * 30}`,
       },
     });
   }
