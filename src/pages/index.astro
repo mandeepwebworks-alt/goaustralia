@@ -373,61 +373,51 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-    .seo-table-container {
-      width: 100%;
-      overflow-x: auto;
+    /* ── KEYWORD CARDS ── */
+    .kw-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .kw-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.5);
       border: 1px solid var(--bg-border);
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.4);
+      padding: 12px 14px;
     }
-    .seo-table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      font-size: 13px;
-    }
-    .seo-table th {
-      background: rgba(0, 0, 0, 0.02);
-      padding: 14px 18px;
-      font-weight: 700;
-      color: var(--txt-muted);
-      border-bottom: 1px solid var(--bg-border);
-      text-transform: uppercase;
-      font-size: 9px;
-      letter-spacing: 0.06em;
-    }
-    .seo-table td {
-      padding: 14px 18px;
-      border-bottom: 1px solid var(--bg-border);
-      color: var(--txt-base);
-    }
-    .seo-table tr:last-child td {
-      border-bottom: none;
-    }
-    .seo-table tr:hover td {
-      background: rgba(255, 255, 255, 0.3);
-    }
-    .keyword-badge {
+    .kw-phrase {
+      flex: 1;
       font-family: monospace;
-      font-size: 12px;
+      font-size: 12.5px;
       color: var(--accent-emerald);
-      background: rgba(0, 135, 90, 0.05);
-      border: 1px solid rgba(0, 135, 90, 0.12);
-      padding: 2px 8px;
-      border-radius: 4px;
+      font-weight: 600;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .kw-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
     }
     .intent-tag {
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 700;
-      padding: 2px 8px;
+      padding: 3px 8px;
       border-radius: 20px;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.03em;
       display: inline-block;
+      white-space: nowrap;
     }
     .intent-high {
-      background: rgba(197, 155, 39, 0.06);
-      border: 1px solid rgba(197, 155, 39, 0.15);
+      background: rgba(197, 155, 39, 0.08);
+      border: 1px solid rgba(197, 155, 39, 0.2);
       color: var(--accent-gold);
     }
     .intent-medium {
@@ -440,6 +430,14 @@
       border: 1px solid rgba(0, 113, 227, 0.15);
       color: #0071E3;
     }
+    .kw-value {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--txt-muted);
+      white-space: nowrap;
+    }
+    .kw-value.high { color: var(--accent-gold); }
+    .kw-value.max { color: var(--accent-emerald); }
 
     /* ── NEW SOLUTIONS & MOCKUPS GRID (1 mockup for every card) ── */
     .uses-grid {
@@ -1040,106 +1038,93 @@
     </div>
   </div>
 
-  <!-- ORGANIC SEO INDEX TRACTION -->
+  <!-- KEYWORD OPPORTUNITY SECTION -->
   <section id="seo-traction" style="background: rgba(255,255,255,0.3); border-top: 1px solid var(--bg-border); border-bottom: 1px solid var(--bg-border);">
     <div class="wrap">
       <div class="sec-header">
-        <span class="sec-badge">Organic SEO Authority</span>
-        <h2 class="sec-title">Search Engine Discovery Data</h2>
-        <p class="sec-desc">Search engines already index this domain as an authority for the relocation corridor. Prospective buyers capture high-intent users organically, completely bypassing costly search ad spend.</p>
+        <span class="sec-badge">Keyword Authority</span>
+        <h2 class="sec-title">High-Intent Keywords This Domain Owns</h2>
+        <p class="sec-desc">goaustralia.co.nz is an exact-match domain for the highest-value search queries in the NZ → AU relocation corridor — the keywords competitors pay $25–$50 per click to reach.</p>
       </div>
 
       <div class="glass-card">
         <div class="seo-summary-cards">
           <div class="seo-summary-card">
-            <div class="seo-sum-val" style="color: var(--accent-emerald);">Active</div>
-            <div class="seo-sum-lbl">Google Sandbox Index</div>
+            <div class="seo-sum-val" style="color: var(--accent-emerald);">Exact Match</div>
+            <div class="seo-sum-lbl">Domain-to-keyword alignment</div>
           </div>
           <div class="seo-summary-card">
-            <div class="seo-sum-val">Top 100</div>
-            <div class="seo-sum-lbl">Relocation Key phrases</div>
+            <div class="seo-sum-val">8 Queries</div>
+            <div class="seo-sum-lbl">High-intent target keywords</div>
           </div>
           <div class="seo-summary-card">
-            <div class="seo-sum-val" style="color: var(--accent-gold);">$25.50+</div>
-            <div class="seo-sum-lbl">Equivalent CPC Commercial Value</div>
+            <div class="seo-sum-val" style="color: var(--accent-gold);">$25–$50</div>
+            <div class="seo-sum-lbl">CPC advertisers pay per click</div>
           </div>
         </div>
 
-        <h3 style="font-size: 14px; font-weight: 800; text-align: left; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up" style="color: var(--accent-emerald);"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-          Recent Organic Query Traction (Search Console Snapshot)
-        </h3>
+        <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--txt-muted); margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-emerald);"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+          Target Keyword Opportunities
+        </p>
 
-        <div class="seo-table-container">
-          <table class="seo-table">
-            <thead>
-              <tr>
-                <th>Top Search Query</th>
-                <th>Target Intent</th>
-                <th>Impressions</th>
-                <th>Average Position</th>
-                <th>Acquisition Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="keyword-badge">moving nz to australia</span></td>
-                <td><span class="intent-tag intent-high">High Relocation</span></td>
-                <td>6</td>
-                <td>71.3</td>
-                <td>Very High</td>
-              </tr>
-              <tr>
-                <td><span class="keyword-badge">new zealander moving to australia checklist</span></td>
-                <td><span class="intent-tag intent-commercial">SaaS Checklist / Guides</span></td>
-                <td>6</td>
-                <td>73.2</td>
-                <td>Maximum LTV</td>
-              </tr>
-              <tr>
-                <td><span class="keyword-badge">kiwis moving to australia</span></td>
-                <td><span class="intent-tag intent-medium">Audience Match</span></td>
-                <td>3</td>
-                <td>60.0</td>
-                <td>High</td>
-              </tr>
-              <tr>
-                <td><span class="keyword-badge">moving to australia from nz checklist</span></td>
-                <td><span class="intent-tag intent-commercial">SaaS Checklist / Guides</span></td>
-                <td>3</td>
-                <td>70.7</td>
-                <td>Maximum LTV</td>
-              </tr>
-              <tr>
-                <td><span class="keyword-badge">move to australia</span></td>
-                <td><span class="intent-tag intent-medium">Category Intent</span></td>
-                <td>3</td>
-                <td>71.3</td>
-                <td>Medium</td>
-              </tr>
-              <tr>
-                <td><span class="keyword-badge">how to move to australia from nz</span></td>
-                <td><span class="intent-tag intent-high">High Relocation</span></td>
-                <td>2</td>
-                <td>88.5</td>
-                <td>High</td>
-              </tr>
-              <tr>
-                <td><span class="keyword-badge">visa faqs nz australia</span></td>
-                <td><span class="intent-tag intent-high">Regulatory Query</span></td>
-                <td>2</td>
-                <td>71.0</td>
-                <td>High</td>
-              </tr>
-              <tr>
-                <td><span class="keyword-badge">do kiwis need a visa for australia</span></td>
-                <td><span class="intent-tag intent-medium">Visa Eligibility</span></td>
-                <td>1</td>
-                <td>89.0</td>
-                <td>Medium</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="kw-list">
+          <div class="kw-card">
+            <span class="kw-phrase">moving nz to australia</span>
+            <div class="kw-meta">
+              <span class="intent-tag intent-high">Relocation</span>
+              <span class="kw-value high">Very High</span>
+            </div>
+          </div>
+          <div class="kw-card">
+            <span class="kw-phrase">new zealander moving to australia checklist</span>
+            <div class="kw-meta">
+              <span class="intent-tag intent-commercial">SaaS / Guides</span>
+              <span class="kw-value max">Max LTV</span>
+            </div>
+          </div>
+          <div class="kw-card">
+            <span class="kw-phrase">moving to australia from nz checklist</span>
+            <div class="kw-meta">
+              <span class="intent-tag intent-commercial">SaaS / Guides</span>
+              <span class="kw-value max">Max LTV</span>
+            </div>
+          </div>
+          <div class="kw-card">
+            <span class="kw-phrase">kiwis moving to australia</span>
+            <div class="kw-meta">
+              <span class="intent-tag intent-medium">Audience</span>
+              <span class="kw-value high">High</span>
+            </div>
+          </div>
+          <div class="kw-card">
+            <span class="kw-phrase">how to move to australia from nz</span>
+            <div class="kw-meta">
+              <span class="intent-tag intent-high">Relocation</span>
+              <span class="kw-value high">High</span>
+            </div>
+          </div>
+          <div class="kw-card">
+            <span class="kw-phrase">visa faqs nz australia</span>
+            <div class="kw-meta">
+              <span class="intent-tag intent-high">Regulatory</span>
+              <span class="kw-value high">High</span>
+            </div>
+          </div>
+          <div class="kw-card">
+            <span class="kw-phrase">move to australia</span>
+            <div class="kw-meta">
+              <span class="intent-tag intent-medium">Category</span>
+              <span class="kw-value">Medium</span>
+            </div>
+          </div>
+          <div class="kw-card">
+            <span class="kw-phrase">do kiwis need a visa for australia</span>
+            <div class="kw-meta">
+              <span class="intent-tag intent-medium">Visa</span>
+              <span class="kw-value">Medium</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
