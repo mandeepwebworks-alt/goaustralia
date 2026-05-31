@@ -1410,7 +1410,7 @@
         <button type="submit" class="sbmt-btn">Submit Purchase Enquiry</button>
       </form>
       
-      <p class="alt-contact">or contact directly via email: <a href="mailto:goaustralia.co.nz@gmail.com">goaustralia.co.nz@gmail.com</a></p>
+      <p class="alt-contact">or contact directly via email: <a href="mailto:hello@goaustralia.co.nz">hello@goaustralia.co.nz</a></p>
     </div>
   </section>
 
@@ -1482,34 +1482,35 @@
     // ── ENQUIRY FORM SUBMISSION ──
     document.getElementById('enquiry-form').addEventListener('submit', async function(e) {
       e.preventDefault();
-      const btn = this.querySelector('.sbmt-btn');
-      const d = Object.fromEntries(new FormData(this));
+      const form = this;
+      const btn = form.querySelector('.sbmt-btn');
+      const d = Object.fromEntries(new FormData(form));
 
-      btn.textContent = 'Submitting Enquiry...';
+      btn.textContent = 'Sending...';
       btn.disabled = true;
 
       try {
-        await fetch('/api/lead', {
+        const res = await fetch('/api/lead', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(d)
         });
-      } catch {}
 
-      const subj = encodeURIComponent('Domain Acquisition Enquiry — goaustralia.co.nz');
-      const body = encodeURIComponent(
-        'Name: ' + d.name + '\n' +
-        'Email: ' + d.email + '\n' +
-        'Company: ' + (d.company || 'Not specified') + '\n' +
-        'Offer (NZD): ' + (d.offer || 'Not specified') + '\n\n' +
-        'Intended Use & Message:\n' + d.message
-      );
-
-      btn.textContent = 'Enquiry Sent ✓';
-      btn.style.background = 'var(--accent-emerald)';
-      setTimeout(() => {
-        window.location.href = 'mailto:goaustralia.co.nz@gmail.com?subject=' + subj + '&body=' + body;
-      }, 600);
+        if (res.ok) {
+          form.innerHTML = `
+            <div style="text-align:center;padding:40px 24px;">
+              <div style="width:52px;height:52px;background:rgba(0,135,90,0.08);border:1px solid rgba(0,135,90,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:22px;">✓</div>
+              <h3 style="font-size:18px;font-weight:700;color:var(--txt-base);margin-bottom:8px;">Enquiry received</h3>
+              <p style="font-size:14px;color:var(--txt-muted);line-height:1.6;">We'll review your enquiry and reply to <strong>${d.email}</strong> within 24–48 hours.</p>
+            </div>`;
+        } else {
+          throw new Error('server error');
+        }
+      } catch {
+        btn.textContent = 'Submit Purchase Enquiry';
+        btn.disabled = false;
+        alert('Something went wrong — please email hello@goaustralia.co.nz directly.');
+      }
     });
   </script>
 
