@@ -49,7 +49,8 @@ async function sendLeadEmail(lead, apiKey) {
   }
 }
 
-export async function onRequest({ request, env }) {
+export async function onRequest(context) {
+  const { request, env } = context;
   if (request.method === 'OPTIONS') {
     return new Response(null, { status: 204 });
   }
@@ -79,7 +80,7 @@ export async function onRequest({ request, env }) {
       await env.LEADS?.put('leads', JSON.stringify(existing));
 
       if (env.RESEND_API_KEY) {
-        sendLeadEmail(lead, env.RESEND_API_KEY).catch(e => console.error('[lead] email error:', e));
+        context.waitUntil(sendLeadEmail(lead, env.RESEND_API_KEY).catch(e => console.error('[lead] email error:', e)));
       } else {
         console.error('[lead] RESEND_API_KEY not set in env');
       }
