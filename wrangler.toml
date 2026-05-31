@@ -2,3 +2,13 @@ name = "goaustralia"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = "dist"
+
+[[kv_namespaces]]
+binding = "LEADS"
+id = "0687918b8a3940b8929cff185ab1f636"
+preview_id = "0687918b8a3940b8929cff185ab1f636"
+
+[[kv_namespaces]]
+binding = "VIEWS"
+id = "b5283fecbeb4471f9c3946a33f55c85d"
+preview_id = "b5283fecbeb4471f9c3946a33f55c85d"

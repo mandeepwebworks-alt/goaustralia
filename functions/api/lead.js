@@ -19,9 +19,8 @@ async function sendLeadEmail(lead, apiKey) {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: 'goaustralia.co.nz <onboarding@resend.dev>',
-      reply_to: 'hello@goaustralia.co.nz',
-      to: ['goaustralia.co.nz@gmail.com'],
+      from: 'goaustralia.co.nz <hello@goaustralia.co.nz>',
+      to: ['mandeepwebworks@gmail.com'],
       subject: `New enquiry from ${lead.name} — goaustralia.co.nz`,
       html: `
         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:520px;margin:0 auto;padding:32px 24px;background:#fff;">
