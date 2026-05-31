@@ -1,19 +1,19 @@
-import type { APIRoute } from 'astro';
-
-const PASSWORD = 'Mandeep2026';
-
-async function sha256hex(text: string): Promise<string> {
+async function sha256hex(text) {
   const data = new TextEncoder().encode(text);
   const hash = await crypto.subtle.digest('SHA-256', data);
   return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-export const POST: APIRoute = async ({ request }) => {
+export async function onRequest({ request }) {
+  if (request.method !== 'POST') {
+    return new Response(null, { status: 405 });
+  }
+
   const form = await request.formData();
   const password = form.get('password')?.toString();
 
-  if (password === PASSWORD) {
-    const token = await sha256hex(PASSWORD);
+  if (password === 'Mandeep2026') {
+    const token = await sha256hex('Mandeep2026');
     return new Response(null, {
       status: 302,
       headers: {
@@ -27,4 +27,4 @@ export const POST: APIRoute = async ({ request }) => {
     status: 302,
     headers: { Location: '/dashboard?error=1' },
   });
-};
+}

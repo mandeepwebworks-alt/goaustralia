@@ -1,6 +1,4 @@
-import type { APIRoute } from 'astro';
-
-export const GET: APIRoute = async () => {
+export async function onRequest() {
   return new Response(null, {
     status: 302,
     headers: {
@@ -8,4 +6,4 @@ export const GET: APIRoute = async () => {
       'Set-Cookie': 'dash_token=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0',
     },
   });
-};
+}

@@ -1,14 +1,5 @@
 ---
-async function sha256hex(text: string): Promise<string> {
-  const data = new TextEncoder().encode(text);
-  const hash = await crypto.subtle.digest('SHA-256', data);
-  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
-const TOKEN = await sha256hex('Mandeep2026');
-const token = Astro.cookies.get('dash_token')?.value;
-const isAuthed = token === TOKEN;
-const error = Astro.url.searchParams.get('error');
+// Static page — auth checked client-side via Web Crypto + cookie
 ---
 <!DOCTYPE html>
 <html lang="en-NZ">
@@ -141,136 +132,160 @@ const error = Astro.url.searchParams.get('error');
 </head>
 <body>
 
-  {isAuthed ? (
-    <>
-      <div class="top">
-        <h1>goaustralia.co.nz — Dashboard</h1>
-        <div class="top-links">
-          <a href="/">← Back to site</a>
-          <a href="/api/dashboard-logout" class="logout">Logout</a>
-        </div>
-      </div>
-
-      <div class="wrap">
-        <div class="cards">
-          <div class="card">
-            <div class="card-label">Total Views</div>
-            <div class="card-val" id="totalViews">—</div>
-          </div>
-          <div class="card">
-            <div class="card-label">Today</div>
-            <div class="card-val green" id="todayViews">—</div>
-          </div>
-          <div class="card">
-            <div class="card-label">Total Leads</div>
-            <div class="card-val" id="totalLeads">—</div>
-          </div>
-          <div class="card">
-            <div class="card-label">Conversion</div>
-            <div class="card-val green" id="conversion">—</div>
-          </div>
-        </div>
-
-        <div class="chart-row">
-          <div class="panel">
-            <div class="panel-title">Page Views (Last 14 Days)</div>
-            <div class="bar-chart" id="viewsChart"><div class="loading">Loading...</div></div>
-          </div>
-          <div class="panel">
-            <div class="panel-title">Referrers</div>
-            <div class="ref-list" id="referrers"><div class="loading">Loading...</div></div>
-          </div>
-        </div>
-
-        <div class="panel">
-          <div class="panel-title">
-            Leads
-            <span class="badge" id="leadsBadge">0</span>
-          </div>
-          <div id="leadsTable"><div class="loading">Loading...</div></div>
-        </div>
-      </div>
-
-      <script is:inline>
-        async function loadDashboard() {
-          const [viewsRes, leadsRes] = await Promise.all([
-            fetch('/api/pageview').then(r => r.json()).catch(() => ({ total: 0, daily: {}, referrers: {} })),
-            fetch('/api/lead').then(r => r.json()).catch(() => [])
-          ]);
-
-          const today = new Date().toISOString().slice(0, 10);
-          const todayCount = viewsRes.daily?.[today] || 0;
-          document.getElementById('totalViews').textContent = viewsRes.total?.toLocaleString() || '0';
-          document.getElementById('todayViews').textContent = todayCount.toLocaleString();
-          document.getElementById('totalLeads').textContent = leadsRes.length.toString();
-          const rate = viewsRes.total > 0 ? ((leadsRes.length / viewsRes.total) * 100).toFixed(1) + '%' : '—';
-          document.getElementById('conversion').textContent = rate;
-          document.getElementById('leadsBadge').textContent = leadsRes.length.toString();
-
-          const chartEl = document.getElementById('viewsChart');
-          const days = [];
-          for (let i = 13; i >= 0; i--) {
-            const d = new Date(); d.setDate(d.getDate() - i);
-            days.push(d.toISOString().slice(0, 10));
-          }
-          const maxViews = Math.max(1, ...days.map(d => viewsRes.daily?.[d] || 0));
-          chartEl.innerHTML = days.map(d => {
-            const count = viewsRes.daily?.[d] || 0;
-            const pct = (count / maxViews) * 100;
-            const label = d.slice(5);
-            return `<div class="bar-row">
-              <span class="bar-label">${label}</span>
-              <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
-              <span class="bar-count">${count}</span>
-            </div>`;
-          }).join('');
-
-          const refEl = document.getElementById('referrers');
-          const refs = Object.entries(viewsRes.referrers || {}).sort((a, b) => b[1] - a[1]).slice(0, 8);
-          if (refs.length === 0) {
-            refEl.innerHTML = '<div class="empty">No data yet</div>';
-          } else {
-            refEl.innerHTML = refs.map(([name, count]) =>
-              `<div class="ref-item"><span class="ref-name">${name}</span><span class="ref-count">${count}</span></div>`
-            ).join('');
-          }
-
-          const tableEl = document.getElementById('leadsTable');
-          if (leadsRes.length === 0) {
-            tableEl.innerHTML = '<div class="empty">No leads yet. They\'ll appear here when someone submits the form.</div>';
-            return;
-          }
-          tableEl.innerHTML = `<div class="table-wrap"><table>
-            <thead><tr><th>Date</th><th>Name</th><th>Email</th><th>Company</th><th>Offer</th><th>Message</th></tr></thead>
-            <tbody>${leadsRes.map(l => `<tr>
-              <td class="date-cell">${new Date(l.date).toLocaleDateString('en-NZ', { day: 'numeric', month: 'short', year: 'numeric' })}<br>${new Date(l.date).toLocaleTimeString('en-NZ', { hour: '2-digit', minute: '2-digit' })}</td>
-              <td><strong>${esc(l.name)}</strong></td>
-              <td><a href="mailto:${esc(l.email)}" style="color:#00643B">${esc(l.email)}</a></td>
-              <td>${esc(l.company) || '—'}</td>
-              <td class="offer-cell">${l.offer ? '$' + esc(l.offer) : '—'}</td>
-              <td class="msg-cell">${esc(l.message) || '—'}</td>
-            </tr>`).join('')}</tbody>
-          </table></div>`;
-        }
-
-        function esc(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
-
-        loadDashboard();
-      </script>
-    </>
-  ) : (
+  <!-- Login view -->
+  <div id="login-view" style="display:none">
     <div class="login-wrap">
       <div class="login-box">
         <h1>Dashboard</h1>
         <p>goaustralia.co.nz</p>
-        {error && <div class="login-error">Incorrect password. Try again.</div>}
+        <div id="login-error" class="login-error" style="display:none">Incorrect password. Try again.</div>
         <form method="POST" action="/api/dashboard-auth">
           <input type="password" name="password" placeholder="Password" required autofocus />
           <button type="submit">Log in</button>
         </form>
       </div>
     </div>
-  )}
+  </div>
+
+  <!-- Dashboard view -->
+  <div id="dashboard-view" style="display:none">
+    <div class="top">
+      <h1>goaustralia.co.nz — Dashboard</h1>
+      <div class="top-links">
+        <a href="/">← Back to site</a>
+        <a href="/api/dashboard-logout" class="logout">Logout</a>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="cards">
+        <div class="card">
+          <div class="card-label">Total Views</div>
+          <div class="card-val" id="totalViews">—</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Today</div>
+          <div class="card-val green" id="todayViews">—</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Total Leads</div>
+          <div class="card-val" id="totalLeads">—</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Conversion</div>
+          <div class="card-val green" id="conversion">—</div>
+        </div>
+      </div>
+
+      <div class="chart-row">
+        <div class="panel">
+          <div class="panel-title">Page Views (Last 14 Days)</div>
+          <div class="bar-chart" id="viewsChart"><div class="loading">Loading...</div></div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">Referrers</div>
+          <div class="ref-list" id="referrers"><div class="loading">Loading...</div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">
+          Leads
+          <span class="badge" id="leadsBadge">0</span>
+        </div>
+        <div id="leadsTable"><div class="loading">Loading...</div></div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    async function sha256hex(text) {
+      const data = new TextEncoder().encode(text);
+      const hash = await crypto.subtle.digest('SHA-256', data);
+      return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    function getCookie(name) {
+      const m = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+      return m ? decodeURIComponent(m[1]) : null;
+    }
+
+    async function init() {
+      const expected = await sha256hex('Mandeep2026');
+      const token = getCookie('dash_token');
+      const params = new URLSearchParams(location.search);
+
+      if (token === expected) {
+        document.getElementById('dashboard-view').style.display = 'block';
+        loadDashboard();
+      } else {
+        document.getElementById('login-view').style.display = 'flex';
+        if (params.get('error')) {
+          document.getElementById('login-error').style.display = 'block';
+        }
+      }
+    }
+
+    async function loadDashboard() {
+      const [viewsRes, leadsRes] = await Promise.all([
+        fetch('/api/pageview').then(r => r.json()).catch(() => ({ total: 0, daily: {}, referrers: {} })),
+        fetch('/api/lead').then(r => r.json()).catch(() => [])
+      ]);
+
+      const today = new Date().toISOString().slice(0, 10);
+      const todayCount = viewsRes.daily?.[today] || 0;
+      document.getElementById('totalViews').textContent = viewsRes.total?.toLocaleString() || '0';
+      document.getElementById('todayViews').textContent = todayCount.toLocaleString();
+      document.getElementById('totalLeads').textContent = Array.isArray(leadsRes) ? leadsRes.length.toString() : '0';
+      const leads = Array.isArray(leadsRes) ? leadsRes : [];
+      const rate = viewsRes.total > 0 ? ((leads.length / viewsRes.total) * 100).toFixed(1) + '%' : '—';
+      document.getElementById('conversion').textContent = rate;
+      document.getElementById('leadsBadge').textContent = leads.length.toString();
+
+      const chartEl = document.getElementById('viewsChart');
+      const days = [];
+      for (let i = 13; i >= 0; i--) {
+        const d = new Date(); d.setDate(d.getDate() - i);
+        days.push(d.toISOString().slice(0, 10));
+      }
+      const maxViews = Math.max(1, ...days.map(d => viewsRes.daily?.[d] || 0));
+      chartEl.innerHTML = days.map(d => {
+        const count = viewsRes.daily?.[d] || 0;
+        const pct = (count / maxViews) * 100;
+        return `<div class="bar-row">
+          <span class="bar-label">${d.slice(5)}</span>
+          <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
+          <span class="bar-count">${count}</span>
+        </div>`;
+      }).join('');
+
+      const refEl = document.getElementById('referrers');
+      const refs = Object.entries(viewsRes.referrers || {}).sort((a, b) => b[1] - a[1]).slice(0, 8);
+      refEl.innerHTML = refs.length === 0
+        ? '<div class="empty">No data yet</div>'
+        : refs.map(([name, count]) => `<div class="ref-item"><span class="ref-name">${name}</span><span class="ref-count">${count}</span></div>`).join('');
+
+      const tableEl = document.getElementById('leadsTable');
+      if (leads.length === 0) {
+        tableEl.innerHTML = '<div class="empty">No leads yet. They\'ll appear here when someone submits the form.</div>';
+        return;
+      }
+      function esc(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+      tableEl.innerHTML = `<div class="table-wrap"><table>
+        <thead><tr><th>Date</th><th>Name</th><th>Email</th><th>Company</th><th>Offer</th><th>Message</th></tr></thead>
+        <tbody>${leads.map(l => `<tr>
+          <td class="date-cell">${new Date(l.date).toLocaleDateString('en-NZ', { day: 'numeric', month: 'short', year: 'numeric' })}<br>${new Date(l.date).toLocaleTimeString('en-NZ', { hour: '2-digit', minute: '2-digit' })}</td>
+          <td><strong>${esc(l.name)}</strong></td>
+          <td><a href="mailto:${esc(l.email)}" style="color:#00643B">${esc(l.email)}</a></td>
+          <td>${esc(l.company) || '—'}</td>
+          <td class="offer-cell">${l.offer ? '$' + esc(l.offer) : '—'}</td>
+          <td class="msg-cell">${esc(l.message) || '—'}</td>
+        </tr>`).join('')}</tbody>
+      </table></div>`;
+    }
+
+    init();
+  </script>
 
 </body>
 </html>

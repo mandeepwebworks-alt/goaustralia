@@ -1,9 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
   site: 'https://goaustralia.co.nz',
-  output: 'server',
-  adapter: cloudflare(),
+  output: 'static',
 });
