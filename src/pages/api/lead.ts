@@ -1,33 +1,22 @@
 import type { APIRoute } from 'astro';
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
-import { join, dirname } from 'node:path';
 import { Resend } from 'resend';
 
-const DATA_FILE = join(process.cwd(), 'data', 'leads.json');
-mkdirSync(dirname(DATA_FILE), { recursive: true });
-
-const resend = import.meta.env.RESEND_API_KEY
-  ? new Resend(import.meta.env.RESEND_API_KEY)
-  : null;
-
-function getLeads(): any[] {
-  if (!existsSync(DATA_FILE)) return [];
-  try { return JSON.parse(readFileSync(DATA_FILE, 'utf-8')); }
-  catch { return []; }
+interface Lead {
+  id: string; name: string; email: string; company: string;
+  offer: string; message: string; date: string; read: boolean;
 }
 
-function saveLeads(leads: any[]) {
-  writeFileSync(DATA_FILE, JSON.stringify(leads, null, 2));
-}
-
-async function sendLeadEmail(lead: {
-  name: string; email: string; company: string; offer: string; message: string; date: string;
-}) {
-  if (!resend) return;
-
-  const offerLine = lead.offer ? `<tr><td style="padding:8px 0;color:#86868B;font-size:13px;">Offer (NZD)</td><td style="padding:8px 0;font-size:13px;font-weight:700;color:#1D1D1F;">$${lead.offer}</td></tr>` : '';
-  const companyLine = lead.company ? `<tr><td style="padding:8px 0;color:#86868B;font-size:13px;">Company</td><td style="padding:8px 0;font-size:13px;color:#1D1D1F;">${lead.company}</td></tr>` : '';
-  const messageLine = lead.message ? `<div style="margin-top:20px;padding:16px;background:#F5F5F7;border-radius:8px;font-size:13px;color:#1D1D1F;line-height:1.6;">${lead.message}</div>` : '';
+async function sendLeadEmail(lead: Lead, apiKey: string) {
+  const resend = new Resend(apiKey);
+  const offerLine = lead.offer
+    ? `<tr><td style="padding:8px 0;color:#86868B;font-size:13px;">Offer (NZD)</td><td style="padding:8px 0;font-size:13px;font-weight:700;color:#1D1D1F;">$${lead.offer}</td></tr>`
+    : '';
+  const companyLine = lead.company
+    ? `<tr><td style="padding:8px 0;color:#86868B;font-size:13px;">Company</td><td style="padding:8px 0;font-size:13px;color:#1D1D1F;">${lead.company}</td></tr>`
+    : '';
+  const messageLine = lead.message
+    ? `<div style="margin-top:20px;padding:16px;background:#F5F5F7;border-radius:8px;font-size:13px;color:#1D1D1F;line-height:1.6;">${lead.message}</div>`
+    : '';
 
   await resend.emails.send({
     from: 'goaustralia.co.nz <hello@goaustralia.co.nz>',
@@ -55,16 +44,17 @@ async function sendLeadEmail(lead: {
   });
 }
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async (context) => {
   try {
-    const body = await request.json();
+    const env = (context.locals as any).runtime?.env;
+    const body = await context.request.json() as any;
     const { name, email, company, offer, message } = body;
 
     if (!name || !email) {
       return new Response(JSON.stringify({ error: 'Name and email required' }), { status: 400 });
     }
 
-    const lead = {
+    const lead: Lead = {
       id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
       name,
       email,
@@ -75,12 +65,14 @@ export const POST: APIRoute = async ({ request }) => {
       read: false,
     };
 
-    const leads = getLeads();
-    leads.unshift(lead);
-    saveLeads(leads);
+    const existing: Lead[] = (await env?.LEADS?.get('leads', { type: 'json' })) || [];
+    existing.unshift(lead);
+    await env?.LEADS?.put('leads', JSON.stringify(existing));
 
-    // Fire-and-forget — don't let email failure block the response
-    sendLeadEmail(lead).catch(console.error);
+    const apiKey = import.meta.env.RESEND_API_KEY || env?.RESEND_API_KEY;
+    if (apiKey) {
+      sendLeadEmail(lead, apiKey).catch(console.error);
+    }
 
     return new Response(JSON.stringify({ ok: true, id: lead.id }), { status: 200 });
   } catch {
@@ -88,8 +80,10 @@ export const POST: APIRoute = async ({ request }) => {
   }
 };
 
-export const GET: APIRoute = async () => {
-  return new Response(JSON.stringify(getLeads()), {
+export const GET: APIRoute = async (context) => {
+  const env = (context.locals as any).runtime?.env;
+  const leads = (await env?.LEADS?.get('leads', { type: 'json' })) || [];
+  return new Response(JSON.stringify(leads), {
     headers: { 'Content-Type': 'application/json' },
   });
 };
