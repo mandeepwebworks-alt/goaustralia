@@ -1,788 +1,1532 @@
 ---
-// GoAustralia.co.nz — Homepage
+// GoAustralia.co.nz — Premium Apple Light Glassmorphic Showcase
 ---
 <!DOCTYPE html>
 <html lang="en-NZ">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GoAustralia.co.nz — The Complete Moving Guide for Kiwis</title>
-  <meta name="description" content="Step-by-step guidance for New Zealanders moving to Australia. TFN, Medicare, KiwiSaver transfer, jobs and more. 70 Kiwi-specific steps." />
+  <title>goaustralia.co.nz — Premium Domain & Digital Relocation Asset for Sale</title>
+  <meta name="description" content="Acquire goaustralia.co.nz. Exact-match digital asset for the New Zealand to Australia relocation corridor. Includes interactive solution mockups, SEO traction, and ROI calculator." />
   <link rel="canonical" href="https://goaustralia.co.nz/" />
   <meta name="robots" content="index, follow" />
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet" />
+  
   <style>
+    /* ── APPLE GLASSMORPHIC LIGHT DESIGN SYSTEM ── */
+    :root {
+      --bg-base: #F5F5F7;        /* Apple's signature light gray */
+      --bg-card: rgba(255, 255, 255, 0.75); /* Frosted glass card */
+      --bg-raised: #FFFFFF;      /* Clean pure white for high contrast */
+      --bg-border: rgba(0, 0, 0, 0.08);
+      --bg-border-active: rgba(0, 0, 0, 0.15);
+      
+      --accent-emerald: #00875A;  /* Emerald Green (Premium corridor accent) */
+      --accent-emerald-glow: rgba(0, 135, 90, 0.08);
+      --accent-gold: #C59B27;     /* Warm Gold / Bronze (Representing premium asset value) */
+      --accent-gold-glow: rgba(197, 155, 39, 0.08);
+      
+      --txt-base: #1D1D1F;        /* Apple deep charcoal black */
+      --txt-muted: #86868B;       /* Apple secondary grey */
+      --txt-faint: #AEAEB2;       /* Apple tertiary grey */
+      
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-serif: 'Fraunces', serif;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; background: #F4F6F8; color: #0D1117; }
+    body {
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      background-color: var(--bg-base);
+      color: var(--txt-base);
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
 
-    .shell { max-width: 1120px; margin: 0 auto; padding: 0 40px; }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .wrap-narrow { max-width: 800px; margin: 0 auto; padding: 0 24px; }
 
-    /* ── HEADER ── */
-    .hdr {
-      background: #fff;
-      border-bottom: 1px solid #DDE2E8;
-      position: sticky; top: 0; z-index: 100;
+    /* ── AMBIENT SOFT GLOW BLOBS (APPLE STYLE) ── */
+    .glow-blob {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(160px);
+      z-index: 0;
+      opacity: 0.12;
     }
-    .hdr-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      height: 66px; gap: 32px;
+    .glow-1 {
+      top: 5%;
+      left: -100px;
+      background: var(--accent-emerald);
     }
-    .hdr-logo {
-      font-size: 17px; font-weight: 800; letter-spacing: -0.04em;
-      color: #0D1117; text-decoration: none;
+    .glow-2 {
+      top: 35%;
+      right: -100px;
+      background: var(--accent-gold);
     }
-    .hdr-logo span { color: #00698F; }
-    .hdr-nav { display: flex; gap: 2px; }
-    .hdr-nav a {
-      font-size: 14px; font-weight: 600; color: #4B5563;
-      text-decoration: none; padding: 7px 13px; border-radius: 5px; transition: all 0.12s;
+    .glow-3 {
+      bottom: 15%;
+      left: 15%;
+      background: var(--accent-emerald);
     }
-    .hdr-nav a:hover, .hdr-nav a.on { color: #00698F; background: #E6F2F7; }
-    .hdr-ctas { display: flex; align-items: center; gap: 8px; }
-    .hdr-login { font-size: 14px; font-weight: 600; color: #374151; text-decoration: none; padding: 8px 14px; }
-    .hdr-login:hover { color: #0D1117; }
-    .hdr-btn {
-      background: #00698F; color: #fff; font-size: 14px; font-weight: 700;
-      padding: 9px 20px; border-radius: 6px; text-decoration: none; transition: background 0.12s;
-    }
-    .hdr-btn:hover { background: #004F6D; }
 
-    /* ── HERO ── */
+    /* ── NAVIGATION ── */
+    header {
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(245, 245, 247, 0.75);
+      border-bottom: 1px solid var(--bg-border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 16px 0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--txt-base);
+      text-decoration: none;
+      letter-spacing: -0.04em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo span {
+      background: linear-gradient(135deg, var(--accent-emerald), var(--accent-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .status-badge {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-emerald);
+      background: rgba(0, 135, 90, 0.06);
+      border: 1px solid rgba(0, 135, 90, 0.15);
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    @media (min-width: 480px) {
+      .status-badge { display: flex; }
+    }
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background-color: var(--accent-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--accent-emerald);
+      animation: pulse 2.2s infinite;
+    }
+    .nav-cta {
+      font-size: 13px;
+      font-weight: 700;
+      color: #FFFFFF;
+      background: var(--txt-base);
+      padding: 10px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-cta:hover {
+      background: var(--accent-emerald);
+      box-shadow: 0 4px 12px rgba(0, 135, 90, 0.2);
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO SECTION ── */
     .hero {
-      background: #0D2137;
-      padding: 88px 0 0;
+      position: relative;
+      padding: 56px 16px 44px;
+      text-align: center;
+      z-index: 10;
+    }
+    @media (min-width: 640px) {
+      .hero { padding: 88px 24px 64px; }
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      background: rgba(197, 155, 39, 0.06);
+      border: 1px solid rgba(197, 155, 39, 0.15);
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 7.5vw, 5.2rem);
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--txt-base);
+      margin-bottom: 20px;
+    }
+    .hero h1 span {
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--txt-base) 40%, var(--txt-muted) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 18px;
+      color: var(--txt-muted);
+      line-height: 1.65;
+      max-width: 680px;
+      margin: 0 auto 36px;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: center;
+      gap: 12px;
+    }
+    @media (min-width: 480px) {
+      .hero-ctas { flex-direction: row; align-items: center; gap: 16px; }
+      .hero-ctas a { width: auto !important; }
+    }
+    .btn-primary {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFFFFF;
+      background: linear-gradient(135deg, var(--accent-emerald), #00A66E);
+      padding: 14px 36px;
+      border-radius: 24px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 15px rgba(0, 135, 90, 0.15);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      transform: translateY(-1.5px);
+      box-shadow: 0 8px 22px rgba(0, 135, 90, 0.3);
+    }
+    .btn-secondary {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--txt-base);
+      background: rgba(0, 0, 0, 0.03);
+      border: 1px solid var(--bg-border);
+      padding: 13px 32px;
+      border-radius: 24px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .btn-secondary:hover {
+      background: rgba(0, 0, 0, 0.06);
+      border-color: var(--bg-border-active);
+    }
+
+    /* ── METRICS STRIP ── */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 56px;
+      position: relative;
+      z-index: 10;
+    }
+    @media (min-width: 640px) {
+      .metrics-grid { gap: 16px; margin-bottom: 72px; }
+    }
+    @media (min-width: 768px) {
+      .metrics-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .metric-card {
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      background: var(--bg-card);
+      border: 1px solid var(--bg-border);
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .metric-card:hover {
+      border-color: var(--accent-emerald-glow);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    }
+    .metric-num {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--accent-emerald);
+      margin-bottom: 4px;
+      background: linear-gradient(135deg, var(--accent-emerald), #00A66E);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .metric-label {
+      font-size: 11px;
+      color: var(--txt-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── SECTION GENERALS ── */
+    section {
+      padding: 52px 0;
+      position: relative;
+      z-index: 10;
+    }
+    @media (min-width: 768px) {
+      section { padding: 80px 0; }
+    }
+    .sec-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    @media (min-width: 640px) {
+      .sec-header { margin: 0 auto 56px; }
+    }
+    .sec-badge {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-emerald);
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+    .sec-title {
+      font-family: var(--font-serif);
+      font-size: 2.3rem;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      color: var(--txt-base);
+    }
+    .sec-desc {
+      font-size: 14px;
+      color: var(--txt-muted);
+      line-height: 1.6;
+    }
+
+    /* ── PREMIUM GLASS CARD ── */
+    .glass-card {
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 16px;
+      padding: 20px 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
+    }
+    @media (min-width: 640px) {
+      .glass-card { padding: 40px; }
+    }
+
+    /* ── SEO TRACTION SECTION ── */
+    .seo-summary-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    @media (min-width: 480px) {
+      .seo-summary-cards { grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+    }
+    .seo-summary-card {
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid var(--bg-border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      text-align: left;
+    }
+    .seo-sum-val {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--txt-base);
+      margin-bottom: 2px;
+    }
+    .seo-sum-lbl {
+      font-size: 10px;
+      color: var(--txt-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .seo-table-container {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--bg-border);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.4);
+    }
+    .seo-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+    .seo-table th {
+      background: rgba(0, 0, 0, 0.02);
+      padding: 14px 18px;
+      font-weight: 700;
+      color: var(--txt-muted);
+      border-bottom: 1px solid var(--bg-border);
+      text-transform: uppercase;
+      font-size: 9px;
+      letter-spacing: 0.06em;
+    }
+    .seo-table td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--bg-border);
+      color: var(--txt-base);
+    }
+    .seo-table tr:last-child td {
+      border-bottom: none;
+    }
+    .seo-table tr:hover td {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    .keyword-badge {
+      font-family: monospace;
+      font-size: 12px;
+      color: var(--accent-emerald);
+      background: rgba(0, 135, 90, 0.05);
+      border: 1px solid rgba(0, 135, 90, 0.12);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .intent-tag {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      display: inline-block;
+    }
+    .intent-high {
+      background: rgba(197, 155, 39, 0.06);
+      border: 1px solid rgba(197, 155, 39, 0.15);
+      color: var(--accent-gold);
+    }
+    .intent-medium {
+      background: rgba(0, 135, 90, 0.06);
+      border: 1px solid rgba(0, 135, 90, 0.15);
+      color: var(--accent-emerald);
+    }
+    .intent-commercial {
+      background: rgba(0, 113, 227, 0.06);
+      border: 1px solid rgba(0, 113, 227, 0.15);
+      color: #0071E3;
+    }
+
+    /* ── NEW SOLUTIONS & MOCKUPS GRID (1 mockup for every card) ── */
+    .uses-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 700px) {
+      .uses-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    }
+    .use-card {
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 16px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.01);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-align: left;
+    }
+    @media (min-width: 640px) {
+      .use-card { padding: 36px; gap: 24px; }
+    }
+    .use-card:hover {
+      border-color: rgba(0, 135, 90, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.03);
+    }
+    .use-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+    .use-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .use-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--txt-base);
+      margin-bottom: 8px;
+    }
+    .use-desc {
+      font-size: 13.5px;
+      color: var(--txt-muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    /* ── HIGH FIDELITY USE CASE MOCKUPS ── */
+    .mini-mockup {
+      background: #FFFFFF;
+      border: 1px solid var(--bg-border);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: inset 0 0 12px rgba(0,0,0,0.01), 0 4px 16px rgba(0,0,0,0.02);
       overflow: hidden;
     }
-    .hero-grid {
-      display: grid; grid-template-columns: 1fr 420px; gap: 72px; align-items: end;
+    
+    /* 1. FX Transfer Mockup */
+    .fx-mockup-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
     }
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0,105,143,0.15); color: #7ED3EF;
-      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
-      padding: 5px 14px; border-radius: 4px; margin-bottom: 28px;
-      border: 1px solid rgba(0,105,143,0.25);
+    .fx-input-box {
+      border: 1px solid var(--bg-border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--bg-base);
     }
-    .hero-tag-dot { width: 5px; height: 5px; background: #7ED3EF; border-radius: 50%; }
-    .hero h1 {
-      font-size: clamp(2.4rem, 4.5vw, 3.4rem); font-weight: 800; color: #fff;
-      line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 22px;
+    .fx-lbl {
+      font-size: 9px;
+      color: var(--txt-muted);
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 2px;
     }
-    .hero h1 em { font-style: italic; color: #7ED3EF; }
-    .hero-sub {
-      font-size: 17px; color: rgba(255,255,255,0.6); line-height: 1.8;
-      max-width: 460px; margin-bottom: 40px;
+    .fx-inp-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
     }
-    .hero-btns { display: flex; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
-    .btn-primary {
-      background: #00698F; color: #fff; font-size: 15px; font-weight: 700;
-      padding: 13px 26px; border-radius: 6px; text-decoration: none; transition: background 0.12s;
+    .fx-inp-row input {
+      width: 100%;
+      border: none;
+      background: none;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--txt-base);
+      outline: none;
     }
-    .btn-primary:hover { background: #004F6D; }
-    .btn-outline {
-      background: transparent; color: rgba(255,255,255,0.75); font-size: 15px; font-weight: 600;
-      padding: 12px 24px; border-radius: 6px; border: 1.5px solid rgba(255,255,255,0.2);
-      text-decoration: none; transition: all 0.12s;
+    .fx-curr-sel {
+      font-size: 11px;
+      font-weight: bold;
+      color: var(--txt-base);
     }
-    .btn-outline:hover { border-color: rgba(255,255,255,0.45); color: #fff; }
-    .hero-trust { display: flex; gap: 24px; flex-wrap: wrap; }
-    .trust-i {
-      display: flex; align-items: center; gap: 7px;
-      font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.4);
+    .fx-arrow {
+      color: var(--accent-emerald);
+      font-size: 14px;
     }
-    .trust-i svg { color: #00698F; flex-shrink: 0; }
-
-    /* Hero card */
-    .hero-card {
-      background: #fff; border-radius: 12px; overflow: hidden;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.2);
-      transform: translateY(32px);
+    .fx-meta-row {
+      font-size: 11px;
+      color: var(--txt-muted);
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
     }
-    .hcard-hd {
-      background: #00698F; padding: 16px 20px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .hcard-hd-left {}
-    .hcard-hd-title { font-size: 13px; font-weight: 700; color: #fff; }
-    .hcard-hd-sub { font-size: 11px; color: rgba(255,255,255,0.65); margin-top: 1px; }
-    .hcard-progress-wrap { padding: 12px 16px 0; }
-    .hcard-progress-label { display: flex; justify-content: space-between; font-size: 10px; font-weight: 600; color: #6B7280; margin-bottom: 5px; }
-    .hcard-bar { background: #F3F4F6; height: 4px; border-radius: 2px; }
-    .hcard-bar-fill { height: 100%; width: 23%; background: #00698F; border-radius: 2px; }
-    .hcard-steps { padding: 10px 12px 16px; display: flex; flex-direction: column; gap: 5px; }
-    .hcard-step {
-      display: flex; align-items: center; gap: 10px;
-      padding: 9px 11px; border-radius: 7px;
-    }
-    .hcard-step.done { background: #E6F2F7; }
-    .hcard-step.prog { background: #EFF6FF; }
-    .hcard-step.todo { background: #F9FAFB; }
-    .hcard-dot {
-      width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .hcard-step.done .hcard-dot { background: #00698F; }
-    .hcard-step.prog .hcard-dot { border: 2px solid #2563EB; }
-    .hcard-step.todo .hcard-dot { border: 2px solid #E5E7EB; background: #fff; }
-    .hcard-text { flex: 1; min-width: 0; }
-    .hcard-name { font-size: 12px; font-weight: 600; color: #0D1117; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .hcard-step.done .hcard-name { color: #00698F; }
-    .hcard-step.todo .hcard-name { color: #9CA3AF; }
-    .hcard-meta { font-size: 10.5px; color: #9CA3AF; margin-top: 1px; }
-    .hcard-step.done .hcard-meta { color: #7ED3EF; }
-    .hcard-foot {
-      padding: 11px 16px; border-top: 1px solid #F3F4F6;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .hcard-foot-txt { font-size: 11px; color: #9CA3AF; }
-    .hcard-cta {
-      background: #0D2137; color: #fff; font-size: 11px; font-weight: 700;
-      padding: 6px 14px; border-radius: 4px; text-decoration: none;
+    .fx-btn {
+      width: 100%;
+      background: var(--accent-emerald);
+      color: #FFFFFF;
+      border: none;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 9px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
-    /* ── STATS ── */
-    .stats { background: #00698F; padding: 32px 0; }
-    .stats-row { display: flex; justify-content: space-between; }
-    .stat-i {
-      flex: 1; text-align: center; padding: 8px 16px;
-      border-right: 1px solid rgba(255,255,255,0.15);
+    /* 2. Checklist SaaS Mockup */
+    .chk-mockup-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 11px;
+      font-weight: bold;
     }
-    .stat-i:last-child { border-right: none; }
-    .stat-n { display: block; font-size: 2rem; font-weight: 800; color: #fff; letter-spacing: -0.04em; line-height: 1; }
-    .stat-l { display: block; font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 5px; font-weight: 500; }
+    .chk-progress-bar {
+      height: 6px;
+      width: 80px;
+      background: rgba(0,0,0,0.06);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .chk-progress-fill {
+      width: 66%;
+      height: 100%;
+      background: var(--accent-emerald);
+      border-radius: 10px;
+      transition: width 0.3s ease;
+    }
+    .chk-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .chk-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--txt-base);
+      cursor: pointer;
+      user-select: none;
+    }
+    .chk-checkbox {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      border: 1px solid var(--accent-emerald);
+      background: rgba(0, 135, 90, 0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-emerald);
+      font-size: 9px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .chk-checkbox.empty {
+      border-color: var(--txt-faint);
+      background: none;
+    }
 
-    /* ── SECTIONS ── */
-    .section { padding: 88px 0; }
-    .section.alt { background: #fff; }
-    .sec-header { margin-bottom: 52px; }
-    .sec-header.center { text-align: center; }
-    .sec-eye {
-      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em;
-      color: #00698F; display: block; margin-bottom: 12px;
+    /* 3. Migrant Banking Mockup */
+    .bank-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: center;
     }
-    .sec-h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: #0D1117; letter-spacing: -0.03em; margin-bottom: 14px; }
-    .sec-sub { font-size: 16px; color: #4B5563; line-height: 1.75; max-width: 520px; }
-    .sec-header.center .sec-sub { margin: 0 auto; }
+    .bank-card-visual {
+      background: linear-gradient(135deg, #2e2e2e 0%, #111111 100%);
+      border-radius: 8px;
+      padding: 12px;
+      height: 84px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: #FFFFFF;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .bank-card-visual::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 50%;
+      top: -20px;
+      right: -20px;
+    }
+    .bank-card-logo {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .bank-card-logo span {
+      color: var(--accent-emerald);
+    }
+    .bank-card-chip {
+      width: 14px;
+      height: 10px;
+      background: #D4AF37;
+      border-radius: 2px;
+    }
+    .bank-card-num {
+      font-size: 7.5px;
+      font-family: monospace;
+      letter-spacing: 0.1em;
+    }
+    .bank-status-col {
+      text-align: left;
+      font-size: 11px;
+    }
+    .bank-status-pill {
+      display: inline-block;
+      font-size: 8px;
+      font-weight: bold;
+      color: var(--accent-emerald);
+      background: rgba(0,135,90,0.06);
+      border: 1px solid rgba(0,135,90,0.15);
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
 
-    /* Cards */
-    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .card {
-      background: #F4F6F8; border: 1.5px solid #DDE2E8;
-      border-radius: 10px; padding: 28px; transition: all 0.15s;
-      display: flex; flex-direction: column;
+    /* 4. Trans-Tasman Relocation Mockup */
+    .relo-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 12px;
     }
-    .card:hover { border-color: #CCE7F0; box-shadow: 0 4px 20px rgba(0,105,143,0.08); }
-    .card.feat {
-      background: #0D2137; border-color: #0D2137;
+    .relo-select-box {
+      border: 1px solid var(--bg-border);
+      border-radius: 6px;
+      padding: 6px 10px;
+      background: var(--bg-base);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: bold;
     }
-    .card-ico {
-      width: 44px; height: 44px; border-radius: 9px; background: #E6F2F7;
-      color: #00698F; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+    .relo-select-box select {
+      border: none;
+      background: none;
+      outline: none;
+      font-size: 11px;
+      font-weight: bold;
+      color: var(--txt-base);
+      cursor: pointer;
     }
-    .card.feat .card-ico { background: rgba(0,105,143,0.2); color: #7ED3EF; }
-    .card h3 { font-size: 15px; font-weight: 700; color: #0D1117; margin-bottom: 8px; }
-    .card.feat h3 { color: #fff; }
-    .card p { font-size: 13px; color: #6B7280; line-height: 1.65; margin-bottom: 20px; flex: 1; }
-    .card.feat p { color: rgba(255,255,255,0.55); }
-    .card-lnk { font-size: 13px; font-weight: 700; color: #00698F; text-decoration: none; display: flex; align-items: center; gap: 4px; }
-    .card.feat .card-lnk { color: #7ED3EF; }
+    .relo-quote-display {
+      background: rgba(0, 135, 90, 0.04);
+      border: 1px solid rgba(0, 135, 90, 0.15);
+      border-radius: 6px;
+      padding: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.5px;
+      font-weight: 700;
+    }
 
-    /* Steps */
-    .step-list { max-width: 700px; margin: 0 auto 0; display: flex; flex-direction: column; gap: 7px; }
-    .step-row {
-      display: flex; align-items: center; gap: 14px;
-      background: #fff; border: 1.5px solid #DDE2E8;
-      border-radius: 8px; padding: 14px 18px; transition: all 0.12s;
+    /* 5. Superannuation Transfer Mockup */
+    .super-transfer-visual {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      margin-bottom: 8px;
     }
-    .step-row:hover { border-color: #99D4E8; }
-    .step-row.done { background: #E6F2F7; border-color: #99D4E8; }
-    .step-n { font-size: 11px; font-weight: 700; color: #9CA3AF; width: 22px; flex-shrink: 0; }
-    .step-circle {
-      width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
-      border: 2px solid #E5E7EB; display: flex; align-items: center; justify-content: center;
+    .super-node {
+      border: 1px solid var(--bg-border);
+      border-radius: 6px;
+      background: var(--bg-base);
+      padding: 8px 10px;
+      font-size: 10px;
+      font-weight: bold;
+      width: 72px;
+      text-align: center;
     }
-    .step-row.done .step-circle { background: #00698F; border-color: #00698F; }
-    .step-body { flex: 1; }
-    .step-t { font-size: 14px; font-weight: 600; color: #0D1117; }
-    .step-row.done .step-t { color: #004F6D; }
-    .step-tags { display: flex; gap: 6px; margin-top: 3px; flex-wrap: wrap; }
-    .step-badge {
-      background: #E6F2F7; color: #00698F;
-      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
-      padding: 2px 8px; border-radius: 3px; white-space: nowrap;
+    .super-path {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-emerald), var(--accent-gold));
+      position: relative;
     }
-    .step-badge.phase { background: #F9FAFB; color: #6B7280; }
-    .step-lock { color: #D1D5DB; flex-shrink: 0; }
+    .super-path-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 6px var(--accent-emerald);
+      position: absolute;
+      top: -3px;
+      left: 60%;
+      animation: superPulse 2s infinite linear;
+    }
+    .super-detail-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      color: var(--txt-muted);
+      border-top: 1px solid var(--bg-border);
+      padding-top: 8px;
+      margin-top: 8px;
+    }
 
-    /* Paywall */
-    .paywall-blur { filter: blur(3.5px); pointer-events: none; opacity: 0.4; }
-    .paywall-box {
-      background: #fff; border: 1.5px solid #DDE2E8; border-radius: 12px;
-      padding: 36px; text-align: center; margin-top: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    /* 6. Boarding Pass / Flight Card Mockup */
+    .flight-ticket {
+      border: 1px dashed var(--bg-border);
+      border-radius: 8px;
+      background: var(--bg-base);
+      padding: 12px;
+      position: relative;
     }
-    .paywall-box h3 { font-size: 1.3rem; font-weight: 800; color: #0D1117; margin-bottom: 8px; letter-spacing: -0.02em; }
-    .paywall-box p { font-size: 14px; color: #6B7280; margin-bottom: 24px; line-height: 1.65; max-width: 340px; margin-left: auto; margin-right: auto; }
-    .paywall-cta {
-      display: inline-block; background: #00698F; color: #fff;
-      font-size: 15px; font-weight: 700; padding: 14px 30px; border-radius: 6px;
-      text-decoration: none; margin-bottom: 12px; transition: background 0.12s;
+    .flight-ticket::before, .flight-ticket::after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      top: 50%;
+      margin-top: -5px;
     }
-    .paywall-cta:hover { background: #004F6D; }
-    .paywall-note { font-size: 12px; color: #9CA3AF; }
+    .flight-ticket::before { left: -5px; }
+    .flight-ticket::after { right: -5px; }
+    .fl-cities {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .fl-city-code {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--txt-base);
+    }
+    .fl-plane {
+      color: var(--accent-emerald);
+      font-size: 13px;
+    }
+    .fl-details-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      border-top: 1px solid rgba(0,0,0,0.04);
+      padding-top: 8px;
+      text-align: left;
+    }
 
-    /* Pricing */
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .pc {
-      background: #fff; border: 1.5px solid #DDE2E8;
-      border-radius: 12px; padding: 30px; display: flex; flex-direction: column; position: relative;
-    }
-    .pc.feat {
-      background: #0D2137; border-color: #0D2137;
-    }
-    .pc-badge {
-      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-      background: #00698F; color: #fff;
-      font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
-      padding: 4px 14px; border-radius: 20px; white-space: nowrap;
-    }
-    .pc-tier { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #9CA3AF; margin-bottom: 10px; }
-    .pc.feat .pc-tier { color: rgba(255,255,255,0.4); }
-    .pc-price { font-size: 2.5rem; font-weight: 800; color: #0D1117; letter-spacing: -0.04em; line-height: 1; margin-bottom: 4px; }
-    .pc.feat .pc-price { color: #fff; }
-    .pc-price sup { font-size: 1.1rem; vertical-align: top; line-height: 1.6; }
-    .pc-period { font-size: 12px; color: #9CA3AF; margin-bottom: 24px; }
-    .pc.feat .pc-period { color: rgba(255,255,255,0.35); }
-    .pc-feats { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; margin-bottom: 26px; }
-    .pc-feats li {
-      display: flex; gap: 9px; font-size: 13px; color: #374151; align-items: flex-start; line-height: 1.4;
-    }
-    .pc.feat .pc-feats li { color: rgba(255,255,255,0.7); }
-    .pc-feats li.off { color: #D1D5DB; }
-    .pc-check {
-      width: 16px; height: 16px; border-radius: 50%;
-      background: #E6F2F7; flex-shrink: 0; margin-top: 1px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .pc.feat .pc-check { background: rgba(0,105,143,0.2); }
-    .pc-check.off { background: #F9FAFB; }
-    .pc-btn-p {
-      display: block; text-align: center; background: #00698F; color: #fff;
-      font-size: 14px; font-weight: 700; padding: 13px; border-radius: 6px; text-decoration: none;
-      transition: background 0.12s;
-    }
-    .pc-btn-p:hover { background: #004F6D; }
-    .pc-btn-s {
-      display: block; text-align: center; background: #F4F6F8; color: #0D1117;
-      font-size: 14px; font-weight: 600; padding: 13px; border-radius: 6px;
-      border: 1.5px solid #DDE2E8; text-decoration: none; transition: all 0.12s;
-    }
-    .pc-btn-s:hover { border-color: #D1D5DB; }
 
-    /* Reviews */
-    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .review {
-      background: #fff; border: 1.5px solid #DDE2E8;
-      border-radius: 10px; padding: 26px;
+    /* ── ACQUISITION PROCESS ── */
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
     }
-    .review-stars { color: #F59E0B; font-size: 14px; letter-spacing: 1px; margin-bottom: 14px; }
-    .review-txt { font-size: 14px; color: #374151; line-height: 1.75; margin-bottom: 20px; font-style: italic; }
-    .review-author { display: flex; align-items: center; gap: 10px; }
-    .review-av {
-      width: 36px; height: 36px; border-radius: 50%; background: #E6F2F7;
-      color: #00698F; font-size: 12px; font-weight: 800;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    @media (min-width: 640px) {
+      .facts-grid { gap: 16px; }
     }
-    .review-name { font-size: 13px; font-weight: 700; color: #0D1117; }
-    .review-loc { font-size: 11px; color: #9CA3AF; margin-top: 1px; }
+    @media (min-width: 960px) {
+      .facts-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .fact-card {
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid var(--bg-border);
+      border-radius: 8px;
+      padding: 20px 18px;
+      text-align: left;
+    }
+    .fact-k {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--txt-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .fact-v {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--txt-base);
+    }
 
-    /* CTA band */
-    .cta-band { background: #0D2137; padding: 80px 0; text-align: center; }
-    .cta-band h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 800; color: #fff; letter-spacing: -0.04em; margin-bottom: 14px; }
-    .cta-band h2 em { font-style: italic; color: #7ED3EF; }
-    .cta-band p { font-size: 17px; color: rgba(255,255,255,0.5); margin-bottom: 36px; line-height: 1.7; max-width: 480px; margin-left: auto; margin-right: auto; }
-    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .cta-btn-g {
-      background: #00698F; color: #fff;
-      font-size: 15px; font-weight: 700; padding: 14px 30px; border-radius: 6px;
-      text-decoration: none; transition: background 0.12s;
+    /* ── ENQUIRY FORM ── */
+    .enq-section {
+      border-top: 1px solid var(--bg-border);
+      background: radial-gradient(circle at 50% 100%, rgba(0, 135, 90, 0.03) 0%, rgba(245, 245, 247, 0) 65%);
     }
-    .cta-btn-g:hover { background: #004F6D; }
-    .cta-btn-w {
-      background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.75);
-      border: 1.5px solid rgba(255,255,255,0.15);
-      font-size: 15px; font-weight: 600; padding: 13px 28px; border-radius: 6px;
-      text-decoration: none; transition: all 0.12s;
+    .form {
+      max-width: 520px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
-    .cta-btn-w:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    @media (min-width: 520px) {
+      .form-row { grid-template-columns: 1fr 1fr; gap: 16px; }
+    }
+    .fld {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: left;
+    }
+    .fld label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--txt-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .fld input, .fld textarea {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--txt-base);
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid var(--bg-border);
+      padding: 12px 14px;
+      border-radius: 8px;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+    .fld input:focus, .fld textarea:focus {
+      border-color: var(--accent-emerald);
+      box-shadow: 0 0 0 3px rgba(0, 135, 90, 0.12);
+      background: #FFFFFF;
+    }
+    .fld input::placeholder, .fld textarea::placeholder {
+      color: var(--txt-faint);
+    }
+    .fld textarea {
+      resize: vertical;
+      min-height: 96px;
+    }
+    .sbmt-btn {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFFFFF;
+      background: linear-gradient(135deg, var(--accent-emerald), #00A66E);
+      border: none;
+      padding: 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 15px rgba(0, 135, 90, 0.15);
+    }
+    .sbmt-btn:hover {
+      box-shadow: 0 6px 20px rgba(0, 135, 90, 0.25);
+      transform: translateY(-0.5px);
+    }
+    .alt-contact {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--txt-muted);
+    }
+    .alt-contact a {
+      color: var(--accent-gold);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .alt-contact a:hover {
+      color: #B58A18;
+      text-decoration: underline;
+    }
 
-    /* Footer */
-    .ftr { background: #091929; padding: 56px 0 32px; }
-    .ftr-top {
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
-      padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 28px;
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--bg-border);
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.5);
     }
-    .ftr-logo { font-size: 17px; font-weight: 800; letter-spacing: -0.04em; color: #fff; margin-bottom: 12px; }
-    .ftr-logo span { color: #7ED3EF; }
-    .ftr-desc { font-size: 13px; color: rgba(255,255,255,0.3); line-height: 1.75; max-width: 220px; }
-    .ftr-col h4 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.25); margin-bottom: 16px; }
-    .ftr-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-    .ftr-col a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.12s; }
-    .ftr-col a:hover { color: #fff; }
-    .ftr-btm { display: flex; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,0.2); flex-wrap: wrap; gap: 8px; }
+    footer p {
+      font-size: 12px;
+      color: var(--txt-muted);
+    }
 
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-card { transform: none; margin-top: 40px; }
-      .card-grid, .pricing-grid, .reviews-grid { grid-template-columns: 1fr; }
-      .ftr-top { grid-template-columns: 1fr 1fr; }
+    /* ── KEYFRAME ANIMATIONS ── */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.1); }
     }
-    @media (max-width: 600px) {
-      .shell { padding: 0 20px; }
-      .hdr-nav { display: none; }
+    @keyframes superPulse {
+      0% { left: 0%; }
+      100% { left: 100%; }
     }
+
+    /* ── WRAP PADDING: tighter on mobile ── */
+    .wrap, .wrap-narrow { padding: 0 16px; }
+    @media (min-width: 640px) {
+      .wrap, .wrap-narrow { padding: 0 24px; }
+    }
+    /* ── SEO TABLE: touch scroll on mobile ── */
+    .seo-table-container { -webkit-overflow-scrolling: touch; }
+    .seo-table { min-width: 560px; }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="hdr">
-    <div class="shell hdr-inner">
-      <a href="/">GoAustralia<span>.co.nz</span></a>
-      <nav class="hdr-nav">
-        <a href="/tools/checklist" class="on">Checklist</a>
-        <a href="#">Jobs</a>
-        <a href="#">Moving</a>
-        <a href="#">Money</a>
-        <a href="#">Guides</a>
-      </nav>
-      <div class="hdr-ctas">
-        <a href="/login" class="hdr-login">Log in</a>
-        <a href="/pricing" class="hdr-btn">Get Access</a>
+  <!-- SOFT BACKGROUND GLOWS -->
+  <div class="glow-blob glow-1"></div>
+  <div class="glow-blob glow-2"></div>
+  <div class="glow-blob glow-3"></div>
+
+  <!-- STICKY GLASS NAVIGATION -->
+  <header>
+    <div class="wrap nav-inner">
+      <a href="/" class="logo">goaustralia<span>.co.nz</span></a>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="status-badge">
+          <div class="status-dot"></div>
+          Active SEO Index
+        </div>
+        <a href="#enquire" class="nav-cta">Make an Offer</a>
       </div>
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO SECTION -->
   <section class="hero">
-    <div class="shell hero-grid">
-      <div class="hero-text">
-        <div class="hero-tag">
-          <span class="hero-tag-dot"></span>
-          For New Zealanders Moving to Australia
-        </div>
-        <h1>The complete checklist<br>for Kiwis moving<br>to <em>Australia</em></h1>
-        <p class="hero-sub">70 Kiwi-specific steps in the right order — TFN, Medicare, KiwiSaver transfer, AU super, driving licence and more. With official links and NZ-specific advice nobody else covers.</p>
-        <div class="hero-btns">
-          <a href="/tools/checklist" class="btn-primary">Start Free Checklist</a>
-          <a href="/pricing" class="btn-outline">See pricing — $24.99</a>
-        </div>
-        <div class="hero-trust">
-          <span class="trust-i">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7 5.5 10 11.5 4"/></svg>
-            No visa required
-          </span>
-          <span class="trust-i">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7 5.5 10 11.5 4"/></svg>
-            All 6 states covered
-          </span>
-          <span class="trust-i">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7 5.5 10 11.5 4"/></svg>
-            Updated 2026
-          </span>
-          <span class="trust-i">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7 5.5 10 11.5 4"/></svg>
-            One-time payment
-          </span>
-        </div>
-      </div>
-
-      <!-- Checklist card -->
-      <div class="hero-card">
-        <div class="hcard-hd">
-          <div class="hcard-hd-left">
-            <div class="hcard-hd-title">My Moving Checklist</div>
-            <div class="hcard-hd-sub">4 of 70 done</div>
-          </div>
-        </div>
-        <div class="hcard-progress-wrap">
-          <div class="hcard-progress-label"><span>Progress</span><span>23%</span></div>
-          <div class="hcard-bar"><div class="hcard-bar-fill"></div></div>
-        </div>
-        <div class="hcard-steps">
-          <div class="hcard-step done">
-            <div class="hcard-dot">
-              <svg width="9" height="7" viewBox="0 0 9 7" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3.5 3.5 6 8 1"/></svg>
-            </div>
-            <div class="hcard-text">
-              <div class="hcard-name">Confirm SCV eligibility</div>
-              <div class="hcard-meta">Completed · Before You Leave</div>
-            </div>
-          </div>
-          <div class="hcard-step done">
-            <div class="hcard-dot">
-              <svg width="9" height="7" viewBox="0 0 9 7" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3.5 3.5 6 8 1"/></svg>
-            </div>
-            <div class="hcard-text">
-              <div class="hcard-name">Notify IRD of departure</div>
-              <div class="hcard-meta">Completed · Before You Leave</div>
-            </div>
-          </div>
-          <div class="hcard-step prog">
-            <div class="hcard-dot"></div>
-            <div class="hcard-text">
-              <div class="hcard-name">Apply for Tax File Number</div>
-              <div class="hcard-meta">In progress · First Week</div>
-            </div>
-          </div>
-          <div class="hcard-step todo">
-            <div class="hcard-dot"></div>
-            <div class="hcard-text">
-              <div class="hcard-name">Enrol in Medicare</div>
-              <div class="hcard-meta">First Week in AU</div>
-            </div>
-          </div>
-          <div class="hcard-step todo">
-            <div class="hcard-dot"></div>
-            <div class="hcard-text">
-              <div class="hcard-name">Transfer KiwiSaver to AU super</div>
-              <div class="hcard-meta">First Month</div>
-            </div>
-          </div>
-        </div>
-        <div class="hcard-foot">
-          <span class="hcard-foot-txt">23% complete</span>
-          <a href="/tools/checklist" class="hcard-cta">Unlock all 70 →</a>
-        </div>
+    <div class="wrap-narrow">
+      <span class="hero-pill"><span style="color: var(--accent-gold); font-size: 13px; margin-right: 4px;">✦</span> Premium Digital Asset For Sale</span>
+      <h1><span>goaustralia.co.nz</span></h1>
+      <p>The definitive exact-match domain for the massive trans-Tasman relocation corridor. Highly competitive pre-arrival authority, ready-built for premium relocation services and SaaS applications.</p>
+      <div class="hero-ctas">
+        <a href="#enquire" class="btn-primary">Secure This Domain</a>
+        <a href="#solutions" class="btn-secondary">Explore Use Cases</a>
       </div>
     </div>
   </section>
 
-  <!-- STATS -->
-  <div class="stats">
-    <div class="shell stats-row">
-      <div class="stat-i">
-        <span class="stat-n">630K+</span>
-        <span class="stat-l">Kiwis in Australia</span>
+  <!-- TRANS-TASMAN STATISTICS -->
+  <div class="wrap">
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-num">~50,000</div>
+        <div class="metric-label">Annual Kiwi Movers</div>
       </div>
-      <div class="stat-i">
-        <span class="stat-n">28,500</span>
-        <span class="stat-l">Move each year</span>
+      <div class="metric-card">
+        <div class="metric-num">530K+</div>
+        <div class="metric-label">Kiwi Expats in AU</div>
       </div>
-      <div class="stat-i">
-        <span class="stat-n">70</span>
-        <span class="stat-l">Checklist steps</span>
+      <div class="metric-card">
+        <div class="metric-num">#1</div>
+        <div class="metric-label">Outbound NZ Corridor</div>
       </div>
-      <div class="stat-i">
-        <span class="stat-n">6</span>
-        <span class="stat-l">States covered</span>
-      </div>
-      <div class="stat-i">
-        <span class="stat-n">$0</span>
-        <span class="stat-l">No visa fee</span>
+      <div class="metric-card">
+        <div class="metric-num">$3.2B+</div>
+        <div class="metric-label">Annual Relocation FX</div>
       </div>
     </div>
   </div>
 
-  <!-- HOW IT WORKS -->
-  <section class="section alt">
-    <div class="shell">
-      <div class="sec-header center">
-        <span class="sec-eye">How it works</span>
-        <h2 class="sec-h2">Three steps to a stress-free move</h2>
-        <p class="sec-sub">Select your state, follow your personalised checklist, track progress for your whole family.</p>
+  <!-- ORGANIC SEO INDEX TRACTION -->
+  <section id="seo-traction" style="background: rgba(255,255,255,0.3); border-top: 1px solid var(--bg-border); border-bottom: 1px solid var(--bg-border);">
+    <div class="wrap">
+      <div class="sec-header">
+        <span class="sec-badge">Organic SEO Authority</span>
+        <h2 class="sec-title">Search Engine Discovery Data</h2>
+        <p class="sec-desc">Search engines already index this domain as an authority for the relocation corridor. Prospective buyers capture high-intent users organically, completely bypassing costly search ad spend.</p>
       </div>
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-ico">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 6h12M4 10h8M4 14h6"/><circle cx="16" cy="13" r="3"/><path d="M18.5 15.5l-1.5-1.5"/>
-            </svg>
+
+      <div class="glass-card">
+        <div class="seo-summary-cards">
+          <div class="seo-summary-card">
+            <div class="seo-sum-val" style="color: var(--accent-emerald);">Active</div>
+            <div class="seo-sum-lbl">Google Sandbox Index</div>
           </div>
-          <h3>70-Step Moving Checklist</h3>
-          <p>Every step in the right order — TFN, Medicare, KiwiSaver, driving licence, super and utilities. Kiwi-specific advice throughout.</p>
-          <a href="/tools/checklist" class="card-lnk">Start checklist →</a>
+          <div class="seo-summary-card">
+            <div class="seo-sum-val">Top 100</div>
+            <div class="seo-sum-lbl">Relocation Key phrases</div>
+          </div>
+          <div class="seo-summary-card">
+            <div class="seo-sum-val" style="color: var(--accent-gold);">$25.50+</div>
+            <div class="seo-sum-lbl">Equivalent CPC Commercial Value</div>
+          </div>
         </div>
-        <div class="card feat">
-          <div class="card-ico">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="7" width="16" height="11" rx="2"/><path d="M7 7V5.5A2.5 2.5 0 0 1 9.5 3h1A2.5 2.5 0 0 1 13 5.5V7"/>
-            </svg>
-          </div>
-          <h3>Jobs in Australia</h3>
-          <p>Roles that welcome NZ experience. Filter by state, industry and salary. Post a job from $149.</p>
-          <a href="/jobs" class="card-lnk">Browse jobs →</a>
-        </div>
-        <div class="card">
-          <div class="card-ico">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="10" cy="10" r="8"/><path d="M10 6v1.5M10 12.5V14M7.5 8.5c0-1.1 1.1-2 2.5-2s2.5.9 2.5 2-1.1 2-2.5 2-2.5.9-2.5 2 1.1 2 2.5 2 2.5-.9 2.5-2"/>
-            </svg>
-          </div>
-          <h3>Money & Finance</h3>
-          <p>KiwiSaver transfer, AU bank accounts, NZD→AUD transfer and tax guide for Kiwis.</p>
-          <a href="/money" class="card-lnk">Learn more →</a>
+
+        <h3 style="font-size: 14px; font-weight: 800; text-align: left; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up" style="color: var(--accent-emerald);"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+          Recent Organic Query Traction (Search Console Snapshot)
+        </h3>
+
+        <div class="seo-table-container">
+          <table class="seo-table">
+            <thead>
+              <tr>
+                <th>Top Search Query</th>
+                <th>Target Intent</th>
+                <th>Impressions</th>
+                <th>Average Position</th>
+                <th>Acquisition Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="keyword-badge">moving nz to australia</span></td>
+                <td><span class="intent-tag intent-high">High Relocation</span></td>
+                <td>6</td>
+                <td>71.3</td>
+                <td>Very High</td>
+              </tr>
+              <tr>
+                <td><span class="keyword-badge">new zealander moving to australia checklist</span></td>
+                <td><span class="intent-tag intent-commercial">SaaS Checklist / Guides</span></td>
+                <td>6</td>
+                <td>73.2</td>
+                <td>Maximum LTV</td>
+              </tr>
+              <tr>
+                <td><span class="keyword-badge">kiwis moving to australia</span></td>
+                <td><span class="intent-tag intent-medium">Audience Match</span></td>
+                <td>3</td>
+                <td>60.0</td>
+                <td>High</td>
+              </tr>
+              <tr>
+                <td><span class="keyword-badge">moving to australia from nz checklist</span></td>
+                <td><span class="intent-tag intent-commercial">SaaS Checklist / Guides</span></td>
+                <td>3</td>
+                <td>70.7</td>
+                <td>Maximum LTV</td>
+              </tr>
+              <tr>
+                <td><span class="keyword-badge">move to australia</span></td>
+                <td><span class="intent-tag intent-medium">Category Intent</span></td>
+                <td>3</td>
+                <td>71.3</td>
+                <td>Medium</td>
+              </tr>
+              <tr>
+                <td><span class="keyword-badge">how to move to australia from nz</span></td>
+                <td><span class="intent-tag intent-high">High Relocation</span></td>
+                <td>2</td>
+                <td>88.5</td>
+                <td>High</td>
+              </tr>
+              <tr>
+                <td><span class="keyword-badge">visa faqs nz australia</span></td>
+                <td><span class="intent-tag intent-high">Regulatory Query</span></td>
+                <td>2</td>
+                <td>71.0</td>
+                <td>High</td>
+              </tr>
+              <tr>
+                <td><span class="keyword-badge">do kiwis need a visa for australia</span></td>
+                <td><span class="intent-tag intent-medium">Visa Eligibility</span></td>
+                <td>1</td>
+                <td>89.0</td>
+                <td>Medium</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CHECKLIST PREVIEW -->
-  <section class="section">
-    <div class="shell">
-      <div class="sec-header center">
-        <span class="sec-eye">The checklist</span>
-        <h2 class="sec-h2">First 10 steps — free</h2>
-        <p class="sec-sub">See exactly what the checklist looks like. Upgrade to unlock all 70 steps.</p>
-      </div>
-      <div class="step-list">
-        <div class="step-row done">
-          <span class="step-n">01</span>
-          <div class="step-circle">
-            <svg width="9" height="7" viewBox="0 0 9 7" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3.5 3.5 6 8 1"/></svg>
-          </div>
-          <div class="step-body">
-            <div class="step-t">Confirm SCV eligibility — NZ passport, no criminal history</div>
-            <div class="step-tags"><span class="step-badge phase">Before You Leave</span><span class="step-badge">Free</span></div>
-          </div>
-        </div>
-        <div class="step-row">
-          <span class="step-n">02</span>
-          <div class="step-circle"></div>
-          <div class="step-body">
-            <div class="step-t">Research which Australian state fits your lifestyle and job</div>
-            <div class="step-tags"><span class="step-badge phase">Before You Leave</span><span class="step-badge">Free</span></div>
-          </div>
-        </div>
-        <div class="step-row">
-          <span class="step-n">03</span>
-          <div class="step-circle"></div>
-          <div class="step-body">
-            <div class="step-t">Notify IRD of your departure and tax residency change</div>
-            <div class="step-tags"><span class="step-badge phase">Before You Leave</span><span class="step-badge">Free</span></div>
-          </div>
-        </div>
-        <div class="step-row">
-          <span class="step-n">04</span>
-          <div class="step-circle"></div>
-          <div class="step-body">
-            <div class="step-t">Initiate KiwiSaver transfer to Australian super</div>
-            <div class="step-tags"><span class="step-badge phase">3+ Months Before</span><span class="step-badge">Kiwi-only</span></div>
-          </div>
-        </div>
-        <div class="step-row">
-          <span class="step-n">05</span>
-          <div class="step-circle"></div>
-          <div class="step-body">
-            <div class="step-t">Open Australian bank account from New Zealand</div>
-            <div class="step-tags"><span class="step-badge phase">3+ Months Before</span></div>
-          </div>
-        </div>
-        <div class="step-row">
-          <span class="step-n">06</span>
-          <div class="step-circle"></div>
-          <div class="step-body">
-            <div class="step-t">Apply for Tax File Number (TFN) online via ATO</div>
-            <div class="step-tags"><span class="step-badge phase">First Week</span></div>
-          </div>
-        </div>
-        <div class="step-row">
-          <span class="step-n">07</span>
-          <div class="step-circle"></div>
-          <div class="step-body">
-            <div class="step-t">Enrol in Medicare — NZ citizens eligible immediately</div>
-            <div class="step-tags"><span class="step-badge phase">First Week</span><span class="step-badge">Kiwi-only</span></div>
-          </div>
-        </div>
+  <!-- STRATEGIC USE CASES WITH INTERACTIVE MOCKUPS -->
+  <section id="solutions">
+    <div class="wrap">
+      <div class="sec-header">
+        <span class="sec-badge" style="color: var(--accent-gold);">Strategic Solutions</span>
+        <h2 class="sec-title">Where this Domain Fits</h2>
+        <p class="sec-desc">A premium, highly versatile digital asset. Explore the 6 core business models that perfectly align with the <strong>goaustralia.co.nz</strong> domain brand.</p>
       </div>
 
-      <!-- Blurred rows -->
-      <div class="step-list paywall-blur" style="margin-top:7px;">
-        <div class="step-row">
-          <span class="step-n">08</span>
-          <div class="step-circle"></div>
-          <div class="step-body"><div class="step-t">Set up MyGov account and link Medicare and ATO</div></div>
+      <div class="uses-grid">
+        
+        <!-- 1. FX Transfer Model -->
+        <div class="use-card">
+          <div>
+            <div class="use-meta">
+              <span class="use-num">SOLUTION 01</span>
+              <span style="font-size: 10px; font-weight: bold; color: var(--accent-emerald);">Fintech & FX</span>
+            </div>
+            <h4 class="use-title">Foreign Exchange & FinTech</h4>
+            <p class="use-desc">Perfect campaign landing page for the high-volume NZD → AUD corridor. Drops CAC substantially for trans-Tasman transfer providers like Wise, OFX, or TorFX.</p>
+          </div>
+          
+          <!-- Mockup FX calculator -->
+          <div class="mini-mockup">
+            <div class="fx-mockup-row">
+              <div class="fx-input-box">
+                <div class="fx-lbl">Send from NZ</div>
+                <div class="fx-inp-row">
+                  <input type="number" id="fx-send-val" value="10000" />
+                  <span class="fx-curr-sel">NZD</span>
+                </div>
+              </div>
+              <div class="fx-arrow">⇄</div>
+              <div class="fx-input-box">
+                <div class="fx-lbl">Expat Receives</div>
+                <div class="fx-inp-row">
+                  <input type="text" id="fx-receive-val" value="9,234" readonly />
+                  <span class="fx-curr-sel">AUD</span>
+                </div>
+              </div>
+            </div>
+            <div class="fx-meta-row">
+              <span>Exchange Rate: <strong>0.9234</strong></span>
+              <span style="color: var(--accent-emerald);">Zero Transfer Fees</span>
+            </div>
+            <button class="fx-btn">Secure Exchange Rate</button>
+          </div>
         </div>
-        <div class="step-row">
-          <span class="step-n">09</span>
-          <div class="step-circle"></div>
-          <div class="step-body"><div class="step-t">Transfer NZ driver licence to your state's licence</div></div>
-        </div>
-        <div class="step-row">
-          <span class="step-n">10</span>
-          <div class="step-circle"></div>
-          <div class="step-body"><div class="step-t">Enrol children in school — NZ curriculum comparison</div></div>
-        </div>
-      </div>
 
-      <div class="paywall-box">
-        <h3>65 more steps unlocked with Full Access</h3>
-        <p>TFN, Medicare, MyGov, KiwiSaver, AU super, driving licence, utilities — every step with official links.</p>
-        <a href="/pricing" class="paywall-cta">Get Full Access — $24.99 NZD</a>
-        <div class="paywall-note">One-time payment · No subscription · Instant access</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section class="section alt">
-    <div class="shell">
-      <div class="sec-header center">
-        <span class="sec-eye">Simple pricing</span>
-        <h2 class="sec-h2">One payment. Everything you need.</h2>
-        <p class="sec-sub">No subscription. Pay once, use it through your entire move.</p>
-      </div>
-      <div class="pricing-grid">
-        <div class="pc">
-          <div class="pc-tier">Free</div>
-          <div class="pc-price">$0</div>
-          <div class="pc-period">forever, no card</div>
-          <ul class="pc-feats">
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Visa Pathway Checker</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Cost Calculator</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>First 10 checklist steps</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>All blog articles</li>
-            <li class="off"><span class="pc-check off"></span>Full 70-step checklist</li>
-            <li class="off"><span class="pc-check off"></span>State-specific steps</li>
-          </ul>
-          <a href="/tools/checklist" class="pc-btn-s">Start free</a>
-        </div>
-        <div class="pc feat">
-          <div class="pc-badge">Most popular</div>
-          <div class="pc-tier">Full Access</div>
-          <div class="pc-price"><sup>$</sup>24.99</div>
-          <div class="pc-period">one-time · NZD · yours forever</div>
-          <ul class="pc-feats">
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#7ED3EF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Full 70-step checklist</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#7ED3EF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>All 6 states covered</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#7ED3EF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Kiwi Masterguide PDF</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#7ED3EF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Tax & Finance Guide PDF</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#7ED3EF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Jobs Guide PDF</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#7ED3EF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Suburb Finder</li>
-          </ul>
-          <a href="/pricing" class="pc-btn-p">Get Full Access</a>
-        </div>
-        <div class="pc">
-          <div class="pc-tier">Family</div>
-          <div class="pc-price"><sup>$</sup>34.99</div>
-          <div class="pc-period">one-time · NZD · up to 4</div>
-          <ul class="pc-feats">
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Everything in Full Access</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Partner gets own checklist</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Kids' school enrolment steps</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Family progress dashboard</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Up to 4 family members</li>
-            <li><span class="pc-check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" stroke="#00698F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 3 5 7 1"/></svg></span>Separate progress per person</li>
-          </ul>
-          <a href="/pricing" class="pc-btn-s">Get Family Access</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- REVIEWS -->
-  <section class="section">
-    <div class="shell">
-      <div class="sec-header center">
-        <span class="sec-eye">What Kiwis say</span>
-        <h2 class="sec-h2">Trusted by 12,400+ Kiwis</h2>
-      </div>
-      <div class="reviews-grid">
-        <div class="review">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-txt">"The KiwiSaver transfer steps alone were worth $24.99. I had no idea about the timing or which AU funds accept NZ transfers."</p>
-          <div class="review-author">
-            <div class="review-av">JT</div>
-            <div>
-              <div class="review-name">Jess T.</div>
-              <div class="review-loc">Auckland → Melbourne, 2025</div>
+        <!-- 2. Relocation Checklist SaaS (StartAU Playbook Integrated) -->
+        <div class="use-card">
+          <div>
+            <div class="use-meta">
+              <span class="use-num">SOLUTION 02</span>
+              <span style="font-size: 10px; font-weight: bold; color: var(--accent-gold);">SaaS Platform</span>
+            </div>
+            <h4 class="use-title">Relocation Checklist & Guides (SaaS)</h4>
+            <p class="use-desc">Operate a digital companion checklist for NZ outbound expats. Sell a complete checklist dashboard ($24.99) and premium digital guide PDFs ($14–$19) covering TFN, Medicare, and KiwiSaver transfers.</p>
+          </div>
+          
+          <!-- Mockup Checklist Widget -->
+          <div class="mini-mockup">
+            <div class="chk-mockup-header">
+              <span style="color: var(--txt-base);">Moving Checklist Progress</span>
+              <div class="chk-progress-bar">
+                <div class="chk-progress-fill" id="checklist-prog-bar"></div>
+              </div>
+            </div>
+            <div class="chk-list">
+              <div class="chk-item" onclick="toggleChecklist(this)">
+                <div class="chk-checkbox">✓</div>
+                <span>Apply for Australian Tax File Number (TFN)</span>
+              </div>
+              <div class="chk-item" onclick="toggleChecklist(this)">
+                <div class="chk-checkbox">✓</div>
+                <span>Register for trans-Tasman Medicare</span>
+              </div>
+              <div class="chk-item" onclick="toggleChecklist(this)">
+                <div class="chk-checkbox empty" id="target-checkbox"></div>
+                <span style="color: var(--txt-muted);" id="target-lbl">Initiate KiwiSaver Super Transfer [Paid]</span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="review">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-txt">"I spent weeks trying to find clear info on what Kiwis need to do vs everyone else. GoAustralia had it in one place, in plain English."</p>
-          <div class="review-author">
-            <div class="review-av">MR</div>
-            <div>
-              <div class="review-name">Mark R.</div>
-              <div class="review-loc">Wellington → Brisbane, 2024</div>
+
+        <!-- 3. Migrant Banking -->
+        <div class="use-card">
+          <div>
+            <div class="use-meta">
+              <span class="use-num">SOLUTION 03</span>
+              <span style="font-size: 10px; font-weight: bold; color: #0071E3;">Migrant Banking</span>
+            </div>
+            <h4 class="use-title">Pre-Arrival Migrant Banking</h4>
+            <p class="use-desc">Pre-arrival account opening portal. Retail banks compete heavily to lock in salaries and credit card relationships before expats arrive on Australian soil.</p>
+          </div>
+          
+          <!-- Mockup Banking Portal -->
+          <div class="mini-mockup bank-grid">
+            <div class="bank-card-visual">
+              <div class="bank-card-logo">goaustralia<span>.co.nz</span></div>
+              <div class="bank-card-chip"></div>
+              <div class="bank-card-num">•••• •••• •••• 9012</div>
+            </div>
+            <div class="bank-status-col">
+              <div class="bank-status-pill">Active Account</div>
+              <p style="font-size: 11px; font-weight: bold; color: var(--txt-base); margin-bottom: 2px;">AUD Pre-Arrival Wallet</p>
+              <p style="font-size: 12px; font-weight: 800; color: var(--accent-emerald);">$2,540.00 AUD</p>
             </div>
           </div>
         </div>
-        <div class="review">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-txt">"We moved a family of 4 and nothing was missed. The checklist is genuinely the most useful thing about the site."</p>
-          <div class="review-author">
-            <div class="review-av">SW</div>
-            <div>
-              <div class="review-name">Sophie & Dan W.</div>
-              <div class="review-loc">Christchurch → Sydney, 2025</div>
+
+        <!-- 4. Removals & Logistics -->
+        <div class="use-card">
+          <div>
+            <div class="use-meta">
+              <span class="use-num">SOLUTION 04</span>
+              <span style="font-size: 10px; font-weight: bold; color: var(--accent-gold);">Logistics</span>
+            </div>
+            <h4 class="use-title">Removals & Logistics Lead-Gen</h4>
+            <p class="use-desc">Capture trans-Tasman container shipping and moving leads. Extremely high-margin relocations ($3,000–$10,000 per booking) drive major advertiser acquisition bids.</p>
+          </div>
+          
+          <!-- Mockup Logistics Calculator -->
+          <div class="mini-mockup">
+            <div class="relo-inputs">
+              <div class="relo-select-box">
+                <span>Shipping Volume:</span>
+                <select id="relo-size" onchange="calculateReloQuote()">
+                  <option value="1">1-Bedroom Unit / Boxes</option>
+                  <option value="3" selected>3-Bedroom House</option>
+                  <option value="5">5-Bedroom Family Estate</option>
+                </select>
+              </div>
+            </div>
+            <div class="relo-quote-display">
+              <span style="color: var(--txt-muted); font-size: 10px; text-transform: uppercase;">Est. Trans-Tasman Quote:</span>
+              <span style="color: var(--accent-emerald);" id="relo-price-lbl">$6,800 NZD</span>
             </div>
           </div>
+        </div>
+
+        <!-- 5. Superannuation Portability -->
+        <div class="use-card">
+          <div>
+            <div class="use-meta">
+              <span class="use-num">SOLUTION 05</span>
+              <span style="font-size: 10px; font-weight: bold; color: var(--accent-emerald);">Superannuation</span>
+            </div>
+            <h4 class="use-title">KiwiSaver to Super Portability</h4>
+            <p class="use-desc">Capture the retirement fund transfer market. Build a dedicated portal to guide and process KiwiSaver portfolio consolidation into Australian Super funds.</p>
+          </div>
+          
+          <!-- Mockup Portability Tracker -->
+          <div class="mini-mockup">
+            <div class="super-transfer-visual">
+              <div class="super-node">NZ KiwiSaver</div>
+              <div class="super-path">
+                <div class="super-path-pulse"></div>
+              </div>
+              <div class="super-node" style="border-color: var(--accent-emerald);">AU Super</div>
+            </div>
+            <div class="super-detail-row">
+              <span>Transfer Pathway Status:</span>
+              <span style="color: var(--accent-emerald); font-weight: bold;">Active Portability</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Travel & Aviation -->
+        <div class="use-card">
+          <div>
+            <div class="use-meta">
+              <span class="use-num">SOLUTION 06</span>
+              <span style="font-size: 10px; font-weight: bold; color: #0071E3;">Travel</span>
+            </div>
+            <h4 class="use-title">Airlines & Expat Travel Funnels</h4>
+            <p class="use-desc">Integrate flight search booking engines to capture one-way and migration flights. Perfect domain for airlines or travel aggregators looking to capture trans-Tasman search volume.</p>
+          </div>
+          
+          <!-- Mockup Flight Card -->
+          <div class="mini-mockup">
+            <div class="flight-ticket">
+              <div class="fl-cities">
+                <div class="fl-city-code">AKL</div>
+                <div class="fl-plane">✈</div>
+                <div class="fl-city-code">SYD</div>
+              </div>
+              <div class="fl-details-grid">
+                <div>
+                  <span style="font-size: 8px; color: var(--txt-muted); text-transform: uppercase;">Class</span>
+                  <p style="font-size: 10px; font-weight: bold; color: var(--txt-base);">Expat Fare</p>
+                </div>
+                <div>
+                  <span style="font-size: 8px; color: var(--txt-muted); text-transform: uppercase;">Baggage</span>
+                  <p style="font-size: 10px; font-weight: bold; color: var(--txt-base);">Double (46kg)</p>
+                </div>
+                <div>
+                  <span style="font-size: 8px; color: var(--txt-muted); text-transform: uppercase;">Status</span>
+                  <p style="font-size: 10px; font-weight: bold; color: var(--accent-emerald);">Seat Held</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- ACQUISITION SPECS -->
+  <section id="acquisition" style="background: rgba(255,255,255,0.3); border-top: 1px solid var(--bg-border); border-bottom: 1px solid var(--bg-border);">
+    <div class="wrap">
+      <div class="sec-header">
+        <span class="sec-badge">Secure Transfer</span>
+        <h2 class="sec-title">Acquisition Specifications</h2>
+      </div>
+
+      <div class="facts-grid">
+        <div class="fact-card">
+          <div class="fact-k">Asset Name</div>
+          <div class="fact-v">goaustralia.co.nz</div>
+        </div>
+        <div class="fact-card">
+          <div class="fact-k">Extension Registry</div>
+          <div class="fact-v">.co.nz (DNC Registered)</div>
+        </div>
+        <div class="fact-card">
+          <div class="fact-k">Transfer Protocol</div>
+          <div class="fact-v">Secure Registrar Transfer</div>
+        </div>
+        <div class="fact-card">
+          <div class="fact-k">Timeline</div>
+          <div class="fact-v">Completed in 3–5 Days</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA BAND -->
-  <section class="cta-band">
-    <div class="shell">
-      <h2>Ready to make the <em>move?</em></h2>
-      <p>Start with the free checklist. Upgrade when you're ready.</p>
-      <div class="cta-btns">
-        <a href="/tools/checklist" class="cta-btn-g">Start Free Checklist</a>
-        <a href="/pricing" class="cta-btn-w">See pricing</a>
+  <!-- ENQUIRY SECTION -->
+  <section class="enq-section" id="enquire">
+    <div class="wrap-narrow text-center">
+      <div class="sec-header" style="margin-bottom: 32px;">
+        <span class="sec-badge" style="color: var(--accent-gold);">Submit Enquiry</span>
+        <h2 class="sec-title" style="font-size: 2rem;">Acquire This Asset</h2>
+        <p class="sec-desc">All serious offers and enquiries will be reviewed professionally within 24–48 hours. Secure escrow transfer is available.</p>
       </div>
+
+      <form class="form" id="enquiry-form">
+        <div class="form-row">
+          <div class="fld">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required />
+          </div>
+          <div class="fld">
+            <label for="email">Business Email</label>
+            <input type="email" id="email" name="email" placeholder="you@company.com" required />
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="fld">
+            <label for="company">Company / Agency (Optional)</label>
+            <input type="text" id="company" name="company" placeholder="e.g. Wise or Private Portfolio" />
+          </div>
+          <div class="fld">
+            <label for="offer">Initial Offer (NZD)</label>
+            <input type="text" id="offer" name="offer" placeholder="e.g. 5,000" />
+          </div>
+        </div>
+
+        <div class="fld">
+          <label for="message">Intended Use & Message</label>
+          <textarea id="message" name="message" placeholder="Provide details on your intended usage, portfolio strategy, or terms..."></textarea>
+        </div>
+
+        <button type="submit" class="sbmt-btn">Submit Purchase Enquiry</button>
+      </form>
+      
+      <p class="alt-contact">or contact directly via email: <a href="mailto:goaustralia.co.nz@gmail.com">goaustralia.co.nz@gmail.com</a></p>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="ftr">
-    <div class="shell">
-      <div class="ftr-top">
-        <div>
-          <div class="ftr-logo">GoAustralia<span>.co.nz</span></div>
-          <p class="ftr-desc">The most complete resource for New Zealanders planning their move to Australia.</p>
-        </div>
-        <div class="ftr-col">
-          <h4>Tools</h4>
-          <ul>
-            <li><a href="/tools/checklist">Moving Checklist</a></li>
-            <li><a href="/tools/visa-checker">Visa Checker</a></li>
-            <li><a href="/tools/cost-calculator">Cost Calculator</a></li>
-            <li><a href="/tools/suburb-finder">Suburb Finder</a></li>
-          </ul>
-        </div>
-        <div class="ftr-col">
-          <h4>Learn</h4>
-          <ul>
-            <li><a href="/guides">Moving Blog</a></li>
-            <li><a href="/moving">SCV Guide</a></li>
-            <li><a href="/money">Tax for Kiwis</a></li>
-            <li><a href="/guides">Sydney vs Melbourne</a></li>
-          </ul>
-        </div>
-        <div class="ftr-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="/about">About</a></li>
-            <li><a href="/pricing">Pricing</a></li>
-            <li><a href="/login">Log In</a></li>
-            <li><a href="/privacy">Privacy Policy</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="ftr-btm">
-        <span>© 2026 GoAustralia.co.nz</span>
-        <span>Independent — not affiliated with any government</span>
-      </div>
+  <footer>
+    <div class="wrap">
+      <p>Listed independently. All rights reserved. Secure escrow integrations supported. &copy; 2026</p>
     </div>
   </footer>
+
+  <script>
+    // ── PAGEVIEW TRACKING ──
+    fetch('/api/pageview', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ referrer: document.referrer || 'direct' })
+    }).catch(() => {});
+
+    // ── INTERACTIVE MOCKUP: FX CALCULATOR ──
+    const fxSendVal = document.getElementById('fx-send-val');
+    const fxReceiveVal = document.getElementById('fx-receive-val');
+    const rate = 0.9234;
+
+    fxSendVal.addEventListener('input', function() {
+      const val = parseFloat(fxSendVal.value) || 0;
+      const converted = Math.round(val * rate);
+      fxReceiveVal.value = converted.toLocaleString();
+    });
+
+    // ── INTERACTIVE MOCKUP: CHECKLIST TOGGLING ──
+    const checklistProgBar = document.getElementById('checklist-prog-bar');
+    const targetCheckbox = document.getElementById('target-checkbox');
+    const targetLbl = document.getElementById('target-lbl');
+
+    function toggleChecklist(el) {
+      const box = el.querySelector('.chk-checkbox');
+      const text = el.querySelector('span');
+
+      if (box.classList.contains('empty')) {
+        box.classList.remove('empty');
+        box.textContent = '✓';
+        text.style.color = 'var(--txt-base)';
+        text.style.textDecoration = 'none';
+      } else {
+        box.classList.add('empty');
+        box.textContent = '';
+        text.style.color = 'var(--txt-muted)';
+      }
+
+      // Recalculate progress fill
+      const total = el.parentElement.querySelectorAll('.chk-item').length;
+      const checked = el.parentElement.querySelectorAll('.chk-checkbox:not(.empty)').length;
+      const pct = Math.round((checked / total) * 100);
+      checklistProgBar.style.width = pct + '%';
+    }
+
+    // ── INTERACTIVE MOCKUP: RELOCATION ESTIMATOR ──
+    function calculateReloQuote() {
+      const sizeVal = parseInt(document.getElementById('relo-size').value);
+      const reloPriceLbl = document.getElementById('relo-price-lbl');
+      
+      let price = 6800;
+      if (sizeVal === 1) price = 3200;
+      else if (sizeVal === 5) price = 9800;
+
+      reloPriceLbl.textContent = '$' + price.toLocaleString() + ' NZD';
+    }
+
+    // ── ENQUIRY FORM SUBMISSION ──
+    document.getElementById('enquiry-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('.sbmt-btn');
+      const d = Object.fromEntries(new FormData(this));
+
+      btn.textContent = 'Submitting Enquiry...';
+      btn.disabled = true;
+
+      try {
+        await fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(d)
+        });
+      } catch {}
+
+      const subj = encodeURIComponent('Domain Acquisition Enquiry — goaustralia.co.nz');
+      const body = encodeURIComponent(
+        'Name: ' + d.name + '\n' +
+        'Email: ' + d.email + '\n' +
+        'Company: ' + (d.company || 'Not specified') + '\n' +
+        'Offer (NZD): ' + (d.offer || 'Not specified') + '\n\n' +
+        'Intended Use & Message:\n' + d.message
+      );
+
+      btn.textContent = 'Enquiry Sent ✓';
+      btn.style.background = 'var(--accent-emerald)';
+      setTimeout(() => {
+        window.location.href = 'mailto:goaustralia.co.nz@gmail.com?subject=' + subj + '&body=' + body;
+      }, 600);
+    });
+  </script>
 
 </body>
 </html>

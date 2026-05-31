@@ -20,5 +20,8 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# persistent server data — never overwrite on deploy
+data/*.json
+
 # jetbrains setting folder
 .idea/

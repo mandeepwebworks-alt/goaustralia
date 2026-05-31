@@ -1,156 +1,272 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import { createHash } from 'node:crypto';
+
+const TOKEN = createHash('sha256').update('Mandeep2026').digest('hex');
+const token = Astro.cookies.get('dash_token')?.value;
+const isAuthed = token === TOKEN;
+const error = Astro.url.searchParams.get('error');
 ---
-<Layout title="My Dashboard — GoAustralia.co.nz" description="Your GoAustralia dashboard — access your guides, tools and subscription settings.">
-<style is:global>
-  .dash-layout { display: grid; grid-template-columns: 220px 1fr; gap: 0; min-height: calc(100vh - 200px); }
-  .dash-sidebar { background: var(--surf2); border-right: 1px solid var(--border-lt); padding: 28px 0; }
-  .dash-nav { list-style: none; }
-  .dash-nav li a { display: flex; align-items: center; gap: 10px; padding: 10px 20px; font-size: 13px; font-weight: 500; color: var(--txt2); transition: background 0.12s; }
-  .dash-nav li a:hover { background: var(--white); color: var(--navy); }
-  .dash-nav li a.active { background: var(--white); color: var(--navy); font-weight: 700; border-right: 2px solid var(--blue); }
-  .dash-nav-head { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--txt3); padding: 18px 20px 6px; }
-  .dash-main { padding: 36px 40px; }
-  .dash-greeting { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
-  .dash-sub { font-size: 14px; color: var(--txt2); margin-bottom: 32px; }
-  .dash-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 36px; }
-  .dash-card { background: var(--white); border: 1px solid var(--border-lt); border-radius: 6px; padding: 20px; }
-  .dash-card-label { font-size: 11px; font-weight: 700; color: var(--txt3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
-  .dash-card-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--navy); }
-  .dash-card-sub { font-size: 12px; color: var(--txt2); margin-top: 4px; }
-  .dash-section-head { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border-lt); }
-  .guide-dl-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
-  .guide-dl-item { display: flex; align-items: center; justify-content: space-between; background: var(--white); border: 1px solid var(--border-lt); border-radius: 6px; padding: 14px 18px; }
-  .guide-dl-info { display: flex; align-items: center; gap: 12px; }
-  .guide-dl-icon { width: 36px; height: 36px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
-  .guide-dl-title { font-size: 13px; font-weight: 700; color: var(--navy); }
-  .guide-dl-meta { font-size: 11px; color: var(--txt3); margin-top: 2px; }
-  .dl-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--blue); color: #fff; font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: 4px; transition: background 0.12s; }
-  .dl-btn:hover { background: #004a85; }
-  .tool-shortcuts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 32px; }
-  .tool-shortcut { background: var(--white); border: 1px solid var(--border-lt); border-radius: 6px; padding: 16px; display: flex; align-items: center; gap: 12px; transition: border-color 0.12s, box-shadow 0.12s; }
-  .tool-shortcut:hover { border-color: var(--blue); box-shadow: 0 2px 10px rgba(0,94,165,0.1); }
-  .tool-shortcut .ts-icon { font-size: 1.4rem; }
-  .tool-shortcut h4 { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
-  .tool-shortcut p { font-size: 11px; color: var(--txt3); }
-  .sub-status-card { background: var(--blue-tint); border: 1px solid #b8d4f0; border-radius: 6px; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .sub-active-badge { display: inline-flex; align-items: center; gap: 6px; background: #d1fae5; color: var(--green-ok); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 3px; }
-  .sub-manage-btn { font-size: 13px; font-weight: 600; color: var(--blue); text-decoration: underline; }
-  @media (max-width: 860px) {
-    .dash-layout { grid-template-columns: 1fr; }
-    .dash-sidebar { border-right: none; border-bottom: 1px solid var(--border-lt); padding: 16px 0; }
-    .dash-main { padding: 24px 20px; }
-    .dash-cards { grid-template-columns: 1fr 1fr; }
-    .tool-shortcuts { grid-template-columns: 1fr; }
-  }
-</style>
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — goaustralia.co.nz</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style is:inline>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Manrope', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background: #F4F5F7; color: #1A1A1A;
+    }
 
-<div class="dash-layout">
+    .login-wrap {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    }
+    .login-box {
+      background: #fff; border-radius: 12px; padding: 40px;
+      border: 1px solid rgba(0,0,0,0.08); width: 100%; max-width: 380px;
+      text-align: center;
+    }
+    .login-box h1 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .login-box p { font-size: 13px; color: rgba(0,0,0,0.4); margin-bottom: 24px; }
+    .login-box input {
+      width: 100%; padding: 12px 14px; font-size: 14px; border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 6px; font-family: inherit; margin-bottom: 12px; outline: none;
+    }
+    .login-box input:focus { border-color: #00643B; }
+    .login-box button {
+      width: 100%; padding: 12px; font-size: 14px; font-weight: 600;
+      background: #00643B; color: #fff; border: none; border-radius: 6px;
+      cursor: pointer; font-family: inherit;
+    }
+    .login-box button:hover { background: #005230; }
+    .login-error {
+      font-size: 12px; color: #c0392b; margin-bottom: 12px;
+    }
 
-  <!-- Sidebar -->
-  <div class="dash-sidebar">
-    <div class="dash-nav-head">Account</div>
-    <ul class="dash-nav">
-      <li><a href="/dashboard" class="active">🏠 Dashboard</a></li>
-      <li><a href="/dashboard">📄 My Guides</a></li>
-      <li><a href="/tools/checklist">📋 My Checklist</a></li>
-      <li><a href="/dashboard">📧 Newsletter</a></li>
-    </ul>
-    <div class="dash-nav-head" style="margin-top:12px;">Tools</div>
-    <ul class="dash-nav">
-      <li><a href="/tools/visa-checker">🛂 Visa Checker</a></li>
-      <li><a href="/tools/cost-calculator">💰 Cost Calculator</a></li>
-      <li><a href="/tools/suburb-finder">🏘️ Suburb Finder</a></li>
-      <li><a href="/tools/checklist">📋 Moving Checklist</a></li>
-    </ul>
-    <div class="dash-nav-head" style="margin-top:12px;">Account</div>
-    <ul class="dash-nav">
-      <li><a href="/dashboard">⚙️ Settings</a></li>
-      <li><a href="/dashboard">💳 Subscription</a></li>
-      <li><a href="/login">🚪 Log out</a></li>
-    </ul>
-  </div>
+    .top {
+      background: #fff; border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .top h1 { font-size: 15px; font-weight: 700; }
+    .top-links { display: flex; gap: 16px; align-items: center; }
+    .top a {
+      font-size: 12px; color: #00643B; text-decoration: none; font-weight: 600;
+    }
+    .top a:hover { text-decoration: underline; }
+    .top .logout { color: rgba(0,0,0,0.35); }
 
-  <!-- Main -->
-  <div class="dash-main">
+    .wrap { max-width: 960px; margin: 0 auto; padding: 24px; }
 
-    <div class="dash-greeting">Welcome back, Sarah 👋</div>
-    <p class="dash-sub">You're on the Full Access plan · Renews 9 June 2025 · Active subscriber since 9 May 2025</p>
+    .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
+    .card {
+      background: #fff; border-radius: 8px; padding: 20px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .card-label { font-size: 11px; font-weight: 600; color: rgba(0,0,0,0.4); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .card-val { font-size: 1.8rem; font-weight: 700; color: #1A1A1A; }
+    .card-val.green { color: #00643B; }
 
-    <!-- Stats -->
-    <div class="dash-cards">
-      <div class="dash-card">
-        <div class="dash-card-label">Checklist Progress</div>
-        <div class="dash-card-val">24 / 70</div>
-        <div class="dash-card-sub">34% complete — keep going!</div>
-      </div>
-      <div class="dash-card">
-        <div class="dash-card-label">Guides Downloaded</div>
-        <div class="dash-card-val">1 / 3</div>
-        <div class="dash-card-sub">2 more available to download</div>
-      </div>
-      <div class="dash-card">
-        <div class="dash-card-label">Newsletter</div>
-        <div class="dash-card-val">Active</div>
-        <div class="dash-card-sub">Next issue: Friday 16 May</div>
-      </div>
-    </div>
+    .panel {
+      background: #fff; border-radius: 8px; padding: 24px;
+      border: 1px solid rgba(0,0,0,0.06); margin-bottom: 20px;
+    }
+    .panel-title {
+      font-size: 14px; font-weight: 700; margin-bottom: 16px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .panel-title .badge {
+      font-size: 11px; font-weight: 600; color: #fff; background: #00643B;
+      padding: 3px 10px; border-radius: 10px;
+    }
 
-    <!-- Guides -->
-    <div class="dash-section-head">Your PDF Guides</div>
-    <div class="guide-dl-list">
-      {[
-        { icon:'📘', title:'The Kiwi Moving to Australia Masterguide', meta:'90 pages · Updated May 2025', color:'#00205C', downloaded:true },
-        { icon:'📗', title:'Australian Tax & Finance for New Zealanders', meta:'68 pages · Updated May 2025', color:'#1B7A3E', downloaded:false },
-        { icon:'📙', title:'Finding a Job in Australia: The Kiwi Edition', meta:'74 pages · Updated April 2025', color:'#3730a3', downloaded:false },
-      ].map(g => (
-        <div class="guide-dl-item">
-          <div class="guide-dl-info">
-            <div class="guide-dl-icon" style={`background:${g.color};`}>{g.icon}</div>
-            <div>
-              <div class="guide-dl-title">{g.title}</div>
-              <div class="guide-dl-meta">{g.meta}</div>
-            </div>
-          </div>
-          <a href="/guides" class="dl-btn">{g.downloaded ? '⬇ Re-download' : '⬇ Download'}</a>
+    table { width: 100%; border-collapse: collapse; }
+    th {
+      text-align: left; font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: rgba(0,0,0,0.35); padding: 8px 12px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    td {
+      font-size: 13px; padding: 12px;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      vertical-align: top;
+    }
+    tr:hover td { background: rgba(0,100,59,0.02); }
+    .msg-cell { max-width: 240px; color: rgba(0,0,0,0.5); line-height: 1.5; }
+    .date-cell { color: rgba(0,0,0,0.4); white-space: nowrap; font-size: 12px; }
+    .offer-cell { font-weight: 700; color: #00643B; }
+    .empty {
+      text-align: center; padding: 48px 16px;
+      color: rgba(0,0,0,0.25); font-size: 14px;
+    }
+
+    .chart-row { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 16px; }
+    .bar-chart { display: flex; flex-direction: column; gap: 6px; }
+    .bar-row { display: flex; align-items: center; gap: 8px; }
+    .bar-label { font-size: 11px; color: rgba(0,0,0,0.5); width: 70px; text-align: right; flex-shrink: 0; }
+    .bar-track { flex: 1; height: 20px; background: rgba(0,0,0,0.03); border-radius: 3px; overflow: hidden; }
+    .bar-fill { height: 100%; background: #00643B; border-radius: 3px; min-width: 2px; transition: width 0.3s; }
+    .bar-count { font-size: 11px; font-weight: 600; color: rgba(0,0,0,0.4); width: 32px; }
+
+    .ref-list { display: flex; flex-direction: column; gap: 8px; }
+    .ref-item { display: flex; justify-content: space-between; align-items: center; }
+    .ref-name { font-size: 13px; color: rgba(0,0,0,0.6); }
+    .ref-count { font-size: 13px; font-weight: 700; color: #1A1A1A; }
+
+    .loading { text-align: center; padding: 40px; color: rgba(0,0,0,0.3); }
+
+    @media (min-width: 700px) {
+      .cards { grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+      .chart-row { grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 20px; }
+    }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    @media (max-width: 600px) {
+      table { font-size: 12px; min-width: 520px; }
+      th, td { padding: 8px 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  {isAuthed ? (
+    <>
+      <div class="top">
+        <h1>goaustralia.co.nz — Dashboard</h1>
+        <div class="top-links">
+          <a href="/">← Back to site</a>
+          <a href="/api/dashboard-logout" class="logout">Logout</a>
         </div>
-      ))}
-    </div>
+      </div>
 
-    <!-- Tools -->
-    <div class="dash-section-head">Quick Access — Tools</div>
-    <div class="tool-shortcuts">
-      {[
-        { icon:'🛂', title:'Visa Checker', desc:'Check your pathway', href:'/tools/visa-checker' },
-        { icon:'💰', title:'Cost Calculator', desc:'Estimate your move costs', href:'/tools/cost-calculator' },
-        { icon:'🏘️', title:'Suburb Finder', desc:'Compare 200+ suburbs', href:'/tools/suburb-finder' },
-        { icon:'📋', title:'Moving Checklist', desc:'24 of 70 steps done', href:'/tools/checklist' },
-      ].map(t => (
-        <a href={t.href} class="tool-shortcut">
-          <div class="ts-icon">{t.icon}</div>
-          <div>
-            <h4>{t.title}</h4>
-            <p>{t.desc}</p>
+      <div class="wrap">
+        <div class="cards">
+          <div class="card">
+            <div class="card-label">Total Views</div>
+            <div class="card-val" id="totalViews">—</div>
           </div>
-        </a>
-      ))}
-    </div>
+          <div class="card">
+            <div class="card-label">Today</div>
+            <div class="card-val green" id="todayViews">—</div>
+          </div>
+          <div class="card">
+            <div class="card-label">Total Leads</div>
+            <div class="card-val" id="totalLeads">—</div>
+          </div>
+          <div class="card">
+            <div class="card-label">Conversion</div>
+            <div class="card-val green" id="conversion">—</div>
+          </div>
+        </div>
 
-    <!-- Subscription -->
-    <div class="dash-section-head">Subscription</div>
-    <div class="sub-status-card">
-      <div>
-        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px;">Full Access Plan</div>
-        <div class="sub-active-badge">✓ Active</div>
-        <div style="font-size:12px;color:var(--txt2);margin-top:8px;">$1.99 NZD/month · Renews automatically on 9 June 2025 · Paid via Stripe</div>
+        <div class="chart-row">
+          <div class="panel">
+            <div class="panel-title">Page Views (Last 14 Days)</div>
+            <div class="bar-chart" id="viewsChart"><div class="loading">Loading...</div></div>
+          </div>
+          <div class="panel">
+            <div class="panel-title">Referrers</div>
+            <div class="ref-list" id="referrers"><div class="loading">Loading...</div></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">
+            Leads
+            <span class="badge" id="leadsBadge">0</span>
+          </div>
+          <div id="leadsTable"><div class="loading">Loading...</div></div>
+        </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:8px;flex-shrink:0;">
-        <a href="#" class="sub-manage-btn">Manage subscription</a>
-        <a href="#" style="font-size:13px;color:var(--txt3);text-decoration:underline;">Cancel subscription</a>
+
+      <script is:inline>
+        async function loadDashboard() {
+          const [viewsRes, leadsRes] = await Promise.all([
+            fetch('/api/pageview').then(r => r.json()).catch(() => ({ total: 0, daily: {}, referrers: {} })),
+            fetch('/api/lead').then(r => r.json()).catch(() => [])
+          ]);
+
+          const today = new Date().toISOString().slice(0, 10);
+          const todayCount = viewsRes.daily?.[today] || 0;
+          document.getElementById('totalViews').textContent = viewsRes.total?.toLocaleString() || '0';
+          document.getElementById('todayViews').textContent = todayCount.toLocaleString();
+          document.getElementById('totalLeads').textContent = leadsRes.length.toString();
+          const rate = viewsRes.total > 0 ? ((leadsRes.length / viewsRes.total) * 100).toFixed(1) + '%' : '—';
+          document.getElementById('conversion').textContent = rate;
+          document.getElementById('leadsBadge').textContent = leadsRes.length.toString();
+
+          const chartEl = document.getElementById('viewsChart');
+          const days = [];
+          for (let i = 13; i >= 0; i--) {
+            const d = new Date(); d.setDate(d.getDate() - i);
+            days.push(d.toISOString().slice(0, 10));
+          }
+          const maxViews = Math.max(1, ...days.map(d => viewsRes.daily?.[d] || 0));
+          chartEl.innerHTML = days.map(d => {
+            const count = viewsRes.daily?.[d] || 0;
+            const pct = (count / maxViews) * 100;
+            const label = d.slice(5);
+            return `<div class="bar-row">
+              <span class="bar-label">${label}</span>
+              <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
+              <span class="bar-count">${count}</span>
+            </div>`;
+          }).join('');
+
+          const refEl = document.getElementById('referrers');
+          const refs = Object.entries(viewsRes.referrers || {}).sort((a, b) => b[1] - a[1]).slice(0, 8);
+          if (refs.length === 0) {
+            refEl.innerHTML = '<div class="empty">No data yet</div>';
+          } else {
+            refEl.innerHTML = refs.map(([name, count]) =>
+              `<div class="ref-item"><span class="ref-name">${name}</span><span class="ref-count">${count}</span></div>`
+            ).join('');
+          }
+
+          const tableEl = document.getElementById('leadsTable');
+          if (leadsRes.length === 0) {
+            tableEl.innerHTML = '<div class="empty">No leads yet. They\'ll appear here when someone submits the form.</div>';
+            return;
+          }
+          tableEl.innerHTML = `<div class="table-wrap"><table>
+            <thead><tr><th>Date</th><th>Name</th><th>Email</th><th>Company</th><th>Offer</th><th>Message</th></tr></thead>
+            <tbody>${leadsRes.map(l => `<tr>
+              <td class="date-cell">${new Date(l.date).toLocaleDateString('en-NZ', { day: 'numeric', month: 'short', year: 'numeric' })}<br>${new Date(l.date).toLocaleTimeString('en-NZ', { hour: '2-digit', minute: '2-digit' })}</td>
+              <td><strong>${esc(l.name)}</strong></td>
+              <td><a href="mailto:${esc(l.email)}" style="color:#00643B">${esc(l.email)}</a></td>
+              <td>${esc(l.company) || '—'}</td>
+              <td class="offer-cell">${l.offer ? '$' + esc(l.offer) : '—'}</td>
+              <td class="msg-cell">${esc(l.message) || '—'}</td>
+            </tr>`).join('')}</tbody>
+          </table></div>`;
+        }
+
+        function esc(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+
+        loadDashboard();
+      </script>
+    </>
+  ) : (
+    <div class="login-wrap">
+      <div class="login-box">
+        <h1>Dashboard</h1>
+        <p>goaustralia.co.nz</p>
+        {error && <div class="login-error">Incorrect password. Try again.</div>}
+        <form method="POST" action="/api/dashboard-auth">
+          <input type="password" name="password" placeholder="Password" required autofocus />
+          <button type="submit">Log in</button>
+        </form>
       </div>
     </div>
+  )}
 
-  </div>
-</div>
-
-</Layout>
+</body>
+</html>
