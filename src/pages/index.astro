@@ -1,1518 +1,599 @@
 ---
-// GoAustralia.co.nz — Premium Apple Light Glassmorphic Showcase
+import Base from '../layouts/Base.astro';
+
+const faqItems = [
+  { q: 'Is GoAustralia a moving company?', a: 'No. We\'re an independent comparison service. We match you with up to 3 verified trans-Tasman moving companies who quote on your exact load. You choose the one that suits you best — there\'s no obligation.' },
+  { q: 'How much does it cost to use GoAustralia?', a: 'Nothing — it\'s completely free for you. Movers pay us a referral fee when they win your business, so there\'s no cost on your side, ever.' },
+  { q: 'How long until I get my quotes?', a: 'Most people receive up to 3 quotes within 24 hours. Occasionally it takes a little longer during peak moving season (November–February).' },
+  { q: 'What if I\'m not ready to move yet?', a: 'No worries — select "Just researching" as your timeline. You\'ll still get ballpark quotes so you can budget ahead of time. There\'s no commitment.' },
+  { q: 'Can I ship my car or pets?', a: 'Yes. Several of our partner movers handle vehicle transport. For pets, we can refer you to specialist pet relocation services who handle quarantine and paperwork.' },
+  { q: 'Is my personal information safe?', a: 'Absolutely. We only share your details with the movers matched to your route. We never sell your data to third parties, and you can request deletion at any time.' },
+];
+
+const faqJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+});
 ---
-<!DOCTYPE html>
-<html lang="en-NZ">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>goaustralia.co.nz — Premium Domain & Digital Relocation Asset for Sale</title>
-  <meta name="description" content="Acquire goaustralia.co.nz. Exact-match digital asset for the New Zealand to Australia relocation corridor. Includes interactive solution mockups, SEO traction, and ROI calculator." />
-  <link rel="canonical" href="https://goaustralia.co.nz/" />
-  <meta name="robots" content="index, follow" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet" />
-  
-  <style>
-    /* ── APPLE GLASSMORPHIC LIGHT DESIGN SYSTEM ── */
-    :root {
-      --bg-base: #F5F5F7;        /* Apple's signature light gray */
-      --bg-card: rgba(255, 255, 255, 0.75); /* Frosted glass card */
-      --bg-raised: #FFFFFF;      /* Clean pure white for high contrast */
-      --bg-border: rgba(0, 0, 0, 0.08);
-      --bg-border-active: rgba(0, 0, 0, 0.15);
-      
-      --accent-emerald: #00875A;  /* Emerald Green (Premium corridor accent) */
-      --accent-emerald-glow: rgba(0, 135, 90, 0.08);
-      --accent-gold: #C59B27;     /* Warm Gold / Bronze (Representing premium asset value) */
-      --accent-gold-glow: rgba(197, 155, 39, 0.08);
-      
-      --txt-base: #1D1D1F;        /* Apple deep charcoal black */
-      --txt-muted: #86868B;       /* Apple secondary grey */
-      --txt-faint: #AEAEB2;       /* Apple tertiary grey */
-      
-      --font-sans: 'Plus Jakarta Sans', sans-serif;
-      --font-serif: 'Fraunces', serif;
-    }
+<Base
+  title="Moving to Australia from NZ? Get Free Quotes — GoAustralia"
+  description="Compare verified trans-Tasman movers in 60 seconds. Tell us what you're shipping from New Zealand to Australia and get up to 3 free quotes within 24 hours."
+  structuredData={faqJsonLd}
+>
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-sans);
-      -webkit-font-smoothing: antialiased;
-      background-color: var(--bg-base);
-      color: var(--txt-base);
-      overflow-x: hidden;
-      line-height: 1.5;
-    }
-
-    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
-    .wrap-narrow { max-width: 800px; margin: 0 auto; padding: 0 24px; }
-
-    /* ── AMBIENT SOFT GLOW BLOBS (APPLE STYLE) ── */
-    .glow-blob {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      pointer-events: none;
-      filter: blur(160px);
-      z-index: 0;
-      opacity: 0.12;
-    }
-    .glow-1 {
-      top: 5%;
-      left: -100px;
-      background: var(--accent-emerald);
-    }
-    .glow-2 {
-      top: 35%;
-      right: -100px;
-      background: var(--accent-gold);
-    }
-    .glow-3 {
-      bottom: 15%;
-      left: 15%;
-      background: var(--accent-emerald);
-    }
-
-    /* ── NAVIGATION ── */
-    header {
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      background: rgba(245, 245, 247, 0.75);
-      border-bottom: 1px solid var(--bg-border);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      padding: 16px 0;
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo {
-      font-size: 19px;
-      font-weight: 800;
-      color: var(--txt-base);
-      text-decoration: none;
-      letter-spacing: -0.04em;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .logo span {
-      background: linear-gradient(135deg, var(--accent-emerald), var(--accent-gold));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .status-badge {
-      display: none;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--accent-emerald);
-      background: rgba(0, 135, 90, 0.06);
-      border: 1px solid rgba(0, 135, 90, 0.15);
-      padding: 4px 12px;
-      border-radius: 20px;
-      letter-spacing: 0.02em;
-    }
-    @media (min-width: 480px) {
-      .status-badge { display: flex; }
-    }
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      background-color: var(--accent-emerald);
-      border-radius: 50%;
-      box-shadow: 0 0 6px var(--accent-emerald);
-      animation: pulse 2.2s infinite;
-    }
-    .nav-cta {
-      font-size: 13px;
-      font-weight: 700;
-      color: #FFFFFF;
-      background: var(--txt-base);
-      padding: 10px 20px;
-      border-radius: 20px;
-      text-decoration: none;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .nav-cta:hover {
-      background: var(--accent-emerald);
-      box-shadow: 0 4px 12px rgba(0, 135, 90, 0.2);
-      transform: translateY(-1px);
-    }
-
-    /* ── HERO SECTION ── */
-    .hero {
-      position: relative;
-      padding: 56px 16px 44px;
-      text-align: center;
-      z-index: 10;
-    }
-    @media (min-width: 640px) {
-      .hero { padding: 88px 24px 64px; }
-    }
-    .hero-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent-gold);
-      background: rgba(197, 155, 39, 0.06);
-      border: 1px solid rgba(197, 155, 39, 0.15);
-      padding: 6px 16px;
-      border-radius: 20px;
-      margin-bottom: 24px;
-    }
-    .hero h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(3rem, 7.5vw, 5.2rem);
-      font-weight: 300;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
-      color: var(--txt-base);
-      margin-bottom: 20px;
-    }
-    .hero h1 span {
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--txt-base) 40%, var(--txt-muted) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero p {
-      font-size: 18px;
-      color: var(--txt-muted);
-      line-height: 1.65;
-      max-width: 680px;
-      margin: 0 auto 36px;
-    }
-    .hero-ctas {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      justify-content: center;
-      gap: 12px;
-    }
-    @media (min-width: 480px) {
-      .hero-ctas { flex-direction: row; align-items: center; gap: 16px; }
-      .hero-ctas a { width: auto !important; }
-    }
-    .btn-primary {
-      display: inline-block;
-      font-size: 14px;
-      font-weight: 700;
-      color: #FFFFFF;
-      background: linear-gradient(135deg, var(--accent-emerald), #00A66E);
-      padding: 14px 36px;
-      border-radius: 24px;
-      text-decoration: none;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 15px rgba(0, 135, 90, 0.15);
-      border: none;
-      cursor: pointer;
-    }
-    .btn-primary:hover {
-      transform: translateY(-1.5px);
-      box-shadow: 0 8px 22px rgba(0, 135, 90, 0.3);
-    }
-    .btn-secondary {
-      display: inline-block;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--txt-base);
-      background: rgba(0, 0, 0, 0.03);
-      border: 1px solid var(--bg-border);
-      padding: 13px 32px;
-      border-radius: 24px;
-      text-decoration: none;
-      transition: all 0.25s ease;
-    }
-    .btn-secondary:hover {
-      background: rgba(0, 0, 0, 0.06);
-      border-color: var(--bg-border-active);
-    }
-
-    /* ── METRICS STRIP ── */
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-bottom: 56px;
-      position: relative;
-      z-index: 10;
-    }
-    @media (min-width: 640px) {
-      .metrics-grid { gap: 16px; margin-bottom: 72px; }
-    }
-    @media (min-width: 768px) {
-      .metrics-grid { grid-template-columns: repeat(4, 1fr); }
-    }
-    .metric-card {
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      background: var(--bg-card);
-      border: 1px solid var(--bg-border);
-      border-radius: 12px;
-      padding: 24px 20px;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-    .metric-card:hover {
-      border-color: var(--accent-emerald-glow);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-    }
-    .metric-num {
-      font-family: var(--font-serif);
-      font-size: 2.2rem;
-      font-weight: 400;
-      color: var(--accent-emerald);
-      margin-bottom: 4px;
-      background: linear-gradient(135deg, var(--accent-emerald), #00A66E);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .metric-label {
-      font-size: 11px;
-      color: var(--txt-muted);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    /* ── SECTION GENERALS ── */
-    section {
-      padding: 52px 0;
-      position: relative;
-      z-index: 10;
-    }
-    @media (min-width: 768px) {
-      section { padding: 80px 0; }
-    }
-    .sec-header {
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 40px;
-    }
-    @media (min-width: 640px) {
-      .sec-header { margin: 0 auto 56px; }
-    }
-    .sec-badge {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent-emerald);
-      margin-bottom: 12px;
-      display: inline-block;
-    }
-    .sec-title {
-      font-family: var(--font-serif);
-      font-size: 2.3rem;
-      font-weight: 400;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
-      color: var(--txt-base);
-    }
-    .sec-desc {
-      font-size: 14px;
-      color: var(--txt-muted);
-      line-height: 1.6;
-    }
-
-    /* ── PREMIUM GLASS CARD ── */
-    .glass-card {
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      border-radius: 16px;
-      padding: 20px 16px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
-    }
-    @media (min-width: 640px) {
-      .glass-card { padding: 40px; }
-    }
-
-    /* ── SEO TRACTION SECTION ── */
-    .seo-summary-cards {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    @media (min-width: 480px) {
-      .seo-summary-cards { grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
-    }
-    .seo-summary-card {
-      background: rgba(255, 255, 255, 0.6);
-      border: 1px solid var(--bg-border);
-      border-radius: 8px;
-      padding: 16px 20px;
-      text-align: left;
-    }
-    .seo-sum-val {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--txt-base);
-      margin-bottom: 2px;
-    }
-    .seo-sum-lbl {
-      font-size: 10px;
-      color: var(--txt-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    /* ── KEYWORD CARDS ── */
-    .kw-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .kw-card {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(255, 255, 255, 0.5);
-      border: 1px solid var(--bg-border);
-      border-radius: 8px;
-      padding: 12px 14px;
-    }
-    .kw-phrase {
-      flex: 1;
-      font-family: monospace;
-      font-size: 12.5px;
-      color: var(--accent-emerald);
-      font-weight: 600;
-      min-width: 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .kw-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
-    }
-    .intent-tag {
-      font-size: 9px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      display: inline-block;
-      white-space: nowrap;
-    }
-    .intent-high {
-      background: rgba(197, 155, 39, 0.08);
-      border: 1px solid rgba(197, 155, 39, 0.2);
-      color: var(--accent-gold);
-    }
-    .intent-medium {
-      background: rgba(0, 135, 90, 0.06);
-      border: 1px solid rgba(0, 135, 90, 0.15);
-      color: var(--accent-emerald);
-    }
-    .intent-commercial {
-      background: rgba(0, 113, 227, 0.06);
-      border: 1px solid rgba(0, 113, 227, 0.15);
-      color: #0071E3;
-    }
-    .kw-value {
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--txt-muted);
-      white-space: nowrap;
-    }
-    .kw-value.high { color: var(--accent-gold); }
-    .kw-value.max { color: var(--accent-emerald); }
-
-    /* ── NEW SOLUTIONS & MOCKUPS GRID (1 mockup for every card) ── */
-    .uses-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    @media (min-width: 700px) {
-      .uses-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
-    }
-    .use-card {
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      border-radius: 16px;
-      padding: 24px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.01);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      text-align: left;
-    }
-    @media (min-width: 640px) {
-      .use-card { padding: 36px; gap: 24px; }
-    }
-    .use-card:hover {
-      border-color: rgba(0, 135, 90, 0.2);
-      transform: translateY(-2px);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.03);
-    }
-    .use-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 4px;
-    }
-    .use-num {
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--accent-gold);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    .use-title {
-      font-size: 17px;
-      font-weight: 800;
-      color: var(--txt-base);
-      margin-bottom: 8px;
-    }
-    .use-desc {
-      font-size: 13.5px;
-      color: var(--txt-muted);
-      line-height: 1.6;
-      margin-bottom: 12px;
-    }
-
-    /* ── HIGH FIDELITY USE CASE MOCKUPS ── */
-    .mini-mockup {
-      background: #FFFFFF;
-      border: 1px solid var(--bg-border);
-      border-radius: 12px;
-      padding: 18px;
-      box-shadow: inset 0 0 12px rgba(0,0,0,0.01), 0 4px 16px rgba(0,0,0,0.02);
-      overflow: hidden;
-    }
-    
-    /* 1. FX Transfer Mockup */
-    .fx-mockup-row {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-    .fx-input-box {
-      border: 1px solid var(--bg-border);
-      border-radius: 8px;
-      padding: 8px 12px;
-      background: var(--bg-base);
-    }
-    .fx-lbl {
-      font-size: 9px;
-      color: var(--txt-muted);
-      text-transform: uppercase;
-      font-weight: bold;
-      margin-bottom: 2px;
-    }
-    .fx-inp-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 4px;
-    }
-    .fx-inp-row input {
-      width: 100%;
-      border: none;
-      background: none;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--txt-base);
-      outline: none;
-    }
-    .fx-curr-sel {
-      font-size: 11px;
-      font-weight: bold;
-      color: var(--txt-base);
-    }
-    .fx-arrow {
-      color: var(--accent-emerald);
-      font-size: 14px;
-    }
-    .fx-meta-row {
-      font-size: 11px;
-      color: var(--txt-muted);
-      margin-bottom: 12px;
-      display: flex;
-      justify-content: space-between;
-    }
-    .fx-btn {
-      width: 100%;
-      background: var(--accent-emerald);
-      color: #FFFFFF;
-      border: none;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 9px;
-      border-radius: 6px;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* 2. Checklist SaaS Mockup */
-    .chk-mockup-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 10px;
-      font-size: 11px;
-      font-weight: bold;
-    }
-    .chk-progress-bar {
-      height: 6px;
-      width: 80px;
-      background: rgba(0,0,0,0.06);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .chk-progress-fill {
-      width: 66%;
-      height: 100%;
-      background: var(--accent-emerald);
-      border-radius: 10px;
-      transition: width 0.3s ease;
-    }
-    .chk-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .chk-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 11.5px;
-      font-weight: 600;
-      color: var(--txt-base);
-      cursor: pointer;
-      user-select: none;
-    }
-    .chk-checkbox {
-      width: 14px;
-      height: 14px;
-      border-radius: 3px;
-      border: 1px solid var(--accent-emerald);
-      background: rgba(0, 135, 90, 0.04);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent-emerald);
-      font-size: 9px;
-      font-weight: bold;
-      flex-shrink: 0;
-    }
-    .chk-checkbox.empty {
-      border-color: var(--txt-faint);
-      background: none;
-    }
-
-    /* 3. Migrant Banking Mockup */
-    .bank-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      align-items: center;
-    }
-    .bank-card-visual {
-      background: linear-gradient(135deg, #2e2e2e 0%, #111111 100%);
-      border-radius: 8px;
-      padding: 12px;
-      height: 84px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      color: #FFFFFF;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      position: relative;
-      overflow: hidden;
-    }
-    .bank-card-visual::after {
-      content: '';
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      background: rgba(255, 255, 255, 0.04);
-      border-radius: 50%;
-      top: -20px;
-      right: -20px;
-    }
-    .bank-card-logo {
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-    .bank-card-logo span {
-      color: var(--accent-emerald);
-    }
-    .bank-card-chip {
-      width: 14px;
-      height: 10px;
-      background: #D4AF37;
-      border-radius: 2px;
-    }
-    .bank-card-num {
-      font-size: 7.5px;
-      font-family: monospace;
-      letter-spacing: 0.1em;
-    }
-    .bank-status-col {
-      text-align: left;
-      font-size: 11px;
-    }
-    .bank-status-pill {
-      display: inline-block;
-      font-size: 8px;
-      font-weight: bold;
-      color: var(--accent-emerald);
-      background: rgba(0,135,90,0.06);
-      border: 1px solid rgba(0,135,90,0.15);
-      padding: 2px 6px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    /* 4. Trans-Tasman Relocation Mockup */
-    .relo-inputs {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-    .relo-select-box {
-      border: 1px solid var(--bg-border);
-      border-radius: 6px;
-      padding: 6px 10px;
-      background: var(--bg-base);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      font-weight: bold;
-    }
-    .relo-select-box select {
-      border: none;
-      background: none;
-      outline: none;
-      font-size: 11px;
-      font-weight: bold;
-      color: var(--txt-base);
-      cursor: pointer;
-    }
-    .relo-quote-display {
-      background: rgba(0, 135, 90, 0.04);
-      border: 1px solid rgba(0, 135, 90, 0.15);
-      border-radius: 6px;
-      padding: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11.5px;
-      font-weight: 700;
-    }
-
-    /* 5. Superannuation Transfer Mockup */
-    .super-transfer-visual {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-      margin-bottom: 8px;
-    }
-    .super-node {
-      border: 1px solid var(--bg-border);
-      border-radius: 6px;
-      background: var(--bg-base);
-      padding: 8px 10px;
-      font-size: 10px;
-      font-weight: bold;
-      width: 72px;
-      text-align: center;
-    }
-    .super-path {
-      flex: 1;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent-emerald), var(--accent-gold));
-      position: relative;
-    }
-    .super-path-pulse {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent-emerald);
-      box-shadow: 0 0 6px var(--accent-emerald);
-      position: absolute;
-      top: -3px;
-      left: 60%;
-      animation: superPulse 2s infinite linear;
-    }
-    .super-detail-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 10.5px;
-      color: var(--txt-muted);
-      border-top: 1px solid var(--bg-border);
-      padding-top: 8px;
-      margin-top: 8px;
-    }
-
-    /* 6. Boarding Pass / Flight Card Mockup */
-    .flight-ticket {
-      border: 1px dashed var(--bg-border);
-      border-radius: 8px;
-      background: var(--bg-base);
-      padding: 12px;
-      position: relative;
-    }
-    .flight-ticket::before, .flight-ticket::after {
-      content: '';
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #FFFFFF;
-      top: 50%;
-      margin-top: -5px;
-    }
-    .flight-ticket::before { left: -5px; }
-    .flight-ticket::after { right: -5px; }
-    .fl-cities {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 6px;
-    }
-    .fl-city-code {
-      font-size: 17px;
-      font-weight: 800;
-      color: var(--txt-base);
-    }
-    .fl-plane {
-      color: var(--accent-emerald);
-      font-size: 13px;
-    }
-    .fl-details-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 6px;
-      border-top: 1px solid rgba(0,0,0,0.04);
-      padding-top: 8px;
-      text-align: left;
-    }
-
-
-    /* ── ACQUISITION PROCESS ── */
-    .facts-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-    @media (min-width: 640px) {
-      .facts-grid { gap: 16px; }
-    }
-    @media (min-width: 960px) {
-      .facts-grid { grid-template-columns: repeat(4, 1fr); }
-    }
-    .fact-card {
-      background: rgba(255, 255, 255, 0.4);
-      border: 1px solid var(--bg-border);
-      border-radius: 8px;
-      padding: 20px 18px;
-      text-align: left;
-    }
-    .fact-k {
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--txt-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 4px;
-    }
-    .fact-v {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--txt-base);
-    }
-
-    /* ── ENQUIRY FORM ── */
-    .enq-section {
-      border-top: 1px solid var(--bg-border);
-      background: radial-gradient(circle at 50% 100%, rgba(0, 135, 90, 0.03) 0%, rgba(245, 245, 247, 0) 65%);
-    }
-    .form {
-      max-width: 520px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-    @media (min-width: 520px) {
-      .form-row { grid-template-columns: 1fr 1fr; gap: 16px; }
-    }
-    .fld {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      text-align: left;
-    }
-    .fld label {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--txt-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .fld input, .fld textarea {
-      font-family: var(--font-sans);
-      font-size: 13px;
-      color: var(--txt-base);
-      background: rgba(255, 255, 255, 0.6);
-      border: 1px solid var(--bg-border);
-      padding: 12px 14px;
-      border-radius: 8px;
-      outline: none;
-      transition: all 0.25s ease;
-    }
-    .fld input:focus, .fld textarea:focus {
-      border-color: var(--accent-emerald);
-      box-shadow: 0 0 0 3px rgba(0, 135, 90, 0.12);
-      background: #FFFFFF;
-    }
-    .fld input::placeholder, .fld textarea::placeholder {
-      color: var(--txt-faint);
-    }
-    .fld textarea {
-      resize: vertical;
-      min-height: 96px;
-    }
-    .sbmt-btn {
-      font-family: var(--font-sans);
-      font-size: 14px;
-      font-weight: 700;
-      color: #FFFFFF;
-      background: linear-gradient(135deg, var(--accent-emerald), #00A66E);
-      border: none;
-      padding: 14px;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 15px rgba(0, 135, 90, 0.15);
-    }
-    .sbmt-btn:hover {
-      box-shadow: 0 6px 20px rgba(0, 135, 90, 0.25);
-      transform: translateY(-0.5px);
-    }
-    .alt-contact {
-      text-align: center;
-      margin-top: 24px;
-      font-size: 13px;
-      color: var(--txt-muted);
-    }
-    .alt-contact a {
-      color: var(--accent-gold);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.2s;
-    }
-    .alt-contact a:hover {
-      color: #B58A18;
-      text-decoration: underline;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      padding: 40px 0;
-      border-top: 1px solid var(--bg-border);
-      text-align: center;
-      position: relative;
-      z-index: 10;
-      background: rgba(255, 255, 255, 0.5);
-    }
-    footer p {
-      font-size: 12px;
-      color: var(--txt-muted);
-    }
-
-    /* ── KEYFRAME ANIMATIONS ── */
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.1); }
-    }
-    @keyframes superPulse {
-      0% { left: 0%; }
-      100% { left: 100%; }
-    }
-
-    /* ── WRAP PADDING: tighter on mobile ── */
-    .wrap, .wrap-narrow { padding: 0 16px; }
-    @media (min-width: 640px) {
-      .wrap, .wrap-narrow { padding: 0 24px; }
-    }
-    /* ── SEO TABLE: touch scroll on mobile ── */
-    .seo-table-container { -webkit-overflow-scrolling: touch; }
-    .seo-table { min-width: 560px; }
-  </style>
-</head>
-<body>
-
-  <!-- SOFT BACKGROUND GLOWS -->
-  <div class="glow-blob glow-1"></div>
-  <div class="glow-blob glow-2"></div>
-  <div class="glow-blob glow-3"></div>
-
-  <!-- STICKY GLASS NAVIGATION -->
-  <header>
-    <div class="wrap nav-inner">
-      <a href="/" class="logo">goaustralia<span>.co.nz</span></a>
-      <div style="display: flex; align-items: center; gap: 16px;">
-        <div class="status-badge">
-          <div class="status-dot"></div>
-          Active SEO Index
+<!-- HERO A — Split -->
+<section style="position:relative;background:linear-gradient(180deg,#FFFDF8 0%,#fff 70%);border-bottom:1px solid rgba(22,20,18,.07)">
+  <div class="shell" style="padding-top:clamp(36px,5vw,68px);padding-bottom:clamp(56px,7vw,90px);display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:clamp(36px,5vw,72px);align-items:center">
+    <div style="animation:fadeUp .6s ease both">
+      <div class="chip" style="margin-bottom:24px">
+        <span class="chip-dot"></span>
+        NZ &rarr; AU &middot; Trans-Tasman moving, sorted
+      </div>
+      <h1 class="display display-xl" style="margin-bottom:22px">Moving to Australia?<br>Get it sorted in <span class="highlight">one go</span>.</h1>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:var(--body);max-width:480px;margin:0 0 30px">Tell us what you're moving and we'll match you with verified trans-Tasman movers. Compare real quotes side by side &mdash; free, with zero obligation.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px">
+        <a href="#quote" class="btn btn-dark">Get my free quotes &rarr;</a>
+        <a href="#how" class="btn btn-outline" style="font-weight:600">How it works</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:9px">
+          <span style="color:var(--amber);font-size:18px;letter-spacing:1px">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span style="font-size:14px;color:var(--body)"><strong style="color:var(--ink)">4.9/5</strong> &middot; 2,300+ reviews</span>
         </div>
-        <a href="#enquire" class="nav-cta">Make an Offer</a>
+        <span style="width:1px;height:18px;background:rgba(22,20,18,.15)"></span>
+        <span style="font-size:14px;color:var(--body)"><strong style="color:var(--ink)">12,000+</strong> Kiwis relocated</span>
       </div>
     </div>
-  </header>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="wrap-narrow">
-      <span class="hero-pill"><span style="color: var(--accent-gold); font-size: 13px; margin-right: 4px;">✦</span> Premium Digital Asset For Sale</span>
-      <h1><span>goaustralia.co.nz</span></h1>
-      <p>The definitive exact-match domain for the massive trans-Tasman relocation corridor. Highly competitive pre-arrival authority, ready-built for premium relocation services and SaaS applications.</p>
-      <div class="hero-ctas">
-        <a href="#enquire" class="btn-primary">Secure This Domain</a>
-        <a href="#solutions" class="btn-secondary">Explore Use Cases</a>
+    <!-- Mini quote card -->
+    <div style="animation:fadeUp .7s ease both;animation-delay:.08s;background:#fff;border:1px solid rgba(22,20,18,.1);border-radius:24px;padding:26px;box-shadow:0 24px 60px -28px rgba(22,20,18,.28)">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+        <span style="font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:-.01em">Start your free quote</span>
+        <span style="font-size:12px;font-weight:700;color:var(--green);background:rgba(22,163,74,.1);padding:5px 10px;border-radius:var(--r-pill)">Free</span>
       </div>
+      <!-- Route graphic -->
+      <div style="display:flex;align-items:center;gap:12px;background:var(--cream);border:1px solid var(--hairline);border-radius:16px;padding:14px 16px;margin-bottom:18px">
+        <div style="text-align:center">
+          <div style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em">From</div>
+          <div style="font-weight:700;font-size:15px" id="hero-from-display">Auckland</div>
+        </div>
+        <div style="flex:1;position:relative;height:2px;background:repeating-linear-gradient(90deg,rgba(22,20,18,.25) 0 6px,transparent 6px 12px)">
+          <span style="position:absolute;right:-2px;top:50%;transform:translateY(-50%);width:9px;height:9px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(255,176,32,.25)"></span>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em">To</div>
+          <div style="font-weight:700;font-size:15px" id="hero-to-display">Sydney</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+        <label>
+          <span class="field-label">Leaving from</span>
+          <select class="field-select" id="hero-from">
+            <option>Auckland</option><option>Wellington</option><option>Christchurch</option><option>Hamilton</option><option>Tauranga</option><option>Dunedin</option><option>Other</option>
+          </select>
+        </label>
+        <label>
+          <span class="field-label">Moving to</span>
+          <select class="field-select" id="hero-to">
+            <option>Sydney</option><option>Melbourne</option><option>Brisbane</option><option>Gold Coast</option><option>Perth</option><option>Adelaide</option><option>Other</option>
+          </select>
+        </label>
+      </div>
+      <a href="#quote" id="hero-continue" style="display:flex;align-items:center;justify-content:center;gap:9px;background:var(--amber);color:var(--ink);font-weight:700;font-size:16px;padding:15px;border-radius:14px;text-decoration:none;margin-top:4px;transition:all .2s">Continue &rarr;</a>
+      <p style="text-align:center;font-size:12.5px;color:var(--muted);margin:14px 0 0">No spam &middot; No obligation &middot; Always free</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- TRANS-TASMAN STATISTICS -->
-  <div class="wrap">
-    <div class="metrics-grid">
-      <div class="metric-card">
-        <div class="metric-num">~50,000</div>
-        <div class="metric-label">Annual Kiwi Movers</div>
+<!-- VALUE BAR -->
+<section style="background:var(--ink);color:#fff">
+  <div class="shell" style="padding:22px 0;display:flex;align-items:center;justify-content:center;gap:clamp(24px,5vw,56px);flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="color:var(--amber);font-weight:800;font-size:18px">&#10003;</span>
+      <span style="font-size:14px;font-weight:600;color:var(--on-dark)">100% free for you</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="color:var(--amber);font-weight:800;font-size:18px">&#10003;</span>
+      <span style="font-size:14px;font-weight:600;color:var(--on-dark)">No obligation</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="color:var(--amber);font-weight:800;font-size:18px">&#10003;</span>
+      <span style="font-size:14px;font-weight:600;color:var(--on-dark)">Compare multiple movers</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="color:var(--amber);font-weight:800;font-size:18px">&#10003;</span>
+      <span style="font-size:14px;font-weight:600;color:var(--on-dark)">Verified NZ &amp; AU companies</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="section">
+  <div class="shell">
+    <div style="max-width:620px;margin-bottom:52px">
+      <div class="eyebrow">How it works</div>
+      <h2 class="display display-lg" style="margin-bottom:14px">Three steps to a sorted move</h2>
+      <p style="font-size:18px;line-height:1.55;color:var(--body)">No phone tag, no chasing quotes. Do it once and let the movers come to you.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
+      <div class="card">
+        <div class="step-num">1</div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:21px;margin:0 0 10px;letter-spacing:-.01em">Tell us about your move</h3>
+        <p style="font-size:15.5px;line-height:1.55;color:var(--body);margin:0">Your cities, your timeline, and exactly what's coming &mdash; beds, sofas, the lot. Takes about a minute.</p>
       </div>
-      <div class="metric-card">
-        <div class="metric-num">530K+</div>
-        <div class="metric-label">Kiwi Expats in AU</div>
+      <div class="card">
+        <div class="step-num">2</div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:21px;margin:0 0 10px;letter-spacing:-.01em">Get matched with movers</h3>
+        <p style="font-size:15.5px;line-height:1.55;color:var(--body);margin:0">We pass your details to up to 3 verified trans-Tasman specialists who actually service your route.</p>
       </div>
-      <div class="metric-card">
-        <div class="metric-num">#1</div>
-        <div class="metric-label">Outbound NZ Corridor</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-num">$3.2B+</div>
-        <div class="metric-label">Annual Relocation FX</div>
+      <div class="card">
+        <div class="step-num">3</div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:21px;margin:0 0 10px;letter-spacing:-.01em">Compare &amp; book</h3>
+        <p style="font-size:15.5px;line-height:1.55;color:var(--body);margin:0">Quotes land in your inbox within 24 hours. Compare on price and service, then book with confidence.</p>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- KEYWORD OPPORTUNITY SECTION -->
-  <section id="seo-traction" style="background: rgba(255,255,255,0.3); border-top: 1px solid var(--bg-border); border-bottom: 1px solid var(--bg-border);">
-    <div class="wrap">
-      <div class="sec-header">
-        <span class="sec-badge">Keyword Authority</span>
-        <h2 class="sec-title">High-Intent Keywords This Domain Owns</h2>
-        <p class="sec-desc">goaustralia.co.nz is an exact-match domain for the highest-value search queries in the NZ → AU relocation corridor — the keywords competitors pay $25–$50 per click to reach.</p>
+<!-- QUOTE FORM -->
+<section id="quote" style="padding:clamp(20px,3vw,40px) var(--pad-x) clamp(64px,8vw,110px);background:linear-gradient(180deg,#fff 0%,#FFFDF8 100%)">
+  <div style="max-width:var(--max-w-form);margin:0 auto;background:#fff;border:1px solid rgba(22,20,18,.1);border-radius:var(--r-panel);box-shadow:0 40px 90px -50px rgba(22,20,18,.4);overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
+    <!-- Left rail -->
+    <div style="background:var(--ink);color:#fff;padding:clamp(34px,4vw,52px)">
+      <div style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,176,32,.16);color:var(--amber);border-radius:var(--r-pill);padding:6px 14px;font-size:13px;font-weight:700;margin-bottom:26px">Free quote request</div>
+      <h2 class="display display-md" style="color:#fff;margin-bottom:18px">Tell us what you're moving</h2>
+      <p style="font-size:16px;line-height:1.6;color:var(--on-dark);margin:0 0 34px">The more detail you give, the sharper your quotes. Tap the steppers to add what's coming with you.</p>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;align-items:center;gap:13px">
+          <span style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);display:grid;place-items:center;color:var(--amber);font-weight:800">&#10003;</span>
+          <span style="font-size:15px;color:#e7e3da">Up to 3 verified movers, one form</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:13px">
+          <span style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);display:grid;place-items:center;color:var(--amber);font-weight:800">&#10003;</span>
+          <span style="font-size:15px;color:#e7e3da">Quotes within 24 hours</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:13px">
+          <span style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);display:grid;place-items:center;color:var(--amber);font-weight:800">&#10003;</span>
+          <span style="font-size:15px;color:#e7e3da">Free &mdash; you're never charged</span>
+        </div>
       </div>
-
-      <div class="glass-card">
-        <div class="seo-summary-cards">
-          <div class="seo-summary-card">
-            <div class="seo-sum-val" style="color: var(--accent-emerald);">Exact Match</div>
-            <div class="seo-sum-lbl">Domain-to-keyword alignment</div>
-          </div>
-          <div class="seo-summary-card">
-            <div class="seo-sum-val">8 Queries</div>
-            <div class="seo-sum-lbl">High-intent target keywords</div>
-          </div>
-          <div class="seo-summary-card">
-            <div class="seo-sum-val" style="color: var(--accent-gold);">$25–$50</div>
-            <div class="seo-sum-lbl">CPC advertisers pay per click</div>
-          </div>
-        </div>
-
-        <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--txt-muted); margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-emerald);"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-          Target Keyword Opportunities
-        </p>
-
-        <div class="kw-list">
-          <div class="kw-card">
-            <span class="kw-phrase">moving nz to australia</span>
-            <div class="kw-meta">
-              <span class="intent-tag intent-high">Relocation</span>
-              <span class="kw-value high">Very High</span>
-            </div>
-          </div>
-          <div class="kw-card">
-            <span class="kw-phrase">new zealander moving to australia checklist</span>
-            <div class="kw-meta">
-              <span class="intent-tag intent-commercial">SaaS / Guides</span>
-              <span class="kw-value max">Max LTV</span>
-            </div>
-          </div>
-          <div class="kw-card">
-            <span class="kw-phrase">moving to australia from nz checklist</span>
-            <div class="kw-meta">
-              <span class="intent-tag intent-commercial">SaaS / Guides</span>
-              <span class="kw-value max">Max LTV</span>
-            </div>
-          </div>
-          <div class="kw-card">
-            <span class="kw-phrase">kiwis moving to australia</span>
-            <div class="kw-meta">
-              <span class="intent-tag intent-medium">Audience</span>
-              <span class="kw-value high">High</span>
-            </div>
-          </div>
-          <div class="kw-card">
-            <span class="kw-phrase">how to move to australia from nz</span>
-            <div class="kw-meta">
-              <span class="intent-tag intent-high">Relocation</span>
-              <span class="kw-value high">High</span>
-            </div>
-          </div>
-          <div class="kw-card">
-            <span class="kw-phrase">visa faqs nz australia</span>
-            <div class="kw-meta">
-              <span class="intent-tag intent-high">Regulatory</span>
-              <span class="kw-value high">High</span>
-            </div>
-          </div>
-          <div class="kw-card">
-            <span class="kw-phrase">move to australia</span>
-            <div class="kw-meta">
-              <span class="intent-tag intent-medium">Category</span>
-              <span class="kw-value">Medium</span>
-            </div>
-          </div>
-          <div class="kw-card">
-            <span class="kw-phrase">do kiwis need a visa for australia</span>
-            <div class="kw-meta">
-              <span class="intent-tag intent-medium">Visa</span>
-              <span class="kw-value">Medium</span>
-            </div>
-          </div>
-        </div>
+      <div style="margin-top:38px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:14px">
+        <span style="color:var(--amber);font-size:17px;letter-spacing:1px">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span style="font-size:14px;color:var(--on-dark)">Rated 4.9/5 by 2,300+ Kiwi movers</span>
       </div>
     </div>
-  </section>
 
-  <!-- STRATEGIC USE CASES WITH INTERACTIVE MOCKUPS -->
-  <section id="solutions">
-    <div class="wrap">
-      <div class="sec-header">
-        <span class="sec-badge" style="color: var(--accent-gold);">Strategic Solutions</span>
-        <h2 class="sec-title">Where this Domain Fits</h2>
-        <p class="sec-desc">A premium, highly versatile digital asset. Explore the 6 core business models that perfectly align with the <strong>goaustralia.co.nz</strong> domain brand.</p>
-      </div>
-
-      <div class="uses-grid">
-        
-        <!-- 1. FX Transfer Model -->
-        <div class="use-card">
-          <div>
-            <div class="use-meta">
-              <span class="use-num">SOLUTION 01</span>
-              <span style="font-size: 10px; font-weight: bold; color: var(--accent-emerald);">Fintech & FX</span>
-            </div>
-            <h4 class="use-title">Foreign Exchange & FinTech</h4>
-            <p class="use-desc">Perfect campaign landing page for the high-volume NZD → AUD corridor. Drops CAC substantially for trans-Tasman transfer providers like Wise, OFX, or TorFX.</p>
+    <!-- Right form -->
+    <div style="padding:clamp(30px,3.5vw,46px)" id="quote-container">
+      <form id="quote-form">
+        <!-- 1. Route -->
+        <div style="margin-bottom:26px">
+          <div style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--ink);margin-bottom:14px;display:flex;align-items:center;gap:8px">
+            <span style="width:22px;height:22px;border-radius:6px;background:var(--amber);color:var(--ink);display:grid;place-items:center;font-size:12px;font-weight:800">1</span>
+            Where are you moving?
           </div>
-          
-          <!-- Mockup FX calculator -->
-          <div class="mini-mockup">
-            <div class="fx-mockup-row">
-              <div class="fx-input-box">
-                <div class="fx-lbl">Send from NZ</div>
-                <div class="fx-inp-row">
-                  <input type="number" id="fx-send-val" value="10000" />
-                  <span class="fx-curr-sel">NZD</span>
-                </div>
-              </div>
-              <div class="fx-arrow">⇄</div>
-              <div class="fx-input-box">
-                <div class="fx-lbl">Expat Receives</div>
-                <div class="fx-inp-row">
-                  <input type="text" id="fx-receive-val" value="9,234" readonly />
-                  <span class="fx-curr-sel">AUD</span>
-                </div>
-              </div>
-            </div>
-            <div class="fx-meta-row">
-              <span>Exchange Rate: <strong>0.9234</strong></span>
-              <span style="color: var(--accent-emerald);">Zero Transfer Fees</span>
-            </div>
-            <button class="fx-btn">Secure Exchange Rate</button>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <label>
+              <span class="field-label">From (NZ)</span>
+              <select class="field-select" name="fromCity">
+                <option>Auckland</option><option>Wellington</option><option>Christchurch</option><option>Hamilton</option><option>Tauranga</option><option>Dunedin</option><option>Other</option>
+              </select>
+            </label>
+            <label>
+              <span class="field-label">To (AU)</span>
+              <select class="field-select" name="toCity">
+                <option>Sydney</option><option>Melbourne</option><option>Brisbane</option><option>Gold Coast</option><option>Perth</option><option>Adelaide</option><option>Other</option>
+              </select>
+            </label>
           </div>
         </div>
-
-        <!-- 2. Relocation Checklist SaaS (StartAU Playbook Integrated) -->
-        <div class="use-card">
-          <div>
-            <div class="use-meta">
-              <span class="use-num">SOLUTION 02</span>
-              <span style="font-size: 10px; font-weight: bold; color: var(--accent-gold);">SaaS Platform</span>
-            </div>
-            <h4 class="use-title">Relocation Checklist & Guides (SaaS)</h4>
-            <p class="use-desc">Operate a digital companion checklist for NZ outbound expats. Sell a complete checklist dashboard ($24.99) and premium digital guide PDFs ($14–$19) covering TFN, Medicare, and KiwiSaver transfers.</p>
+        <!-- Timeline -->
+        <div style="margin-bottom:26px">
+          <div class="field-label" style="margin-bottom:10px">When are you moving?</div>
+          <div style="display:flex;gap:9px;flex-wrap:wrap" id="timeline-segs">
+            <button type="button" class="seg" data-val="ASAP">ASAP</button>
+            <button type="button" class="seg active" data-val="1–3 months">1–3 months</button>
+            <button type="button" class="seg" data-val="3–6 months">3–6 months</button>
+            <button type="button" class="seg" data-val="Just researching">Just researching</button>
           </div>
-          
-          <!-- Mockup Checklist Widget -->
-          <div class="mini-mockup">
-            <div class="chk-mockup-header">
-              <span style="color: var(--txt-base);">Moving Checklist Progress</span>
-              <div class="chk-progress-bar">
-                <div class="chk-progress-fill" id="checklist-prog-bar"></div>
-              </div>
-            </div>
-            <div class="chk-list">
-              <div class="chk-item" onclick="toggleChecklist(this)">
-                <div class="chk-checkbox">✓</div>
-                <span>Apply for Australian Tax File Number (TFN)</span>
-              </div>
-              <div class="chk-item" onclick="toggleChecklist(this)">
-                <div class="chk-checkbox">✓</div>
-                <span>Register for trans-Tasman Medicare</span>
-              </div>
-              <div class="chk-item" onclick="toggleChecklist(this)">
-                <div class="chk-checkbox empty" id="target-checkbox"></div>
-                <span style="color: var(--txt-muted);" id="target-lbl">Initiate KiwiSaver Super Transfer [Paid]</span>
-              </div>
-            </div>
-          </div>
+          <input type="hidden" name="timeline" value="1–3 months" />
         </div>
-
-        <!-- 3. Migrant Banking -->
-        <div class="use-card">
-          <div>
-            <div class="use-meta">
-              <span class="use-num">SOLUTION 03</span>
-              <span style="font-size: 10px; font-weight: bold; color: #0071E3;">Migrant Banking</span>
-            </div>
-            <h4 class="use-title">Pre-Arrival Migrant Banking</h4>
-            <p class="use-desc">Pre-arrival account opening portal. Retail banks compete heavily to lock in salaries and credit card relationships before expats arrive on Australian soil.</p>
+        <!-- 2. Home size -->
+        <div style="margin-bottom:28px">
+          <div style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--ink);margin-bottom:12px;display:flex;align-items:center;gap:8px">
+            <span style="width:22px;height:22px;border-radius:6px;background:var(--amber);color:var(--ink);display:grid;place-items:center;font-size:12px;font-weight:800">2</span>
+            What size is your home?
           </div>
-          
-          <!-- Mockup Banking Portal -->
-          <div class="mini-mockup bank-grid">
-            <div class="bank-card-visual">
-              <div class="bank-card-logo">goaustralia<span>.co.nz</span></div>
-              <div class="bank-card-chip"></div>
-              <div class="bank-card-num">•••• •••• •••• 9012</div>
-            </div>
-            <div class="bank-status-col">
-              <div class="bank-status-pill">Active Account</div>
-              <p style="font-size: 11px; font-weight: bold; color: var(--txt-base); margin-bottom: 2px;">AUD Pre-Arrival Wallet</p>
-              <p style="font-size: 12px; font-weight: 800; color: var(--accent-emerald);">$2,540.00 AUD</p>
-            </div>
+          <div style="display:flex;gap:9px;flex-wrap:wrap" id="size-segs">
+            <button type="button" class="seg" data-val="Studio">Studio</button>
+            <button type="button" class="seg" data-val="1 bed">1 bed</button>
+            <button type="button" class="seg active" data-val="2 bed">2 bed</button>
+            <button type="button" class="seg" data-val="3 bed">3 bed</button>
+            <button type="button" class="seg" data-val="4+ bed">4+ bed</button>
           </div>
+          <input type="hidden" name="homeSize" value="2 bed" />
         </div>
-
-        <!-- 4. Removals & Logistics -->
-        <div class="use-card">
-          <div>
-            <div class="use-meta">
-              <span class="use-num">SOLUTION 04</span>
-              <span style="font-size: 10px; font-weight: bold; color: var(--accent-gold);">Logistics</span>
+        <!-- 3. Items -->
+        <div style="margin-bottom:28px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+            <div style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--ink);display:flex;align-items:center;gap:8px">
+              <span style="width:22px;height:22px;border-radius:6px;background:var(--amber);color:var(--ink);display:grid;place-items:center;font-size:12px;font-weight:800">3</span>
+              What are you bringing?
             </div>
-            <h4 class="use-title">Removals & Logistics Lead-Gen</h4>
-            <p class="use-desc">Capture trans-Tasman container shipping and moving leads. Extremely high-margin relocations ($3,000–$10,000 per booking) drive major advertiser acquisition bids.</p>
+            <span style="font-size:13px;font-weight:600;color:var(--amber-deep);background:var(--amber-bg);padding:5px 11px;border-radius:var(--r-pill)" id="items-pill">24 items</span>
           </div>
-          
-          <!-- Mockup Logistics Calculator -->
-          <div class="mini-mockup">
-            <div class="relo-inputs">
-              <div class="relo-select-box">
-                <span>Shipping Volume:</span>
-                <select id="relo-size" onchange="calculateReloQuote()">
-                  <option value="1">1-Bedroom Unit / Boxes</option>
-                  <option value="3" selected>3-Bedroom House</option>
-                  <option value="5">5-Bedroom Family Estate</option>
-                </select>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px" id="steppers">
+            <div class="stepper-row" data-key="beds">
+              <span class="stepper-label">Beds</span>
+              <div class="stepper-controls">
+                <button type="button" class="stepper-btn stepper-dec">&minus;</button>
+                <span class="stepper-val">2</span>
+                <button type="button" class="stepper-btn stepper-inc">+</button>
               </div>
             </div>
-            <div class="relo-quote-display">
-              <span style="color: var(--txt-muted); font-size: 10px; text-transform: uppercase;">Est. Trans-Tasman Quote:</span>
-              <span style="color: var(--accent-emerald);" id="relo-price-lbl">$6,800 NZD</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5. Superannuation Portability -->
-        <div class="use-card">
-          <div>
-            <div class="use-meta">
-              <span class="use-num">SOLUTION 05</span>
-              <span style="font-size: 10px; font-weight: bold; color: var(--accent-emerald);">Superannuation</span>
-            </div>
-            <h4 class="use-title">KiwiSaver to Super Portability</h4>
-            <p class="use-desc">Capture the retirement fund transfer market. Build a dedicated portal to guide and process KiwiSaver portfolio consolidation into Australian Super funds.</p>
-          </div>
-          
-          <!-- Mockup Portability Tracker -->
-          <div class="mini-mockup">
-            <div class="super-transfer-visual">
-              <div class="super-node">NZ KiwiSaver</div>
-              <div class="super-path">
-                <div class="super-path-pulse"></div>
+            <div class="stepper-row" data-key="sofas">
+              <span class="stepper-label">Sofas / couches</span>
+              <div class="stepper-controls">
+                <button type="button" class="stepper-btn stepper-dec">&minus;</button>
+                <span class="stepper-val">1</span>
+                <button type="button" class="stepper-btn stepper-inc">+</button>
               </div>
-              <div class="super-node" style="border-color: var(--accent-emerald);">AU Super</div>
             </div>
-            <div class="super-detail-row">
-              <span>Transfer Pathway Status:</span>
-              <span style="color: var(--accent-emerald); font-weight: bold;">Active Portability</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 6. Travel & Aviation -->
-        <div class="use-card">
-          <div>
-            <div class="use-meta">
-              <span class="use-num">SOLUTION 06</span>
-              <span style="font-size: 10px; font-weight: bold; color: #0071E3;">Travel</span>
-            </div>
-            <h4 class="use-title">Airlines & Expat Travel Funnels</h4>
-            <p class="use-desc">Integrate flight search booking engines to capture one-way and migration flights. Perfect domain for airlines or travel aggregators looking to capture trans-Tasman search volume.</p>
-          </div>
-          
-          <!-- Mockup Flight Card -->
-          <div class="mini-mockup">
-            <div class="flight-ticket">
-              <div class="fl-cities">
-                <div class="fl-city-code">AKL</div>
-                <div class="fl-plane">✈</div>
-                <div class="fl-city-code">SYD</div>
+            <div class="stepper-row" data-key="wardrobes">
+              <span class="stepper-label">Wardrobes / drawers</span>
+              <div class="stepper-controls">
+                <button type="button" class="stepper-btn stepper-dec">&minus;</button>
+                <span class="stepper-val">2</span>
+                <button type="button" class="stepper-btn stepper-inc">+</button>
               </div>
-              <div class="fl-details-grid">
-                <div>
-                  <span style="font-size: 8px; color: var(--txt-muted); text-transform: uppercase;">Class</span>
-                  <p style="font-size: 10px; font-weight: bold; color: var(--txt-base);">Expat Fare</p>
-                </div>
-                <div>
-                  <span style="font-size: 8px; color: var(--txt-muted); text-transform: uppercase;">Baggage</span>
-                  <p style="font-size: 10px; font-weight: bold; color: var(--txt-base);">Double (46kg)</p>
-                </div>
-                <div>
-                  <span style="font-size: 8px; color: var(--txt-muted); text-transform: uppercase;">Status</span>
-                  <p style="font-size: 10px; font-weight: bold; color: var(--accent-emerald);">Seat Held</p>
-                </div>
+            </div>
+            <div class="stepper-row" data-key="fridges">
+              <span class="stepper-label">Fridges / freezers</span>
+              <div class="stepper-controls">
+                <button type="button" class="stepper-btn stepper-dec">&minus;</button>
+                <span class="stepper-val">1</span>
+                <button type="button" class="stepper-btn stepper-inc">+</button>
+              </div>
+            </div>
+            <div class="stepper-row" data-key="washers">
+              <span class="stepper-label">Washers / dryers</span>
+              <div class="stepper-controls">
+                <button type="button" class="stepper-btn stepper-dec">&minus;</button>
+                <span class="stepper-val">1</span>
+                <button type="button" class="stepper-btn stepper-inc">+</button>
+              </div>
+            </div>
+            <div class="stepper-row" data-key="tables">
+              <span class="stepper-label">Tables / desks</span>
+              <div class="stepper-controls">
+                <button type="button" class="stepper-btn stepper-dec">&minus;</button>
+                <span class="stepper-val">2</span>
+                <button type="button" class="stepper-btn stepper-inc">+</button>
+              </div>
+            </div>
+            <div class="stepper-row" data-key="boxes">
+              <span class="stepper-label">Boxes (estimate)</span>
+              <div class="stepper-controls">
+                <button type="button" class="stepper-btn stepper-dec">&minus;</button>
+                <span class="stepper-val">15</span>
+                <button type="button" class="stepper-btn stepper-inc">+</button>
               </div>
             </div>
           </div>
         </div>
-
-      </div>
-
-
-    </div>
-  </section>
-
-  <!-- ACQUISITION SPECS -->
-  <section id="acquisition" style="background: rgba(255,255,255,0.3); border-top: 1px solid var(--bg-border); border-bottom: 1px solid var(--bg-border);">
-    <div class="wrap">
-      <div class="sec-header">
-        <span class="sec-badge">Secure Transfer</span>
-        <h2 class="sec-title">Acquisition Specifications</h2>
-      </div>
-
-      <div class="facts-grid">
-        <div class="fact-card">
-          <div class="fact-k">Asset Name</div>
-          <div class="fact-v">goaustralia.co.nz</div>
-        </div>
-        <div class="fact-card">
-          <div class="fact-k">Extension Registry</div>
-          <div class="fact-v">.co.nz (DNC Registered)</div>
-        </div>
-        <div class="fact-card">
-          <div class="fact-k">Transfer Protocol</div>
-          <div class="fact-v">Secure Registrar Transfer</div>
-        </div>
-        <div class="fact-card">
-          <div class="fact-k">Timeline</div>
-          <div class="fact-v">Completed in 3–5 Days</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ENQUIRY SECTION -->
-  <section class="enq-section" id="enquire">
-    <div class="wrap-narrow text-center">
-      <div class="sec-header" style="margin-bottom: 32px;">
-        <span class="sec-badge" style="color: var(--accent-gold);">Submit Enquiry</span>
-        <h2 class="sec-title" style="font-size: 2rem;">Acquire This Asset</h2>
-        <p class="sec-desc">All serious offers and enquiries will be reviewed professionally within 24–48 hours. Secure escrow transfer is available.</p>
-      </div>
-
-      <form class="form" id="enquiry-form">
-        <div class="form-row">
-          <div class="fld">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your full name" required />
-          </div>
-          <div class="fld">
-            <label for="email">Business Email</label>
-            <input type="email" id="email" name="email" placeholder="you@company.com" required />
+        <!-- Extras -->
+        <div style="margin-bottom:30px">
+          <div class="field-label" style="margin-bottom:11px">Anything extra? (optional)</div>
+          <div style="display:flex;gap:9px;flex-wrap:wrap" id="extras">
+            <button type="button" class="extra-chip" data-key="packing">Packing service</button>
+            <button type="button" class="extra-chip" data-key="storage">Storage needed</button>
+            <button type="button" class="extra-chip" data-key="piano">Piano / large item</button>
+            <button type="button" class="extra-chip" data-key="car">Car / motorbike</button>
           </div>
         </div>
-        
-        <div class="form-row">
-          <div class="fld">
-            <label for="company">Company / Agency (Optional)</label>
-            <input type="text" id="company" name="company" placeholder="e.g. Wise or Private Portfolio" />
+        <!-- 4. Contact -->
+        <div style="margin-bottom:24px">
+          <div style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--ink);margin-bottom:12px;display:flex;align-items:center;gap:8px">
+            <span style="width:22px;height:22px;border-radius:6px;background:var(--amber);color:var(--ink);display:grid;place-items:center;font-size:12px;font-weight:800">4</span>
+            Where do we send your quotes?
           </div>
-          <div class="fld">
-            <label for="offer">Initial Offer (NZD)</label>
-            <input type="text" id="offer" name="offer" placeholder="e.g. 5,000" />
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+            <input class="field-input" name="name" placeholder="Full name" required />
+            <input class="field-input" name="email" type="email" placeholder="Email address" required />
           </div>
+          <input class="field-input" name="phone" placeholder="Phone (optional)" />
         </div>
-
-        <div class="fld">
-          <label for="message">Intended Use & Message</label>
-          <textarea id="message" name="message" placeholder="Provide details on your intended usage, portfolio strategy, or terms..."></textarea>
-        </div>
-
-        <button type="submit" class="sbmt-btn">Submit Purchase Enquiry</button>
+        <input type="text" name="website" style="position:absolute;left:-9999px;opacity:0" tabindex="-1" autocomplete="off" />
+        <div id="form-error" style="display:none;background:#FEF2F2;border:1px solid #EF4444;border-radius:var(--r-input);padding:12px 16px;margin-bottom:16px;font-size:14px;color:#B91C1C"></div>
+        <button type="submit" class="btn btn-amber btn-block" style="font-size:17px;padding:17px;border-radius:14px;font-weight:800" id="submit-btn">Get my free quotes &rarr;</button>
+        <p style="text-align:center;font-size:12.5px;color:var(--muted);margin:14px 0 0">By submitting you agree to be contacted by matched movers. No spam, ever.</p>
       </form>
-      
-      <p class="alt-contact">or contact directly via email: <a href="mailto:hello@goaustralia.co.nz">hello@goaustralia.co.nz</a></p>
+
+      <!-- Success state -->
+      <div id="quote-success" style="display:none;height:100%;flex-direction:column;justify-content:center;text-align:center;align-items:center;padding:20px 0;animation:fadeUp .5s ease both">
+        <div style="width:68px;height:68px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:34px;margin-bottom:22px">&#10003;</div>
+        <h3 style="font-family:var(--font-display);font-weight:800;font-size:28px;letter-spacing:-.02em;margin:0 0 12px">You're all set, <span id="success-name"></span></h3>
+        <p style="font-size:16px;line-height:1.6;color:var(--body);max-width:380px;margin:0 0 8px" id="success-detail"></p>
+        <p style="font-size:14px;color:var(--muted);margin:18px 0 24px">Keep an eye on your inbox &mdash; and check spam, just in case.</p>
+        <button type="button" class="btn btn-outline btn-sm" id="edit-btn">Edit my request</button>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="wrap">
-      <p>Listed independently. All rights reserved. Secure escrow integrations supported. &copy; 2026</p>
+<!-- SERVICES -->
+<section id="services" style="padding:clamp(64px,8vw,110px) var(--pad-x);background:var(--ink);color:#fff">
+  <div class="shell">
+    <div style="max-width:640px;margin-bottom:52px">
+      <div class="eyebrow eyebrow-amber">What movers can do</div>
+      <h2 class="display display-lg" style="color:#fff;margin-bottom:14px">Every kind of trans-Tasman move</h2>
+      <p style="font-size:18px;line-height:1.55;color:var(--on-dark)">From a few boxes to a full four-bedroom house, our partners cover the lot.</p>
     </div>
-  </footer>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px">
+      <div class="card-dark">
+        <div style="font-family:var(--font-display);font-weight:800;font-size:22px;color:var(--amber);margin-bottom:14px">01</div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:20px;margin:0 0 8px">Full container shipping</h3>
+        <p style="font-size:15px;line-height:1.55;color:var(--on-dark-dim);margin:0">A dedicated 20ft or 40ft container for your whole household, door to door.</p>
+      </div>
+      <div class="card-dark">
+        <div style="font-family:var(--font-display);font-weight:800;font-size:22px;color:var(--amber);margin-bottom:14px">02</div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:20px;margin:0 0 8px">Shared / part-load</h3>
+        <p style="font-size:15px;line-height:1.55;color:var(--on-dark-dim);margin:0">Pay only for the space you use by sharing a container &mdash; ideal for smaller moves.</p>
+      </div>
+      <div class="card-dark">
+        <div style="font-family:var(--font-display);font-weight:800;font-size:22px;color:var(--amber);margin-bottom:14px">03</div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:20px;margin:0 0 8px">Sea &amp; air freight</h3>
+        <p style="font-size:15px;line-height:1.55;color:var(--on-dark-dim);margin:0">Sea for the bulk, air for the essentials you need the moment you land.</p>
+      </div>
+      <div class="card-dark">
+        <div style="font-family:var(--font-display);font-weight:800;font-size:22px;color:var(--amber);margin-bottom:14px">04</div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:20px;margin:0 0 8px">Packing &amp; unpacking</h3>
+        <p style="font-size:15px;line-height:1.55;color:var(--on-dark-dim);margin:0">Professional packing, wrapping and labelling so nothing arrives in pieces.</p>
+      </div>
+      <div class="card-dark">
+        <div style="font-family:var(--font-display);font-weight:800;font-size:22px;color:var(--amber);margin-bottom:14px">05</div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:20px;margin:0 0 8px">Vehicle &amp; pet transport</h3>
+        <p style="font-size:15px;line-height:1.55;color:var(--on-dark-dim);margin:0">Ship the car or the motorbike, and get referred to trusted pet relocation pros.</p>
+      </div>
+      <div class="card-dark">
+        <div style="font-family:var(--font-display);font-weight:800;font-size:22px;color:var(--amber);margin-bottom:14px">06</div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:20px;margin:0 0 8px">Storage solutions</h3>
+        <p style="font-size:15px;line-height:1.55;color:var(--on-dark-dim);margin:0">Short or long-term storage on either side of the Tasman while you settle in.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script>
-    // ── PAGEVIEW TRACKING ──
-    fetch('/api/pageview', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ referrer: document.referrer || 'direct' })
-    }).catch(() => {});
+<!-- TESTIMONIALS -->
+<section id="stories" class="section">
+  <div class="shell">
+    <div style="max-width:640px;margin-bottom:50px">
+      <div class="eyebrow">Real moves, real Kiwis</div>
+      <h2 class="display display-lg">Folks who've already made the jump</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px">
+      <figure class="testimonial">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>&ldquo;Filled in one form on a Sunday night and had three quotes by Tuesday. Saved us hundreds versus the first mover we rang ourselves.&rdquo;</blockquote>
+        <figcaption>
+          <span class="avatar">SM</span>
+          <span><span class="reviewer-name">Sarah M.</span><span class="reviewer-route">Auckland &rarr; Brisbane</span></span>
+        </figcaption>
+      </figure>
+      <figure class="testimonial">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>&ldquo;Moving a whole family across is terrifying. The checklist and the movers GoAustralia matched us with made it feel genuinely manageable.&rdquo;</blockquote>
+        <figcaption>
+          <span class="avatar">TW</span>
+          <span><span class="reviewer-name">Tane W.</span><span class="reviewer-route">Wellington &rarr; Melbourne</span></span>
+        </figcaption>
+      </figure>
+      <figure class="testimonial">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>&ldquo;Did a part-load for our one-bedroom and it cost way less than I expected. No pressure, no spam &mdash; just useful quotes.&rdquo;</blockquote>
+        <figcaption>
+          <span class="avatar">PK</span>
+          <span><span class="reviewer-name">Priya K.</span><span class="reviewer-route">Christchurch &rarr; Perth</span></span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
-    // ── INTERACTIVE MOCKUP: FX CALCULATOR ──
-    const fxSendVal = document.getElementById('fx-send-val');
-    const fxReceiveVal = document.getElementById('fx-receive-val');
-    const rate = 0.9234;
+<!-- FAQ -->
+<section id="faq" style="padding:clamp(64px,8vw,110px) var(--pad-x);background:var(--cream);border-top:1px solid rgba(22,20,18,.07)">
+  <div class="shell-narrow">
+    <div style="text-align:center;margin-bottom:46px">
+      <div class="eyebrow">Good to know</div>
+      <h2 class="display display-lg">Questions Kiwis ask us</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px" id="faq-list">
+      {faqItems.map((item, i) => (
+        <div class="faq-item" data-faq-index={i}>
+          <button class="faq-trigger" type="button">
+            <span>{item.q}</span>
+            <span class="faq-toggle">{i === 0 ? '−' : '+'}</span>
+          </button>
+          <div class="faq-body" style={i === 0 ? '' : 'display:none'}>
+            {item.a}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
-    fxSendVal.addEventListener('input', function() {
-      const val = parseFloat(fxSendVal.value) || 0;
-      const converted = Math.round(val * rate);
-      fxReceiveVal.value = converted.toLocaleString();
+<!-- CTA BAND -->
+<section style="padding:clamp(56px,7vw,96px) var(--pad-x)">
+  <div style="max-width:1080px;margin:0 auto;background:var(--amber);border-radius:var(--r-panel);padding:clamp(40px,5vw,68px);text-align:center;overflow:hidden">
+    <h2 class="display" style="font-size:clamp(30px,4.6vw,52px);letter-spacing:-.03em;margin-bottom:16px;color:var(--ink)">Ready when you are.</h2>
+    <p style="font-size:clamp(17px,2vw,20px);line-height:1.5;color:#4a3a12;max-width:520px;margin:0 auto 30px">One minute now could save you hundreds on your move to Australia. Get your free quotes today.</p>
+    <a href="#quote" class="btn btn-dark btn-lg">Get my free quotes &rarr;</a>
+  </div>
+</section>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta" id="sticky-cta">
+  <div style="display:flex;flex-direction:column;min-width:0">
+    <span style="font-weight:700;font-size:15px;font-family:var(--font-display)">Free quotes from verified movers</span>
+    <span style="font-size:12.5px;color:var(--on-dark-muted)">No obligation &middot; Always free</span>
+  </div>
+  <a href="#quote" class="nav-cta" style="flex-shrink:0">Get my quotes &rarr;</a>
+</div>
+
+<!-- CLIENT JS -->
+<script is:inline>
+(function() {
+  var heroFrom = document.getElementById('hero-from');
+  var heroTo = document.getElementById('hero-to');
+  var heroFromDisp = document.getElementById('hero-from-display');
+  var heroToDisp = document.getElementById('hero-to-display');
+  heroFrom?.addEventListener('change', function() {
+    heroFromDisp.textContent = heroFrom.value;
+    var f = document.querySelector('#quote-form select[name="fromCity"]');
+    if (f) f.value = heroFrom.value;
+  });
+  heroTo?.addEventListener('change', function() {
+    heroToDisp.textContent = heroTo.value;
+    var f = document.querySelector('#quote-form select[name="toCity"]');
+    if (f) f.value = heroTo.value;
+  });
+
+  function initSegs(id, name) {
+    var c = document.getElementById(id);
+    if (!c) return;
+    var h = document.querySelector('input[name="' + name + '"]');
+    c.querySelectorAll('.seg').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        c.querySelectorAll('.seg').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        if (h) h.value = btn.dataset.val;
+      });
+    });
+  }
+  initSegs('timeline-segs', 'timeline');
+  initSegs('size-segs', 'homeSize');
+
+  function updatePill() {
+    var t = 0;
+    document.querySelectorAll('#steppers .stepper-row').forEach(function(r) {
+      t += parseInt(r.querySelector('.stepper-val').textContent) || 0;
+    });
+    var p = document.getElementById('items-pill');
+    if (p) p.textContent = t + ' items';
+  }
+  document.querySelectorAll('#steppers .stepper-row').forEach(function(row) {
+    var v = row.querySelector('.stepper-val');
+    row.querySelector('.stepper-dec').addEventListener('click', function() {
+      var n = Math.max(0, parseInt(v.textContent) - 1);
+      v.textContent = n;
+      updatePill();
+    });
+    row.querySelector('.stepper-inc').addEventListener('click', function() {
+      v.textContent = parseInt(v.textContent) + 1;
+      updatePill();
+    });
+  });
+
+  document.querySelectorAll('#extras .extra-chip').forEach(function(c) {
+    c.addEventListener('click', function() { c.classList.toggle('active'); });
+  });
+
+  document.querySelectorAll('#faq-list .faq-item').forEach(function(item) {
+    var trigger = item.querySelector('.faq-trigger');
+    var body = item.querySelector('.faq-body');
+    var toggle = item.querySelector('.faq-toggle');
+    trigger.addEventListener('click', function() {
+      var open = body.style.display !== 'none';
+      body.style.display = open ? 'none' : '';
+      toggle.textContent = open ? '+' : '−';
+    });
+  });
+
+  var stickyCta = document.getElementById('sticky-cta');
+  var quoteSection = document.getElementById('quote');
+  if (stickyCta && quoteSection) {
+    var obs = new IntersectionObserver(function(entries) {
+      stickyCta.classList.toggle('visible', !entries[0].isIntersecting);
+    }, { threshold: 0 });
+    obs.observe(quoteSection);
+  }
+
+  var form = document.getElementById('quote-form');
+  var successEl = document.getElementById('quote-success');
+  var errorEl = document.getElementById('form-error');
+  var submitBtn = document.getElementById('submit-btn');
+
+  form?.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    errorEl.style.display = 'none';
+    var fd = new FormData(form);
+    if (fd.get('website')) return;
+
+    var name = (fd.get('name') || '').trim();
+    var email = (fd.get('email') || '').trim();
+    if (!name) { showErr('Please enter your name.'); return; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('Please enter a valid email.'); return; }
+
+    var items = {};
+    document.querySelectorAll('#steppers .stepper-row').forEach(function(r) {
+      items[r.dataset.key] = parseInt(r.querySelector('.stepper-val').textContent) || 0;
+    });
+    var extras = {};
+    document.querySelectorAll('#extras .extra-chip').forEach(function(c) {
+      extras[c.dataset.key] = c.classList.contains('active');
     });
 
-    // ── INTERACTIVE MOCKUP: CHECKLIST TOGGLING ──
-    const checklistProgBar = document.getElementById('checklist-prog-bar');
-    const targetCheckbox = document.getElementById('target-checkbox');
-    const targetLbl = document.getElementById('target-lbl');
+    var payload = {
+      name: name, email: email,
+      phone: fd.get('phone') || '',
+      fromCity: fd.get('fromCity'),
+      toCity: fd.get('toCity'),
+      timeline: fd.get('timeline'),
+      homeSize: fd.get('homeSize'),
+      items: items, extras: extras
+    };
 
-    function toggleChecklist(el) {
-      const box = el.querySelector('.chk-checkbox');
-      const text = el.querySelector('span');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
 
-      if (box.classList.contains('empty')) {
-        box.classList.remove('empty');
-        box.textContent = '✓';
-        text.style.color = 'var(--txt-base)';
-        text.style.textDecoration = 'none';
-      } else {
-        box.classList.add('empty');
-        box.textContent = '';
-        text.style.color = 'var(--txt-muted)';
-      }
-
-      // Recalculate progress fill
-      const total = el.parentElement.querySelectorAll('.chk-item').length;
-      const checked = el.parentElement.querySelectorAll('.chk-checkbox:not(.empty)').length;
-      const pct = Math.round((checked / total) * 100);
-      checklistProgBar.style.width = pct + '%';
+    try {
+      var res = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('err');
+      var totalItems = Object.values(items).reduce(function(a, b) { return a + b; }, 0);
+      var firstName = name.split(' ')[0];
+      document.getElementById('success-name').textContent = firstName;
+      document.getElementById('success-detail').innerHTML =
+        'We’ve got your ' + payload.fromCity + ' → ' + payload.toCity + ' move with ' + totalItems + ' items. Up to 3 verified movers will email quotes to <strong style="color:var(--ink)">' + email + '</strong> within 24 hours.';
+      form.style.display = 'none';
+      successEl.style.display = 'flex';
+    } catch(err) {
+      showErr('Something went wrong. Please try again.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Get my free quotes →';
     }
+  });
 
-    // ── INTERACTIVE MOCKUP: RELOCATION ESTIMATOR ──
-    function calculateReloQuote() {
-      const sizeVal = parseInt(document.getElementById('relo-size').value);
-      const reloPriceLbl = document.getElementById('relo-price-lbl');
-      
-      let price = 6800;
-      if (sizeVal === 1) price = 3200;
-      else if (sizeVal === 5) price = 9800;
+  function showErr(msg) {
+    errorEl.textContent = msg;
+    errorEl.style.display = 'block';
+  }
 
-      reloPriceLbl.textContent = '$' + price.toLocaleString() + ' NZD';
-    }
+  document.getElementById('edit-btn')?.addEventListener('click', function() {
+    successEl.style.display = 'none';
+    form.style.display = '';
+  });
+})();
+</script>
 
-    // ── ENQUIRY FORM SUBMISSION ──
-    document.getElementById('enquiry-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const form = this;
-      const btn = form.querySelector('.sbmt-btn');
-      const d = Object.fromEntries(new FormData(form));
-
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
-
-      try {
-        const res = await fetch('/api/lead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(d)
-        });
-
-        if (res.ok) {
-          form.innerHTML = `
-            <div style="text-align:center;padding:40px 24px;">
-              <div style="width:52px;height:52px;background:rgba(0,135,90,0.08);border:1px solid rgba(0,135,90,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:22px;">✓</div>
-              <h3 style="font-size:18px;font-weight:700;color:var(--txt-base);margin-bottom:8px;">Enquiry received</h3>
-              <p style="font-size:14px;color:var(--txt-muted);line-height:1.6;">We'll review your enquiry and reply to <strong>${d.email}</strong> within 24–48 hours.</p>
-            </div>`;
-        } else {
-          throw new Error('server error');
-        }
-      } catch {
-        btn.textContent = 'Submit Purchase Enquiry';
-        btn.disabled = false;
-        alert('Something went wrong — please email hello@goaustralia.co.nz directly.');
-      }
-    });
-  </script>
-
-</body>
-</html>
+</Base>

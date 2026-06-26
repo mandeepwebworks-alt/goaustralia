@@ -4,40 +4,47 @@ async function sha256hex(text) {
   return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
+function escapeHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
 async function sendLeadEmail(lead, apiKey) {
-  const offerLine = lead.offer
-    ? `<tr><td style="padding:8px 0;color:#86868B;font-size:13px;">Offer (NZD)</td><td style="padding:8px 0;font-size:13px;font-weight:700;color:#1D1D1F;">$${lead.offer}</td></tr>`
-    : '';
-  const companyLine = lead.company
-    ? `<tr><td style="padding:8px 0;color:#86868B;font-size:13px;">Company</td><td style="padding:8px 0;font-size:13px;color:#1D1D1F;">${lead.company}</td></tr>`
-    : '';
-  const messageLine = lead.message
-    ? `<div style="margin-top:20px;padding:16px;background:#F5F5F7;border-radius:8px;font-size:13px;color:#1D1D1F;line-height:1.6;">${lead.message}</div>`
-    : '';
+  const itemRows = lead.items ? Object.entries(lead.items)
+    .filter(([,v]) => v > 0)
+    .map(([k,v]) => `<tr><td style="padding:6px 0;color:#86868B;font-size:13px">${escapeHtml(k)}</td><td style="padding:6px 0;font-size:13px;font-weight:700;color:#1D1D1F">${v}</td></tr>`)
+    .join('') : '';
+
+  const extrasList = lead.extras ? Object.entries(lead.extras)
+    .filter(([,v]) => v)
+    .map(([k]) => escapeHtml(k))
+    .join(', ') : '';
 
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: 'goaustralia.co.nz <hello@goaustralia.co.nz>',
+      from: 'GoAustralia <hello@goaustralia.co.nz>',
       to: ['mandeepwebworks@gmail.com'],
-      subject: `New enquiry from ${lead.name} — goaustralia.co.nz`,
+      subject: `New moving quote: ${escapeHtml(lead.name)} — ${escapeHtml(lead.fromCity)} → ${escapeHtml(lead.toCity)}`,
       html: `
-        <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:520px;margin:0 auto;padding:32px 24px;background:#fff;">
-          <div style="margin-bottom:24px;">
-            <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#00875A;">goaustralia.co.nz</span>
-            <h1 style="margin:8px 0 0;font-size:20px;font-weight:700;color:#1D1D1F;">New Acquisition Enquiry</h1>
+        <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:520px;margin:0 auto;padding:32px 24px;background:#fff">
+          <div style="margin-bottom:24px">
+            <span style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#C79212">GoAustralia.co.nz</span>
+            <h1 style="margin:8px 0 0;font-size:20px;font-weight:700;color:#161412">New Quote Request</h1>
           </div>
-          <table style="width:100%;border-collapse:collapse;border-top:1px solid #E5E5EA;">
-            <tr><td style="padding:8px 0;color:#86868B;font-size:13px;">Name</td><td style="padding:8px 0;font-size:13px;font-weight:700;color:#1D1D1F;">${lead.name}</td></tr>
-            <tr><td style="padding:8px 0;color:#86868B;font-size:13px;">Email</td><td style="padding:8px 0;font-size:13px;"><a href="mailto:${lead.email}" style="color:#00875A;">${lead.email}</a></td></tr>
-            ${companyLine}
-            ${offerLine}
-            <tr><td style="padding:8px 0;color:#86868B;font-size:13px;">Received</td><td style="padding:8px 0;font-size:13px;color:#1D1D1F;">${new Date(lead.date).toLocaleString('en-NZ', { dateStyle: 'medium', timeStyle: 'short' })}</td></tr>
+          <table style="width:100%;border-collapse:collapse;border-top:1px solid #E5E5EA">
+            <tr><td style="padding:8px 0;color:#86868B;font-size:13px">Name</td><td style="padding:8px 0;font-size:13px;font-weight:700;color:#161412">${escapeHtml(lead.name)}</td></tr>
+            <tr><td style="padding:8px 0;color:#86868B;font-size:13px">Email</td><td style="padding:8px 0;font-size:13px"><a href="mailto:${escapeHtml(lead.email)}" style="color:#C79212">${escapeHtml(lead.email)}</a></td></tr>
+            ${lead.phone ? `<tr><td style="padding:8px 0;color:#86868B;font-size:13px">Phone</td><td style="padding:8px 0;font-size:13px;color:#161412">${escapeHtml(lead.phone)}</td></tr>` : ''}
+            <tr><td style="padding:8px 0;color:#86868B;font-size:13px">Route</td><td style="padding:8px 0;font-size:13px;font-weight:700;color:#161412">${escapeHtml(lead.fromCity)} → ${escapeHtml(lead.toCity)}</td></tr>
+            <tr><td style="padding:8px 0;color:#86868B;font-size:13px">Timeline</td><td style="padding:8px 0;font-size:13px;color:#161412">${escapeHtml(lead.timeline || '')}</td></tr>
+            <tr><td style="padding:8px 0;color:#86868B;font-size:13px">Home size</td><td style="padding:8px 0;font-size:13px;color:#161412">${escapeHtml(lead.homeSize || '')}</td></tr>
           </table>
-          ${messageLine}
-          <div style="margin-top:24px;padding-top:24px;border-top:1px solid #E5E5EA;">
-            <a href="https://goaustralia.co.nz/dashboard" style="display:inline-block;padding:10px 20px;background:#1D1D1F;color:#fff;text-decoration:none;border-radius:20px;font-size:13px;font-weight:700;">View Dashboard →</a>
+          ${itemRows ? `<div style="margin-top:16px;padding-top:16px;border-top:1px solid #E5E5EA"><div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#86868B;margin-bottom:8px">Items</div><table style="width:100%;border-collapse:collapse">${itemRows}</table></div>` : ''}
+          ${extrasList ? `<div style="margin-top:12px;font-size:13px;color:#161412"><strong>Extras:</strong> ${escapeHtml(extrasList)}</div>` : ''}
+          <div style="margin-top:16px;font-size:12px;color:#86868B">Received: ${new Date(lead.date).toLocaleString('en-NZ', { dateStyle: 'medium', timeStyle: 'short' })}</div>
+          <div style="margin-top:24px;padding-top:24px;border-top:1px solid #E5E5EA">
+            <a href="https://goaustralia.co.nz/dashboard" style="display:inline-block;padding:10px 20px;background:#161412;color:#fff;text-decoration:none;border-radius:20px;font-size:13px;font-weight:700">View Dashboard →</a>
           </div>
         </div>
       `,
@@ -58,7 +65,7 @@ export async function onRequest(context) {
   if (request.method === 'POST') {
     try {
       const body = await request.json();
-      const { name, email, company, offer, message } = body;
+      const { name, email, phone, fromCity, toCity, timeline, homeSize, items, extras } = body;
 
       if (!name || !email) {
         return Response.json({ error: 'Name and email required' }, { status: 400 });
@@ -68,9 +75,13 @@ export async function onRequest(context) {
         id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
         name,
         email,
-        company: company || '',
-        offer: offer || '',
-        message: message || '',
+        phone: phone || '',
+        fromCity: fromCity || '',
+        toCity: toCity || '',
+        timeline: timeline || '',
+        homeSize: homeSize || '',
+        items: items || {},
+        extras: extras || {},
         date: new Date().toISOString(),
         read: false,
       };

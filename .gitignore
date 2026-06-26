@@ -25,3 +25,7 @@ data/*.json
 
 # jetbrains setting folder
 .idea/
+
+# local dev state
+.wrangler/
+.claude/

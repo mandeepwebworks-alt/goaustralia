@@ -1,0 +1,147 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  structuredData?: string;
+  noindex?: boolean;
+}
+
+const { title, description, canonical, ogImage, structuredData, noindex } = Astro.props;
+const siteUrl = 'https://goaustralia.co.nz';
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+const ogImg = ogImage || `${siteUrl}/og-image.jpg`;
+---
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+  {noindex ? <meta name="robots" content="noindex, nofollow" /> : <meta name="robots" content="index, follow" />}
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={ogImg} />
+  <meta property="og:site_name" content="GoAustralia" />
+  <meta property="og:locale" content="en_NZ" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImg} />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  {structuredData && <script type="application/ld+json" set:html={structuredData} />}
+</head>
+<body>
+  <!-- Nav -->
+  <header class="site-nav-bar">
+    <div class="site-nav-inner">
+      <a href="/" class="nav-logo">
+        <span class="nav-logo-icon">G</span>
+        <span class="nav-logo-text">GoAustralia</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/moving-checklist" class="nav-link">Moving Checklist</a>
+        <a href="/moving-costs" class="nav-link">Moving Costs</a>
+        <a href="/guides" class="nav-link">Guides</a>
+        <a href="/get-quotes" class="nav-cta">Get free quotes</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <nav>
+      <a href="/">Home</a>
+      <a href="/moving-checklist">Moving Checklist</a>
+      <a href="/moving-costs">Moving Costs</a>
+      <a href="/guides">Guides</a>
+    </nav>
+    <div class="mobile-menu-footer">
+      <a href="/get-quotes" class="mob-cta">Get free quotes</a>
+    </div>
+  </div>
+
+  <slot />
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo" style="margin-bottom:16px">
+            <span class="nav-logo-icon">G</span>
+            <span class="nav-logo-text" style="color:#fff">GoAustralia</span>
+          </a>
+          <p style="font-size:14.5px;line-height:1.6;color:var(--on-dark-muted)">The free way for New Zealanders to compare verified trans-Tasman movers and get sorted faster.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Guides</div>
+          <a href="/moving-checklist" class="footer-link">Moving checklist</a>
+          <a href="/moving-costs" class="footer-link">Moving costs</a>
+          <a href="/guides" class="footer-link">Visa &amp; TFN</a>
+          <a href="/guides" class="footer-link">KiwiSaver &amp; banking</a>
+        </div>
+        <div>
+          <div class="footer-col-title">Company</div>
+          <a href="/#how" class="footer-link">How it works</a>
+          <a href="/#stories" class="footer-link">Reviews</a>
+          <a href="/#faq" class="footer-link">FAQ</a>
+        </div>
+        <div>
+          <div class="footer-col-title">Get started</div>
+          <a href="/get-quotes" class="nav-cta" style="font-size:14.5px;padding:11px 18px">Get free quotes &rarr;</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 GoAustralia &middot; goaustralia.co.nz</span>
+        <div class="footer-legal">
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <span>GoAustralia is a referral service, not a moving company.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script is:inline>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger?.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileMenu?.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  </script>
+
+  <script is:inline>
+    fetch('/api/pageview', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ referrer: document.referrer || 'direct' })
+    }).catch(() => {});
+  </script>
+</body>
+</html>

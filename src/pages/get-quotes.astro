@@ -1,0 +1,154 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Get Free Moving Quotes NZ to Australia | Compare Trans-Tasman Movers"
+  description="Get free, no-obligation moving quotes from verified NZ to Australia movers. Compare prices for door-to-door container shipping across the Tasman."
+>
+
+  <section class="page-hero">
+    <div class="shell">
+      <div class="breadcrumb"><a href="/">Home</a> / Get Quotes</div>
+      <h1>Get Free Moving Quotes</h1>
+      <p class="page-hero-sub">Tell us about your move and we'll connect you with verified trans-Tasman movers who'll compete to offer you the best price.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell" style="max-width:680px">
+      <form id="quote-form" style="display:flex;flex-direction:column;gap:20px">
+        <div>
+          <span class="field-label">Your full name</span>
+          <input type="text" name="name" class="field-input" placeholder="e.g. Sarah Thompson" required />
+        </div>
+        <div>
+          <span class="field-label">Email address</span>
+          <input type="email" name="email" class="field-input" placeholder="you@email.com" required />
+        </div>
+        <div>
+          <span class="field-label">Phone number (optional)</span>
+          <input type="tel" name="phone" class="field-input" placeholder="e.g. 021 123 4567" />
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div>
+            <span class="field-label">Moving from (NZ)</span>
+            <select name="fromCity" class="field-select" required>
+              <option value="">Select city…</option>
+              <option>Auckland</option><option>Wellington</option><option>Christchurch</option><option>Hamilton</option><option>Tauranga</option><option>Dunedin</option><option>Other</option>
+            </select>
+          </div>
+          <div>
+            <span class="field-label">Moving to (AU)</span>
+            <select name="toCity" class="field-select" required>
+              <option value="">Select city…</option>
+              <option>Sydney</option><option>Melbourne</option><option>Brisbane</option><option>Gold Coast</option><option>Perth</option><option>Adelaide</option><option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <span class="field-label">Home size</span>
+          <select name="homeSize" class="field-select" required>
+            <option value="">Select size…</option>
+            <option>Studio</option><option>1 bed</option><option>2 bed</option><option>3 bed</option><option>4+ bed</option>
+          </select>
+        </div>
+        <div>
+          <span class="field-label">When are you moving?</span>
+          <select name="timeline" class="field-select">
+            <option value="">Select timing…</option>
+            <option>ASAP</option><option>1–3 months</option><option>3–6 months</option><option>Just researching</option>
+          </select>
+        </div>
+        <div>
+          <span class="field-label">Anything else? (optional)</span>
+          <textarea name="message" class="field-input" rows="4" placeholder="e.g. I have a piano, pets, a car to ship, etc."></textarea>
+        </div>
+        <input type="text" name="website" style="position:absolute;left:-9999px;opacity:0" tabindex="-1" autocomplete="off" />
+        <div id="form-error" style="display:none;background:#FEF2F2;border:1px solid #EF4444;border-radius:var(--r-input);padding:12px 16px;font-size:14px;color:#B91C1C"></div>
+        <button type="submit" class="btn btn-amber btn-lg btn-block" id="submit-btn">Get my free quotes &rarr;</button>
+        <p style="text-align:center;font-size:12.5px;color:var(--muted)">100% free. No obligation. Your details are only shared with verified moving partners.</p>
+      </form>
+
+      <div id="success-msg" style="display:none;text-align:center;padding:48px 24px;animation:fadeUp .5s ease both">
+        <div style="width:68px;height:68px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:34px;margin:0 auto 22px">&#10003;</div>
+        <h2 style="font-family:var(--font-display);font-weight:800;font-size:28px;letter-spacing:-.02em;margin:0 0 12px">Quote request received</h2>
+        <p style="font-size:16px;line-height:1.6;color:var(--body);max-width:420px;margin:0 auto">We've received your details and will connect you with verified trans-Tasman movers. Expect quotes in your inbox within 24 hours.</p>
+        <a href="/moving-checklist" class="btn btn-dark" style="margin-top:24px">View Moving Checklist &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust signals -->
+  <section style="padding:40px var(--pad-x);background:var(--cream);border-top:1px solid var(--hairline)">
+    <div class="shell">
+      <div style="display:flex;justify-content:center;gap:48px;flex-wrap:wrap;text-align:center">
+        <div>
+          <div style="font-family:var(--font-display);font-weight:800;font-size:22px;color:var(--ink)">&#10003;</div>
+          <div style="font-size:13px;font-weight:700;color:var(--ink)">Verified Movers</div>
+          <div style="font-size:12px;color:var(--muted)">Licensed &amp; insured</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-display);font-weight:800;font-size:22px;color:var(--ink)">&#128274;</div>
+          <div style="font-size:13px;font-weight:700;color:var(--ink)">Data Protected</div>
+          <div style="font-size:12px;color:var(--muted)">Privacy guaranteed</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-display);font-weight:800;font-size:22px;color:var(--amber)">$0</div>
+          <div style="font-size:13px;font-weight:700;color:var(--ink)">100% Free</div>
+          <div style="font-size:12px;color:var(--muted)">No hidden costs</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-display);font-weight:800;font-size:22px;color:var(--amber)">&#9733;</div>
+          <div style="font-size:13px;font-weight:700;color:var(--ink)">4.9/5 Rated</div>
+          <div style="font-size:12px;color:var(--muted)">2,300+ reviews</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    document.getElementById('quote-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('submit-btn');
+      var errEl = document.getElementById('form-error');
+      errEl.style.display = 'none';
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      var fd = new FormData(this);
+      if (fd.get('website')) return;
+
+      var payload = {
+        name: fd.get('name'),
+        email: fd.get('email'),
+        phone: fd.get('phone') || '',
+        fromCity: fd.get('fromCity'),
+        toCity: fd.get('toCity'),
+        homeSize: fd.get('homeSize'),
+        timeline: fd.get('timeline') || '',
+        items: {},
+        extras: {},
+        message: fd.get('message') || ''
+      };
+
+      try {
+        var res = await fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (res.ok) {
+          document.getElementById('quote-form').style.display = 'none';
+          document.getElementById('success-msg').style.display = 'block';
+        } else {
+          throw new Error();
+        }
+      } catch {
+        btn.textContent = 'Get my free quotes →';
+        btn.disabled = false;
+        errEl.textContent = 'Something went wrong. Please try again.';
+        errEl.style.display = 'block';
+      }
+    });
+  </script>
+</Base>
