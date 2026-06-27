@@ -67,8 +67,8 @@ export async function onRequest(context) {
       const body = await request.json();
       const { name, email, phone, fromCity, toCity, timeline, homeSize, items, extras } = body;
 
-      if (!name || !email) {
-        return Response.json({ error: 'Name and email required' }, { status: 400 });
+      if (!name || !email || !phone) {
+        return Response.json({ error: 'Name, email, and phone required' }, { status: 400 });
       }
 
       const lead = {
