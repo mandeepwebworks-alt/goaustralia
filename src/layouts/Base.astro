@@ -39,10 +39,38 @@ const ogImg = ogImage || `${siteUrl}/og-image.jpg`;
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImg} />
 
+  <meta name="geo.region" content="NZ" />
+  <meta name="geo.placename" content="New Zealand" />
+  <meta name="geo.position" content="-41.2865;174.7762" />
+  <meta name="ICBM" content="-41.2865, 174.7762" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "GoAustralia",
+    "url": "https://goaustralia.co.nz",
+    "description": "Free moving quote comparison for New Zealanders moving to Australia. Compare verified trans-Tasman movers and save.",
+    "areaServed": [
+      { "@type": "Country", "name": "New Zealand" },
+      { "@type": "Country", "name": "Australia" }
+    ],
+    "serviceType": "Moving Quote Comparison"
+  })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "GoAustralia",
+    "url": "https://goaustralia.co.nz",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://goaustralia.co.nz/guides",
+      "query-input": "required name=search_term_string"
+    }
+  })} />
   {structuredData && <script type="application/ld+json" set:html={structuredData} />}
 </head>
 <body>

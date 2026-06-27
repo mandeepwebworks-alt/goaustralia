@@ -2,32 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://goaustralia.co.nz/</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://goaustralia.co.nz/get-quotes</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://goaustralia.co.nz/moving-checklist</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://goaustralia.co.nz/moving-costs</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://goaustralia.co.nz/guides</loc>
-    <lastmod>2026-06-20</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://goaustralia.co.nz/shipping-to-australia-from-nz</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://goaustralia.co.nz/sydney-vs-melbourne-vs-brisbane</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://goaustralia.co.nz/get-quotes</loc>
-    <lastmod>2026-06-20</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://goaustralia.co.nz/guides</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 </urlset>

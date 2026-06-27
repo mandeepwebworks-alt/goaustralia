@@ -1,0 +1,187 @@
+---
+import Base from '../layouts/Base.astro';
+
+const structuredData = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Shipping to Australia from NZ — How It Works (2026 Guide)",
+  "description": "Complete guide to shipping household goods, furniture, and personal belongings from New Zealand to Australia. Sea freight, air freight, customs, and biosecurity explained.",
+  "author": { "@type": "Organization", "name": "GoAustralia" },
+  "publisher": { "@type": "Organization", "name": "GoAustralia", "url": "https://goaustralia.co.nz" },
+  "datePublished": "2026-06-01",
+  "dateModified": "2026-06-27",
+  "mainEntityOfPage": "https://goaustralia.co.nz/shipping-to-australia-from-nz"
+});
+---
+<Base
+  title="Shipping to Australia from NZ — How It Works (2026 Guide)"
+  description="Everything you need to know about shipping household goods from New Zealand to Australia. Sea freight vs air freight, customs, biosecurity, timelines, and costs explained for Kiwis."
+  structuredData={structuredData}
+>
+
+  <section class="page-hero">
+    <div class="shell">
+      <div class="breadcrumb"><a href="/">Home</a> / <a href="/guides">Guides</a> / Shipping to Australia</div>
+      <h1>Shipping to Australia from NZ — How It Works</h1>
+      <p class="page-hero-sub">A practical guide to getting your belongings across the Tasman. Sea freight, air freight, customs, biosecurity, and what movers actually do — explained for Kiwis.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell-narrow">
+
+      <div class="card" style="margin-bottom:40px">
+        <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:14px">In this guide</div>
+        <ol style="list-style:decimal;padding-left:20px;display:flex;flex-direction:column;gap:8px">
+          <li><a href="#how" style="font-size:14px;font-weight:600;color:var(--amber-deep)">How Shipping from NZ to Australia Works</a></li>
+          <li><a href="#sea-vs-air" style="font-size:14px;font-weight:600;color:var(--amber-deep)">Sea Freight vs Air Freight</a></li>
+          <li><a href="#containers" style="font-size:14px;font-weight:600;color:var(--amber-deep)">Full Container vs Shared Container</a></li>
+          <li><a href="#customs" style="font-size:14px;font-weight:600;color:var(--amber-deep)">Australian Customs &amp; Biosecurity</a></li>
+          <li><a href="#prohibited" style="font-size:14px;font-weight:600;color:var(--amber-deep)">What You Can't Ship to Australia</a></li>
+          <li><a href="#timeline" style="font-size:14px;font-weight:600;color:var(--amber-deep)">Shipping Timelines</a></li>
+          <li><a href="#insurance" style="font-size:14px;font-weight:600;color:var(--amber-deep)">Transit Insurance</a></li>
+          <li><a href="#tips" style="font-size:14px;font-weight:600;color:var(--amber-deep)">Tips to Save on Shipping</a></li>
+        </ol>
+      </div>
+
+      <article class="article">
+
+        <h2 id="how">How Shipping from NZ to Australia Works</h2>
+        <p>Moving your belongings from New Zealand to Australia follows a standard process, whether you're shipping a few boxes or an entire household. Here's what happens step by step:</p>
+        <ol>
+          <li><strong>Get quotes</strong> — Request quotes from 2–3 international movers. <a href="/get-quotes">Use our free comparison tool</a> to get matched with verified trans-Tasman movers.</li>
+          <li><strong>Pre-move survey</strong> — Your chosen mover inspects your home (in person or via video call) to assess volume and provide a final price.</li>
+          <li><strong>Packing</strong> — Professional packers wrap and box everything, or you can pack yourself to save money. Movers supply specialist materials for fragile items.</li>
+          <li><strong>Pickup &amp; loading</strong> — Your goods are collected from your NZ address and loaded into a shipping container at the nearest port (Auckland, Tauranga, Christchurch, or Wellington).</li>
+          <li><strong>Sea transit</strong> — The container sails to an Australian port (Sydney, Melbourne, Brisbane, Perth, or Adelaide). Transit takes 5–10 days depending on the route.</li>
+          <li><strong>Australian customs &amp; quarantine</strong> — Your shipment is cleared through Australian Border Force and biosecurity inspection. Your mover handles all paperwork.</li>
+          <li><strong>Delivery</strong> — Goods are trucked from the port to your new Australian address and unpacked if you've chosen a full-service package.</li>
+        </ol>
+        <p>The entire process takes 3–6 weeks from pickup in NZ to delivery in Australia.</p>
+
+        <h2 id="sea-vs-air">Sea Freight vs Air Freight</h2>
+        <p>Most NZ-to-Australia moves use sea freight because it's significantly cheaper. But air freight has its place for urgent or small shipments.</p>
+        <div style="overflow-x:auto;margin:20px 0">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Factor</th>
+                <th>Sea Freight</th>
+                <th>Air Freight</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Cost</td><td class="price">$150–$350/m&sup3;</td><td>$6–$12/kg</td></tr>
+              <tr><td>Transit time</td><td>3–6 weeks total</td><td>3–7 days total</td></tr>
+              <tr><td>Best for</td><td>Full household, furniture, large items</td><td>Documents, small valuables, essentials box</td></tr>
+              <tr><td>Volume limit</td><td>No practical limit</td><td>Usually under 500kg</td></tr>
+              <tr><td>Insurance</td><td>Comprehensive options available</td><td>Included in most services</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Pro tip:</strong> Many movers offer a "fast-track essentials" air freight service alongside your sea freight shipment. Ship your main belongings by sea and send a box of essentials (clothes, toiletries, devices) by air so it arrives before you do.</p>
+
+        <h2 id="containers">Full Container vs Shared Container (Groupage)</h2>
+        <p>When shipping by sea, you'll choose between a full container and a shared container:</p>
+        <div class="checklist-box">
+          <h3>Full Container Load (FCL)</h3>
+          <ul>
+            <li>You rent an entire 20ft or 40ft container</li>
+            <li>20ft container: fits a 2–3 bedroom house (~30m&sup3;) — costs $6,000–$10,000 NZD</li>
+            <li>40ft container: fits a 4+ bedroom house (~60m&sup3;) — costs $9,000–$15,000 NZD</li>
+            <li>Ships on your schedule — no waiting for other cargo</li>
+            <li>Lower risk of damage (your items aren't handled again until delivery)</li>
+            <li>Best for: families, large households, anyone with furniture</li>
+          </ul>
+        </div>
+        <div class="checklist-box" style="margin-top:16px">
+          <h3>Shared Container / Groupage</h3>
+          <ul>
+            <li>Your items share space in a container with other customers</li>
+            <li>You pay per cubic metre: $150–$350/m&sup3;</li>
+            <li>Can save 30–40% compared to a full container</li>
+            <li>Takes longer — the container sails once it's full (1–3 week delay possible)</li>
+            <li>Slightly higher damage risk from extra handling</li>
+            <li>Best for: singles, couples, box-only moves, 1-bedroom loads</li>
+          </ul>
+        </div>
+
+        <h2 id="customs">Australian Customs &amp; Biosecurity</h2>
+        <p>Australia has some of the strictest biosecurity laws in the world. Here's what to expect:</p>
+        <ul>
+          <li><strong>Customs declaration</strong> — You must complete an Unaccompanied Personal Effects Statement (Form B534). Your mover provides this and helps you fill it out.</li>
+          <li><strong>Duty-free entry</strong> — Personal and household goods you've owned and used for 12+ months enter Australia duty-free. New items may attract GST (10%).</li>
+          <li><strong>Biosecurity inspection</strong> — All shipments are screened. Items with soil, plant matter, or organic residue may be inspected, cleaned, or fumigated at your cost.</li>
+          <li><strong>Wooden items</strong> — Untreated timber furniture may require heat treatment or fumigation. Garden tools must be cleaned of all soil.</li>
+          <li><strong>Quarantine fees</strong> — If your shipment is flagged for inspection, fees range from $100–$600. Declare everything honestly to avoid fines up to $6,660 or criminal prosecution.</li>
+        </ul>
+
+        <h2 id="prohibited">What You Can't Ship to Australia</h2>
+        <div class="warning-box">
+          <p><strong>Prohibited items — these will be seized and destroyed:</strong></p>
+          <ul>
+            <li>Fresh or dried food (meat, dairy, fruit, vegetables, honey, nuts)</li>
+            <li>Plants, seeds, bulbs, soil, or potting mix</li>
+            <li>Animal products (feathers, shells, bones, skins unless treated)</li>
+            <li>Untreated wooden items (firewood, bamboo, straw)</li>
+            <li>Drugs and drug paraphernalia</li>
+            <li>Firearms and weapons (require separate import permits)</li>
+          </ul>
+          <p style="margin-top:12px"><strong>Items needing treatment or declaration:</strong> wooden furniture, sporting equipment (golf clubs, fishing gear, camping gear must be clean), bicycles, garden tools, surfboards.</p>
+        </div>
+
+        <h2 id="timeline">Shipping Timelines — NZ to Australia</h2>
+        <div style="overflow-x:auto;margin:20px 0">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Route</th>
+                <th>Sea Transit</th>
+                <th>Total Door-to-Door</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Auckland &rarr; Sydney</td><td>5–7 days</td><td>3–4 weeks</td></tr>
+              <tr><td>Auckland &rarr; Melbourne</td><td>6–8 days</td><td>3–5 weeks</td></tr>
+              <tr><td>Auckland &rarr; Brisbane</td><td>5–7 days</td><td>3–4 weeks</td></tr>
+              <tr><td>Wellington &rarr; Sydney</td><td>6–8 days</td><td>3–5 weeks</td></tr>
+              <tr><td>Christchurch &rarr; Melbourne</td><td>5–7 days</td><td>3–5 weeks</td></tr>
+              <tr><td>Christchurch &rarr; Perth</td><td>8–12 days</td><td>4–6 weeks</td></tr>
+              <tr><td>Any NZ &rarr; Adelaide</td><td>7–10 days</td><td>4–5 weeks</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:13px;color:var(--muted)">Sea transit = sailing time only. Total door-to-door includes packing, port handling, customs clearance, and delivery to your Australian address.</p>
+
+        <h2 id="insurance">Transit Insurance</h2>
+        <p>Most reputable movers include basic liability coverage, but it's usually limited to around $50/kg. For full protection:</p>
+        <ul>
+          <li><strong>Comprehensive transit insurance</strong> covers loss, damage, and theft during the entire journey. Typically costs 2–4% of the declared value of your goods.</li>
+          <li><strong>What it covers:</strong> breakage, water damage, theft, total loss (e.g. container falls overboard).</li>
+          <li><strong>What it doesn't cover:</strong> pre-existing damage, items you packed yourself (unless inspected), perishables, items seized by customs.</li>
+          <li><strong>Tip:</strong> Take photos and video of all items before packing. This is your proof if you need to make a claim.</li>
+        </ul>
+
+        <h2 id="tips">8 Tips to Save on Shipping from NZ to Australia</h2>
+        <ol>
+          <li><strong>Get at least 3 quotes</strong> — <a href="/get-quotes">Use our free tool</a> to make movers compete for your business. Prices vary hugely.</li>
+          <li><strong>Ship less stuff</strong> — Every cubic metre costs $150–$350. Sell furniture on Trade Me and buy new in Australia if it's cheaper than shipping.</li>
+          <li><strong>Pack yourself</strong> — Ask for a "pack yourself" rate. Most movers discount 10–20% if you do your own packing.</li>
+          <li><strong>Use groupage for small loads</strong> — If you're shipping under 10m&sup3;, a shared container saves 30–40% over a full container.</li>
+          <li><strong>Move off-peak</strong> — November to February is peak season. Ship in April–September for lower rates and faster service.</li>
+          <li><strong>Consolidate</strong> — Combine air and sea freight through the same company for a bundled rate.</li>
+          <li><strong>Avoid storage fees</strong> — Have your Australian address locked in before your shipment arrives. Port storage charges $50–$150/week.</li>
+          <li><strong>Check insurance carefully</strong> — Don't over-insure, but don't under-insure either. 2–3% of total value is standard.</li>
+        </ol>
+
+        <div class="cta-box">
+          <p>Get Free Shipping Quotes — NZ to Australia</p>
+          <p style="font-size:14px;color:var(--body);font-weight:400;margin-bottom:16px">Compare verified trans-Tasman movers and get up to 3 quotes for your exact load.</p>
+          <a href="/get-quotes" class="btn btn-dark btn-lg">Get Free Quotes &rarr;</a>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+</Base>
