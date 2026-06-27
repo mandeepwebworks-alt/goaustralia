@@ -80,9 +80,8 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--i
   display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--ink);
 }
 .nav-logo-icon {
-  width: 32px; height: 32px; border-radius: 9px; background: var(--amber);
-  display: grid; place-items: center;
-  font-family: var(--font-display); font-weight: 800; font-size: 19px; color: var(--ink);
+  width: 32px; height: 32px; border-radius: 9px;
+  display: block;
 }
 .nav-logo-text {
   font-family: var(--font-display); font-weight: 700; font-size: 20px; letter-spacing: -.02em;

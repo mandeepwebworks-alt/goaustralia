@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 48" width="230" height="48" font-family="&#39;Bricolage Grotesque&#39;,&#39;Hanken Grotesk&#39;,Arial,sans-serif">
+  <rect x="0" y="7" width="34" height="34" rx="10" fill="#FFB020"></rect>
+  <g transform="translate(1,8) scale(1.0)">
+    <path d="M7 25 C 12 12, 20 11, 25 13.5" stroke="#161412" stroke-width="2.6" stroke-linecap="round" fill="none" stroke-dasharray="0.1 4.4"></path>
+    <circle cx="7" cy="25" r="2.7" fill="#161412"></circle>
+    <circle cx="25" cy="13.5" r="3.6" fill="#161412"></circle>
+  </g>
+  <text x="46" y="32" font-size="24" font-weight="700" letter-spacing="-0.5" fill="#161412">GoAustralia</text>
+</svg>

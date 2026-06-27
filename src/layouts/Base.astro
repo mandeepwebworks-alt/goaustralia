@@ -25,6 +25,8 @@ const ogImg = ogImage || `${siteUrl}/og-image.jpg`;
   <link rel="canonical" href={canonicalUrl} />
   {noindex ? <meta name="robots" content="noindex, nofollow" /> : <meta name="robots" content="index, follow" />}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content={title} />
@@ -78,7 +80,7 @@ const ogImg = ogImage || `${siteUrl}/og-image.jpg`;
   <header class="site-nav-bar">
     <div class="site-nav-inner">
       <a href="/" class="nav-logo">
-        <span class="nav-logo-icon">G</span>
+        <img src="/logo-mark.svg" alt="GoAustralia" class="nav-logo-icon" width="32" height="32" />
         <span class="nav-logo-text">GoAustralia</span>
       </a>
       <nav class="nav-links">
@@ -113,7 +115,7 @@ const ogImg = ogImage || `${siteUrl}/og-image.jpg`;
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="nav-logo" style="margin-bottom:16px">
-            <span class="nav-logo-icon">G</span>
+            <img src="/logo-mark.svg" alt="GoAustralia" class="nav-logo-icon" width="32" height="32" />
             <span class="nav-logo-text" style="color:#fff">GoAustralia</span>
           </a>
           <p style="font-size:14.5px;line-height:1.6;color:var(--on-dark-muted)">The free way for New Zealanders to compare verified trans-Tasman movers and get sorted faster.</p>
