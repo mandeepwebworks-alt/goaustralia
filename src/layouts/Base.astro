@@ -12,7 +12,8 @@ interface Props {
 
 const { title, description, canonical, ogImage, structuredData, noindex } = Astro.props;
 const siteUrl = 'https://goaustralia.co.nz';
-const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const canonicalUrl = canonical || `${siteUrl}${pathname}`;
 const ogImg = ogImage || `${siteUrl}/og-image.jpg`;
 ---
 <!DOCTYPE html>
